@@ -1,65 +1,234 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+
+import {
+  ConditionsShowcase,
+  ConditionsStripSection,
+  ContactSection,
+  DoctorSnippet,
+  GetStartedSection,
+  HomeHero,
+  InsuranceStrip,
+  ServiceCards,
+  ServicesShowcase,
+  SurgeriesSection,
+  UnlockPainFreeSection,
+  WhyChooseUsSection,
+  WhyIntegrativeMedicine,
+} from "@/app/components/home/HomeSections";
+import { HOME_META } from "@/app/lib/home-content";
+
+const SITE_ORIGIN = "https://genesisintegrativemed.com";
+const CANONICAL = `${SITE_ORIGIN}/`;
+
+export const metadata: Metadata = {
+  title: HOME_META.title,
+  description: HOME_META.description,
+  alternates: { canonical: CANONICAL },
+  openGraph: {
+    type: "website",
+    url: CANONICAL,
+    siteName: "Genesis Integrative Medicine",
+    title: HOME_META.title,
+    description: HOME_META.description,
+    images: [
+      {
+        url: `${SITE_ORIGIN}/wp-content/uploads/2024/03/care-credit-small-300x62.png`,
+      },
+    ],
+  },
+  twitter: { card: "summary_large_image" },
+};
+
+/**
+ * JSON-LD graph — replicated from the live homepage per the migration brief.
+ * Values preserved verbatim; only @id / url resolve to the canonical origin.
+ * Two data inconsistencies on the live source are preserved unchanged
+ * (flagged in the migration notes):
+ *   - MedicalClinic.telephone differs from the displayed 630-845-8925
+ *   - MedicalClinic.openingHoursSpecification differs from Physician block
+ */
+const jsonLdGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": CANONICAL,
+      url: CANONICAL,
+      name: HOME_META.title,
+      isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+      primaryImageOfPage: { "@id": `${SITE_ORIGIN}/#primaryimage` },
+      image: { "@id": `${SITE_ORIGIN}/#primaryimage` },
+      thumbnailUrl: `${SITE_ORIGIN}/wp-content/uploads/2024/03/care-credit-small-300x62.png`,
+      datePublished: "2024-03-08T11:34:48+00:00",
+      dateModified: "2026-04-09T10:44:48+00:00",
+      description: HOME_META.description,
+      breadcrumb: { "@id": `${SITE_ORIGIN}/#breadcrumb` },
+      inLanguage: "en-US",
+      potentialAction: [{ "@type": "ReadAction", target: [CANONICAL] }],
+    },
+    {
+      "@type": "ImageObject",
+      inLanguage: "en-US",
+      "@id": `${SITE_ORIGIN}/#primaryimage`,
+      url: `${SITE_ORIGIN}/wp-content/uploads/2024/03/care-credit-small.png`,
+      contentUrl: `${SITE_ORIGIN}/wp-content/uploads/2024/03/care-credit-small.png`,
+      width: 500,
+      height: 104,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${SITE_ORIGIN}/#breadcrumb`,
+      itemListElement: [{ "@type": "ListItem", position: 1, name: "Home" }],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_ORIGIN}/#website`,
+      url: CANONICAL,
+      name: "Genesis Integrative Medicine",
+      description: "Integrative Medical Office | Pain Management Clinic",
+      potentialAction: [
+        {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${SITE_ORIGIN}/?s={search_term_string}`,
+          },
+          "query-input": {
+            "@type": "PropertyValueSpecification",
+            valueRequired: true,
+            valueName: "search_term_string",
+          },
+        },
+      ],
+      inLanguage: "en-US",
+    },
+  ],
+};
+
+const physicianJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: "Genesis Integrative Medicine",
+  image: `${SITE_ORIGIN}/wp-content/uploads/2021/03/Genesis_Logo-300x109.png`,
+  "@id": CANONICAL,
+  url: CANONICAL,
+  telephone: "630-845-8925",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "1881 S. Randall Rd",
+    addressLocality: "Geneva",
+    addressRegion: "IL",
+    postalCode: "60134",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 41.8682334,
+    longitude: -88.3397087,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Wednesday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Thursday"],
+      opens: "15:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Friday",
+      opens: "09:00",
+      closes: "12:00",
+    },
+  ],
+  sameAs: [
+    "https://www.facebook.com/genesisintegrativemed/",
+    "https://www.instagram.com/genesis.integrative.med/?hl=en",
+  ],
+};
+
+const websiteSimpleJsonLd = {
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  name: "Genesis Integrative Medicine",
+  url: CANONICAL,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "{search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const medicalClinicJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: "Genesis Integrative Medicine",
+  image: `${SITE_ORIGIN}/wp-content/uploads/2021/03/Genesis_Logo.png`,
+  "@id": "",
+  url: CANONICAL,
+  telephone: "630-283-6563",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "1881 S. Randall Rd, Suite C",
+    addressLocality: "Geneva, IL",
+    addressRegion: "IL",
+    postalCode: "60134",
+    addressCountry: "US",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Wednesday", "Friday"],
+      opens: "08:00",
+      closes: "11:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      opens: "15:00",
+      closes: "18:00",
+    },
+  ],
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(physicianJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSimpleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalClinicJsonLd) }}
+      />
+
+      <HomeHero />
+      <InsuranceStrip />
+      <ServiceCards />
+      <ServicesShowcase />
+      <WhyIntegrativeMedicine />
+      <SurgeriesSection />
+      <UnlockPainFreeSection />
+      <DoctorSnippet />
+      <WhyChooseUsSection />
+      <ConditionsShowcase />
+      <ConditionsStripSection />
+      <GetStartedSection />
+      <ContactSection />
+    </>
   );
 }

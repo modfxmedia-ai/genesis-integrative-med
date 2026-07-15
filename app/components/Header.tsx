@@ -305,27 +305,40 @@ function NavItemDesktop({
         }
       }}
     >
-      <button
-        type="button"
-        aria-haspopup="menu"
-        aria-expanded={open}
-        aria-controls={menuId}
-        onClick={() => setOpen((v) => !v)}
-        className={`${baseLinkClasses} ${stateClasses} cursor-pointer`}
+      {/* Parent label — navigates to the index page (e.g. /services/, /conditions-treated/).
+          The chevron sibling toggles the dropdown on click / keyboard; hover opens it automatically. */}
+      <div
+        className={`${baseLinkClasses} ${stateClasses} group/parent gap-0 pr-1`}
       >
-        {item.label}
-        <ChevronDownIcon
-          className={`h-3 w-3 transition-transform duration-200 ${
-            open ? "rotate-180" : ""
-          }`}
-        />
+        <Link
+          href={item.href}
+          className="inline-flex items-center pr-1.5"
+          aria-current={active ? "page" : undefined}
+        >
+          {item.label}
+        </Link>
+        <button
+          type="button"
+          aria-haspopup="menu"
+          aria-expanded={open}
+          aria-controls={menuId}
+          aria-label={`Toggle ${item.label} menu`}
+          onClick={() => setOpen((v) => !v)}
+          className="ml-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full text-current transition-colors hover:bg-brand-mist"
+        >
+          <ChevronDownIcon
+            className={`h-3 w-3 transition-transform duration-200 ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </button>
         <span
           aria-hidden
-          className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-center rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan transition-transform duration-300 ${
-            active || open ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+          className={`pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 origin-center rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan transition-transform duration-300 ${
+            active || open ? "scale-x-100" : "scale-x-0 group-hover/parent:scale-x-100"
           }`}
         />
-      </button>
+      </div>
 
       <AnimatePresence>
         {open && (

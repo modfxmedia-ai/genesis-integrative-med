@@ -72,6 +72,15 @@ export type Highlight = {
   icon?: "spark" | "shield" | "heart" | "clock" | "bolt" | "leaf" | "target" | "check";
 };
 
+/** Configurable "related pages" section shown near the bottom of a page. */
+export type RelatedNav = {
+  kicker?: string;
+  heading: string;
+  items: readonly { label: string; href: string }[];
+  footerLabel?: string;
+  footerHref?: string;
+};
+
 export type ServicePageContent = {
   slug: string;
   urlPath: string;
@@ -104,6 +113,15 @@ export type ServicePageContent = {
   faqs?: readonly { question: string; answer: string }[];
   faqHeading?: string;
   gallery?: readonly { src: string; alt: string; width: number; height: number }[];
+  /** Overrides the default "All Services" links block at the bottom. */
+  relatedNav?: RelatedNav;
+  /**
+   * Page-level layout mode.
+   * - `"split-sections"` (default): each section renders as its own image/placeholder split panel.
+   * - `"sidebar"`: text flows in a single left column; a sticky sidebar on the right
+   *   shows the related-nav links. Used by conditions pages.
+   */
+  layout?: "split-sections" | "sidebar";
   serviceJsonLd: {
     name: string;
     description: string;

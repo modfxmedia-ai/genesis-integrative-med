@@ -39,6 +39,7 @@ export default function ServicePageTemplate({
 }: {
   content: ServicePageContent;
 }) {
+  const useSidebar = content.layout === "sidebar";
   return (
     <article className="bg-white">
       <BreadcrumbBar items={content.breadcrumbs} />
@@ -47,7 +48,11 @@ export default function ServicePageTemplate({
         <HighlightsStrip highlights={content.highlights} />
       )}
 
-      <SectionsRenderer sections={content.sections} />
+      {useSidebar ? (
+        <SidebarLayout content={content} />
+      ) : (
+        <SectionsRenderer sections={content.sections} />
+      )}
 
       {content.video && <ServiceVideo video={content.video} />}
 
@@ -62,7 +67,11 @@ export default function ServicePageTemplate({
         />
       )}
 
-      <AllServicesList currentSlug={content.slug} />
+      {/* Bottom "All Services" list is skipped in sidebar layout — the sticky
+          sidebar already surfaces the related links. */}
+      {!useSidebar && (
+        <AllServicesList currentSlug={content.slug} relatedNav={content.relatedNav} />
+      )}
       <ConsultationCta />
       <InsuranceMissionBlock />
     </article>
@@ -401,6 +410,191 @@ function SectionDispatcher({
   // Short, single-paragraph prose sections stay compact and centered.
   const bg = section.variant === "mist" ? "mist" : "white";
   return <CenteredSection section={section} bg={bg} />;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sidebar layout — text left, sticky related-nav on the right                */
+/* -------------------------------------------------------------------------- */
+
+function SidebarLayout({ content }: { content: ServicePageContent }) {
+  return (
+    <section className="bg-white py-14 sm:py-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+          {/* Main content column */}
+          <main className="lg:col-span-8 xl:col-span-9">
+            <div className="space-y-12 sm:space-y-16">
+              {content.sections.map((section, i) => (
+                <LinearSection key={i} section={section} />
+              ))}
+            </div>
+          </main>
+          {/* Sticky sidebar */}
+          <aside className="lg:col-span-4 xl:col-span-3">
+            <div className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:flex lg:flex-col">
+              <ConditionsSidebar
+                currentSlug={content.slug}
+                relatedNav={content.relatedNav}
+              />
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LinearSection({ section }: { section: ServiceSection }) {
+  return (
+    <section>
+      <SectionHeader section={section} align="left" />
+      {section.image && (
+        <Reveal delay={0.05}>
+          <div className="mt-6 overflow-hidden rounded-3xl border border-brand-line bg-brand-ink shadow-lg shadow-brand-navy/10">
+            <div className="relative aspect-[16/10] w-full">
+              <Image
+                src={section.image.src}
+                alt={section.image.alt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 700px"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </Reveal>
+      )}
+      <SectionBody section={section} />
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Conditions Sidebar — the sticky right-column nav in sidebar layout        */
+/* -------------------------------------------------------------------------- */
+
+function ConditionsSidebar({
+  currentSlug,
+  relatedNav,
+}: {
+  currentSlug: string;
+  relatedNav?: import("@/app/lib/services-content").RelatedNav;
+}) {
+  const nav = relatedNav ?? {
+    kicker: "Explore",
+    heading: "All Services",
+    items: ALL_SERVICES_LIST,
+    footerLabel: "View all",
+    footerHref: "/services/",
+  };
+  return (
+    <Reveal className="lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
+      <div className="flex min-h-0 flex-col overflow-hidden rounded-2xl border border-brand-line bg-white shadow-lg shadow-brand-navy/10">
+        {/* Header with gradient */}
+        <div className="relative shrink-0 overflow-hidden bg-gradient-to-br from-brand-navy via-brand-blue to-brand-cyan px-5 py-4 text-white">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -top-8 -right-8 h-24 w-24 rounded-full bg-white/10 blur-2xl"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.14]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)",
+              backgroundSize: "18px 18px",
+            }}
+          />
+          <div className="relative">
+            <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-brand-sky">
+              <span className="mr-2 inline-block h-1 w-1 -translate-y-0.5 rounded-full bg-brand-cyan" />
+              {nav.kicker ?? "Explore"}
+            </p>
+            <h3 className="mt-1.5 text-base font-extrabold leading-tight sm:text-lg">
+              {nav.heading}
+            </h3>
+          </div>
+        </div>
+        {/* Nav list — scrolls internally if the whole sidebar exceeds viewport */}
+        <nav
+          aria-label={nav.heading}
+          className="min-h-0 flex-1 divide-y divide-brand-line overflow-y-auto"
+        >
+          {nav.items.map((item, i) => {
+            const isCurrent = item.href.includes(`/${currentSlug}/`);
+            return (
+              <motion.div
+                key={item.href}
+                initial={{ opacity: 0, x: -6 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.35, ease: EASE, delay: i * 0.015 }}
+              >
+                <Link
+                  href={item.href}
+                  aria-current={isCurrent ? "page" : undefined}
+                  className={`group relative flex items-center justify-between gap-2 px-4 py-2.5 text-[13px] font-semibold transition-colors ${
+                    isCurrent
+                      ? "bg-brand-mist text-brand-navy"
+                      : "text-brand-ink/75 hover:bg-brand-mist/60 hover:text-brand-navy"
+                  }`}
+                >
+                  {isCurrent && (
+                    <span
+                      aria-hidden
+                      className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand-blue to-brand-cyan"
+                    />
+                  )}
+                  <span className="flex min-w-0 items-center gap-2.5">
+                    <span
+                      aria-hidden
+                      className={`inline-flex h-1.5 w-1.5 shrink-0 rounded-full transition-colors ${
+                        isCurrent
+                          ? "bg-brand-blue"
+                          : "bg-brand-ink/25 group-hover:bg-brand-blue"
+                      }`}
+                    />
+                    <span className="truncate">{item.label}</span>
+                  </span>
+                  <ArrowUpRight
+                    className={`h-3 w-3 shrink-0 transition-transform ${
+                      isCurrent
+                        ? "text-brand-blue"
+                        : "text-brand-ink/40 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-blue"
+                    }`}
+                  />
+                </Link>
+              </motion.div>
+            );
+          })}
+        </nav>
+        {/* Footer CTA — compact */}
+        <div className="shrink-0 border-t border-brand-line bg-brand-mist/40 p-3">
+          <a
+            href={CONTACT.phoneHref}
+            className="group flex items-center justify-between gap-2 rounded-xl border border-brand-line bg-white px-3 py-2 text-[13px] font-bold text-brand-navy transition-colors hover:border-brand-blue/40 hover:bg-brand-mist"
+          >
+            <span className="flex items-center gap-2">
+              <span
+                aria-hidden
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan text-white"
+              >
+                <PhoneIcon className="h-3 w-3" />
+              </span>
+              <span>{CONTACT.phoneDisplay}</span>
+            </span>
+            <ArrowRight className="h-3 w-3 text-brand-blue transition-transform group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="/contact/"
+            className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan px-3 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg hover:shadow-brand-blue/40"
+          >
+            Schedule Consultation
+            <ArrowRight className="h-3 w-3" />
+          </a>
+        </div>
+      </div>
+    </Reveal>
+  );
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1171,11 +1365,24 @@ function FAQItem({
 }
 
 /* -------------------------------------------------------------------------- */
-/* All Services list                                                          */
+/* Related pages list (defaults to "All Services")                            */
 /* -------------------------------------------------------------------------- */
 
-function AllServicesList({ currentSlug }: { currentSlug: string }) {
-  const items = ALL_SERVICES_LIST.filter(
+function AllServicesList({
+  currentSlug,
+  relatedNav,
+}: {
+  currentSlug: string;
+  relatedNav?: import("@/app/lib/services-content").RelatedNav;
+}) {
+  const nav = relatedNav ?? {
+    kicker: "Explore",
+    heading: "All Services",
+    items: ALL_SERVICES_LIST,
+    footerLabel: "View services overview",
+    footerHref: "/services/",
+  };
+  const items = nav.items.filter(
     (s) => !s.href.includes(`/${currentSlug}/`)
   );
   return (
@@ -1187,10 +1394,10 @@ function AllServicesList({ currentSlug }: { currentSlug: string }) {
       <div className="relative mx-auto max-w-7xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
-            Explore
+            {nav.kicker ?? "Explore"}
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
-            All Services
+            {nav.heading}
           </h2>
         </Reveal>
         <Stagger
@@ -1211,17 +1418,19 @@ function AllServicesList({ currentSlug }: { currentSlug: string }) {
             </StaggerItem>
           ))}
         </Stagger>
-        <Reveal delay={0.1} className="mt-10 flex justify-center">
-          <MagneticButton strength={14}>
-            <Link
-              href="/services/"
-              className="inline-flex items-center gap-2 rounded-full border border-brand-navy/15 bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy transition-colors hover:border-brand-blue hover:bg-brand-navy hover:text-white"
-            >
-              View services overview
-              <ArrowRight className="h-3 w-3" />
-            </Link>
-          </MagneticButton>
-        </Reveal>
+        {nav.footerHref && nav.footerLabel && (
+          <Reveal delay={0.1} className="mt-10 flex justify-center">
+            <MagneticButton strength={14}>
+              <Link
+                href={nav.footerHref}
+                className="inline-flex items-center gap-2 rounded-full border border-brand-navy/15 bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy transition-colors hover:border-brand-blue hover:bg-brand-navy hover:text-white"
+              >
+                {nav.footerLabel}
+                <ArrowRight className="h-3 w-3" />
+              </Link>
+            </MagneticButton>
+          </Reveal>
+        )}
       </div>
     </section>
   );

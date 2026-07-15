@@ -270,3 +270,60 @@ export function buildServicesIndexJsonLd(opts: {
     MEDICAL_CLINIC,
   ];
 }
+
+/** JSON-LD for the /conditions-treated/ index. */
+export function buildConditionsIndexJsonLd(opts: {
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  ogImage: string;
+  datePublished: string;
+  dateModified: string;
+}) {
+  const primaryImageId = `${opts.canonicalUrl}#primaryimage`;
+  const breadcrumbId = `${opts.canonicalUrl}#breadcrumb`;
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": opts.canonicalUrl,
+          url: opts.canonicalUrl,
+          name: opts.title,
+          isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+          primaryImageOfPage: { "@id": primaryImageId },
+          image: { "@id": primaryImageId },
+          thumbnailUrl: opts.ogImage,
+          datePublished: opts.datePublished,
+          dateModified: opts.dateModified,
+          description: opts.description,
+          breadcrumb: { "@id": breadcrumbId },
+          inLanguage: "en-US",
+          potentialAction: [{ "@type": "ReadAction", target: [opts.canonicalUrl] }],
+        },
+        {
+          "@type": "ImageObject",
+          inLanguage: "en-US",
+          "@id": primaryImageId,
+          url: opts.ogImage,
+          contentUrl: opts.ogImage,
+          width: 340,
+          height: 340,
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": breadcrumbId,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
+            { "@type": "ListItem", position: 2, name: "Conditions Treated" },
+          ],
+        },
+        WEBSITE_NODE,
+      ],
+    },
+    WEBSITE_SIMPLE,
+    MEDICAL_CLINIC,
+  ];
+}

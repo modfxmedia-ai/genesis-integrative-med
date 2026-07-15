@@ -54,8 +54,13 @@ export const SERVICES_SUBNAV: readonly NavChild[] = [
   { label: "Sciatica", href: "/services/sciatica/" },
 ];
 
+export const ABOUT_SUBNAV: readonly NavChild[] = [
+  { label: "Our Practice", href: "/about-practice/" },
+  { label: "Meet the Staff", href: "/about-practice/meet-the-staff/" },
+];
+
 export const PRIMARY_NAV: readonly NavItem[] = [
-  { label: "About Us", href: "/about-practice/" },
+  { label: "About Us", href: "/about-practice/", children: ABOUT_SUBNAV },
   { label: "Our Providers", href: "/our-providers/" },
   {
     label: "Conditions Treated",

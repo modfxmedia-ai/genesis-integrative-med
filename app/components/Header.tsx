@@ -350,7 +350,11 @@ function NavItemDesktop({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.98 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute left-1/2 top-full z-50 mt-3 w-[min(92vw,580px)] -translate-x-1/2"
+            className={`absolute left-1/2 top-full z-50 mt-3 -translate-x-1/2 ${
+              item.children.length <= 3
+                ? "w-[min(92vw,320px)]"
+                : "w-[min(92vw,580px)]"
+            }`}
           >
             {/* Invisible hover bridge so quick mouse travel doesn't close it */}
             <div aria-hidden className="h-3 w-full" />
@@ -368,7 +372,11 @@ function NavItemDesktop({
                   <ArrowRightIcon className="h-3 w-3" />
                 </Link>
               </div>
-              <ul className="grid grid-cols-2 gap-x-2 gap-y-1 p-3">
+              <ul
+                className={`grid gap-x-2 gap-y-1 p-3 ${
+                  item.children.length <= 3 ? "grid-cols-1" : "grid-cols-2"
+                }`}
+              >
                 {item.children.map((child) => (
                   <li key={child.href}>
                     <Link
@@ -381,7 +389,7 @@ function NavItemDesktop({
                     </Link>
                   </li>
                 ))}
-                {item.children.length % 2 === 1 && (
+                {item.children.length > 3 && item.children.length % 2 === 1 && (
                   <li>
                     <Link
                       href={item.href}

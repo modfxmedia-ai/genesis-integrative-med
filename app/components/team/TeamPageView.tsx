@@ -217,8 +217,12 @@ export default function TeamPageView({
 
 function MemberCard({ member, index }: { member: TeamMember; index: number }) {
   const imageOnRight = index % 2 === 0;
+  const hasBio = !!member.bio && member.bio.length > 0;
+  const firstName = member.name.split(",")[0].split(" ").slice(-1)[0];
   return (
-    <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+    <div
+      className={`grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 ${hasBio ? "items-center" : "items-start"}`}
+    >
       {/* Photo */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -273,19 +277,73 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
             {member.title}
           </p>
         </Reveal>
-        {member.bio && member.bio.length > 0 && (
+        {hasBio ? (
           <Stagger
             className="mt-6 space-y-4 text-base leading-relaxed text-brand-ink/80 sm:text-lg"
             gap={0.07}
           >
-            {member.bio.map((p, i) => (
+            {member.bio!.map((p, i) => (
               <StaggerItem key={i}>
                 <p>{p}</p>
               </StaggerItem>
             ))}
           </Stagger>
+        ) : (
+          <BookWithMemberCard firstName={firstName} title={member.title} />
         )}
       </div>
     </div>
+  );
+}
+
+function BookWithMemberCard({
+  firstName,
+  title,
+}: {
+  firstName: string;
+  title: string;
+}) {
+  return (
+    <Reveal delay={0.1}>
+      <div className="mt-6 relative overflow-hidden rounded-2xl border border-brand-line bg-gradient-to-br from-brand-mist/60 via-white to-brand-mist/40 p-6 sm:p-7">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-8 -right-8 h-32 w-32 rounded-full bg-brand-cyan/20 blur-2xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-brand-blue/15 blur-2xl"
+        />
+        <div className="relative">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-blue">
+            <span className="mr-2 inline-block h-1 w-1 -translate-y-0.5 rounded-full bg-brand-cyan" />
+            Meet {firstName}
+          </p>
+          <h4 className="mt-3 text-xl font-bold tracking-tight text-brand-navy sm:text-2xl">
+            Book a visit with our {title}
+          </h4>
+          <p className="mt-3 text-sm leading-relaxed text-brand-ink/70">
+            Schedule a consultation to learn more about {firstName}&rsquo;s approach to
+            integrative care at Genesis Integrative Medicine.
+          </p>
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <a
+              href={CONTACT.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg hover:shadow-brand-blue/40"
+            >
+              Schedule Consultation
+            </a>
+            <a
+              href={CONTACT.phoneHref}
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-brand-line bg-white px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy transition-colors hover:border-brand-blue/40 hover:bg-brand-mist"
+            >
+              Call {CONTACT.phoneDisplay}
+            </a>
+          </div>
+        </div>
+      </div>
+    </Reveal>
   );
 }

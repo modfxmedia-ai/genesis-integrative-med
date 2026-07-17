@@ -22,6 +22,8 @@ import {
 } from "@/app/lib/home-content";
 import { BRAND, CONTACT, PROVIDERS } from "@/app/lib/site-config";
 
+import ContactFormEmbed from "@/app/components/contact/ContactFormEmbed";
+
 import {
   CountUp,
   MagneticButton,
@@ -696,10 +698,23 @@ function ShowcaseCard({ item }: { item: ShowcaseItem }) {
 export function ServiceCards() {
   // Image + alt for each of the 4 featured SERVICE_CARDS, in order.
   const cardMedia: readonly { image: string; alt: string }[] = [
-    { image: "/images/services/chiropractic-care.webp", alt: "Chiropractic care" },
-    { image: "/images/services/regenerative-medicine.webp", alt: "Regenerative medicine" },
-    { image: "/images/conditions/joint-pain.jpg", alt: "Joint pain treatment" },
-    { image: "/images/services/peptide-weight-loss.webp", alt: "Medical weight loss" },
+    {
+      image: "/images/relieving-pain-with-chiropractic-care-victoria.jpg",
+      alt: "Chiropractor providing hands-on adjustment for pain relief",
+    },
+    {
+      image:
+        "/images/regenerative-medicine-ultrasound-guided-prp-injection-1200x628.webp",
+      alt: "Ultrasound-guided PRP injection for regenerative medicine",
+    },
+    {
+      image: "/images/joint-pain.jpg",
+      alt: "Patient experiencing joint pain",
+    },
+    {
+      image: "/images/medical-weightloss.jpeg",
+      alt: "Medical weight loss consultation and measurement",
+    },
   ];
 
   return (
@@ -786,38 +801,120 @@ export function ServiceCards() {
 /* -------------------------------------------------------------------------- */
 
 export function WhyIntegrativeMedicine() {
+  const { heading, highlightWord, mosaic, featureChips, ctas, paragraphs, kicker } =
+    WHY_INTEGRATIVE;
+  const headlineParts = splitHeadline(heading, highlightWord);
+
   return (
-    <section className="bg-brand-mist py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
-          <Reveal className="lg:col-span-5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
-              Our philosophy
-            </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
-              {WHY_INTEGRATIVE.heading}
-            </h2>
+    <section className="relative overflow-hidden bg-brand-mist py-20 sm:py-24">
+      {/* Ambient decor */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-24 top-24 h-[420px] w-[420px] rounded-full bg-brand-sky/20 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-32 bottom-16 h-[380px] w-[380px] rounded-full bg-brand-cyan/15 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, #00508C 1px, transparent 0)",
+          backgroundSize: "34px 34px",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Left — photo mosaic */}
+          <Reveal className="lg:col-span-6">
+            <PhotoMosaic mosaic={mosaic} />
           </Reveal>
-          <Stagger className="space-y-5 text-base leading-relaxed text-brand-ink/75 lg:col-span-7" gap={0.1}>
-            {WHY_INTEGRATIVE.paragraphs.map((p, i) => (
-              <StaggerItem key={i}>
-                <p>{p}</p>
-              </StaggerItem>
-            ))}
-            <StaggerItem className="mt-6 flex flex-wrap gap-3">
-              {WHY_INTEGRATIVE.ctas.map((c) => (
-                <MagneticButton key={c.href} strength={14}>
+
+          {/* Right — editorial copy */}
+          <div className="lg:col-span-6">
+            <Reveal>
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden
+                  className="h-px w-10 bg-gradient-to-r from-transparent via-brand-blue to-brand-cyan"
+                />
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+                  {kicker}
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-brand-ink sm:text-5xl lg:text-[3.25rem]">
+                {headlineParts.before}
+                {headlineParts.highlight && (
+                  <span className="relative inline-block">
+                    <span className="relative z-10">{headlineParts.highlight}</span>
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-1 z-0 h-3 rounded-sm bg-gradient-to-r from-brand-cyan/45 via-brand-sky/45 to-brand-cyan/25 sm:h-4"
+                    />
+                  </span>
+                )}
+                {headlineParts.after}
+              </h2>
+            </Reveal>
+            <Stagger
+              className="mt-7 space-y-5 text-base leading-relaxed text-brand-ink/75"
+              gap={0.08}
+            >
+              {paragraphs.map((p, i) => (
+                <StaggerItem key={i}>
+                  <p>{p}</p>
+                </StaggerItem>
+              ))}
+            </Stagger>
+
+            {/* 2x2 feature chips */}
+            <Stagger
+              className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2"
+              gap={0.06}
+            >
+              {featureChips.map((chip) => (
+                <StaggerItem key={chip.title}>
+                  <FeatureChip
+                    title={chip.title}
+                    body={chip.body}
+                    icon={chip.icon}
+                  />
+                </StaggerItem>
+              ))}
+            </Stagger>
+
+            {/* CTA + phone */}
+            <Reveal delay={0.1}>
+              <div className="mt-9 flex flex-wrap items-center gap-4">
+                <MagneticButton strength={14}>
                   <Link
-                    href={c.href}
-                    className="inline-flex items-center gap-2 rounded-full border border-brand-navy/15 bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy transition-colors hover:border-brand-blue hover:bg-brand-navy hover:text-white"
+                    href={ctas[0].href}
+                    className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-navy to-brand-blue px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-navy/25 transition-shadow hover:shadow-xl hover:shadow-brand-navy/35"
                   >
-                    {c.label}
-                    <ArrowRightIcon className="h-3 w-3" />
+                    {ctas[0].label}
+                    <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </MagneticButton>
-              ))}
-            </StaggerItem>
-          </Stagger>
+                <a
+                  href={CONTACT.phoneHref}
+                  className="group inline-flex items-center gap-2.5 rounded-full border border-brand-line bg-white/80 px-5 py-3 text-sm font-bold text-brand-navy backdrop-blur transition-colors hover:border-brand-blue/30 hover:bg-white"
+                >
+                  <span
+                    aria-hidden
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue/10 to-brand-cyan/10 text-brand-blue transition-colors group-hover:from-brand-blue group-hover:to-brand-cyan group-hover:text-white"
+                  >
+                    <PhoneMiniIcon className="h-4 w-4" />
+                  </span>
+                  {CONTACT.phoneDisplay}
+                </a>
+              </div>
+            </Reveal>
+          </div>
         </div>
 
         <Stagger className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3" gap={0.1}>
@@ -837,6 +934,8 @@ export function WhyIntegrativeMedicine() {
                       src={card.image}
                       alt={card.alt}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 420px"
+                      quality={90}
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/60 to-transparent" />
@@ -858,6 +957,265 @@ export function WhyIntegrativeMedicine() {
         </Stagger>
       </div>
     </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Why Integrative Medicine helpers                                            */
+/* -------------------------------------------------------------------------- */
+
+type MosaicData = typeof WHY_INTEGRATIVE.mosaic;
+type FeatureChipIcon = (typeof WHY_INTEGRATIVE.featureChips)[number]["icon"];
+
+function splitHeadline(
+  heading: string,
+  highlight: string | undefined,
+): { before: string; highlight: string | null; after: string } {
+  if (!highlight) return { before: heading, highlight: null, after: "" };
+  const idx = heading.indexOf(highlight);
+  if (idx < 0) return { before: heading, highlight: null, after: "" };
+  return {
+    before: heading.slice(0, idx),
+    highlight,
+    after: heading.slice(idx + highlight.length),
+  };
+}
+
+function PhotoMosaic({ mosaic }: { mosaic: MosaicData }) {
+  return (
+    <div className="relative">
+      {/* Decorative dot cluster behind mosaic */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 opacity-40 sm:h-28 sm:w-28"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, #64B4DC 1.5px, transparent 0)",
+          backgroundSize: "12px 12px",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-4 -left-4 h-24 w-24 opacity-40 sm:h-28 sm:w-28"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, #64B4DC 1.5px, transparent 0)",
+          backgroundSize: "12px 12px",
+        }}
+      />
+
+      <div className="relative grid grid-cols-12 grid-rows-[220px_140px] gap-3 sm:grid-rows-[280px_160px] sm:gap-4">
+        {/* Big portrait — spans 2 rows on the left */}
+        <div className="relative col-span-7 row-span-2 overflow-hidden rounded-2xl shadow-lg shadow-brand-navy/10 ring-1 ring-brand-line">
+          <Image
+            src={mosaic.big.src}
+            alt={mosaic.big.alt}
+            fill
+            sizes="(min-width: 1024px) 480px, (min-width: 640px) 60vw, 100vw"
+            className="object-cover"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-ink/25 via-transparent to-transparent"
+          />
+          {/* Badge chip top-left */}
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-xl bg-white/95 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-navy shadow-md backdrop-blur sm:left-4 sm:top-4">
+            <span
+              aria-hidden
+              className="flex h-6 w-6 items-center justify-center rounded-lg bg-gradient-to-br from-brand-blue to-brand-cyan text-white"
+            >
+              <LeafBadgeIcon className="h-3.5 w-3.5" />
+            </span>
+            {mosaic.badge}
+          </span>
+        </div>
+
+        {/* Small square top-right */}
+        <div className="relative col-span-5 overflow-hidden rounded-2xl shadow-md shadow-brand-navy/10 ring-1 ring-brand-line">
+          <Image
+            src={mosaic.small1.src}
+            alt={mosaic.small1.alt}
+            fill
+            sizes="(min-width: 1024px) 320px, (min-width: 640px) 40vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+
+        {/* Bottom-right: split into small square + stats card */}
+        <div className="col-span-5 grid grid-cols-5 gap-3 sm:gap-4">
+          <div className="relative col-span-2 overflow-hidden rounded-2xl shadow-md shadow-brand-navy/10 ring-1 ring-brand-line">
+            <Image
+              src={mosaic.small2.src}
+              alt={mosaic.small2.alt}
+              fill
+              sizes="(min-width: 1024px) 130px, 20vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative col-span-3 flex flex-col justify-between overflow-hidden rounded-2xl border border-brand-line bg-white p-3 shadow-md shadow-brand-navy/10 sm:p-4">
+            <div className="flex items-start justify-between gap-2">
+              <span
+                aria-hidden
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-navy to-brand-blue text-white shadow-sm"
+              >
+                <HeartBadgeIcon className="h-[18px] w-[18px]" />
+              </span>
+              <span className="flex items-center gap-1 rounded-full bg-brand-mist px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em] text-brand-blue">
+                <StarMiniIcon className="h-3 w-3" />
+                {mosaic.stat.trustLabel}
+              </span>
+            </div>
+            <div>
+              <p className="text-sm font-extrabold leading-tight text-brand-navy sm:text-base">
+                {mosaic.stat.value}
+              </p>
+              <p className="mt-0.5 text-[11px] leading-snug text-brand-ink/60">
+                {mosaic.stat.label}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FeatureChip({
+  title,
+  body,
+  icon,
+}: {
+  title: string;
+  body: string;
+  icon: FeatureChipIcon;
+}) {
+  return (
+    <div className="group flex items-start gap-3 rounded-2xl border border-brand-line bg-white/70 p-4 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-brand-blue/30 hover:bg-white hover:shadow-md hover:shadow-brand-navy/10">
+      <span
+        aria-hidden
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue/10 to-brand-cyan/10 text-brand-blue transition-colors group-hover:from-brand-blue group-hover:to-brand-cyan group-hover:text-white"
+      >
+        <FeatureChipIconGlyph name={icon} className="h-5 w-5" />
+      </span>
+      <div className="min-w-0">
+        <p className="text-sm font-bold leading-snug text-brand-navy">{title}</p>
+        <p className="mt-1 text-xs leading-relaxed text-brand-ink/65">{body}</p>
+      </div>
+    </div>
+  );
+}
+
+function FeatureChipIconGlyph({
+  name,
+  ...props
+}: { name: FeatureChipIcon } & React.SVGProps<SVGSVGElement>) {
+  switch (name) {
+    case "heart":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+          <path
+            d="M12 20s-7-4.35-7-10a4.5 4.5 0 0 1 8-2.83A4.5 4.5 0 0 1 19 10c0 5.65-7 10-7 10Z"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "shield":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+          <path
+            d="M12 3.5 5 6v6c0 4.5 3.05 7.9 7 8.5 3.95-.6 7-4 7-8.5V6l-7-2.5Z"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+          <path
+            d="m9 12 2.2 2.2L15 10"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "medal":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+          <circle cx="12" cy="14" r="5.5" stroke="currentColor" strokeWidth="1.6" />
+          <path d="m8 10 1.5-6h5L16 10" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+          <path
+            d="m12 12 .9 1.8 2 .3-1.45 1.4.35 2L12 16.6l-1.8.9.35-2L9.1 14.1l2-.3.9-1.8Z"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "sparkle":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+          <path
+            d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l3.5 3.5M14.5 14.5 18 18M6 18l3.5-3.5M14.5 9.5 18 6"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+          />
+        </svg>
+      );
+  }
+}
+
+function LeafBadgeIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M4 20c0-9 6-14 16-14 0 10-6 15-16 15Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 18c4-4 6-7 10-10"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function HeartBadgeIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M12 20s-7-4.35-7-10a4.5 4.5 0 0 1 8-2.83A4.5 4.5 0 0 1 19 10c0 5.65-7 10-7 10Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function StarMiniIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.2 1.05 5.9L12 17l-5.25 2.8L7.8 13.9 3.5 9.7l5.9-.8L12 3.5Z" />
+    </svg>
+  );
+}
+
+function PhoneMiniIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
@@ -1183,12 +1541,36 @@ export function SurgeriesSection() {
 
 export function UnlockPainFreeSection() {
   const services = [
-    { label: "Active Rehab", href: "/services/active-rehab-geneva/", image: "/images/services/active-rehab.webp" },
-    { label: "PRP Injections", href: "/services/prp-injections-geneva/", image: "/images/services/prp-injections.webp" },
-    { label: "Cold Laser", href: "/services/cold-laser/", image: "/images/services/cold-laser.webp" },
-    { label: "Chiropractic", href: "/services/chiropractic-care/", image: "/images/services/chiropractic-care.webp" },
-    { label: "Regenerative Medicine", href: "/services/regenerative-medicine/", image: "/images/services/regenerative-medicine.webp" },
-    { label: "Peripheral Neuropathy", href: "/services/peripheral-neuropathy-treatment/", image: "/images/services/peripheral-neuropathy.webp" },
+    {
+      label: "Active Rehab",
+      href: "/services/active-rehab-geneva/",
+      image: "/images/services/active-rehab/physiotherapist-exam.jpg",
+    },
+    {
+      label: "PRP Injections",
+      href: "/services/prp-injections-geneva/",
+      image: "/images/services/prp/prp-centrifuge.jpg",
+    },
+    {
+      label: "Cold Laser",
+      href: "/services/cold-laser/",
+      image: "/images/services/peptide/lipo-laser.webp",
+    },
+    {
+      label: "Chiropractic",
+      href: "/services/chiropractic-care/",
+      image: "/images/conditions/shoulder-pain/athlete-physio.jpg",
+    },
+    {
+      label: "Regenerative Medicine",
+      href: "/services/regenerative-medicine/",
+      image: "/images/images copy.jpeg",
+    },
+    {
+      label: "Peripheral Neuropathy",
+      href: "/services/peripheral-neuropathy-treatment/",
+      image: "/images/conditions/neuropathy/tingling-hand.jpg",
+    },
   ];
   return (
     <section className="relative overflow-hidden bg-white py-20 sm:py-24">
@@ -1234,41 +1616,74 @@ export function UnlockPainFreeSection() {
             {services.map((item) => (
               <StaggerItem key={item.href}>
                 <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="group h-full"
                 >
                   <Link
                     href={item.href}
-                    className="relative block h-full overflow-hidden rounded-2xl bg-brand-ink shadow-md shadow-brand-navy/10 ring-1 ring-brand-line transition-all hover:ring-brand-blue/40 hover:shadow-xl"
+                    className="relative block h-full overflow-hidden rounded-2xl bg-brand-ink shadow-md shadow-brand-navy/10 ring-1 ring-brand-line transition-all duration-500 hover:ring-brand-cyan/50 hover:shadow-2xl hover:shadow-brand-blue/25"
                   >
                     <div className="relative aspect-[4/5] overflow-hidden">
+                      {/* Base image — starts slightly desaturated + cool, blooms into full color on hover */}
                       <Image
                         src={item.image}
                         alt={item.label}
                         fill
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 220px"
                         quality={92}
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="object-cover saturate-[0.85] brightness-[0.92] contrast-[1.05] transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.12] group-hover:saturate-100 group-hover:brightness-100"
                       />
+
+                      {/* Cool duotone tint that lifts on hover */}
                       <div
                         aria-hidden
-                        className="absolute inset-0 bg-gradient-to-t from-brand-ink via-brand-ink/45 to-transparent"
+                        className="absolute inset-0 bg-gradient-to-br from-brand-navy/25 via-transparent to-brand-blue/15 mix-blend-multiply opacity-70 transition-opacity duration-700 group-hover:opacity-0"
                       />
+
+                      {/* Cyan corner glow — sits in top-right, brightens on hover */}
                       <div
                         aria-hidden
-                        className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-brand-blue to-brand-cyan transition-transform duration-500 group-hover:scale-x-100"
+                        className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-cyan/25 blur-3xl opacity-40 transition-opacity duration-700 group-hover:opacity-90"
                       />
+
+                      {/* Diagonal shine sweep on hover */}
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 overflow-hidden"
+                      >
+                        <div className="absolute inset-y-0 -left-1/2 w-1/2 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-[350%]" />
+                      </div>
+
+                      {/* Bottom ink gradient for label legibility */}
+                      <div
+                        aria-hidden
+                        className="absolute inset-0 bg-gradient-to-t from-brand-ink via-brand-ink/50 to-transparent"
+                      />
+
+                      {/* Soft vignette to add depth around the edges */}
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_90%_at_50%_50%,transparent_55%,rgba(10,25,41,0.35)_100%)]"
+                      />
+
+                      {/* Top accent line that slides in on hover */}
+                      <div
+                        aria-hidden
+                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-sky transition-transform duration-500 group-hover:scale-x-100"
+                      />
+
+                      {/* Label + arrow */}
                       <div className="absolute inset-x-0 bottom-0 p-4">
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-sm font-bold leading-tight text-white">
+                          <span className="text-sm font-bold leading-tight text-white drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)]">
                             {item.label}
                           </span>
                           <span
                             aria-hidden
-                            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-sm transition-all group-hover:border-brand-cyan/50 group-hover:bg-brand-cyan group-hover:text-white"
+                            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-all duration-500 group-hover:border-brand-cyan/60 group-hover:bg-brand-cyan group-hover:text-white group-hover:shadow-[0_0_18px_rgba(0,184,230,0.55)]"
                           >
-                            <ArrowUpRightIcon className="h-3.5 w-3.5" />
+                            <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                           </span>
                         </div>
                       </div>
@@ -1289,92 +1704,377 @@ export function UnlockPainFreeSection() {
 /* -------------------------------------------------------------------------- */
 
 export function DoctorSnippet() {
+  const reduce = useReducedMotion();
+
+  // Discipline chips shown on the left column — animate in as pillars of care.
+  const pillars = [
+    { label: "3 disciplines", icon: "layers" as const },
+    { label: "1 clinic", icon: "roof" as const },
+    { label: "Shared plan", icon: "link" as const },
+  ];
+
+  // Rotating specialty ribbon under the portraits.
+  const specialties = [
+    "Osteopathic Medicine",
+    "Chiropractic Care",
+    "Physicians Assistant",
+    "Regenerative Medicine",
+    "Peripheral Neuropathy",
+    "Peptide Therapy",
+    "IV Nutrition",
+    "Cold Laser",
+  ];
+
+  // Different vertical offsets create a staggered "wave" layout instead
+  // of a flat grid — first card down, middle card up, last card down.
+  const offsets = ["lg:mt-10", "lg:-mt-4", "lg:mt-14"] as const;
+
   return (
-    <section className="relative overflow-hidden bg-white py-20 sm:py-24">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-brand-mist/25 to-white py-24 sm:py-32">
+      {/* Ambient orbs */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 right-0 h-80 w-[500px] rounded-full bg-brand-sky/20 blur-3xl"
+        className="pointer-events-none absolute -top-40 right-[-8%] h-[520px] w-[520px] rounded-full bg-brand-sky/25 blur-3xl"
       />
-      <div className="relative mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="lg:col-span-5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
-              Meet your team
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl lg:text-5xl">
-              Board-certified{" "}
-              <span className="bg-gradient-to-r from-brand-blue to-brand-cyan bg-clip-text text-transparent">
-                integrative care
-              </span>{" "}
-              in one clinic.
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-brand-ink/70">
-              An osteopathic physician, chiropractor, and physicians assistant
-              working under one roof — so your treatment plan stays coordinated
-              and personal.
-            </p>
-            <MagneticButton>
-              <Link
-                href="/our-providers/"
-                className="group mt-7 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/25 transition-shadow hover:shadow-xl hover:shadow-brand-blue/40"
-              >
-                Meet the full team
-                <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </Link>
-            </MagneticButton>
-          </Reveal>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[-10%] left-[-6%] h-[360px] w-[420px] rounded-full bg-brand-cyan/15 blur-3xl"
+      />
+      {/* Dot grid backdrop */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, #003D6A 1px, transparent 0)",
+          backgroundSize: "30px 30px",
+        }}
+      />
 
-          <Stagger
-            className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:col-span-7"
-            gap={0.08}
-          >
-            {PROVIDERS.map((p) => (
-              <StaggerItem key={p.name}>
+      {/* Floating decorative shapes */}
+      {!reduce && (
+        <>
+          <motion.div
+            aria-hidden
+            className="pointer-events-none absolute right-[6%] top-[14%] h-3 w-3 rounded-full bg-brand-cyan"
+            animate={{ y: [0, -14, 0], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 5, repeat: Infinity, ease: [0.16, 1, 0.3, 1] }}
+          />
+          <motion.div
+            aria-hidden
+            className="pointer-events-none absolute left-[10%] top-[26%] h-4 w-4 rounded bg-brand-blue/25"
+            animate={{ rotate: [0, 90, 0], y: [0, 10, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            aria-hidden
+            className="pointer-events-none absolute right-[14%] bottom-[18%] h-2.5 w-2.5 rounded-full bg-brand-blue"
+            animate={{ y: [0, 12, 0], opacity: [0.4, 0.9, 0.4] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+        </>
+      )}
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-16">
+          {/* ────────── Left column: copy + animated pillars ────────── */}
+          <div className="lg:col-span-5">
+            <Reveal>
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue backdrop-blur">
+                <span aria-hidden className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-cyan opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-cyan" />
+                </span>
+                Meet your team
+              </span>
+              <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
+                Board-certified{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-blue bg-clip-text text-transparent">
+                    integrative care
+                  </span>
+                  {!reduce && (
+                    <motion.span
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-1 -z-0 h-3 rounded-full bg-brand-cyan/25"
+                      initial={{ scaleX: 0, originX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  )}
+                </span>{" "}
+                in one clinic.
+              </h2>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-brand-ink/70">
+                An osteopathic physician, chiropractor, and physicians assistant
+                working under one roof — so your treatment plan stays
+                coordinated and personal.
+              </p>
+            </Reveal>
+
+            {/* Animated pillar chips */}
+            <Stagger className="mt-8 flex flex-wrap gap-2.5" gap={0.09}>
+              {pillars.map((p) => (
+                <StaggerItem key={p.label}>
+                  <div className="group inline-flex items-center gap-2 rounded-full border border-brand-line bg-white px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-navy shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-blue/40 hover:shadow-md">
+                    <span
+                      aria-hidden
+                      className="flex h-6 w-6 items-center justify-center rounded-lg bg-gradient-to-br from-brand-blue/10 to-brand-cyan/10 text-brand-blue"
+                    >
+                      <PillarIcon variant={p.icon} className="h-3.5 w-3.5" />
+                    </span>
+                    {p.label}
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+
+            <Reveal delay={0.2}>
+              <MagneticButton>
+                <Link
+                  href="/our-providers/"
+                  className="group mt-9 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/25 transition-shadow hover:shadow-xl hover:shadow-brand-blue/40"
+                >
+                  Meet the full team
+                  <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </MagneticButton>
+            </Reveal>
+          </div>
+
+          {/* ────────── Right column: staggered portraits + connectors ────────── */}
+          <div className="relative lg:col-span-7">
+            {/* Animated SVG connectors linking the three cards (draw-in on view) */}
+            <svg
+              aria-hidden
+              viewBox="0 0 600 400"
+              preserveAspectRatio="none"
+              className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
+            >
+              <defs>
+                <linearGradient id="connect-grad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#008CC8" stopOpacity="0" />
+                  <stop offset="50%" stopColor="#00A9E0" stopOpacity="0.7" />
+                  <stop offset="100%" stopColor="#008CC8" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <motion.path
+                d="M 90 260 Q 200 100 300 180 T 510 220"
+                stroke="url(#connect-grad)"
+                strokeWidth="1.5"
+                strokeDasharray="4 6"
+                fill="none"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+              />
+              {[
+                { cx: 100, cy: 260 },
+                { cx: 300, cy: 180 },
+                { cx: 500, cy: 220 },
+              ].map((c, i) => (
+                <motion.circle
+                  key={i}
+                  cx={c.cx}
+                  cy={c.cy}
+                  r={4}
+                  fill="#00A9E0"
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.6 + i * 0.2, ease: [0.16, 1, 0.3, 1] }}
+                />
+              ))}
+            </svg>
+
+            <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {PROVIDERS.map((p, i) => (
                 <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="group h-full"
+                  key={p.name}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: i * 0.12,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className={`group relative ${offsets[i] ?? ""}`}
                 >
                   <Link
                     href={p.href}
-                    className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-brand-line bg-white transition-shadow hover:shadow-xl hover:shadow-brand-navy/10"
+                    className="relative block"
+                    aria-label={`${p.name}, ${p.title}`}
                   >
-                    <div className="relative aspect-[3/4] overflow-hidden bg-brand-mist">
-                      <Image
-                        src={p.image}
-                        alt={`${p.name}, ${p.credentials}`}
-                        fill
-                        sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 240px"
-                        quality={92}
-                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div
+                    {/* Rotating gradient ring on hover */}
+                    {!reduce && (
+                      <motion.span
                         aria-hidden
-                        className="absolute inset-0 bg-gradient-to-t from-brand-ink/45 to-transparent"
+                        className="pointer-events-none absolute -inset-[2px] rounded-[1.75rem] opacity-0 blur-[1px] transition-opacity duration-500 group-hover:opacity-100"
+                        style={{
+                          background:
+                            "conic-gradient(from 0deg, #008CC8, #00B8E6, #64B4DC, #008CC8)",
+                        }}
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                       />
-                      <span
-                        aria-hidden
-                        className="absolute right-3 top-3 rounded-full border border-white/40 bg-white/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm"
-                      >
-                        {p.credentials}
-                      </span>
-                    </div>
-                    <div className="flex flex-1 flex-col p-4">
-                      <h3 className="text-sm font-bold leading-tight text-brand-navy">
-                        {p.name}
-                      </h3>
-                      <p className="mt-1 text-[11px] leading-snug text-brand-ink/65">
-                        {p.title}
-                      </p>
+                    )}
+                    {/* Card body */}
+                    <div className="relative overflow-hidden rounded-[1.5rem] border border-brand-line bg-white p-3 shadow-sm transition-shadow duration-500 group-hover:shadow-2xl group-hover:shadow-brand-navy/15">
+                      {/* Portrait tile */}
+                      <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-brand-mist">
+                        <Image
+                          src={p.image}
+                          alt={`${p.name}, ${p.credentials}`}
+                          fill
+                          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 30vw, 240px"
+                          quality={92}
+                          className="object-cover object-top transition-transform duration-[900ms] group-hover:scale-[1.06]"
+                        />
+                        {/* Vignette */}
+                        <div
+                          aria-hidden
+                          className="absolute inset-0 bg-gradient-to-t from-brand-ink/55 via-transparent to-transparent"
+                        />
+                        {/* Floating credential badge */}
+                        <motion.span
+                          aria-hidden
+                          className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/50 bg-white/95 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.18em] text-brand-navy shadow-lg backdrop-blur"
+                          animate={
+                            reduce
+                              ? undefined
+                              : { y: [0, -4, 0] }
+                          }
+                          transition={{
+                            duration: 3.4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: i * 0.5,
+                          }}
+                        >
+                          <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan" />
+                          {p.credentials}
+                        </motion.span>
+                        {/* Corner accent */}
+                        <span
+                          aria-hidden
+                          className="absolute bottom-0 left-0 h-14 w-14 border-b-[3px] border-l-[3px] border-brand-cyan/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                        />
+                      </div>
+
+                      {/* Name / title / arrow */}
+                      <div className="flex items-center justify-between gap-3 px-2 py-4">
+                        <div className="min-w-0">
+                          <h3 className="truncate text-sm font-extrabold text-brand-navy">
+                            {p.name}
+                          </h3>
+                          <p className="mt-0.5 truncate text-[11px] leading-snug text-brand-ink/65">
+                            {p.title}
+                          </p>
+                        </div>
+                        <span
+                          aria-hidden
+                          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-mist text-brand-navy transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-brand-blue group-hover:to-brand-cyan group-hover:text-white group-hover:shadow-md"
+                        >
+                          <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </motion.div>
-              </StaggerItem>
-            ))}
-          </Stagger>
+              ))}
+            </div>
+
+            {/* Specialty ribbon marquee */}
+            <div className="relative mt-10 overflow-hidden rounded-2xl border border-brand-line bg-white/70 py-3 backdrop-blur">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent"
+              />
+              <Marquee speed={60}>
+                {specialties.map((s) => (
+                  <span
+                    key={s}
+                    className="mx-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-navy/80"
+                  >
+                    <span
+                      aria-hidden
+                      className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan"
+                    />
+                    {s}
+                  </span>
+                ))}
+              </Marquee>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* Local icon for pillar chips (osteopath / chiropractor / assistant hint). */
+function PillarIcon({
+  variant,
+  className,
+}: {
+  variant: "layers" | "roof" | "link";
+  className?: string;
+}) {
+  if (variant === "layers") {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={className}
+      >
+        <path
+          d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5m-18 4 9 5 9-5"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+  if (variant === "roof") {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={className}
+      >
+        <path
+          d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9Z"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M9 15a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1M15 9a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
   );
 }
 
@@ -1720,65 +2420,17 @@ export function ContactSection() {
         {/* Form + Map row */}
         <div className="mt-12 grid grid-cols-1 gap-6 lg:mt-14 lg:grid-cols-12">
           {/* Form column */}
-          <Reveal className="lg:col-span-7">
-            <div className="relative h-full">
-              <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-brand-line bg-white">
-                {/* Header strip */}
-                <div className="flex items-center justify-between gap-4 border-b border-brand-line bg-brand-mist/50 px-6 py-4">
-                  <div className="flex items-center gap-3">
-                    <span
-                      aria-hidden
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/25"
-                    >
-                      <MailIcon className="h-4 w-4" />
-                    </span>
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue">
-                        Send a message
-                      </p>
-                      <p className="mt-0.5 text-xs text-brand-ink/60">
-                        We reply within one business day
-                      </p>
-                    </div>
-                  </div>
-                  <span className="flex shrink-0 items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-emerald-700">
-                    <span aria-hidden className="relative flex h-1.5 w-1.5">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    </span>
-                    Same-day
-                  </span>
-                </div>
-                {/* Iframe */}
-                <iframe
-                  src={HOME_CONTACT.formEmbed.src}
-                  title={HOME_CONTACT.formEmbed.title}
-                  className="flex-1"
-                  style={{
-                    width: "100%",
-                    height: `${HOME_CONTACT.formEmbed.height}px`,
-                    border: "none",
-                  }}
-                  loading="lazy"
-                />
-                {/* Trust footer */}
-                <div className="flex flex-wrap items-center gap-4 border-t border-brand-line bg-brand-mist/30 px-6 py-3 text-[9px] font-bold uppercase tracking-[0.14em] text-brand-ink/60">
-                  <span className="flex items-center gap-1.5">
-                    <LockIcon className="h-3 w-3 text-brand-blue" />
-                    SSL encrypted
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <CheckIcon className="h-3 w-3 text-brand-blue" />
-                    Confidential
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <SparkleIcon className="h-3 w-3 text-brand-blue" />
-                    No spam, ever
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+          <div className="lg:col-span-7">
+            <ContactFormEmbed
+              src={HOME_CONTACT.formEmbed.src}
+              title={HOME_CONTACT.formEmbed.title}
+              height={HOME_CONTACT.formEmbed.height}
+              kicker="Send us a message"
+              label="Website Form"
+              sublabel="We reply within one business day"
+              statusLabel="Same-day"
+            />
+          </div>
 
           {/* Right column: map on top + info cards stacked below */}
           <div className="flex flex-col gap-6 lg:col-span-5">

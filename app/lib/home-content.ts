@@ -61,7 +61,10 @@ export const SERVICE_CARDS = [
 ] as const;
 
 export const WHY_INTEGRATIVE = {
+  kicker: "Welcome to Genesis Integrative Medicine",
   heading: "Why Integrative Medicine?",
+  /** Word within `heading` to receive the accent underline highlight. */
+  highlightWord: "Integrative",
   paragraphs: [
     "Genesis Integrative Medicine takes an approach to health care designed to solve an age-old problem for patients \u2014 too many doctors and a lack of communication between them.",
     "At Genesis Integrative Medicine, patients in Geneva, Illinois, have access to both traditional medical services and alternative therapies like chiropractic care for a variety of conditions, all under the same roof. The result is a cutting-edge, integrated solution to health care and disease prevention with experienced and skilled providers who work together to ensure optimum health.",
@@ -71,30 +74,78 @@ export const WHY_INTEGRATIVE = {
     { label: "Request an Appointment", href: "/contact/" },
     { label: "Conditions Treated", href: "/conditions-treated/" },
   ],
+  /**
+   * Editorial photo mosaic paired with the philosophy copy.
+   * Big portrait dominates the left; two smaller squares round out
+   * the grid, and a stats card in the bottom-right reinforces trust.
+   */
+  mosaic: {
+    big: {
+      src: "/images/AdobeStock_212058440.webp",
+      alt: "Active patient training outdoors \u2014 whole-body wellness",
+    },
+    small1: {
+      src: "/images/images.jpeg",
+      alt: "Chiropractic adjustment to relieve lower back pain",
+    },
+    small2: {
+      src: "/images/images (1).jpeg",
+      alt: "Medical weight loss patient using peptide therapy",
+    },
+    badge: "Integrative care",
+    stat: {
+      value: "Under one roof",
+      label: "Integrative care in Geneva, IL",
+      trustLabel: "Trusted team",
+    },
+  },
+  /** Compact feature chips shown as a 2\u00D72 grid beside the mosaic. */
+  featureChips: [
+    {
+      title: "Personalized treatment plans",
+      body: "Care tailored to your history, goals, and daily life.",
+      icon: "heart" as const,
+    },
+    {
+      title: "Root-cause, non-surgical care",
+      body: "Traditional medicine + alternative therapies together.",
+      icon: "shield" as const,
+    },
+    {
+      title: "Skilled, coordinated providers",
+      body: "Experienced clinicians who talk to each other about your care.",
+      icon: "medal" as const,
+    },
+    {
+      title: "Mind, body, and soul",
+      body: "A holistic view that considers the whole person.",
+      icon: "sparkle" as const,
+    },
+  ],
   featureCards: [
     {
       title: "Featured Services",
       body:
         "We provide individual care and treatment related to all musculoskeletal complaints, nerve entrapments, and auto vehicle accidents and sports injuries and more!",
       href: "/services/",
-      image: "/images/home/service-box.webp",
-      alt: "service-box-img",
+      image: "/images/conditions/tendonitis/chiropractor-arm.jpg",
+      alt: "Chiropractor performing a hands-on arm and shoulder adjustment on a patient",
     },
     {
       title: "Qualified Professionals",
       body:
         "Our mission is to help people take charge of their health by understanding their problems and making the necessary changes to achieve optimal health.",
       href: "/our-providers/",
-      image: "/images/home/team-box.webp",
-      alt: "team-box-img",
+      image: "/images/services/regenerative-medicine/knee-therapy.jpg",
+      alt: "Healthcare professional in scrubs caring for a smiling patient",
     },
     {
       title: "Conditions Treated",
       body:
         "Our clinic is a functional and integrated center mainly focused on improving your overall physical performance and getting you out of pain as quickly as possible.",
       href: "/conditions-treated/",
-      image: "/images/home/article-box.webp",
-      alt: "article-box-img",
+      image: "/images/conditions/bursitis/shoulder-pain.jpg",
+      alt: "Man in grey hoodie clutching his shoulder in pain",
     },
   ],
 } as const;
@@ -216,11 +267,12 @@ export const GET_STARTED = {
 export const HOME_CONTACT = {
   heading: "Contact Us",
   formEmbed: {
-    // Same LeadConnector inline form used on the live site so the
-    // backend integration (submissions, automations) is preserved.
-    src: "https://api.leadconnectorhq.com/widget/form/ToXLBiqT0qS6iABzJ9HD",
-    height: 1400,
-    title: "Contact Genesis Integrative Medicine",
+    // Primary "Website Form" from the live site — the same LeadConnector
+    // intake used on /contact/ so patients get an identical experience and
+    // all submissions land in the practice's existing automation pipeline.
+    src: "https://api.leadconnectorhq.com/widget/form/ui8Cws8VEvRRDMpmSR8J",
+    height: 860,
+    title: "Genesis Integrative Medicine — Website Form",
   },
 } as const;
 

@@ -30,6 +30,65 @@ import {
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+const ACCENTS = [
+  "from-brand-navy to-brand-blue",
+  "from-brand-blue to-brand-cyan",
+  "from-brand-cyan to-brand-sky",
+  "from-brand-blue to-brand-navy",
+] as const;
+
+/**
+ * Slug → hero image mapping. Uses the same imagery shown on the service
+ * cards over on the /services/ index page so each detail page has a
+ * consistent visual identity.
+ */
+const HERO_IMAGES: Record<string, { src: string; alt: string }> = {
+  sciatica: {
+    src: "/images/services/sciatica.webp",
+    alt: "Sciatica treatment at Genesis Integrative Medicine",
+  },
+  "chiropractic-care": {
+    src: "/images/services/chiropractic-care.webp",
+    alt: "Chiropractic care at Genesis Integrative Medicine",
+  },
+  "active-rehab-geneva": {
+    src: "/images/services/active-rehab.webp",
+    alt: "Active rehabilitation program at Genesis Integrative Medicine",
+  },
+  "prp-injections-geneva": {
+    src: "/images/services/prp-injections.webp",
+    alt: "PRP injection therapy at Genesis Integrative Medicine",
+  },
+  "peptide-weight-loss": {
+    src: "/images/services/peptide-weight-loss.webp",
+    alt: "Medical weight loss program at Genesis Integrative Medicine",
+  },
+  "regenerative-medicine": {
+    src: "/images/services/regenerative-medicine.webp",
+    alt: "Regenerative medicine at Genesis Integrative Medicine",
+  },
+  "cold-laser": {
+    src: "/images/services/cold-laser.webp",
+    alt: "Cold laser therapy at Genesis Integrative Medicine",
+  },
+  "peripheral-neuropathy-treatment": {
+    src: "/images/services/peripheral-neuropathy.webp",
+    alt: "Peripheral neuropathy treatment at Genesis Integrative Medicine",
+  },
+  "ed-shockwave-mens-wellness": {
+    src: "/images/services/ed-shockwave.jpeg",
+    alt: "ED / ShockWave men's wellness therapy at Genesis Integrative Medicine",
+  },
+  "allergy-testing-geneva": {
+    src: "/images/services/allergy-testing.webp",
+    alt: "Allergy testing at Genesis Integrative Medicine",
+  },
+  "iv-nutrition-therapy": {
+    src: "/images/services/iv-nutrition-therapy.webp",
+    alt: "IV nutrition therapy at Genesis Integrative Medicine",
+  },
+};
+
 /* -------------------------------------------------------------------------- */
 /* Main template                                                              */
 /* -------------------------------------------------------------------------- */
@@ -55,22 +114,20 @@ export default function ServicePageTemplate({
       )}
 
       {content.video && <ServiceVideo video={content.video} />}
-
       {content.gallery && content.gallery.length > 0 && (
         <ServiceGallery images={content.gallery} />
       )}
-
       {content.faqs && content.faqs.length > 0 && (
         <FAQAccordion
           heading={content.faqHeading ?? "Frequently Asked Questions"}
           faqs={content.faqs}
         />
       )}
-
-      {/* Bottom "All Services" list is skipped in sidebar layout — the sticky
-          sidebar already surfaces the related links. */}
       {!useSidebar && (
-        <AllServicesList currentSlug={content.slug} relatedNav={content.relatedNav} />
+        <AllServicesList
+          currentSlug={content.slug}
+          relatedNav={content.relatedNav}
+        />
       )}
       <ConsultationCta />
       <InsuranceMissionBlock />
@@ -79,7 +136,7 @@ export default function ServicePageTemplate({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Breadcrumb bar                                                             */
+/* Breadcrumb                                                                 */
 /* -------------------------------------------------------------------------- */
 
 function BreadcrumbBar({
@@ -131,56 +188,88 @@ function BreadcrumbBar({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Hero                                                                       */
+/* Hero — content left, motion-driven image right                             */
 /* -------------------------------------------------------------------------- */
 
 function ServiceHero({ content }: { content: ServicePageContent }) {
   const reduce = useReducedMotion();
-  const { hero, featuredImage } = content;
-  const containerRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: ref,
     offset: ["start end", "end start"],
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const parallaxScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.1]);
+  const blobY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const dotY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.12]);
+  const badgeY = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
+  const { hero } = content;
+  const heroImage =
+    content.featuredImage ??
+    HERO_IMAGES[content.slug] ??
+    null;
 
   return (
     <section
-      ref={containerRef}
+      ref={ref}
       className="relative overflow-hidden bg-gradient-to-b from-white via-brand-mist/30 to-white"
     >
-      {/* Ambient blobs */}
-      <div
+      {/* Ambient */}
+      <motion.div
         aria-hidden
+        style={reduce ? undefined : { y: blobY }}
         className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-brand-sky/25 blur-3xl"
       />
       <div
         aria-hidden
         className="pointer-events-none absolute -bottom-32 right-0 h-[380px] w-[520px] rounded-full bg-brand-cyan/15 blur-3xl"
       />
-      <div
+      <motion.div
         aria-hidden
+        style={reduce ? undefined : { y: dotY }}
         className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, #00508C 1px, transparent 0)",
-          backgroundSize: "34px 34px",
-        }}
-      />
+      >
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, #00508C 1px, transparent 0)",
+            backgroundSize: "34px 34px",
+          }}
+        />
+      </motion.div>
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 lg:grid-cols-12 lg:gap-16 lg:py-24">
-        <Stagger className="lg:col-span-7" gap={0.09} delayChildren={0.1}>
+      <div
+        className={`relative mx-auto px-6 ${
+          heroImage
+            ? "grid max-w-7xl grid-cols-1 items-center gap-12 py-16 lg:grid-cols-12 lg:gap-16 lg:py-24"
+            : "max-w-4xl py-20 text-center sm:py-28"
+        }`}
+      >
+        {/* Text column */}
+        <Stagger
+          className={heroImage ? "lg:col-span-7" : ""}
+          gap={0.09}
+          delayChildren={0.1}
+        >
           {hero.kicker && (
             <StaggerItem>
-              <p className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue backdrop-blur">
+              <p
+                className={`inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue backdrop-blur ${heroImage ? "" : ""}`}
+              >
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" />
                 {hero.kicker}
               </p>
             </StaggerItem>
           )}
           <StaggerItem>
-            <h1 className="mt-5 text-4xl font-extrabold leading-[1.02] tracking-tight text-brand-ink sm:text-5xl lg:text-[4.25rem]">
+            <h1
+              className={`mt-6 font-extrabold leading-[1.02] tracking-tight text-brand-ink ${
+                heroImage
+                  ? "text-4xl sm:text-5xl lg:text-[4.5rem]"
+                  : "text-5xl sm:text-6xl lg:text-[5rem]"
+              }`}
+            >
               <span className="bg-gradient-to-br from-brand-navy via-brand-blue to-brand-cyan bg-clip-text text-transparent">
                 {hero.h1}
               </span>
@@ -188,24 +277,28 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
           </StaggerItem>
           {hero.subtitle && (
             <StaggerItem>
-              <p className="mt-5 text-lg font-semibold text-brand-navy sm:text-xl">
+              <p className="mt-6 text-xl font-semibold text-brand-navy sm:text-2xl">
                 {hero.subtitle}
               </p>
             </StaggerItem>
           )}
           {hero.intro && (
             <StaggerItem>
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-ink/75 sm:text-lg">
+              <p
+                className={`mt-6 text-base leading-relaxed text-brand-ink/70 sm:text-lg ${heroImage ? "max-w-2xl" : "mx-auto max-w-2xl"}`}
+              >
                 {hero.intro}
               </p>
             </StaggerItem>
           )}
           <StaggerItem>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div
+              className={`mt-8 flex flex-wrap items-center gap-3 ${heroImage ? "" : "justify-center"}`}
+            >
               <MagneticButton>
                 <Link
                   href="/contact/"
-                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-7 py-4 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-xl shadow-brand-blue/30 transition-shadow hover:shadow-2xl hover:shadow-brand-blue/50"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50"
                 >
                   Schedule Consultation
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -213,7 +306,7 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
               </MagneticButton>
               <a
                 href={CONTACT.phoneHref}
-                className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-5 py-4 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy backdrop-blur transition-colors hover:border-brand-blue/30 hover:bg-brand-mist"
+                className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy backdrop-blur transition-colors hover:border-brand-blue/30 hover:bg-brand-mist"
               >
                 <PhoneIcon className="h-3.5 w-3.5" />
                 Call {CONTACT.phoneDisplay}
@@ -222,47 +315,140 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
           </StaggerItem>
         </Stagger>
 
-        {featuredImage && (
+        {/* Image column */}
+        {heroImage && (
           <motion.div
             className="relative lg:col-span-5"
-            initial={reduce ? false : { opacity: 0, y: 32, scale: 0.96 }}
+            initial={reduce ? false : { opacity: 0, y: 36, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
+            transition={{ duration: 0.95, ease: EASE, delay: 0.15 }}
           >
+            {/* Ambient blobs behind the frame */}
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute -top-10 -right-10 h-52 w-52 rounded-full bg-brand-cyan/30 blur-3xl"
+              animate={
+                reduce
+                  ? undefined
+                  : { scale: [1, 1.12, 1], opacity: [0.6, 0.9, 0.6] }
+              }
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-brand-blue/25 blur-3xl"
+              animate={
+                reduce
+                  ? undefined
+                  : { scale: [1.05, 0.95, 1.05], opacity: [0.5, 0.8, 0.5] }
+              }
+              transition={{
+                duration: 7,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.4,
+              }}
+            />
+
+            {/* Floating decorative rings (motion graphics) */}
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute -top-6 right-6 h-16 w-16 rounded-full border-2 border-brand-cyan/40"
+              animate={
+                reduce ? undefined : { y: [0, -10, 0], rotate: [0, 8, 0] }
+              }
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute bottom-10 -right-4 h-10 w-10 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan shadow-lg shadow-brand-blue/40"
+              animate={
+                reduce
+                  ? undefined
+                  : { y: [0, 12, 0], rotate: [0, -12, 0] }
+              }
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.6,
+              }}
+            />
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute -left-3 top-1/3 h-6 w-6 rounded-full bg-brand-cyan shadow-md shadow-brand-cyan/40"
+              animate={
+                reduce ? undefined : { y: [0, -8, 0], x: [0, 6, 0] }
+              }
+              transition={{
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.3,
+              }}
+            />
+
+            {/* Image frame */}
             <div className="relative overflow-hidden rounded-[2rem] border border-brand-line bg-brand-ink shadow-2xl shadow-brand-navy/25">
               <motion.div
                 className="relative aspect-[4/5] w-full sm:aspect-[5/6]"
-                style={reduce ? undefined : { y: parallaxY, scale: parallaxScale }}
+                style={reduce ? undefined : { y: imageY, scale: imageScale }}
               >
                 <Image
-                  src={featuredImage.src}
-                  alt={featuredImage.alt}
+                  src={heroImage.src}
+                  alt={heroImage.alt}
                   fill
                   priority
-                  sizes="(max-width: 1024px) 100vw, 520px"
+                  sizes="(max-width: 1024px) 100vw, 560px"
                   className="object-cover"
                 />
               </motion.div>
+              {/* Gradient wash for depth */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-brand-ink/70 via-brand-ink/15 to-transparent"
+              />
+              {/* Inner ring */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10"
               />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand-ink/60 via-brand-ink/10 to-transparent"
-              />
+              {/* Shine sweep — one-shot on mount */}
+              {!reduce && (
+                <motion.div
+                  aria-hidden
+                  initial={{ x: "-120%", opacity: 0 }}
+                  animate={{ x: "160%", opacity: [0, 0.35, 0] }}
+                  transition={{
+                    duration: 1.6,
+                    ease: EASE,
+                    delay: 0.8,
+                  }}
+                  className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                />
+              )}
             </div>
+
             {/* Floating badge */}
             <motion.div
+              style={reduce ? undefined : { y: badgeY }}
               initial={reduce ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.5 }}
-              className="absolute -bottom-6 -left-6 hidden max-w-[220px] rounded-2xl border border-brand-line bg-white/95 p-4 shadow-xl shadow-brand-navy/15 backdrop-blur md:block"
+              transition={{ duration: 0.7, ease: EASE, delay: 0.55 }}
+              className="absolute -bottom-6 -left-6 hidden max-w-[240px] rounded-2xl border border-brand-line bg-white/95 p-4 shadow-xl shadow-brand-navy/15 backdrop-blur md:block"
             >
               <div className="flex items-center gap-3">
                 <span
                   aria-hidden
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan text-white"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/30"
                 >
                   <SparkIcon className="h-4 w-4" />
                 </span>
@@ -284,7 +470,7 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Highlights strip (optional)                                                */
+/* Highlights strip                                                           */
 /* -------------------------------------------------------------------------- */
 
 function HighlightsStrip({
@@ -294,7 +480,7 @@ function HighlightsStrip({
 }) {
   return (
     <section className="border-y border-brand-line bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-8 sm:py-10">
+      <div className="mx-auto max-w-7xl px-6 py-10">
         <Stagger
           className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4"
           gap={0.06}
@@ -326,7 +512,7 @@ function HighlightsStrip({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Sections dispatcher                                                        */
+/* Sections renderer                                                          */
 /* -------------------------------------------------------------------------- */
 
 function SectionsRenderer({
@@ -334,86 +520,679 @@ function SectionsRenderer({
 }: {
   sections: readonly ServiceSection[];
 }) {
-  // Auto-alternate the side any *split* section renders its visual on
-  // (regardless of whether it's an image or a decorative placeholder).
-  let splitIdx = 0;
   return (
     <>
-      {sections.map((section, i) => {
-        const heavy = isContentHeavy(section);
-        let side: "left" | "right" = section.imageSide ?? "right";
-        if (heavy && !section.imageSide) {
-          side = splitIdx % 2 === 0 ? "right" : "left";
-          splitIdx += 1;
-        }
-        return (
-          <SectionDispatcher
-            key={i}
-            section={section}
-            imageSide={side}
-            index={i}
-          />
-        );
-      })}
+      {sections.map((section, i) => (
+        <SectionDispatcher key={i} section={section} index={i} />
+      ))}
     </>
   );
 }
 
-/** A section is "content-heavy" when it deserves the two-column split treatment. */
-function isContentHeavy(section: ServiceSection): boolean {
-  if (section.image) return true;
-  if (section.kind === "list" || section.kind === "subsections" || section.kind === "benefits") {
-    return true;
-  }
-  if (section.kind === "prose") {
-    const hasHeading = !!section.heading;
-    const longEnough = section.paragraphs.length >= 2;
-    if (hasHeading && longEnough) return true;
-  }
-  return false;
-}
-
 function SectionDispatcher({
   section,
-  imageSide,
   index,
 }: {
   section: ServiceSection;
-  imageSide: "left" | "right";
   index: number;
 }) {
-  // Dark-variant text-only sections render as an immersive feature strip.
-  if (section.variant === "dark" && !section.image) {
+  // Dark variant → immersive full-width feature strip
+  if (section.variant === "dark") {
     return <DarkFeatureSection section={section} />;
   }
 
-  // Content-heavy sections use the split layout (image OR placeholder + sticky).
-  if (isContentHeavy(section)) {
-    const bg =
-      section.variant === "dark"
-        ? "dark"
-        : section.variant === "mist"
-          ? "mist"
-          : index % 2 === 0
-            ? "white"
-            : "mist";
-    return (
-      <SplitSection
-        section={section}
-        imageSide={imageSide}
-        bg={bg}
-        index={index}
-      />
-    );
-  }
+  const bg: "white" | "mist" =
+    section.variant === "mist" ? "mist" : index % 2 === 0 ? "white" : "mist";
 
-  // Short, single-paragraph prose sections stay compact and centered.
-  const bg = section.variant === "mist" ? "mist" : "white";
-  return <CenteredSection section={section} bg={bg} />;
+  switch (section.kind) {
+    case "prose":
+      if (isEditorialProse(section)) {
+        return <EditorialProseSection section={section} bg={bg} />;
+      }
+      return <CenteredProseSection section={section} bg={bg} />;
+    case "list":
+      return <EditorialListSection section={section} bg={bg} />;
+    case "subsections":
+      return <SubsectionsCardsSection section={section} bg={bg} />;
+    case "benefits":
+      return <BenefitsCardsSection section={section} bg={bg} />;
+  }
+}
+
+function isEditorialProse(
+  section: Extract<ServiceSection, { kind: "prose" }>,
+): boolean {
+  return !!section.heading && section.paragraphs.length >= 2;
 }
 
 /* -------------------------------------------------------------------------- */
-/* Sidebar layout — text left, sticky related-nav on the right                */
+/* Editorial prose section — sticky label + body copy (About-style)           */
+/* -------------------------------------------------------------------------- */
+
+function EditorialProseSection({
+  section,
+  bg,
+}: {
+  section: Extract<ServiceSection, { kind: "prose" }>;
+  bg: "white" | "mist";
+}) {
+  const bgClass = bg === "mist" ? "bg-brand-mist/50" : "bg-white";
+  return (
+    <section className={`relative ${bgClass} py-16 sm:py-24`}>
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          <aside className="lg:col-span-4">
+            <div className="lg:sticky lg:top-24">
+              <Reveal>
+                {section.kicker && (
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+                    <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-brand-cyan" />
+                    {section.kicker}
+                  </p>
+                )}
+                <h2 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-brand-navy sm:text-5xl">
+                  {section.heading}
+                </h2>
+              </Reveal>
+            </div>
+          </aside>
+          <div className="lg:col-span-8">
+            <Stagger className="space-y-5" gap={0.08}>
+              {section.paragraphs.map((p, i) => (
+                <StaggerItem key={i}>
+                  <p className="text-base leading-relaxed text-brand-ink/80 sm:text-lg">
+                    {p}
+                  </p>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Centered prose section — short prose blocks                                */
+/* -------------------------------------------------------------------------- */
+
+function CenteredProseSection({
+  section,
+  bg,
+}: {
+  section: Extract<ServiceSection, { kind: "prose" }>;
+  bg: "white" | "mist";
+}) {
+  const bgClass = bg === "mist" ? "bg-brand-mist/50" : "bg-white";
+  return (
+    <section className={`${bgClass} py-14 sm:py-20`}>
+      <div className="mx-auto max-w-3xl px-6">
+        <SectionHeader
+          kicker={section.kicker}
+          heading={section.heading}
+          align="center"
+        />
+        <Stagger
+          className={`${section.heading || section.kicker ? "mt-6" : ""} space-y-4`}
+          gap={0.08}
+        >
+          {section.paragraphs.map((p, i) => (
+            <StaggerItem key={i}>
+              <p className="text-base leading-relaxed text-brand-ink/80 sm:text-lg">
+                {p}
+              </p>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Editorial list section — sticky heading + checklist cards                  */
+/* -------------------------------------------------------------------------- */
+
+function EditorialListSection({
+  section,
+  bg,
+}: {
+  section: Extract<ServiceSection, { kind: "list" }>;
+  bg: "white" | "mist";
+}) {
+  const bgClass = bg === "mist" ? "bg-brand-mist/50" : "bg-white";
+  const hasSidebar = !!(section.kicker || section.heading || section.intro);
+  return (
+    <section className={`${bgClass} py-16 sm:py-24`}>
+      <div className="mx-auto max-w-7xl px-6">
+        {hasSidebar ? (
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+            <aside className="lg:col-span-4">
+              <div className="lg:sticky lg:top-24">
+                <Reveal>
+                  {section.kicker && (
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+                      <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-brand-cyan" />
+                      {section.kicker}
+                    </p>
+                  )}
+                  {section.heading && (
+                    <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-brand-navy sm:text-4xl">
+                      {section.heading}
+                    </h2>
+                  )}
+                  {section.intro && (
+                    <p className="mt-5 text-base leading-relaxed text-brand-ink/70 sm:text-lg">
+                      {section.intro}
+                    </p>
+                  )}
+                </Reveal>
+              </div>
+            </aside>
+            <div className="lg:col-span-8">
+              <ListItems items={section.items} />
+              {section.outro && (
+                <Reveal delay={0.1}>
+                  <p className="mt-6 text-base leading-relaxed text-brand-ink/80 sm:text-lg">
+                    {section.outro}
+                  </p>
+                </Reveal>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="mx-auto max-w-4xl">
+            <ListItems items={section.items} />
+            {section.outro && (
+              <Reveal delay={0.1}>
+                <p className="mt-6 text-base leading-relaxed text-brand-ink/80 sm:text-lg">
+                  {section.outro}
+                </p>
+              </Reveal>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function ListItems({ items }: { items: readonly string[] }) {
+  return (
+    <Stagger className="space-y-3" gap={0.06}>
+      {items.map((item, i) => (
+        <StaggerItem key={i}>
+          <motion.div
+            whileHover={{ x: 3 }}
+            transition={{ duration: 0.25, ease: EASE }}
+            className="flex items-start gap-3 rounded-2xl border border-brand-line bg-white p-4 shadow-sm transition-colors hover:border-brand-blue/25 hover:bg-brand-mist/40"
+          >
+            <span
+              aria-hidden
+              className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/25"
+            >
+              <CheckIcon className="h-3 w-3" />
+            </span>
+            <span className="text-sm leading-relaxed text-brand-ink/85 sm:text-base">
+              {item}
+            </span>
+          </motion.div>
+        </StaggerItem>
+      ))}
+    </Stagger>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Subsections cards section — like About's PillarsBlock                      */
+/* -------------------------------------------------------------------------- */
+
+function SubsectionsCardsSection({
+  section,
+  bg,
+}: {
+  section: Extract<ServiceSection, { kind: "subsections" }>;
+  bg: "white" | "mist";
+}) {
+  const bgClass = bg === "mist" ? "bg-brand-mist/50" : "bg-white";
+  const single = section.subs.length === 1;
+  return (
+    <section
+      className={`relative overflow-hidden ${bgClass} py-16 sm:py-24`}
+    >
+      {bg === "mist" && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 -left-32 h-[420px] w-[600px] rounded-full bg-brand-sky/20 blur-3xl"
+        />
+      )}
+      <div className="relative mx-auto max-w-7xl px-6">
+        {(section.kicker || section.heading || section.intro) && (
+          <Reveal className="mx-auto max-w-2xl text-center">
+            {section.kicker && (
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+                <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-brand-cyan" />
+                {section.kicker}
+              </p>
+            )}
+            {section.heading && (
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
+                {section.heading}
+              </h2>
+            )}
+            {section.intro && (
+              <p className="mt-4 text-base leading-relaxed text-brand-ink/70 sm:text-lg">
+                {section.intro}
+              </p>
+            )}
+          </Reveal>
+        )}
+        <Stagger
+          className={`mt-12 grid grid-cols-1 gap-5 ${single ? "" : "sm:grid-cols-2"}`}
+          gap={0.07}
+        >
+          {section.subs.map((sub, i) => (
+            <StaggerItem key={i}>
+              <SubCard
+                heading={sub.heading}
+                paragraphs={sub.paragraphs}
+                items={sub.items}
+                outro={sub.outro}
+                index={i}
+                accent={ACCENTS[i % ACCENTS.length]}
+              />
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+
+function SubCard({
+  heading,
+  paragraphs,
+  items,
+  outro,
+  index,
+  accent,
+}: {
+  heading: string;
+  paragraphs?: readonly string[];
+  items?: readonly string[];
+  outro?: string;
+  index: number;
+  accent: string;
+}) {
+  return (
+    <motion.article
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.3, ease: EASE }}
+      className="group relative h-full overflow-hidden rounded-3xl border border-brand-line bg-white p-7 shadow-md shadow-brand-navy/5 transition-shadow hover:shadow-xl hover:shadow-brand-navy/10"
+    >
+      <div
+        aria-hidden
+        className={`absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r ${accent} transition-transform duration-500 group-hover:scale-x-100`}
+      />
+      <div className="flex items-start justify-between gap-4">
+        <span
+          aria-hidden
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${accent} text-white shadow-md shadow-brand-blue/25`}
+        >
+          <span className="text-sm font-bold tabular-nums">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </span>
+      </div>
+      <h3 className="mt-6 text-xl font-bold tracking-tight text-brand-navy sm:text-2xl">
+        {heading}
+      </h3>
+      {paragraphs?.map((p, pi) => (
+        <p
+          key={pi}
+          className="mt-3 text-sm leading-relaxed text-brand-ink/75 sm:text-base"
+        >
+          {p}
+        </p>
+      ))}
+      {items && items.length > 0 && (
+        <ul className="mt-4 space-y-2">
+          {items.map((it, ii) => (
+            <li
+              key={ii}
+              className="flex items-start gap-2.5 text-sm leading-relaxed text-brand-ink/80"
+            >
+              <span
+                aria-hidden
+                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-blue"
+              />
+              <span>{it}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {outro && (
+        <p className="mt-4 text-sm leading-relaxed text-brand-ink/75 sm:text-base">
+          {outro}
+        </p>
+      )}
+    </motion.article>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Benefits cards section — numbered feature cards                             */
+/* -------------------------------------------------------------------------- */
+
+function BenefitsCardsSection({
+  section,
+  bg,
+}: {
+  section: Extract<ServiceSection, { kind: "benefits" }>;
+  bg: "white" | "mist";
+}) {
+  const bgClass = bg === "mist" ? "bg-brand-mist/50" : "bg-white";
+  return (
+    <section
+      className={`relative overflow-hidden ${bgClass} py-16 sm:py-24`}
+    >
+      {bg === "mist" && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-32 -right-32 h-[420px] w-[600px] rounded-full bg-brand-cyan/20 blur-3xl"
+        />
+      )}
+      <div className="relative mx-auto max-w-7xl px-6">
+        {(section.kicker || section.heading || section.intro) && (
+          <Reveal className="mx-auto max-w-2xl text-center">
+            {section.kicker && (
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+                <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-brand-cyan" />
+                {section.kicker}
+              </p>
+            )}
+            {section.heading && (
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
+                {section.heading}
+              </h2>
+            )}
+            {section.intro && (
+              <p className="mt-4 text-base leading-relaxed text-brand-ink/70 sm:text-lg">
+                {section.intro}
+              </p>
+            )}
+          </Reveal>
+        )}
+        <Stagger
+          className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2"
+          gap={0.06}
+        >
+          {section.subs.map((sub, i) => (
+            <StaggerItem key={i}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3, ease: EASE }}
+                className="group relative h-full overflow-hidden rounded-2xl border border-brand-line bg-white p-6 transition-shadow hover:shadow-xl hover:shadow-brand-navy/10"
+              >
+                <div
+                  aria-hidden
+                  className={`absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r ${ACCENTS[i % ACCENTS.length]} transition-transform duration-500 group-hover:scale-x-100`}
+                />
+                <div className="flex items-center gap-3">
+                  <span
+                    aria-hidden
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${ACCENTS[i % ACCENTS.length]} text-white shadow-lg shadow-brand-blue/30`}
+                  >
+                    <span className="text-sm font-bold tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </span>
+                  <h3 className="text-lg font-bold text-brand-navy">
+                    {sub.heading}
+                  </h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-brand-ink/75">
+                  {sub.paragraph}
+                </p>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Dark feature section — text-only immersive strip                           */
+/* -------------------------------------------------------------------------- */
+
+function DarkFeatureSection({ section }: { section: ServiceSection }) {
+  return (
+    <section className="relative overflow-hidden bg-brand-ink text-white">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 -left-32 h-[400px] w-[600px] rounded-full bg-brand-blue/25 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -right-32 h-[380px] w-[520px] rounded-full bg-brand-cyan/15 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, #64B4DC 1px, transparent 0)",
+          backgroundSize: "36px 36px",
+        }}
+      />
+      <div className="relative mx-auto max-w-4xl px-6 py-20 sm:py-24">
+        <DarkSectionHeader section={section} />
+        <DarkSectionBody section={section} />
+      </div>
+    </section>
+  );
+}
+
+function DarkSectionHeader({ section }: { section: ServiceSection }) {
+  const heading = "heading" in section ? section.heading : undefined;
+  const intro =
+    section.kind === "list" || section.kind === "subsections"
+      ? section.intro
+      : undefined;
+  if (!section.kicker && !heading && !intro) return null;
+  return (
+    <div className="text-center mx-auto max-w-2xl">
+      {section.kicker && (
+        <Reveal>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-sky">
+            <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-brand-cyan" />
+            {section.kicker}
+          </p>
+        </Reveal>
+      )}
+      {heading && (
+        <Reveal delay={section.kicker ? 0.05 : 0}>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            {heading}
+          </h2>
+        </Reveal>
+      )}
+      {intro && (
+        <Reveal delay={heading ? 0.1 : 0.05}>
+          <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
+            {intro}
+          </p>
+        </Reveal>
+      )}
+    </div>
+  );
+}
+
+function DarkSectionBody({ section }: { section: ServiceSection }) {
+  switch (section.kind) {
+    case "prose":
+      return (
+        <Stagger className="mt-8 space-y-4" gap={0.08}>
+          {section.paragraphs.map((p, i) => (
+            <StaggerItem key={i}>
+              <p className="text-base leading-relaxed text-white/80 sm:text-lg">
+                {p}
+              </p>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      );
+    case "list":
+      return (
+        <>
+          <Stagger className="mt-8 space-y-3" gap={0.06}>
+            {section.items.map((it, i) => (
+              <StaggerItem key={i}>
+                <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                  <span
+                    aria-hidden
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/25"
+                  >
+                    <CheckIcon className="h-3 w-3" />
+                  </span>
+                  <span className="text-sm leading-relaxed text-white/85 sm:text-base">
+                    {it}
+                  </span>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+          {section.outro && (
+            <p className="mt-6 text-base leading-relaxed text-white/80 sm:text-lg">
+              {section.outro}
+            </p>
+          )}
+        </>
+      );
+    case "subsections":
+      return (
+        <div className="mt-10 space-y-5">
+          {section.subs.map((sub, i) => (
+            <Reveal key={i} delay={i * 0.04}>
+              <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+                <div className="flex items-baseline gap-4">
+                  <span
+                    aria-hidden
+                    className="shrink-0 font-mono text-xs font-bold tabular-nums text-brand-sky"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-xl font-bold text-white sm:text-2xl">
+                    {sub.heading}
+                  </h3>
+                </div>
+                {sub.paragraphs?.map((p, pi) => (
+                  <p
+                    key={pi}
+                    className="mt-3 text-sm leading-relaxed text-white/75 sm:text-base"
+                  >
+                    {p}
+                  </p>
+                ))}
+                {sub.items && sub.items.length > 0 && (
+                  <ul className="mt-4 space-y-2">
+                    {sub.items.map((it, ii) => (
+                      <li
+                        key={ii}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-white/80"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-cyan"
+                        />
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {sub.outro && (
+                  <p className="mt-4 text-sm leading-relaxed text-white/75 sm:text-base">
+                    {sub.outro}
+                  </p>
+                )}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      );
+    case "benefits":
+      return (
+        <Stagger
+          className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2"
+          gap={0.06}
+        >
+          {section.subs.map((sub, i) => (
+            <StaggerItem key={i}>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+                <div className="flex items-center gap-3">
+                  <span
+                    aria-hidden
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-lg shadow-brand-blue/30"
+                  >
+                    <span className="text-sm font-bold tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </span>
+                  <h3 className="text-lg font-bold text-white">{sub.heading}</h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-white/75">
+                  {sub.paragraph}
+                </p>
+              </div>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      );
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Shared centered section header (kicker + heading)                          */
+/* -------------------------------------------------------------------------- */
+
+function SectionHeader({
+  kicker,
+  heading,
+  align = "center",
+}: {
+  kicker?: string;
+  heading?: string;
+  align?: "left" | "center";
+}) {
+  if (!kicker && !heading) return null;
+  return (
+    <div className={align === "center" ? "text-center" : ""}>
+      {kicker && (
+        <Reveal>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+            <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-brand-cyan" />
+            {kicker}
+          </p>
+        </Reveal>
+      )}
+      {heading && (
+        <Reveal delay={kicker ? 0.05 : 0}>
+          <h2
+            className={`${kicker ? "mt-3" : ""} text-3xl font-bold tracking-tight text-brand-navy sm:text-4xl`}
+          >
+            {heading}
+          </h2>
+        </Reveal>
+      )}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sidebar layout — text-only left column, sticky related-nav on the right    */
 /* -------------------------------------------------------------------------- */
 
 function SidebarLayout({ content }: { content: ServicePageContent }) {
@@ -421,7 +1200,6 @@ function SidebarLayout({ content }: { content: ServicePageContent }) {
     <section className="bg-white py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-          {/* Main content column */}
           <main className="lg:col-span-8 xl:col-span-9">
             <div className="space-y-12 sm:space-y-16">
               {content.sections.map((section, i) => (
@@ -429,7 +1207,6 @@ function SidebarLayout({ content }: { content: ServicePageContent }) {
               ))}
             </div>
           </main>
-          {/* Sticky sidebar */}
           <aside className="lg:col-span-4 xl:col-span-3">
             <div className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:flex lg:flex-col">
               <ConditionsSidebar
@@ -447,29 +1224,172 @@ function SidebarLayout({ content }: { content: ServicePageContent }) {
 function LinearSection({ section }: { section: ServiceSection }) {
   return (
     <section>
-      <SectionHeader section={section} align="left" />
-      {section.image && (
-        <Reveal delay={0.05}>
-          <div className="mt-6 overflow-hidden rounded-3xl border border-brand-line bg-brand-ink shadow-lg shadow-brand-navy/10">
-            <div className="relative aspect-[16/10] w-full">
-              <Image
-                src={section.image.src}
-                alt={section.image.alt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 700px"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </Reveal>
-      )}
-      <SectionBody section={section} />
+      <LinearSectionHeader section={section} />
+      <LinearSectionBody section={section} />
     </section>
   );
 }
 
+function LinearSectionHeader({ section }: { section: ServiceSection }) {
+  const heading = "heading" in section ? section.heading : undefined;
+  const intro =
+    section.kind === "list" || section.kind === "subsections"
+      ? section.intro
+      : undefined;
+  if (!section.kicker && !heading && !intro) return null;
+  return (
+    <div>
+      {section.kicker && (
+        <Reveal>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+            <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-brand-cyan" />
+            {section.kicker}
+          </p>
+        </Reveal>
+      )}
+      {heading && (
+        <Reveal delay={section.kicker ? 0.05 : 0}>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-navy sm:text-4xl">
+            {heading}
+          </h2>
+        </Reveal>
+      )}
+      {intro && (
+        <Reveal delay={heading ? 0.1 : 0.05}>
+          <p className="mt-4 text-base leading-relaxed text-brand-ink/75 sm:text-lg">
+            {intro}
+          </p>
+        </Reveal>
+      )}
+    </div>
+  );
+}
+
+function LinearSectionBody({ section }: { section: ServiceSection }) {
+  switch (section.kind) {
+    case "prose":
+      return (
+        <Stagger className="mt-5 space-y-4" gap={0.08}>
+          {section.paragraphs.map((p, i) => (
+            <StaggerItem key={i}>
+              <p className="text-base leading-relaxed text-brand-ink/80 sm:text-lg">
+                {p}
+              </p>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      );
+    case "list":
+      return (
+        <>
+          <div className="mt-6">
+            <ListItems items={section.items} />
+          </div>
+          {section.outro && (
+            <p className="mt-5 text-base leading-relaxed text-brand-ink/80 sm:text-lg">
+              {section.outro}
+            </p>
+          )}
+        </>
+      );
+    case "subsections":
+      return (
+        <div className="mt-8 space-y-5">
+          {section.subs.map((sub, i) => (
+            <Reveal key={i} delay={i * 0.04}>
+              <div className="group relative overflow-hidden rounded-3xl border border-brand-line bg-white p-6 transition-all hover:border-brand-blue/25 hover:shadow-lg hover:shadow-brand-navy/5 sm:p-8">
+                <div
+                  aria-hidden
+                  className="absolute inset-y-0 left-0 w-1 origin-top scale-y-0 bg-gradient-to-b from-brand-blue to-brand-cyan transition-transform duration-500 group-hover:scale-y-100"
+                />
+                <div className="flex items-baseline gap-4">
+                  <span
+                    aria-hidden
+                    className="shrink-0 font-mono text-xs font-bold tabular-nums text-brand-blue"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-xl font-bold text-brand-navy sm:text-2xl">
+                    {sub.heading}
+                  </h3>
+                </div>
+                {sub.paragraphs?.map((p, pi) => (
+                  <p
+                    key={pi}
+                    className="mt-3 text-sm leading-relaxed text-brand-ink/80 sm:text-base"
+                  >
+                    {p}
+                  </p>
+                ))}
+                {sub.items && sub.items.length > 0 && (
+                  <ul className="mt-4 space-y-2">
+                    {sub.items.map((it, ii) => (
+                      <li
+                        key={ii}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-brand-ink/80 sm:text-base"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-blue"
+                        />
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {sub.outro && (
+                  <p className="mt-4 text-sm leading-relaxed text-brand-ink/80 sm:text-base">
+                    {sub.outro}
+                  </p>
+                )}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      );
+    case "benefits":
+      return (
+        <Stagger
+          className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2"
+          gap={0.06}
+        >
+          {section.subs.map((sub, i) => (
+            <StaggerItem key={i}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3, ease: EASE }}
+                className="group relative h-full overflow-hidden rounded-2xl border border-brand-line bg-white p-6 transition-shadow hover:shadow-xl hover:shadow-brand-navy/10"
+              >
+                <div
+                  aria-hidden
+                  className={`absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r ${ACCENTS[i % ACCENTS.length]} transition-transform duration-500 group-hover:scale-x-100`}
+                />
+                <div className="flex items-center gap-3">
+                  <span
+                    aria-hidden
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${ACCENTS[i % ACCENTS.length]} text-white shadow-lg shadow-brand-blue/30`}
+                  >
+                    <span className="text-sm font-bold tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </span>
+                  <h3 className="text-lg font-bold text-brand-navy">
+                    {sub.heading}
+                  </h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-brand-ink/75">
+                  {sub.paragraph}
+                </p>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      );
+  }
+}
+
 /* -------------------------------------------------------------------------- */
-/* Conditions Sidebar — the sticky right-column nav in sidebar layout        */
+/* Conditions Sidebar — sticky right-column nav in sidebar layout             */
 /* -------------------------------------------------------------------------- */
 
 function ConditionsSidebar({
@@ -489,7 +1409,6 @@ function ConditionsSidebar({
   return (
     <Reveal className="lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
       <div className="flex min-h-0 flex-col overflow-hidden rounded-2xl border border-brand-line bg-white shadow-lg shadow-brand-navy/10">
-        {/* Header with gradient */}
         <div className="relative shrink-0 overflow-hidden bg-gradient-to-br from-brand-navy via-brand-blue to-brand-cyan px-5 py-4 text-white">
           <div
             aria-hidden
@@ -514,7 +1433,6 @@ function ConditionsSidebar({
             </h3>
           </div>
         </div>
-        {/* Nav list — scrolls internally if the whole sidebar exceeds viewport */}
         <nav
           aria-label={nav.heading}
           className="min-h-0 flex-1 divide-y divide-brand-line overflow-y-auto"
@@ -567,7 +1485,6 @@ function ConditionsSidebar({
             );
           })}
         </nav>
-        {/* Footer CTA — compact */}
         <div className="shrink-0 border-t border-brand-line bg-brand-mist/40 p-3">
           <a
             href={CONTACT.phoneHref}
@@ -594,582 +1511,6 @@ function ConditionsSidebar({
         </div>
       </div>
     </Reveal>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Centered text section (short prose)                                        */
-/* -------------------------------------------------------------------------- */
-
-function CenteredSection({
-  section,
-  bg,
-}: {
-  section: ServiceSection;
-  bg: "white" | "mist";
-}) {
-  return (
-    <section className={`${bg === "mist" ? "bg-brand-mist/40" : "bg-white"} py-14 sm:py-20`}>
-      <div className="mx-auto max-w-3xl px-6">
-        <SectionHeader section={section} />
-        <SectionBody section={section} />
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Split section — image OR decorative placeholder + text (image sticks)     */
-/* -------------------------------------------------------------------------- */
-
-function SplitSection({
-  section,
-  imageSide,
-  bg,
-  index,
-}: {
-  section: ServiceSection;
-  imageSide: "left" | "right";
-  bg: "white" | "mist" | "dark";
-  index: number;
-}) {
-  const bgClass =
-    bg === "dark"
-      ? "bg-brand-ink text-white"
-      : bg === "mist"
-        ? "bg-brand-mist/50"
-        : "bg-white";
-
-  return (
-    <section className={`${bgClass} py-16 sm:py-24`}>
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-12 lg:gap-16">
-        {/* Visual column (image or placeholder) — pinned while text scrolls */}
-        <div
-          className={`lg:col-span-5 ${imageSide === "left" ? "lg:order-1" : "lg:order-2"}`}
-        >
-          <div className="lg:sticky lg:top-24">
-            {section.image ? (
-              <SectionImageBlock image={section.image} onDark={bg === "dark"} />
-            ) : (
-              <SectionVisualPlaceholder
-                section={section}
-                index={index}
-                onDark={bg === "dark"}
-              />
-            )}
-          </div>
-        </div>
-        {/* Content column */}
-        <div
-          className={`lg:col-span-7 ${imageSide === "left" ? "lg:order-2" : "lg:order-1"}`}
-        >
-          <SectionHeader section={section} onDark={bg === "dark"} align="left" />
-          <SectionBody section={section} onDark={bg === "dark"} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SectionImageBlock({
-  image,
-  onDark,
-}: {
-  image: SectionImage;
-  onDark: boolean;
-}) {
-  const reduce = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
-
-  return (
-    <motion.div
-      initial={reduce ? false : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, ease: EASE }}
-      className="relative"
-      ref={ref}
-    >
-      <div
-        className={`relative overflow-hidden rounded-[2rem] border ${onDark ? "border-white/10" : "border-brand-line"} bg-brand-ink shadow-xl ${onDark ? "shadow-black/40" : "shadow-brand-navy/15"}`}
-      >
-        <motion.div
-          className="relative aspect-[4/3] w-full sm:aspect-[5/4]"
-          style={reduce ? undefined : { y }}
-        >
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 560px"
-            className="object-cover"
-          />
-        </motion.div>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10"
-        />
-      </div>
-      {/* Corner accent */}
-      <div
-        aria-hidden
-        className={`absolute -bottom-4 -right-4 hidden h-24 w-24 rounded-3xl ${onDark ? "bg-brand-cyan/25" : "bg-brand-cyan/20"} blur-2xl md:block`}
-      />
-    </motion.div>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Decorative visual placeholder — used when a section has no photo          */
-/* -------------------------------------------------------------------------- */
-
-const PLACEHOLDER_ICONS = ["spark", "target", "heart", "bolt", "leaf", "shield"] as const;
-
-function SectionVisualPlaceholder({
-  section,
-  index,
-  onDark,
-}: {
-  section: ServiceSection;
-  index: number;
-  onDark: boolean;
-}) {
-  const reduce = useReducedMotion();
-  const iconName = PLACEHOLDER_ICONS[index % PLACEHOLDER_ICONS.length];
-  const heading = "heading" in section && section.heading ? section.heading : "";
-  const label = heading.length > 60 ? heading.slice(0, 58).trim() + "\u2026" : heading;
-  const num = String(index + 1).padStart(2, "0");
-
-  return (
-    <motion.div
-      initial={reduce ? false : { opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, ease: EASE }}
-      className="relative"
-    >
-      <div
-        className={`relative aspect-[5/4] w-full overflow-hidden rounded-[2rem] border shadow-xl ${
-          onDark
-            ? "border-white/10 bg-gradient-to-br from-brand-blue/25 via-brand-navy to-brand-ink shadow-black/40"
-            : "border-brand-line bg-gradient-to-br from-brand-mist via-white to-brand-sky/25 shadow-brand-navy/10"
-        }`}
-      >
-        {/* Dot pattern */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.08]"
-          style={{
-            backgroundImage: onDark
-              ? "radial-gradient(circle at 1px 1px, #64B4DC 1px, transparent 0)"
-              : "radial-gradient(circle at 1px 1px, #00508C 1px, transparent 0)",
-            backgroundSize: "30px 30px",
-          }}
-        />
-        {/* Ambient blobs */}
-        <div
-          aria-hidden
-          className={`pointer-events-none absolute -top-10 -right-10 h-48 w-48 rounded-full blur-3xl ${onDark ? "bg-brand-cyan/30" : "bg-brand-cyan/25"}`}
-        />
-        <div
-          aria-hidden
-          className={`pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full blur-3xl ${onDark ? "bg-brand-blue/40" : "bg-brand-blue/20"}`}
-        />
-
-        {/* Content */}
-        <div className="relative flex h-full flex-col justify-between p-8 sm:p-10">
-          {/* Top: kicker + heading */}
-          <div>
-            <p
-              className={`text-[10px] font-semibold uppercase tracking-[0.22em] ${onDark ? "text-brand-sky" : "text-brand-blue"}`}
-            >
-              <span
-                className={`mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full ${onDark ? "bg-brand-cyan" : "bg-brand-cyan"}`}
-              />
-              Chapter {num}
-            </p>
-            {label && (
-              <h3
-                className={`mt-4 text-xl font-bold leading-tight sm:text-2xl ${onDark ? "text-white" : "text-brand-navy"}`}
-              >
-                {label}
-              </h3>
-            )}
-          </div>
-
-          {/* Middle: large gradient index number */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <motion.span
-              aria-hidden
-              initial={reduce ? false : { scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
-              className={`select-none font-extrabold leading-none tracking-tight ${
-                onDark ? "text-white/[0.08]" : "text-brand-navy/[0.07]"
-              }`}
-              style={{ fontSize: "clamp(6rem, 18vw, 12rem)" }}
-            >
-              {num}
-            </motion.span>
-          </div>
-
-          {/* Bottom: icon badge */}
-          <div className="relative flex items-center justify-between">
-            <span
-              aria-hidden
-              className={`flex h-14 w-14 items-center justify-center rounded-2xl backdrop-blur ${
-                onDark
-                  ? "bg-white/10 text-brand-cyan"
-                  : "bg-white/80 text-brand-blue shadow-md shadow-brand-navy/10"
-              }`}
-            >
-              <HighlightIcon name={iconName} className="h-6 w-6" />
-            </span>
-            <div
-              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] ${
-                onDark
-                  ? "bg-white/10 text-brand-sky"
-                  : "bg-white/80 text-brand-navy shadow-md shadow-brand-navy/10"
-              }`}
-            >
-              <span
-                className={`h-1.5 w-1.5 rounded-full ${onDark ? "bg-brand-cyan" : "bg-brand-blue"}`}
-              />
-              Genesis
-            </div>
-          </div>
-        </div>
-
-        {/* Inner ring */}
-        <div
-          aria-hidden
-          className={`pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ${onDark ? "ring-white/10" : "ring-white/50"}`}
-        />
-      </div>
-      {/* Corner accent */}
-      <div
-        aria-hidden
-        className={`absolute -bottom-4 -right-4 hidden h-24 w-24 rounded-3xl ${onDark ? "bg-brand-cyan/25" : "bg-brand-cyan/20"} blur-2xl md:block`}
-      />
-    </motion.div>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Dark feature section (text-only)                                           */
-/* -------------------------------------------------------------------------- */
-
-function DarkFeatureSection({ section }: { section: ServiceSection }) {
-  return (
-    <section className="relative overflow-hidden bg-brand-ink text-white">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-32 -left-32 h-[400px] w-[600px] rounded-full bg-brand-blue/25 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-32 -right-32 h-[380px] w-[520px] rounded-full bg-brand-cyan/15 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, #64B4DC 1px, transparent 0)",
-          backgroundSize: "36px 36px",
-        }}
-      />
-      <div className="relative mx-auto max-w-4xl px-6 py-20 sm:py-24">
-        <SectionHeader section={section} onDark align="center" />
-        <SectionBody section={section} onDark />
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Section header (heading + kicker + intro paragraph)                        */
-/* -------------------------------------------------------------------------- */
-
-function SectionHeader({
-  section,
-  onDark = false,
-  align = "left",
-}: {
-  section: ServiceSection;
-  onDark?: boolean;
-  align?: "left" | "center";
-}) {
-  const showKicker = section.kicker;
-  const showHeading = "heading" in section && section.heading;
-  const showIntro =
-    (section.kind === "list" || section.kind === "subsections") && section.intro;
-
-  if (!showKicker && !showHeading && !showIntro) return null;
-
-  return (
-    <div
-      className={`${align === "center" ? "text-center mx-auto max-w-2xl" : ""}`}
-    >
-      {showKicker && (
-        <Reveal>
-          <p
-            className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${onDark ? "text-brand-sky" : "text-brand-blue"}`}
-          >
-            <span
-              className={`mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full ${onDark ? "bg-brand-cyan" : "bg-brand-cyan"}`}
-            />
-            {section.kicker}
-          </p>
-        </Reveal>
-      )}
-      {showHeading && (
-        <Reveal delay={showKicker ? 0.05 : 0}>
-          <h2
-            className={`${showKicker ? "mt-3" : ""} text-3xl font-bold tracking-tight sm:text-4xl ${onDark ? "text-white" : "text-brand-navy"}`}
-          >
-            {"heading" in section ? section.heading : ""}
-          </h2>
-        </Reveal>
-      )}
-      {showIntro && (
-        <Reveal delay={showHeading ? 0.1 : 0.05}>
-          <p
-            className={`mt-4 text-base leading-relaxed sm:text-lg ${onDark ? "text-white/80" : "text-brand-ink/75"}`}
-          >
-            {"intro" in section ? section.intro : ""}
-          </p>
-        </Reveal>
-      )}
-    </div>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Section body — dispatches on kind                                          */
-/* -------------------------------------------------------------------------- */
-
-function SectionBody({
-  section,
-  onDark = false,
-}: {
-  section: ServiceSection;
-  onDark?: boolean;
-}) {
-  switch (section.kind) {
-    case "prose":
-      return <ProseBody section={section} onDark={onDark} />;
-    case "list":
-      return <ListBody section={section} onDark={onDark} />;
-    case "subsections":
-      return <SubsectionsBody section={section} onDark={onDark} />;
-    case "benefits":
-      return <BenefitsBody section={section} onDark={onDark} />;
-  }
-}
-
-function ProseBody({
-  section,
-  onDark,
-}: {
-  section: Extract<ServiceSection, { kind: "prose" }>;
-  onDark: boolean;
-}) {
-  const hasHeader = section.kicker || section.heading;
-  return (
-    <Stagger
-      className={`${hasHeader ? "mt-5" : ""} space-y-4 text-base leading-relaxed sm:text-lg ${onDark ? "text-white/80" : "text-brand-ink/80"}`}
-      gap={0.08}
-    >
-      {section.paragraphs.map((p, i) => (
-        <StaggerItem key={i}>
-          <p>{p}</p>
-        </StaggerItem>
-      ))}
-    </Stagger>
-  );
-}
-
-function ListBody({
-  section,
-  onDark,
-}: {
-  section: Extract<ServiceSection, { kind: "list" }>;
-  onDark: boolean;
-}) {
-  return (
-    <>
-      <Stagger className="mt-6 space-y-3" gap={0.06}>
-        {section.items.map((item, i) => (
-          <StaggerItem key={i}>
-            <motion.div
-              whileHover={{ x: 3 }}
-              transition={{ duration: 0.25, ease: EASE }}
-              className={`flex items-start gap-3 rounded-2xl border p-4 transition-colors ${
-                onDark
-                  ? "border-white/10 bg-white/[0.03] hover:border-brand-cyan/30 hover:bg-white/[0.06]"
-                  : "border-brand-line bg-brand-mist/40 hover:border-brand-blue/25 hover:bg-brand-mist/70"
-              }`}
-            >
-              <span
-                aria-hidden
-                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/25"
-              >
-                <CheckIcon className="h-3 w-3" />
-              </span>
-              <span
-                className={`text-sm leading-relaxed sm:text-base ${onDark ? "text-white/85" : "text-brand-ink/85"}`}
-              >
-                {item}
-              </span>
-            </motion.div>
-          </StaggerItem>
-        ))}
-      </Stagger>
-      {section.outro && (
-        <Reveal delay={0.1}>
-          <p
-            className={`mt-5 text-base leading-relaxed sm:text-lg ${onDark ? "text-white/80" : "text-brand-ink/80"}`}
-          >
-            {section.outro}
-          </p>
-        </Reveal>
-      )}
-    </>
-  );
-}
-
-function SubsectionsBody({
-  section,
-  onDark,
-}: {
-  section: Extract<ServiceSection, { kind: "subsections" }>;
-  onDark: boolean;
-}) {
-  return (
-    <div className="mt-10 space-y-6">
-      {section.subs.map((sub, i) => (
-        <Reveal key={i} delay={i * 0.04}>
-          <div
-            className={`group relative overflow-hidden rounded-3xl border p-6 transition-all sm:p-8 ${
-              onDark
-                ? "border-white/10 bg-white/[0.04] hover:border-brand-cyan/25"
-                : "border-brand-line bg-white hover:border-brand-blue/25 hover:shadow-lg hover:shadow-brand-navy/5"
-            }`}
-          >
-            {/* Left rail accent */}
-            <div
-              aria-hidden
-              className="absolute inset-y-0 left-0 w-1 origin-top scale-y-0 bg-gradient-to-b from-brand-blue to-brand-cyan transition-transform duration-500 group-hover:scale-y-100"
-            />
-            <div className="flex items-baseline gap-4">
-              <span
-                aria-hidden
-                className={`shrink-0 font-mono text-xs font-bold tabular-nums ${onDark ? "text-brand-sky" : "text-brand-blue"}`}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3
-                className={`text-xl font-bold sm:text-2xl ${onDark ? "text-white" : "text-brand-navy"}`}
-              >
-                {sub.heading}
-              </h3>
-            </div>
-            {sub.paragraphs?.map((p, pi) => (
-              <p
-                key={pi}
-                className={`mt-3 text-sm leading-relaxed sm:text-base ${onDark ? "text-white/75" : "text-brand-ink/80"}`}
-              >
-                {p}
-              </p>
-            ))}
-            {sub.items && sub.items.length > 0 && (
-              <ul className="mt-4 space-y-2">
-                {sub.items.map((it, ii) => (
-                  <li
-                    key={ii}
-                    className={`flex items-start gap-2.5 text-sm leading-relaxed sm:text-base ${onDark ? "text-white/75" : "text-brand-ink/80"}`}
-                  >
-                    <span
-                      aria-hidden
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-blue"
-                    />
-                    <span>{it}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {sub.outro && (
-              <p
-                className={`mt-4 text-sm leading-relaxed sm:text-base ${onDark ? "text-white/75" : "text-brand-ink/80"}`}
-              >
-                {sub.outro}
-              </p>
-            )}
-          </div>
-        </Reveal>
-      ))}
-    </div>
-  );
-}
-
-function BenefitsBody({
-  section,
-  onDark,
-}: {
-  section: Extract<ServiceSection, { kind: "benefits" }>;
-  onDark: boolean;
-}) {
-  return (
-    <Stagger
-      className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2"
-      gap={0.06}
-    >
-      {section.subs.map((sub, i) => (
-        <StaggerItem key={i}>
-          <motion.div
-            whileHover={{ y: -4 }}
-            transition={{ duration: 0.3, ease: EASE }}
-            className={`group relative h-full overflow-hidden rounded-2xl border p-6 transition-shadow ${
-              onDark
-                ? "border-white/10 bg-white/[0.04] hover:border-brand-cyan/30 hover:shadow-xl hover:shadow-black/40"
-                : "border-brand-line bg-white hover:shadow-xl hover:shadow-brand-navy/10"
-            }`}
-          >
-            <div
-              aria-hidden
-              className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-brand-blue to-brand-cyan transition-transform duration-500 group-hover:scale-x-100"
-            />
-            <div className="flex items-center gap-3">
-              <span
-                aria-hidden
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-lg shadow-brand-blue/30"
-              >
-                <span className="text-sm font-bold tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </span>
-              <h3
-                className={`text-lg font-bold ${onDark ? "text-white" : "text-brand-navy"}`}
-              >
-                {sub.heading}
-              </h3>
-            </div>
-            <p
-              className={`mt-4 text-sm leading-relaxed ${onDark ? "text-white/75" : "text-brand-ink/75"}`}
-            >
-              {sub.paragraph}
-            </p>
-          </motion.div>
-        </StaggerItem>
-      ))}
-    </Stagger>
   );
 }
 
@@ -1225,11 +1566,7 @@ function ServiceVideo({
 /* Gallery                                                                    */
 /* -------------------------------------------------------------------------- */
 
-function ServiceGallery({
-  images,
-}: {
-  images: readonly SectionImage[];
-}) {
+function ServiceGallery({ images }: { images: readonly SectionImage[] }) {
   return (
     <section className="bg-brand-mist py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -1251,14 +1588,20 @@ function ServiceGallery({
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3, ease: EASE }}
                 className={`group relative overflow-hidden rounded-3xl bg-brand-ink shadow-lg shadow-brand-navy/10 ${
-                  i === 0 ? "lg:col-span-2 lg:row-span-2 aspect-[4/3] lg:aspect-[5/4]" : "aspect-[4/5]"
+                  i === 0
+                    ? "lg:col-span-2 lg:row-span-2 aspect-[4/3] lg:aspect-[5/4]"
+                    : "aspect-[4/5]"
                 }`}
               >
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
-                  sizes={i === 0 ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 640px) 100vw, 33vw"}
+                  sizes={
+                    i === 0
+                      ? "(max-width: 1024px) 100vw, 66vw"
+                      : "(max-width: 640px) 100vw, 33vw"
+                  }
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div
@@ -1319,7 +1662,9 @@ function FAQItem({
   return (
     <div
       className={`relative overflow-hidden rounded-2xl border bg-white transition-colors ${
-        open ? "border-brand-blue/30 shadow-md shadow-brand-navy/5" : "border-brand-line hover:border-brand-blue/25"
+        open
+          ? "border-brand-blue/30 shadow-md shadow-brand-navy/5"
+          : "border-brand-line hover:border-brand-blue/25"
       }`}
     >
       <div
@@ -1365,7 +1710,7 @@ function FAQItem({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Related pages list (defaults to "All Services")                            */
+/* Related pages list                                                          */
 /* -------------------------------------------------------------------------- */
 
 function AllServicesList({
@@ -1383,7 +1728,7 @@ function AllServicesList({
     footerHref: "/services/",
   };
   const items = nav.items.filter(
-    (s) => !s.href.includes(`/${currentSlug}/`)
+    (s) => !s.href.includes(`/${currentSlug}/`),
   );
   return (
     <section className="relative overflow-hidden bg-brand-mist py-16 sm:py-24">

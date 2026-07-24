@@ -2,7 +2,7 @@
  * Blog content data source.
  *
  * Post metadata is sourced verbatim from the live site
- * (https://genesisintegrativemed.com/blog/) — titles, dates, and excerpts
+ * (https://genesisintegrativemed.com/blog/), titles, dates, and excerpts
  * are preserved exactly. Slugs match the live root-level URLs (WordPress
  * default) so internal links from the /blog/ index continue to resolve to
  * the same canonical URLs when individual posts are cloned in the
@@ -18,7 +18,7 @@ export type BlogPost = {
   date: string;
   /** Short excerpt/dek preserved from the live site. */
   excerpt: string;
-  /** Path to the hero/thumbnail image (optional — falls back to gradient when absent). */
+  /** Path to the hero/thumbnail image (optional, falls back to gradient when absent). */
   image?: string;
   /** Rough category surfaced as a chip on the card (derived from title). */
   category?: string;
@@ -35,7 +35,7 @@ export function formatPostDate(iso: string): string {
   });
 }
 
-/** Href for a post — served under /blog/<slug>/ by the dynamic route. */
+/** Href for a post, served under /blog/<slug>/ by the dynamic route. */
 export function postHref(slug: string): string {
   return `/blog/${slug}/`;
 }
@@ -190,7 +190,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   },
   {
     slug: "the-hidden-dangers-of-ignoring-myofascial-pain-and-how-shockwave-therapy-stops-the-damage-early",
-    title: "The Hidden Dangers of Ignoring Myofascial Pain \u2014 And How Shockwave Therapy Stops the Damage Early",
+    title: "The Hidden Dangers of Ignoring Myofascial Pain, And How Shockwave Therapy Stops the Damage Early",
     date: "2025-12-05",
     excerpt: "When Muscle Pain Turns Into a Daily Battle There\u2019s a certain kind of muscle pain that feels impossible to stretch\u2026",
     image: "/images/blog/the-hidden-dangers-of-ignoring-myofascial-pain-and-how-shockwave-therapy-stops-the-damage-early.png",
@@ -200,7 +200,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: "re-ignite-your-recovery-how-cold-laser-therapy-speeds-post-surgical-healing-gets-you-back-on-track",
     title: "Re-Ignite Your Recovery: How Cold Laser Therapy Speeds Post-Surgical Healing & Gets You Back on Track",
     date: "2025-11-17",
-    excerpt: "When Recovery Doesn\u2019t Go as Planned Surgery is supposed to be the beginning of healing\u2014not the start of a new\u2026",
+    excerpt: "When Recovery Doesn\u2019t Go as Planned Surgery is supposed to be the beginning of healing, not the start of a new\u2026",
     image: "/images/blog/re-ignite-your-recovery-how-cold-laser-therapy-speeds-post-surgical-healing-gets-you-back-on-track.png",
     category: "Cold Laser",
   },
@@ -216,13 +216,13 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: "break-free-from-chronic-pain-how-noninvasive-pain-care-in-geneva-il-is-changing-lives",
     title: "Break Free from Chronic Pain: How Noninvasive Pain Care in Geneva, IL, Is Changing Lives",
     date: "2025-10-11",
-    excerpt: "Pain changes everything. It can turn simple joys\u2014like playing with your kids, going for a walk, or sleeping comfortably\u2014into daily\u2026",
+    excerpt: "Pain changes everything. It can turn simple joys, like playing with your kids, going for a walk, or sleeping comfortably, into daily\u2026",
     image: "/images/blog/break-free-from-chronic-pain-how-noninvasive-pain-care-in-geneva-il-is-changing-lives.png",
     category: "Pain Care",
   },
   {
     slug: "stop-living-with-heel-pain-heres-the-science-that-helps-you-walk-again",
-    title: "Stop Living with Heel Pain \u2014 Here\u2019s the Science That Helps You Walk Again",
+    title: "Stop Living with Heel Pain, Here\u2019s the Science That Helps You Walk Again",
     date: "2025-10-11",
     excerpt: "Waking up with stabbing heel pain the moment your feet hit the floor can set the tone for your entire\u2026",
     image: "/images/blog/stop-living-with-heel-pain-heres-the-science-that-helps-you-walk-again.png",
@@ -240,7 +240,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: "end-chronic-tendon-pain-with-shockwave-therapy",
     title: "End Chronic Tendon Pain With Shockwave Therapy",
     date: "2025-09-15",
-    excerpt: "At Genesis Integrative Medicine, we know that tendon pain is more than just a physical issue\u2014it\u2019s something that can quietly\u2026",
+    excerpt: "At Genesis Integrative Medicine, we know that tendon pain is more than just a physical issue, it\u2019s something that can quietly\u2026",
     image: "/images/blog/end-chronic-tendon-pain-with-shockwave-therapy.png",
     category: "Shockwave Therapy",
   },
@@ -424,7 +424,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: "telehealth-the-advantages-of-telemedicine",
     title: "Telehealth: The Advantages of Telemedicine",
     date: "2021-11-29",
-    excerpt: "The COVID-19 pandemic has triggered dramatic changes throughout everyday life \u2014 and in the medical community as well. Not only\u2026",
+    excerpt: "The COVID-19 pandemic has triggered dramatic changes throughout everyday life, and in the medical community as well. Not only\u2026",
     image: "/images/blog/telehealth-the-advantages-of-telemedicine.jpg",
     category: "Telehealth",
   },
@@ -527,7 +527,7 @@ export const LIVE_TOTAL_PAGES = 5;
 /**
  * Number of pages the index should render. Uses whichever is greater between
  * the number of pages actually required to hold `BLOG_POSTS` and the live
- * site's known total — so early Blog batches keep the pagination links
+ * site's known total, so early Blog batches keep the pagination links
  * visible even before all posts are cloned locally.
  */
 export function totalBlogPages(): number {

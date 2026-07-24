@@ -2,10 +2,10 @@
  * Content module for the /services/* pages.
  *
  * Preserves verbatim body copy, JSON-LD data model, and metadata from the
- * live site (genesisintegrativemed.com) — sourced during Prompt 1 migration
+ * live site (genesisintegrativemed.com), sourced during Prompt 1 migration
  * work and confirmed against the live pages during the services-page rebuild.
  *
- * DO NOT paraphrase or rewrite copy — see the migration brief.
+ * DO NOT paraphrase or rewrite copy, see the migration brief.
  */
 
 /* -------------------------------------------------------------------------- */
@@ -20,7 +20,7 @@ export type SectionImage = {
   height: number;
 };
 
-/** Fields any section can carry — controls visual variant + optional inline image. */
+/** Fields any section can carry, controls visual variant + optional inline image. */
 export type SectionCommon = {
   /** Optional image displayed alongside the section content. */
   image?: SectionImage;
@@ -64,11 +64,11 @@ export type ServiceSection = SectionCommon &
 
 /** Small icon-badge shown in the "Highlights" strip below the hero. */
 export type Highlight = {
-  /** Short label — usually 2–4 words. */
+  /** Short label, usually 2–4 words. */
   label: string;
   /** Optional slightly longer note underneath. */
   note?: string;
-  /** Icon key rendered by the template — falls back to a check mark. */
+  /** Icon key rendered by the template, falls back to a check mark. */
   icon?: "spark" | "shield" | "heart" | "clock" | "bolt" | "leaf" | "target" | "check";
 };
 
@@ -189,7 +189,7 @@ export const SERVICES_INDEX_CARDS = [
   {
     title: "Shockwave Therapy",
     body:
-      "One of our most-used treatments. Non-invasive acoustic-wave therapy for elbow, wrist, hip, knee, shoulder, and plantar fasciitis / foot pain \u2014 real healing without drugs or surgery.",
+      "One of our most-used treatments. Non-invasive acoustic-wave therapy for elbow, wrist, hip, knee, shoulder, and plantar fasciitis / foot pain, real healing without drugs or surgery.",
     href: "/services/shockwave-therapy/",
     image: "/images/services/ed/ed-hero.jpeg",
     alt: "Shockwave therapy for musculoskeletal pain",
@@ -197,7 +197,7 @@ export const SERVICES_INDEX_CARDS = [
   {
     title: "Cold Laser",
     body:
-      "FDA-approved low-level laser therapy we use every day to reduce inflammation, speed healing, and relieve chronic joint, tendon, and nerve pain \u2014 pairs beautifully with shockwave.",
+      "FDA-approved low-level laser therapy we use every day to reduce inflammation, speed healing, and relieve chronic joint, tendon, and nerve pain, pairs beautifully with shockwave.",
     href: "/services/cold-laser/",
     image: "/images/services/cold-laser.webp",
     alt: "Cold laser therapy",
@@ -870,7 +870,7 @@ export const PRP_CONTENT: ServicePageContent = {
       kind: "prose",
       heading: "Book Your Appointment for PRP Injections in Geneva",
       paragraphs: [
-        "If you\u2019re ready to take the next step in your healing journey, contact Genesis Integrative Medicine today to learn more about PRP injections in Geneva. Our team is here to answer any questions you may have and to help you achieve your health and wellness goals through cutting-edge, regenerative treatments. Don\u2019t let pain or aging hold you back\u2014experience the benefits of PRP injections in Geneva and take control of your health naturally.",
+        "If you\u2019re ready to take the next step in your healing journey, contact Genesis Integrative Medicine today to learn more about PRP injections in Geneva. Our team is here to answer any questions you may have and to help you achieve your health and wellness goals through cutting-edge, regenerative treatments. Don\u2019t let pain or aging hold you back, experience the benefits of PRP injections in Geneva and take control of your health naturally.",
       ],
     },
   ],
@@ -1119,7 +1119,7 @@ export const REGENERATIVE_MEDICINE_CONTENT: ServicePageContent = {
   serviceJsonLd: {
     name: "Regenerative Medicine",
     description:
-      "Regenerative therapies including mesenchymal stem cells (MSCs) sourced from Wharton’s jelly / umbilical tissue — an FDA-regulated human cellular and tissue-based product (HCT/P) — and Platelet-Rich Plasma (PRP), used to stimulate tissue repair, reduce inflammation, and promote healing.",
+      "Regenerative therapies including mesenchymal stem cells (MSCs) sourced from Wharton’s jelly / umbilical tissue, an FDA-regulated human cellular and tissue-based product (HCT/P), and Platelet-Rich Plasma (PRP), used to stimulate tissue repair, reduce inflammation, and promote healing.",
     canonicalServiceUrl:
       "https://genesisintegrativemed.com/services/regenerative-medicine/",
   },
@@ -1181,8 +1181,8 @@ export const REGENERATIVE_MEDICINE_CONTENT: ServicePageContent = {
         height: 800,
       },
       paragraphs: [
-        "Our clinic uses mesenchymal stem cells (MSCs) sourced from Wharton\u2019s jelly \u2014 the specialized connective tissue found within donated umbilical cord tissue. These young, highly potent cells are rich in the growth factors and signaling molecules that drive real tissue repair.",
-        "Once carefully prepared, the cells are injected directly into the damaged area, where they help repair and regenerate tissue, reduce inflammation, and modulate the immune response \u2014 leading to improved function and long-lasting pain relief, with no harvest procedure required from the patient.",
+        "Our clinic uses mesenchymal stem cells (MSCs) sourced from Wharton\u2019s jelly, the specialized connective tissue found within donated umbilical cord tissue. These young, highly potent cells are rich in the growth factors and signaling molecules that drive real tissue repair.",
+        "Once carefully prepared, the cells are injected directly into the damaged area, where they help repair and regenerate tissue, reduce inflammation, and modulate the immune response, leading to improved function and long-lasting pain relief, with no harvest procedure required from the patient.",
       ],
     },
     {
@@ -1204,7 +1204,7 @@ export const REGENERATIVE_MEDICINE_CONTENT: ServicePageContent = {
       heading:
         "Experience the Benefits of Regenerative Medicine at Genesis Integrative Medicine",
       paragraphs: [
-        "If you\u2019re struggling with chronic pain or recovering from an injury, regenerative medicine at Genesis Integrative Medicine in Geneva, IL, offers a natural and effective solution. Our expert team is dedicated to helping you achieve optimal health and wellness through advanced regenerative therapies. Don\u2019t let pain hold you back any longer\u2014schedule a consultation with us today and discover how regenerative medicine can transform your life.",
+        "If you\u2019re struggling with chronic pain or recovering from an injury, regenerative medicine at Genesis Integrative Medicine in Geneva, IL, offers a natural and effective solution. Our expert team is dedicated to helping you achieve optimal health and wellness through advanced regenerative therapies. Don\u2019t let pain hold you back any longer, schedule a consultation with us today and discover how regenerative medicine can transform your life.",
         "Experience the future of healing with Genesis Integrative Medicine. Contact us now to learn more and take the first step towards a pain-free, healthier you.",
       ],
     },
@@ -1440,7 +1440,7 @@ export const PERIPHERAL_NEUROPATHY_CONTENT: ServicePageContent = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* Shockwave Therapy (EPAT) — Musculoskeletal Pain                             */
+/* Shockwave Therapy (EPAT), Musculoskeletal Pain                             */
 /* -------------------------------------------------------------------------- */
 
 export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
@@ -1450,7 +1450,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
     title:
       "Shockwave Therapy in Geneva, IL | Elbow, Knee, Shoulder & Foot Pain",
     description:
-      "Non-invasive shockwave therapy (EPAT) at Genesis Integrative Medicine in Geneva, IL for elbow, wrist, hip, knee, shoulder, and plantar fasciitis pain. No drugs, no surgery — real healing.",
+      "Non-invasive shockwave therapy (EPAT) at Genesis Integrative Medicine in Geneva, IL for elbow, wrist, hip, knee, shoulder, and plantar fasciitis pain. No drugs, no surgery, real healing.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/shockwave-therapy/",
     ogImage:
@@ -1465,7 +1465,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
     kicker: "Genesis Integrative Medicine",
     h1: "Shockwave Therapy (EPAT)",
     intro:
-      "Shockwave therapy is one of the most-requested treatments at our Geneva, IL clinic. Using focused acoustic waves, we help patients resolve stubborn elbow, wrist, hip, knee, shoulder, and foot pain without drugs, injections, or surgery \u2014 accelerating your body\u2019s natural healing response so you can get back to the activities you love.",
+      "Shockwave therapy is one of the most-requested treatments at our Geneva, IL clinic. Using focused acoustic waves, we help patients resolve stubborn elbow, wrist, hip, knee, shoulder, and foot pain without drugs, injections, or surgery, accelerating your body\u2019s natural healing response so you can get back to the activities you love.",
   },
   highlights: [
     { icon: "bolt", label: "Acoustic waves", note: "Trigger true healing" },
@@ -1482,7 +1482,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
   serviceJsonLd: {
     name: "Shockwave Therapy (EPAT)",
     description:
-      "Non-invasive shockwave therapy (Extracorporeal Pulse Activation Technology / EPAT) that uses high-energy acoustic waves to relieve chronic musculoskeletal pain \u2014 including tennis and golfer\u2019s elbow, wrist pain, hip pain, knee pain, plantar fasciitis and heel pain, and rotator cuff / shoulder pain \u2014 by stimulating circulation, collagen production, and tissue repair.",
+      "Non-invasive shockwave therapy (Extracorporeal Pulse Activation Technology / EPAT) that uses high-energy acoustic waves to relieve chronic musculoskeletal pain, including tennis and golfer\u2019s elbow, wrist pain, hip pain, knee pain, plantar fasciitis and heel pain, and rotator cuff / shoulder pain, by stimulating circulation, collagen production, and tissue repair.",
     canonicalServiceUrl:
       "https://genesisintegrativemed.com/services/shockwave-therapy/",
   },
@@ -1491,8 +1491,8 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
       kind: "prose",
       heading: "Geneva\u2019s Go-To Clinic for Shockwave Therapy",
       paragraphs: [
-        "Shockwave therapy \u2014 also known as EPAT (Extracorporeal Pulse Activation Technology) \u2014 has become one of the cornerstone treatments at Genesis Integrative Medicine. We use it every day to help patients who have been living with nagging joint, tendon, and soft-tissue pain that hasn\u2019t responded to rest, stretching, cortisone shots, or over-the-counter medications.",
-        "The technology delivers precisely targeted pressure waves into the injured tissue. Those pulses reawaken a stalled healing response \u2014 boosting blood flow, breaking up scar tissue and calcifications, and stimulating new collagen production. The result is real repair, not just symptom masking.",
+        "Shockwave therapy, also known as EPAT (Extracorporeal Pulse Activation Technology), has become one of the cornerstone treatments at Genesis Integrative Medicine. We use it every day to help patients who have been living with nagging joint, tendon, and soft-tissue pain that hasn\u2019t responded to rest, stretching, cortisone shots, or over-the-counter medications.",
+        "The technology delivers precisely targeted pressure waves into the injured tissue. Those pulses reawaken a stalled healing response, boosting blood flow, breaking up scar tissue and calcifications, and stimulating new collagen production. The result is real repair, not just symptom masking.",
       ],
     },
     {
@@ -1501,12 +1501,12 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
       intro:
         "While shockwave therapy is best-known publicly for men\u2019s wellness, at our office it is one of the most effective tools we use for orthopedic and musculoskeletal pain. We routinely treat:",
       items: [
-        "Elbow pain \u2014 tennis elbow (lateral epicondylitis) and golfer\u2019s elbow (medial epicondylitis)",
-        "Wrist pain \u2014 chronic tendinopathy, repetitive strain, and carpal-area soft-tissue pain",
-        "Hip pain \u2014 greater trochanteric bursitis, gluteal tendinopathy, and chronic hip flexor pain",
-        "Knee pain \u2014 patellar tendonitis (jumper\u2019s knee), IT band irritation, and osteoarthritis-related pain",
-        "Foot & heel pain \u2014 plantar fasciitis, Achilles tendonitis, and other chronic foot pain",
-        "Shoulder pain \u2014 rotator cuff tendinopathy, calcific tendonitis, and frozen shoulder",
+        "Elbow pain, tennis elbow (lateral epicondylitis) and golfer\u2019s elbow (medial epicondylitis)",
+        "Wrist pain, chronic tendinopathy, repetitive strain, and carpal-area soft-tissue pain",
+        "Hip pain, greater trochanteric bursitis, gluteal tendinopathy, and chronic hip flexor pain",
+        "Knee pain, patellar tendonitis (jumper\u2019s knee), IT band irritation, and osteoarthritis-related pain",
+        "Foot & heel pain, plantar fasciitis, Achilles tendonitis, and other chronic foot pain",
+        "Shoulder pain, rotator cuff tendinopathy, calcific tendonitis, and frozen shoulder",
         "Other stubborn tendonitis, bursitis, and soft-tissue injuries throughout the body",
       ],
       outro:
@@ -1519,7 +1519,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
         {
           heading: "Real Tissue Healing",
           paragraph:
-            "Unlike medications that mask pain, shockwave stimulates the body\u2019s own repair mechanisms \u2014 increased circulation, collagen synthesis, and breakdown of calcifications and scar tissue.",
+            "Unlike medications that mask pain, shockwave stimulates the body\u2019s own repair mechanisms, increased circulation, collagen synthesis, and breakdown of calcifications and scar tissue.",
         },
         {
           heading: "Non-Invasive & Drug-Free",
@@ -1534,7 +1534,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
         {
           heading: "Great Alternative to Surgery",
           paragraph:
-            "Published clinical evidence shows shockwave therapy resolves symptoms in a large majority of chronic tendon and plantar fasciitis cases \u2014 often helping patients avoid surgical intervention.",
+            "Published clinical evidence shows shockwave therapy resolves symptoms in a large majority of chronic tendon and plantar fasciitis cases, often helping patients avoid surgical intervention.",
         },
       ],
     },
@@ -1556,7 +1556,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
       kind: "prose",
       heading: "Better Together: Shockwave + Cold Laser + PRP",
       paragraphs: [
-        "Shockwave therapy is powerful on its own, but it becomes even more effective when combined with our other integrative modalities. We frequently pair shockwave with cold laser therapy \u2014 which reduces inflammation at the cellular level \u2014 and, when appropriate, with PRP (platelet-rich plasma) injections and targeted active rehab.",
+        "Shockwave therapy is powerful on its own, but it becomes even more effective when combined with our other integrative modalities. We frequently pair shockwave with cold laser therapy, which reduces inflammation at the cellular level, and, when appropriate, with PRP (platelet-rich plasma) injections and targeted active rehab.",
         "This layered approach is a big part of why our patients see faster, more durable results. Rather than relying on any single modality, we design a personalized plan that addresses the injured tissue from multiple angles at once.",
       ],
     },
@@ -1565,7 +1565,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
       heading: "What to Expect at Your Consultation",
       items: [
         "A thorough exam of the painful area and review of your history, imaging, and prior treatments",
-        "A clear explanation of whether shockwave is a good fit \u2014 and what results to realistically expect",
+        "A clear explanation of whether shockwave is a good fit, and what results to realistically expect",
         "A customized plan that may combine shockwave with cold laser, PRP, chiropractic, or rehab as needed",
         "Transparent pricing and scheduling before any treatment begins",
       ],
@@ -1584,7 +1584,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
     {
       question: "What kinds of pain does shockwave therapy treat?",
       answer:
-        "At our Geneva clinic we primarily use shockwave therapy for musculoskeletal pain \u2014 tennis and golfer\u2019s elbow, wrist tendinopathy, hip bursitis and gluteal tendinopathy, knee pain including patellar tendonitis, plantar fasciitis and heel pain, and shoulder conditions such as rotator cuff tendinopathy and calcific tendonitis. It is also highly effective for chronic tendonitis and bursitis in other regions of the body.",
+        "At our Geneva clinic we primarily use shockwave therapy for musculoskeletal pain, tennis and golfer\u2019s elbow, wrist tendinopathy, hip bursitis and gluteal tendinopathy, knee pain including patellar tendonitis, plantar fasciitis and heel pain, and shoulder conditions such as rotator cuff tendinopathy and calcific tendonitis. It is also highly effective for chronic tendonitis and bursitis in other regions of the body.",
     },
     {
       question: "Does shockwave therapy hurt?",
@@ -1599,7 +1599,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
     {
       question: "How is shockwave different from cold laser therapy?",
       answer:
-        "Shockwave uses high-energy acoustic pressure waves to mechanically stimulate deep tissue repair, break up scar tissue and calcifications, and increase blood flow. Cold laser uses low-level light energy to reduce inflammation and support cellular healing. They target different mechanisms and often work best together \u2014 which is why we frequently combine the two in a personalized treatment plan.",
+        "Shockwave uses high-energy acoustic pressure waves to mechanically stimulate deep tissue repair, break up scar tissue and calcifications, and increase blood flow. Cold laser uses low-level light energy to reduce inflammation and support cellular healing. They target different mechanisms and often work best together, which is why we frequently combine the two in a personalized treatment plan.",
     },
     {
       question: "Is shockwave therapy the same as the ED shockwave treatment?",
@@ -1658,9 +1658,9 @@ export const ED_SHOCKWAVE_CONTENT: ServicePageContent = {
       kind: "prose",
       heading: "Geneva, IL Leading Men\u2019s Wellness Clinic",
       paragraphs: [
-        "If you\u2019re struggling with erectile dysfunction (ED), low performance, or decreased vitality, shockwave therapy and men\u2019s wellness treatments can help restore confidence and function naturally. These non-invasive treatments are designed to improve blood flow, stimulate tissue regeneration, and support overall sexual health\u2014no pills, no surgery, no downtime.",
-        "At our Geneva, IL clinic, we believe men deserve to feel their best at every stage of life. Shockwave therapy isn\u2019t just about ED\u2014it can revitalize your sexual performance, enhance stamina, and boost overall well-being. Don\u2019t let sexual health challenges hold you back. Explore our comprehensive men\u2019s wellness services today.",
-        "Looking for shockwave therapy for musculoskeletal pain \u2014 such as elbow, wrist, hip, knee, shoulder, or plantar fasciitis pain? Visit our dedicated Shockwave Therapy (EPAT) page for the musculoskeletal protocol we use every day in-office.",
+        "If you\u2019re struggling with erectile dysfunction (ED), low performance, or decreased vitality, shockwave therapy and men\u2019s wellness treatments can help restore confidence and function naturally. These non-invasive treatments are designed to improve blood flow, stimulate tissue regeneration, and support overall sexual health, no pills, no surgery, no downtime.",
+        "At our Geneva, IL clinic, we believe men deserve to feel their best at every stage of life. Shockwave therapy isn\u2019t just about ED, it can revitalize your sexual performance, enhance stamina, and boost overall well-being. Don\u2019t let sexual health challenges hold you back. Explore our comprehensive men\u2019s wellness services today.",
+        "Looking for shockwave therapy for musculoskeletal pain, such as elbow, wrist, hip, knee, shoulder, or plantar fasciitis pain? Visit our dedicated Shockwave Therapy (EPAT) page for the musculoskeletal protocol we use every day in-office.",
       ],
     },
     {
@@ -1678,7 +1678,7 @@ export const ED_SHOCKWAVE_CONTENT: ServicePageContent = {
       items: [
         "Shockwave therapy enhances blood flow to the penis, helping achieve stronger and longer-lasting erections without medications.",
         "Treatments promote tissue repair and regeneration, boosting overall sexual function and endurance.",
-        "Quick sessions with no downtime\u2014get back to your normal routine immediately.",
+        "Quick sessions with no downtime, get back to your normal routine immediately.",
         "Targeted therapy supports lasting improvements in sexual health, not just temporary fixes.",
         "Regaining sexual function improves self-esteem, relationships, and quality of life.",
       ],

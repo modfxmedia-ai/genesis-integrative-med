@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: `%s | ${BRAND.name}`,
   },
   description:
-    "Integrative medicine in Geneva, IL — chiropractic, regenerative medicine, PRP, peptide weight loss, cold laser, and more.",
+    "Integrative medicine in Geneva, IL, chiropractic, regenerative medicine, PRP, peptide weight loss, cold laser, and more.",
 };
 
 export default function RootLayout({

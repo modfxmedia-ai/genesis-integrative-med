@@ -15,7 +15,7 @@ import { CONSULTATION_CTA, INSURANCE_MISSION } from "@/app/lib/services-content"
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * /forms/ — patient paperwork hub linking to the live JotForm HIPAA-hosted forms.
+ * /forms/, patient paperwork hub linking to the live JotForm HIPAA-hosted forms.
  *
  * Note: keeps external hrefs intact so the paperwork itself is never broken by
  * the migration. Every link opens on jotform.com in a new tab.
@@ -41,7 +41,7 @@ const FORMS = [
   {
     title: "Weight Loss Paperwork",
     description:
-      "Required for anyone starting the Genesis Medical Weight Loss Program \u2014 medical history and program consent.",
+      "Required for anyone starting the Genesis Medical Weight Loss Program, medical history and program consent.",
     href: "https://hipaa.jotform.com/222234144681046",
     accent: "from-brand-cyan to-brand-sky",
     tag: "Program",
@@ -49,7 +49,7 @@ const FORMS = [
   {
     title: "Knee Pain Paperwork",
     description:
-      "For patients coming in for a knee pain consultation \u2014 helps our team tailor the exam to your history.",
+      "For patients coming in for a knee pain consultation, helps our team tailor the exam to your history.",
     href: "https://hipaa.jotform.com/222227728722153",
     accent: "from-brand-blue to-brand-navy",
     tag: "Specific",

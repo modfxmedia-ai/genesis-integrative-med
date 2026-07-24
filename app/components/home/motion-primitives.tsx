@@ -36,7 +36,7 @@ export const staggerItem: Variants = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* <Reveal /> — inView fade-up with blur                                       */
+/* <Reveal />, inView fade-up with blur                                       */
 /* -------------------------------------------------------------------------- */
 
 export function Reveal({
@@ -68,7 +68,7 @@ export function Reveal({
 }
 
 /* -------------------------------------------------------------------------- */
-/* <Stagger /> — inView stagger container                                     */
+/* <Stagger />, inView stagger container                                     */
 /* -------------------------------------------------------------------------- */
 
 export function Stagger({
@@ -128,7 +128,7 @@ export function StaggerItem({
 }
 
 /* -------------------------------------------------------------------------- */
-/* <MagneticButton /> — pointer-following micro-interaction                    */
+/* <MagneticButton />, pointer-following micro-interaction                    */
 /* -------------------------------------------------------------------------- */
 
 export function MagneticButton({
@@ -174,7 +174,7 @@ export function MagneticButton({
 }
 
 /* -------------------------------------------------------------------------- */
-/* <CountUp /> — inView spring counter                                        */
+/* <CountUp />, inView spring counter                                        */
 /* -------------------------------------------------------------------------- */
 
 export function CountUp({
@@ -258,7 +258,7 @@ export function useSpotlight(container: React.RefObject<HTMLElement | null>) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Parallax float — subtle scroll-linked y-shift for hero visuals              */
+/* Parallax float, subtle scroll-linked y-shift for hero visuals              */
 /* -------------------------------------------------------------------------- */
 
 export function useParallaxY(ref: React.RefObject<HTMLElement | null>, distance = 40) {
@@ -283,7 +283,7 @@ export function useParallaxY(ref: React.RefObject<HTMLElement | null>, distance 
 }
 
 /* -------------------------------------------------------------------------- */
-/* Marquee — infinite horizontal scroll (for insurance logos)                  */
+/* Marquee, infinite horizontal scroll (for insurance logos)                  */
 /* -------------------------------------------------------------------------- */
 
 export function Marquee({

@@ -5,7 +5,7 @@
  * live site (genesisintegrativemed.com). Reuses the ServicePageContent shape
  * so the shared services template can render both surfaces.
  *
- * DO NOT paraphrase or rewrite copy — see the migration brief.
+ * DO NOT paraphrase or rewrite copy, see the migration brief.
  */
 
 import type { ServicePageContent, RelatedNav } from "@/app/lib/services-content";
@@ -187,7 +187,7 @@ export const NECK_PAIN_CONTENT: ServicePageContent = {
   serviceJsonLd: {
     name: "Neck Pain Treatment",
     description:
-      "Integrative, multidisciplinary care for acute and chronic neck pain \u2014 including chiropractic adjustments, therapeutic injections, rehab, and cold laser therapy \u2014 designed to address the root cause and restore mobility.",
+      "Integrative, multidisciplinary care for acute and chronic neck pain, including chiropractic adjustments, therapeutic injections, rehab, and cold laser therapy, designed to address the root cause and restore mobility.",
     canonicalServiceUrl:
       "https://genesisintegrativemed.com/conditions-treated/neck-pain/",
   },
@@ -426,7 +426,7 @@ export const HEADACHES_CONTENT: ServicePageContent = {
       kind: "prose",
       heading: "Headache Doctor in Geneva, IL",
       paragraphs: [
-        "Our personalized plans include dietary supplements, mind/body therapies, and manipulation therapy. According to the American Chiropractic Association, spinal manipulation is an effective headache treatment option for many sufferers. Chiropractic adjustment can improve acute and chronic neck pain, which can reduce the number of headaches you\u2019ll experience \u2014 whether you suffer from migraines or tension headaches.",
+        "Our personalized plans include dietary supplements, mind/body therapies, and manipulation therapy. According to the American Chiropractic Association, spinal manipulation is an effective headache treatment option for many sufferers. Chiropractic adjustment can improve acute and chronic neck pain, which can reduce the number of headaches you\u2019ll experience, whether you suffer from migraines or tension headaches.",
       ],
     },
     {
@@ -435,7 +435,7 @@ export const HEADACHES_CONTENT: ServicePageContent = {
       paragraphs: [
         "When it comes to headache relief, merely managing symptoms is like blowing away smoke instead of extinguishing the fire. At our Geneva practice, we believe in looking beyond the surface to uncover the true source of your headaches. Often, headaches are a sign of underlying issues such as injury or chronic inflammation. By identifying and addressing these root causes, we don\u2019t just provide temporary relief; we work towards long-term healing.",
         "Injuries, whether recent or past, can lead to structural imbalances that contribute to persistent headaches. Inflammation, too, plays a significant role, often as a result of stress, poor posture, or nutritional deficiencies. By focusing on these fundamental issues, we can develop a comprehensive treatment plan that not only alleviates your pain but also enhances your overall health and well-being.",
-        "Don\u2019t settle for masking your symptoms\u2014take control of your health by addressing the root cause of your headaches with a holistic, integrative approach.",
+        "Don\u2019t settle for masking your symptoms, take control of your health by addressing the root cause of your headaches with a holistic, integrative approach.",
       ],
     },
     {
@@ -532,7 +532,7 @@ export const FOOT_PAIN_CONTENT: ServicePageContent = {
   serviceJsonLd: {
     name: "Foot Pain Treatment",
     description:
-      "Non-surgical, integrative care for plantar fasciitis and other foot pain \u2014 including shockwave therapy, PRP, cold laser therapy, and custom orthotics \u2014 designed to resolve pain without surgery.",
+      "Non-surgical, integrative care for plantar fasciitis and other foot pain, including shockwave therapy, PRP, cold laser therapy, and custom orthotics, designed to resolve pain without surgery.",
     canonicalServiceUrl:
       "https://genesisintegrativemed.com/conditions-treated/foot-pain/",
   },
@@ -641,7 +641,7 @@ export const SHOULDER_PAIN_CONTENT: ServicePageContent = {
   serviceJsonLd: {
     name: "Shoulder Pain Treatment",
     description:
-      "Advanced, holistic shoulder pain care combining shockwave therapy (EPAT), cold laser therapy, physical therapy, chiropractic adjustments, regenerative medicine (PRP), nutritional guidance, and lifestyle coaching to address the root causes of pain \u2014 including rotator cuff tendonitis, calcific tendonitis, bursitis, and frozen shoulder.",
+      "Advanced, holistic shoulder pain care combining shockwave therapy (EPAT), cold laser therapy, physical therapy, chiropractic adjustments, regenerative medicine (PRP), nutritional guidance, and lifestyle coaching to address the root causes of pain, including rotator cuff tendonitis, calcific tendonitis, bursitis, and frozen shoulder.",
     canonicalServiceUrl:
       "https://genesisintegrativemed.com/conditions-treated/shoulder-pain/",
   },
@@ -681,7 +681,7 @@ export const SHOULDER_PAIN_CONTENT: ServicePageContent = {
       kind: "prose",
       heading: "Shockwave Therapy for the Shoulder",
       paragraphs: [
-        "Shockwave therapy (EPAT) is one of our most-requested treatments for shoulder pain \u2014 particularly for rotator cuff tendonitis, calcific tendonitis, chronic bursitis, and lingering post-injury pain. Using focused acoustic pressure waves, we stimulate real tissue repair, increase circulation to the injured tendons, and help break down painful calcifications inside the shoulder.",
+        "Shockwave therapy (EPAT) is one of our most-requested treatments for shoulder pain, particularly for rotator cuff tendonitis, calcific tendonitis, chronic bursitis, and lingering post-injury pain. Using focused acoustic pressure waves, we stimulate real tissue repair, increase circulation to the injured tendons, and help break down painful calcifications inside the shoulder.",
         "Most patients complete a short series of quick, in-office sessions and feel meaningful improvement within the first few visits, all without drugs, injections, or surgery. Learn more on our dedicated shockwave therapy page.",
       ],
     },
@@ -689,7 +689,7 @@ export const SHOULDER_PAIN_CONTENT: ServicePageContent = {
       kind: "prose",
       heading: "Cold Laser Therapy for Shoulder Pain",
       paragraphs: [
-        "Cold laser therapy is another modality we use extensively for shoulder problems. Low-level laser light penetrates into the rotator cuff, joint capsule, and surrounding soft tissue to reduce inflammation, ease pain, and accelerate cellular repair. It is painless, has no downtime, and pairs exceptionally well with shockwave therapy \u2014 which is why we frequently use the two together for stubborn shoulder conditions.",
+        "Cold laser therapy is another modality we use extensively for shoulder problems. Low-level laser light penetrates into the rotator cuff, joint capsule, and surrounding soft tissue to reduce inflammation, ease pain, and accelerate cellular repair. It is painless, has no downtime, and pairs exceptionally well with shockwave therapy, which is why we frequently use the two together for stubborn shoulder conditions.",
       ],
     },
     {
@@ -1260,7 +1260,7 @@ export const BURSITIS_CONTENT: ServicePageContent = {
   serviceJsonLd: {
     name: "Bursitis Treatment",
     description:
-      "Non-surgical, integrative bursitis treatment for shoulder, elbow, hip, and other joints \u2014 combining physical examination, selective tissue testing, and conservative therapies to reduce inflammation and restore mobility.",
+      "Non-surgical, integrative bursitis treatment for shoulder, elbow, hip, and other joints, combining physical examination, selective tissue testing, and conservative therapies to reduce inflammation and restore mobility.",
     canonicalServiceUrl:
       "https://genesisintegrativemed.com/conditions-treated/bursitis/",
   },
@@ -1270,7 +1270,7 @@ export const BURSITIS_CONTENT: ServicePageContent = {
     {
       kind: "prose",
       paragraphs: [
-        "Bursitis condition that affects the small, fluid-filled sacs \u2014 called bursae\u2014 that cushion the bones, tendons and muscles near your joints. Bursitis occurs when bursae become inflamed. Whether it\u2019s the knee, shoulder, or ankle, bursitis can be painful and hold you back from your normal activities. Tendons are connective tissues found on either side of a joint. These tendons attach to muscles which control joint movement. Every joint also has a bursa. These fluid-filled sacs minimize the rubbing and resistance so your joints can move freely. It is because of this that these conditions can often go hand-in-hand.",
+        "Bursitis condition that affects the small, fluid-filled sacs, called bursae, that cushion the bones, tendons and muscles near your joints. Bursitis occurs when bursae become inflamed. Whether it\u2019s the knee, shoulder, or ankle, bursitis can be painful and hold you back from your normal activities. Tendons are connective tissues found on either side of a joint. These tendons attach to muscles which control joint movement. Every joint also has a bursa. These fluid-filled sacs minimize the rubbing and resistance so your joints can move freely. It is because of this that these conditions can often go hand-in-hand.",
         "The most common areas for bursitis are in the shoulder, elbow and hip. Bursitis is often times a painful condition that should be treated as soon as possible.",
         "Naturally, as we age, our bodies tend to become less flexible and make us more susceptible to conditions such as bursitis. Other health diagnosis such as diabetes and rheumatoid arthritis weaken body tissue, resulting in a higher risk of bursitis.",
         "Sometimes if you\u2019ve started a new activity, such as playing a new sport, you may be putting stress on parts of your body that aren\u2019t accustomed to it.",
@@ -1502,7 +1502,7 @@ export const ED_CONDITION_CONTENT: ServicePageContent = {
     h1: "Erectile Dysfunction (ED)",
     subtitle: "Restore Confidence, Strength, and Intimacy Naturally",
     intro:
-      "Erectile Dysfunction (ED) is one of the most common men\u2019s health challenges\u2014yet also one of the most treatable. At Genesis Integrative Medicine in Geneva, IL, we take a natural, comprehensive approach to addressing ED by treating its root causes and restoring optimal function and confidence.",
+      "Erectile Dysfunction (ED) is one of the most common men\u2019s health challenges, yet also one of the most treatable. At Genesis Integrative Medicine in Geneva, IL, we take a natural, comprehensive approach to addressing ED by treating its root causes and restoring optimal function and confidence.",
   },
   highlights: [
     { icon: "shield", label: "Non-invasive", note: "No pills, no surgery" },
@@ -1531,7 +1531,7 @@ export const ED_CONDITION_CONTENT: ServicePageContent = {
       heading: "Understanding Erectile Dysfunction",
       paragraphs: [
         "ED occurs when a man is unable to achieve or maintain an erection firm enough for sexual activity. While occasional difficulty is normal, frequent or ongoing ED can signal underlying issues such as poor circulation, hormone imbalance, or nerve dysfunction.",
-        "When left untreated, ED can impact self-esteem, relationships, and overall quality of life\u2014but effective solutions are available.",
+        "When left untreated, ED can impact self-esteem, relationships, and overall quality of life, but effective solutions are available.",
       ],
     },
     {
@@ -1568,7 +1568,7 @@ export const ED_CONDITION_CONTENT: ServicePageContent = {
         "Support long-term wellness and balance",
       ],
       outro:
-        "We treat the whole person, not just the symptom\u2014helping you feel confident, strong, and energized again.",
+        "We treat the whole person, not just the symptom, helping you feel confident, strong, and energized again.",
     },
     {
       kind: "prose",
@@ -1599,7 +1599,7 @@ export const ED_CONDITION_CONTENT: ServicePageContent = {
       heading: "Schedule Your Consultation Today",
       paragraphs: [
         "Living with erectile dysfunction can be discouraging, but you don\u2019t have to face it alone. A compassionate men\u2019s wellness specialist in Geneva, IL, is here to help you regain your confidence, restore performance, and improve your overall well-being.",
-        "At Genesis Integrative Medicine, we take a personalized, holistic approach to men\u2019s health\u2014addressing not just the symptoms of ED, but the underlying causes.",
+        "At Genesis Integrative Medicine, we take a personalized, holistic approach to men\u2019s health, addressing not just the symptoms of ED, but the underlying causes.",
         "Take the first step toward renewed vitality by scheduling your consultation today. Together, we\u2019ll identify the factors affecting your performance and create a custom treatment plan designed to help you feel your best again. With the right care, you can restore confidence, strengthen relationships, and enjoy a healthier, more active life.",
       ],
     },

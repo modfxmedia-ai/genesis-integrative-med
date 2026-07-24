@@ -48,7 +48,7 @@ export function HomeHero() {
 
   return (
     <section ref={ref} className="relative overflow-hidden bg-brand-mist">
-      {/* Background photo — blurred clinic reception (from live site) */}
+      {/* Background photo, blurred clinic reception (from live site) */}
       <Image
         src="/images/home/hero-clinic-bg.webp"
         alt=""
@@ -58,7 +58,7 @@ export function HomeHero() {
         sizes="100vw"
         className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
       />
-      {/* Legibility overlay — heavy white on left, softer on right */}
+      {/* Legibility overlay, heavy white on left, softer on right */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-white/50"
@@ -67,7 +67,7 @@ export function HomeHero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/70"
       />
-      {/* Static dot pattern — subtle on top of image */}
+      {/* Static dot pattern, subtle on top of image */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.08]"
@@ -155,7 +155,7 @@ export function HomeHero() {
           </StaggerItem>
         </Stagger>
 
-        {/* Visual — modern specialty card (no big photo tile) */}
+        {/* Visual, modern specialty card (no big photo tile) */}
         <motion.div
           ref={visualRef}
           className="lg:col-span-5"
@@ -253,7 +253,7 @@ export function HomeHero() {
             </div>
           </motion.div>
 
-          {/* Trust stats — pinned below the specialty card */}
+          {/* Trust stats, pinned below the specialty card */}
           <motion.dl
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -329,12 +329,12 @@ export function InsuranceStrip() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Services showcase — horizontal marquee                                     */
+/* Services showcase, horizontal marquee                                     */
 /* -------------------------------------------------------------------------- */
 
 export function ServicesShowcase() {
   const allItems = SERVICES_CATALOG;
-  // Featured shortlist — the rest live behind the "View all" button below.
+  // Featured shortlist, the rest live behind the "View all" button below.
   const items = allItems.slice(0, 6);
   const [active, setActive] = useState(0);
   const current = items[active];
@@ -405,7 +405,7 @@ export function ServicesShowcase() {
             <div className="sticky top-28 mx-auto flex max-w-[380px] flex-col">
               <Reveal>
                 <p className="max-w-xs text-sm leading-relaxed text-brand-ink/70">
-                  Safe, non-invasive care — combining advanced medicine with
+                  Safe, non-invasive care, combining advanced medicine with
                   holistic therapies to treat the root cause.
                 </p>
               </Reveal>
@@ -513,7 +513,7 @@ function ServiceRow({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Conditions showcase — horizontal marquee (reverse direction)                */
+/* Conditions showcase, horizontal marquee (reverse direction)                */
 /* -------------------------------------------------------------------------- */
 
 export function ConditionsShowcase() {
@@ -522,7 +522,7 @@ export function ConditionsShowcase() {
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reduce = useReducedMotion();
 
-  // Auto-scroll loop with seamless reset — items are duplicated in the DOM,
+  // Auto-scroll loop with seamless reset, items are duplicated in the DOM,
   // so when we hit the halfway mark we jump back to the equivalent position
   // and the visual is identical to before the jump.
   useEffect(() => {
@@ -573,7 +573,7 @@ export function ConditionsShowcase() {
               Conditions we treat
             </p>
             <h2 className="mt-3 max-w-xl text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
-              Care for the whole body — head to foot
+              Care for the whole body, head to foot
             </h2>
           </Reveal>
 
@@ -828,12 +828,12 @@ export function WhyIntegrativeMedicine() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Left — photo mosaic */}
+          {/* Left, photo mosaic */}
           <Reveal className="lg:col-span-6">
             <PhotoMosaic mosaic={mosaic} />
           </Reveal>
 
-          {/* Right — editorial copy */}
+          {/* Right, editorial copy */}
           <div className="lg:col-span-6">
             <Reveal>
               <div className="flex items-center gap-3">
@@ -1005,7 +1005,7 @@ function PhotoMosaic({ mosaic }: { mosaic: MosaicData }) {
       />
 
       <div className="relative grid grid-cols-12 grid-rows-[220px_140px] gap-3 sm:grid-rows-[280px_160px] sm:gap-4">
-        {/* Big portrait — spans 2 rows on the left */}
+        {/* Big portrait, spans 2 rows on the left */}
         <div className="relative col-span-7 row-span-2 overflow-hidden rounded-2xl shadow-lg shadow-brand-navy/10 ring-1 ring-brand-line">
           <Image
             src={mosaic.big.src}
@@ -1220,13 +1220,13 @@ function PhoneMiniIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Surgeries and Medication — dark comparison infographic                      */
+/* Surgeries and Medication, dark comparison infographic                      */
 /* -------------------------------------------------------------------------- */
 
 export function SurgeriesSection() {
   const reduce = useReducedMotion();
 
-  // Bullets pulled directly from the paragraphs' own phrasing —
+  // Bullets pulled directly from the paragraphs' own phrasing,
   // no new content, just a visual index of what's stated below.
   const conventional = [
     { label: "Surgery", Icon: ScalpelIcon },
@@ -1351,7 +1351,7 @@ export function SurgeriesSection() {
               </ul>
             </motion.div>
 
-            {/* Center connector — path draw animation */}
+            {/* Center connector, path draw animation */}
             <div className="relative flex items-center justify-center px-2 py-2 md:px-4">
               {/* Vertical divider on mobile / horizontal arrow on desktop */}
               <motion.svg
@@ -1494,7 +1494,7 @@ export function SurgeriesSection() {
           </div>
         </motion.div>
 
-        {/* Paragraphs — themed cards */}
+        {/* Paragraphs, themed cards */}
         <Stagger className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3" gap={0.09}>
           {SURGERIES_SECTION.paragraphs.map((p, i) => {
             const IconCmp = paragraphIcons[i];
@@ -1625,7 +1625,7 @@ export function UnlockPainFreeSection() {
                     className="relative block h-full overflow-hidden rounded-2xl bg-brand-ink shadow-md shadow-brand-navy/10 ring-1 ring-brand-line transition-all duration-500 hover:ring-brand-cyan/50 hover:shadow-2xl hover:shadow-brand-blue/25"
                   >
                     <div className="relative aspect-[4/5] overflow-hidden">
-                      {/* Base image — starts slightly desaturated + cool, blooms into full color on hover */}
+                      {/* Base image, starts slightly desaturated + cool, blooms into full color on hover */}
                       <Image
                         src={item.image}
                         alt={item.label}
@@ -1641,7 +1641,7 @@ export function UnlockPainFreeSection() {
                         className="absolute inset-0 bg-gradient-to-br from-brand-navy/25 via-transparent to-brand-blue/15 mix-blend-multiply opacity-70 transition-opacity duration-700 group-hover:opacity-0"
                       />
 
-                      {/* Cyan corner glow — sits in top-right, brightens on hover */}
+                      {/* Cyan corner glow, sits in top-right, brightens on hover */}
                       <div
                         aria-hidden
                         className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-cyan/25 blur-3xl opacity-40 transition-opacity duration-700 group-hover:opacity-90"
@@ -1706,7 +1706,7 @@ export function UnlockPainFreeSection() {
 export function DoctorSnippet() {
   const reduce = useReducedMotion();
 
-  // Discipline chips shown on the left column — animate in as pillars of care.
+  // Discipline chips shown on the left column, animate in as pillars of care.
   const pillars = [
     { label: "3 disciplines", icon: "layers" as const },
     { label: "1 clinic", icon: "roof" as const },
@@ -1726,7 +1726,7 @@ export function DoctorSnippet() {
   ];
 
   // Different vertical offsets create a staggered "wave" layout instead
-  // of a flat grid — first card down, middle card up, last card down.
+  // of a flat grid, first card down, middle card up, last card down.
   const offsets = ["lg:mt-10", "lg:-mt-4", "lg:mt-14"] as const;
 
   return (
@@ -1808,7 +1808,7 @@ export function DoctorSnippet() {
               </h2>
               <p className="mt-6 max-w-md text-base leading-relaxed text-brand-ink/70">
                 An osteopathic physician, chiropractor, and physicians assistant
-                working under one roof — so your treatment plan stays
+                working under one roof, so your treatment plan stays
                 coordinated and personal.
               </p>
             </Reveal>
@@ -2180,7 +2180,7 @@ export function ConditionsStripSection() {
 
         {/* Timeline */}
         <div className="relative mt-16">
-          {/* Central vertical line — desktop only */}
+          {/* Central vertical line, desktop only */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-brand-blue/30 to-transparent lg:block"
@@ -2215,7 +2215,7 @@ export function ConditionsStripSection() {
                     </span>
                   </motion.div>
 
-                  {/* Card — alternates left / right of the line */}
+                  {/* Card, alternates left / right of the line */}
                   <motion.div
                     initial={reduce ? false : { opacity: 0, x: isLeft ? -40 : 40 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -2289,7 +2289,7 @@ export function GetStartedSection() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-6">
             <div className="relative">
-              {/* Clean image tile — no gradient offset, just rounded frame + soft shadow */}
+              {/* Clean image tile, no gradient offset, just rounded frame + soft shadow */}
               <div className="relative overflow-hidden rounded-3xl bg-brand-ink shadow-2xl shadow-brand-navy/15">
                 <Image
                   src={GET_STARTED.image.src}
@@ -2303,7 +2303,7 @@ export function GetStartedSection() {
                   className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10"
                 />
               </div>
-              {/* Floating badge — modest, no colored panel behind image */}
+              {/* Floating badge, modest, no colored panel behind image */}
               <motion.div
                 initial={{ opacity: 0, y: -12 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -2356,7 +2356,7 @@ export function GetStartedSection() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Contact + Map — unified section with premium form frame                     */
+/* Contact + Map, unified section with premium form frame                     */
 /* -------------------------------------------------------------------------- */
 
 export function ContactSection() {
@@ -2389,7 +2389,7 @@ export function ContactSection() {
               {HOME_CONTACT.heading}
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-brand-ink/70">
-              Book online, call us, or send a message — we&apos;ll get back to
+              Book online, call us, or send a message, we&apos;ll get back to
               you the same business day.
             </p>
           </Reveal>
@@ -2438,7 +2438,7 @@ export function ContactSection() {
               <div className="relative h-full min-h-[380px] overflow-hidden rounded-3xl border border-brand-line bg-brand-ink shadow-xl shadow-brand-navy/15">
                 <iframe
                   src={mapEmbedUrl}
-                  title="Genesis Integrative Medicine — Geneva, IL"
+                  title="Genesis Integrative Medicine, Geneva, IL"
                   className="absolute inset-0 h-full w-full"
                   style={{ border: 0, filter: "grayscale(10%) contrast(0.98)" }}
                   loading="lazy"
@@ -2486,7 +2486,7 @@ export function ContactSection() {
               </div>
             </Reveal>
 
-            {/* Info cards — single column on mobile, 2×2 on sm+ */}
+            {/* Info cards, single column on mobile, 2×2 on sm+ */}
             <Stagger className="grid grid-cols-1 gap-3 sm:grid-cols-2" gap={0.08}>
               <StaggerItem className="h-full">
                 <InfoCard

@@ -114,7 +114,7 @@ const PROVIDERS = [
     title: "Chiropractic & Physical Medicine",
     image: {
       src: "/images/providers/nathan-conroy.png",
-      alt: "Nathan Conroy, DC \u2014 Chiropractic & Physical Medicine at Genesis Integrative Medicine",
+      alt: "Nathan Conroy, DC, Chiropractic & Physical Medicine at Genesis Integrative Medicine",
       width: 800,
       height: 1000,
     },
@@ -130,7 +130,7 @@ const PROVIDERS = [
     title: "Physicians Assistant",
     image: {
       src: "/images/providers/jeff-floyd.jpg",
-      alt: "Jeff Floyd, PA \u2014 Physicians Assistant at Genesis Integrative Medicine",
+      alt: "Jeff Floyd, PA, Physicians Assistant at Genesis Integrative Medicine",
       width: 800,
       height: 1000,
     },

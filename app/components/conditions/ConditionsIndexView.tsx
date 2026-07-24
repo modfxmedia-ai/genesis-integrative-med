@@ -20,7 +20,7 @@ import { CONTACT } from "@/app/lib/site-config";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * /conditions-treated/ index — hero + 14-card grid + consultation CTA + mission.
+ * /conditions-treated/ index, hero + 14-card grid + consultation CTA + mission.
  */
 export default function ConditionsIndexView() {
   return (

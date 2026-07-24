@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * JSON-LD graph — replicated from the live homepage per the migration brief.
+ * JSON-LD graph, replicated from the live homepage per the migration brief.
  * Values preserved verbatim; only @id / url resolve to the canonical origin.
  * Two data inconsistencies on the live source are preserved unchanged
  * (flagged in the migration notes):

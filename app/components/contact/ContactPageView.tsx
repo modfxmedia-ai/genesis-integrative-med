@@ -17,7 +17,7 @@ import { INSURANCE_MISSION } from "@/app/lib/services-content";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * /contact/ — mirrors the live page (https://genesisintegrativemed.com/contact/)
+ * /contact/, mirrors the live page (https://genesisintegrativemed.com/contact/)
  * with our design system + motion primitives.
  *
  * Content preserved from the live page:
@@ -31,8 +31,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  *
  * The live page embeds two LeadConnectorHQ forms in addition to the
  * Book Now widget:
- *   • Primary "Website Form"       (form id ui8Cws8VEvRRDMpmSR8J) — height 827
- *   • Secondary "Contact Us!" form (form id ToXLBiqT0qS6iABzJ9HD) — height 754
+ *   • Primary "Website Form"       (form id ui8Cws8VEvRRDMpmSR8J), height 827
+ *   • Secondary "Contact Us!" form (form id ToXLBiqT0qS6iABzJ9HD), height 754
  * Both are reproduced verbatim below so patients see the exact same
  * intake experience. The Book Now widget above keeps the calendar-based
  * scheduling flow already wired into `CONTACT.bookingUrl`.
@@ -303,7 +303,7 @@ function BookingSection() {
                   {[
                     "Same-week appointments are often available",
                     "New and returning patients welcome",
-                    "Insurance-friendly options — see our billing team on arrival",
+                    "Insurance-friendly options, see our billing team on arrival",
                   ].map((line) => (
                     <li key={line} className="flex items-start gap-2">
                       <CheckIcon
@@ -374,7 +374,7 @@ function BookingSection() {
                 <div className="relative bg-white">
                   <iframe
                     src={BOOKING_SRC}
-                    title="Genesis Integrative Medicine — Book Now"
+                    title="Genesis Integrative Medicine, Book Now"
                     loading="lazy"
                     className="block h-[820px] w-full border-0"
                     scrolling="yes"
@@ -433,7 +433,7 @@ function WebsiteFormSection() {
               </h2>
               <p className="mt-6 text-base leading-relaxed text-brand-ink/70">
                 Share a few details and our team will reach out with the next
-                step &mdash; whether you&rsquo;re curious about a specific
+                step, whether you&rsquo;re curious about a specific
                 therapy, need help picking a time, or just want to talk to a
                 real person about your goals.
               </p>
@@ -495,7 +495,7 @@ function WebsiteFormSection() {
           <div className="lg:col-span-7">
             <ContactFormEmbed
               src={WEBSITE_FORM_SRC}
-              title="Genesis Integrative Medicine — Patient Intake"
+              title="Genesis Integrative Medicine, Patient Intake"
               height={860}
               label="Patient Intake"
               sublabel="Secure intake"

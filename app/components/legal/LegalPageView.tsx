@@ -173,7 +173,7 @@ function Hero({ hero }: { hero: LegalPage["hero"] }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Body — sticky TOC on left, prose on right                                   */
+/* Body, sticky TOC on left, prose on right                                   */
 /* -------------------------------------------------------------------------- */
 
 function BodyLayout({ page }: { page: LegalPage }) {

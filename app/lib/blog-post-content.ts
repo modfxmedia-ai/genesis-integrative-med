@@ -9,7 +9,7 @@
 
 export type ParagraphBlock = {
   readonly kind: "paragraph";
-  /** Text content. Use \u2019 for apostrophes and \u2014 for em-dashes. */
+  /** Text content. Use \u2019 for apostrophes and, for em-dashes. */
   readonly text: string;
 };
 
@@ -37,7 +37,7 @@ export type PostNavRef = {
 };
 
 export type BlogPostContent = {
-  /** URL slug — matches live root-level path (no leading/trailing slashes). */
+  /** URL slug, matches live root-level path (no leading/trailing slashes). */
   readonly slug: string;
   /** H1 shown on the page. */
   readonly title: string;
@@ -101,14 +101,14 @@ export function sectionAnchor(heading: string): string {
 export const LIVING_WITH_NEUROPATHY_POST: BlogPostContent = {
   slug: "living-with-neuropathy-when-seek-treatment",
   title: "Living with Neuropathy in Geneva: When to Seek Treatment",
-  dek: "Burning feet, tingling toes, or that \u201Cwalking-on-broken-glass\u201D feeling? Here\u2019s how to tell when nerve symptoms need real attention \u2014 and how integrative care can help protect what\u2019s still healthy.",
+  dek: "Burning feet, tingling toes, or that \u201Cwalking-on-broken-glass\u201D feeling? Here\u2019s how to tell when nerve symptoms need real attention, and how integrative care can help protect what\u2019s still healthy.",
   date: "2026-07-05",
   modifiedDate: "2026-07-05",
   category: "Neuropathy",
   readTime: "6 min read",
   image: {
     src: "/images/blog/living-with-neuropathy-when-seek-treatment.jpg",
-    alt: "Person massaging aching feet on a bed \u2014 living with neuropathy symptoms",
+    alt: "Person massaging aching feet on a bed, living with neuropathy symptoms",
   },
   sections: [
     {
@@ -360,7 +360,7 @@ export const HOW_PRP_ARTHRITIS_POST: BlogPostContent = {
   readTime: "4 min read",
   image: {
     src: "/images/blog/how-prp-is-revolutionizing-arthritis-treatment.jpg",
-    alt: "Doctor examining an arthritic knee joint \u2014 PRP therapy for arthritis relief",
+    alt: "Doctor examining an arthritic knee joint, PRP therapy for arthritis relief",
   },
   sections: [
     {
@@ -372,7 +372,7 @@ export const HOW_PRP_ARTHRITIS_POST: BlogPostContent = {
         },
         {
           kind: "paragraph",
-          text: "The frustration that comes with aching joints and limited mobility is only topped by the frustrating lack of effective treatments \u2014 until now. New regenerative technology is showing great promise in cracking the arthritis puzzle.",
+          text: "The frustration that comes with aching joints and limited mobility is only topped by the frustrating lack of effective treatments, until now. New regenerative technology is showing great promise in cracking the arthritis puzzle.",
         },
         {
           kind: "paragraph",
@@ -393,7 +393,7 @@ export const HOW_PRP_ARTHRITIS_POST: BlogPostContent = {
         },
         {
           kind: "paragraph",
-          text: "Otherwise known as degenerative arthritis, osteoarthritis results in the breakdown of the articular cartilage in your joints \u2014 the slippery substance that covers the ends of your bones, allowing them to glide together smoothly.",
+          text: "Otherwise known as degenerative arthritis, osteoarthritis results in the breakdown of the articular cartilage in your joints, the slippery substance that covers the ends of your bones, allowing them to glide together smoothly.",
         },
         {
           kind: "paragraph",
@@ -521,7 +521,7 @@ export const LASER_LIPO_POST: BlogPostContent = {
         },
         {
           kind: "paragraph",
-          text: "Before getting laser lipo, it is wise to avoid certain foods and supplements that could increase the risk of bruising, such as tobacco smoking, which reduces blood flow to the area and can create complications during recovery. Furthermore, it is also wise to drink enough water throughout your session to stay hydrated \u2014 this will help flush out fat cells more effectively and speed up recovery time. Learn more about this innovative laser belly fat removal therapy by contacting one of our laser lipo therapy experts at Genesis Integrative Medicine today!",
+          text: "Before getting laser lipo, it is wise to avoid certain foods and supplements that could increase the risk of bruising, such as tobacco smoking, which reduces blood flow to the area and can create complications during recovery. Furthermore, it is also wise to drink enough water throughout your session to stay hydrated, this will help flush out fat cells more effectively and speed up recovery time. Learn more about this innovative laser belly fat removal therapy by contacting one of our laser lipo therapy experts at Genesis Integrative Medicine today!",
         },
       ],
     },
@@ -543,7 +543,7 @@ export const LASER_LIPO_POST: BlogPostContent = {
       blocks: [
         {
           kind: "paragraph",
-          text: "The therapy of laser liposuction for weight loss has a shorter recovery period than traditional liposuction; patients typically return to work and other activities within days. Lasers not only reduce fat, but they can also tighten the skin in the treatment area. This is particularly beneficial for people with loose skin after weight loss \u2014 the heat generated from lasers helps stimulate new collagen production for tight and sculpted-looking skin.",
+          text: "The therapy of laser liposuction for weight loss has a shorter recovery period than traditional liposuction; patients typically return to work and other activities within days. Lasers not only reduce fat, but they can also tighten the skin in the treatment area. This is particularly beneficial for people with loose skin after weight loss, the heat generated from lasers helps stimulate new collagen production for tight and sculpted-looking skin.",
         },
         {
           kind: "paragraph",
@@ -614,14 +614,14 @@ export const LASER_LIPO_POST: BlogPostContent = {
 export const CAUSES_OF_KNEE_PAIN_POST: BlogPostContent = {
   slug: "causes-of-knee-pain",
   title: "Must-know Causes of Knee Pain and the Best-suited Treatments",
-  dek: "From ligament injuries to arthritis, understanding what\u2019s behind your knee pain is the first step toward the right treatment. Here\u2019s what our Geneva team looks for \u2014 and how we help.",
+  dek: "From ligament injuries to arthritis, understanding what\u2019s behind your knee pain is the first step toward the right treatment. Here\u2019s what our Geneva team looks for, and how we help.",
   date: "2024-02-05",
   modifiedDate: "2024-02-05",
   category: "Knee Pain",
   readTime: "6 min read",
   image: {
     src: "/images/blog/causes-of-knee-pain.jpg",
-    alt: "Person holding their knee in pain \u2014 causes of knee pain and treatments",
+    alt: "Person holding their knee in pain, causes of knee pain and treatments",
   },
   sections: [
     {
@@ -751,11 +751,11 @@ export const CAUSES_OF_KNEE_PAIN_POST: BlogPostContent = {
         },
         {
           kind: "paragraph",
-          text: "Acoustic waves promote blood flow, increase metabolism in injured tissue, and break down scar tissue \u2014 especially within tendon-bone attachments such as the iliotibial band (pain on the outside of the knee) and patellar tendonitis (pain behind the knee). They may even help break up kidney stones.",
+          text: "Acoustic waves promote blood flow, increase metabolism in injured tissue, and break down scar tissue, especially within tendon-bone attachments such as the iliotibial band (pain on the outside of the knee) and patellar tendonitis (pain behind the knee). They may even help break up kidney stones.",
         },
         {
           kind: "paragraph",
-          text: "At Genesis Integrative Medicine, our specialized pain management team offers EPAT sessions at regular intervals. Contact us now to schedule your consultation \u2014 after just a few sessions, you may feel less pain and more mobility!",
+          text: "At Genesis Integrative Medicine, our specialized pain management team offers EPAT sessions at regular intervals. Contact us now to schedule your consultation, after just a few sessions, you may feel less pain and more mobility!",
         },
       ],
     },
@@ -800,13 +800,13 @@ export const CAUSES_OF_KNEE_PAIN_POST: BlogPostContent = {
 export const PRP_ATHLETES_POST: BlogPostContent = {
   slug: "prp-treatment-for-athletes",
   title: "Enhancing Performance and Recovery: PRP Treatment for Athletes",
-  dek: "A progressive approach gaining traction with competitive athletes \u2014 how platelet-rich plasma therapy targets ligament, tendon, muscle, and joint injuries to speed recovery and support peak performance.",
+  dek: "A progressive approach gaining traction with competitive athletes, how platelet-rich plasma therapy targets ligament, tendon, muscle, and joint injuries to speed recovery and support peak performance.",
   date: "2024-03-01",
   category: "PRP",
   readTime: "5 min read",
   image: {
     src: "/images/blog/prp-treatment-for-athletes.jpg",
-    alt: "Athlete training on a track \u2014 PRP treatment for sports recovery",
+    alt: "Athlete training on a track, PRP treatment for sports recovery",
   },
   sections: [
     {

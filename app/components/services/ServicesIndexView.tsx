@@ -22,7 +22,7 @@ import { CONTACT } from "@/app/lib/site-config";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * /services/ index — hero + featured services grid + consultation CTA + mission.
+ * /services/ index, hero + featured services grid + consultation CTA + mission.
  * Renders the same 11 cards from the live site with verbatim descriptions.
  */
 export default function ServicesIndexView() {

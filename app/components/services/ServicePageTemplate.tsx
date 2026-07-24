@@ -188,7 +188,7 @@ function BreadcrumbBar({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Hero — content left, motion-driven image right                             */
+/* Hero, content left, motion-driven image right                             */
 /* -------------------------------------------------------------------------- */
 
 function ServiceHero({ content }: { content: ServicePageContent }) {
@@ -421,7 +421,7 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10"
               />
-              {/* Shine sweep — one-shot on mount */}
+              {/* Shine sweep, one-shot on mount */}
               {!reduce && (
                 <motion.div
                   aria-hidden
@@ -566,7 +566,7 @@ function isEditorialProse(
 }
 
 /* -------------------------------------------------------------------------- */
-/* Editorial prose section — sticky label + body copy (About-style)           */
+/* Editorial prose section, sticky label + body copy (About-style)           */
 /* -------------------------------------------------------------------------- */
 
 function EditorialProseSection({
@@ -614,7 +614,7 @@ function EditorialProseSection({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Centered prose section — short prose blocks                                */
+/* Centered prose section, short prose blocks                                */
 /* -------------------------------------------------------------------------- */
 
 function CenteredProseSection({
@@ -651,7 +651,7 @@ function CenteredProseSection({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Editorial list section — sticky heading + checklist cards                  */
+/* Editorial list section, sticky heading + checklist cards                  */
 /* -------------------------------------------------------------------------- */
 
 function EditorialListSection({
@@ -745,7 +745,7 @@ function ListItems({ items }: { items: readonly string[] }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Subsections cards section — like About's PillarsBlock                      */
+/* Subsections cards section, like About's PillarsBlock                      */
 /* -------------------------------------------------------------------------- */
 
 function SubsectionsCardsSection({
@@ -882,7 +882,7 @@ function SubCard({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Benefits cards section — numbered feature cards                             */
+/* Benefits cards section, numbered feature cards                             */
 /* -------------------------------------------------------------------------- */
 
 function BenefitsCardsSection({
@@ -965,7 +965,7 @@ function BenefitsCardsSection({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Dark feature section — text-only immersive strip                           */
+/* Dark feature section, text-only immersive strip                           */
 /* -------------------------------------------------------------------------- */
 
 function DarkFeatureSection({ section }: { section: ServiceSection }) {
@@ -1192,7 +1192,7 @@ function SectionHeader({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Sidebar layout — text-only left column, sticky related-nav on the right    */
+/* Sidebar layout, text-only left column, sticky related-nav on the right    */
 /* -------------------------------------------------------------------------- */
 
 function SidebarLayout({ content }: { content: ServicePageContent }) {
@@ -1389,7 +1389,7 @@ function LinearSectionBody({ section }: { section: ServiceSection }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Conditions Sidebar — sticky right-column nav in sidebar layout             */
+/* Conditions Sidebar, sticky right-column nav in sidebar layout             */
 /* -------------------------------------------------------------------------- */
 
 function ConditionsSidebar({

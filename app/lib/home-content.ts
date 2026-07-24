@@ -15,7 +15,7 @@ export const HOME_META = {
 } as const;
 
 export const HERO = {
-  kicker: "Integrative Medicine — Geneva, IL",
+  kicker: "Integrative Medicine, Geneva, IL",
   siteTitle: "Genesis Integrative Medicine",
   headline: "Geneva\u2019s Trusted Partner in Wellness",
   intro:
@@ -30,7 +30,7 @@ export const HERO = {
 } as const;
 
 /**
- * Service preview cards — headline services featured on the homepage.
+ * Service preview cards, headline services featured on the homepage.
  * Shockwave Therapy and Cold Laser are two of our most-used in-office
  * modalities and lead the row.
  */
@@ -38,13 +38,13 @@ export const SERVICE_CARDS = [
   {
     title: "Shockwave Therapy",
     body:
-      "One of our most-requested treatments. Non-invasive acoustic-wave therapy for stubborn elbow, wrist, hip, knee, shoulder, and plantar fasciitis pain \u2014 real healing without drugs or surgery.",
+      "One of our most-requested treatments. Non-invasive acoustic-wave therapy for stubborn elbow, wrist, hip, knee, shoulder, and plantar fasciitis pain, real healing without drugs or surgery.",
     href: "/services/shockwave-therapy/",
   },
   {
     title: "Cold Laser",
     body:
-      "FDA-approved low-level laser therapy we use every day to calm inflammation, speed tissue repair, and relieve chronic joint, tendon, and nerve pain \u2014 pairs beautifully with shockwave.",
+      "FDA-approved low-level laser therapy we use every day to calm inflammation, speed tissue repair, and relieve chronic joint, tendon, and nerve pain, pairs beautifully with shockwave.",
     href: "/services/cold-laser/",
   },
   {
@@ -67,7 +67,7 @@ export const WHY_INTEGRATIVE = {
   /** Word within `heading` to receive the accent underline highlight. */
   highlightWord: "Integrative",
   paragraphs: [
-    "Genesis Integrative Medicine takes an approach to health care designed to solve an age-old problem for patients \u2014 too many doctors and a lack of communication between them.",
+    "Genesis Integrative Medicine takes an approach to health care designed to solve an age-old problem for patients, too many doctors and a lack of communication between them.",
     "At Genesis Integrative Medicine, patients in Geneva, Illinois, have access to both traditional medical services and alternative therapies like chiropractic care for a variety of conditions, all under the same roof. The result is a cutting-edge, integrated solution to health care and disease prevention with experienced and skilled providers who work together to ensure optimum health.",
     "We strive to get to the root of your health concerns, utilizing a holistic approach that considers the mind, body, and soul.",
   ],
@@ -83,7 +83,7 @@ export const WHY_INTEGRATIVE = {
   mosaic: {
     big: {
       src: "/images/AdobeStock_212058440.webp",
-      alt: "Active patient training outdoors \u2014 whole-body wellness",
+      alt: "Active patient training outdoors, whole-body wellness",
     },
     small1: {
       src: "/images/images.jpeg",
@@ -268,12 +268,12 @@ export const GET_STARTED = {
 export const HOME_CONTACT = {
   heading: "Contact Us",
   formEmbed: {
-    // Primary LeadConnector intake form from the live site — the same one
+    // Primary LeadConnector intake form from the live site, the same one
     // used on /contact/ so patients get an identical experience and all
     // submissions land in the practice's existing automation pipeline.
     src: "https://api.leadconnectorhq.com/widget/form/ui8Cws8VEvRRDMpmSR8J",
     height: 860,
-    title: "Genesis Integrative Medicine \u2014 Patient Intake",
+    title: "Genesis Integrative Medicine, Patient Intake",
   },
 } as const;
 
@@ -300,7 +300,7 @@ export const REVIEWS_BADGE = {
 } as const;
 
 /**
- * Full conditions catalog — image + title for every condition on the
+ * Full conditions catalog, image + title for every condition on the
  * live /conditions-treated/ index page. Images stored in /public/images/conditions/.
  * Order mirrors the live page's card grid; links point to internal routes.
  */
@@ -321,7 +321,7 @@ export const CONDITIONS_CATALOG = [
 ] as const;
 
 /**
- * Full services catalog — image + title for every service on the
+ * Full services catalog, image + title for every service on the
  * live /services/ index page, mapped to our internal routes.
  * Images stored in /public/images/services/.
  */

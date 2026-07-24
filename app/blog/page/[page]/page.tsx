@@ -16,7 +16,7 @@ type PageProps = {
 
 export async function generateStaticParams(): Promise<{ page: string }[]> {
   const total = totalBlogPages();
-  // Page 1 is served by /blog/page.tsx — start at 2.
+  // Page 1 is served by /blog/page.tsx, start at 2.
   const params: { page: string }[] = [];
   for (let p = 2; p <= total; p += 1) {
     params.push({ page: String(p) });
@@ -30,7 +30,7 @@ export async function generateMetadata({
   const { page } = await params;
   const num = Number(page);
   const canonical = `${SITE_ORIGIN}/blog/page/${num}/`;
-  const title = `${BLOG_INDEX_META.title} — Page ${num}`;
+  const title = `${BLOG_INDEX_META.title}, Page ${num}`;
   return {
     title,
     description: BLOG_INDEX_META.description,
@@ -70,7 +70,7 @@ export default async function BlogPageNumber({ params }: PageProps) {
           "@type": ["CollectionPage", "Blog"],
           "@id": canonical,
           url: canonical,
-          name: `${BLOG_INDEX_META.title} — Page ${num}`,
+          name: `${BLOG_INDEX_META.title}, Page ${num}`,
           isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
           description: BLOG_INDEX_META.description,
           breadcrumb: { "@id": `${canonical}#breadcrumb` },

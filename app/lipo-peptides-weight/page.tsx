@@ -4,7 +4,7 @@ import ServicePageTemplate from "@/app/components/services/ServicePageTemplate";
 import type { ServicePageContent } from "@/app/lib/services-content";
 
 /**
- * /lipo-peptides-weight/ — root-level route mirroring the live page at
+ * /lipo-peptides-weight/, root-level route mirroring the live page at
  * https://genesisintegrativemed.com/lipo-peptides-weight/.
  *
  * All H2 sections, body copy, and the "Conditions Treated" sidebar are
@@ -180,7 +180,7 @@ const CONTENT: ServicePageContent = {
   serviceJsonLd: {
     name: "Lipo Peptides for Weight Loss",
     description:
-      "Lipo peptides for weight loss in Geneva at Genesis Integrative Medicine \u2014 a holistic, personalized program combining lipotropic peptide therapy with nutritional counseling and lifestyle coaching to support sustainable fat loss.",
+      "Lipo peptides for weight loss in Geneva at Genesis Integrative Medicine, a holistic, personalized program combining lipotropic peptide therapy with nutritional counseling and lifestyle coaching to support sustainable fat loss.",
     canonicalServiceUrl: CANONICAL,
   },
 };

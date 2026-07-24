@@ -14,7 +14,7 @@ import {
 } from "@/app/lib/site-config";
 
 /**
- * Sticky site header — one-line desktop layout with hover/keyboard dropdowns
+ * Sticky site header, one-line desktop layout with hover/keyboard dropdowns
  * for "Conditions Treated" and "Services", collapsible mobile drawer with
  * accordion sub-menus, and scroll-triggered backdrop.
  */
@@ -90,7 +90,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            aria-label={`${BRAND.name} — Home`}
+            aria-label={`${BRAND.name}, Home`}
             className="flex shrink-0 items-center transition-transform hover:scale-[1.02]"
           >
             <Image
@@ -103,7 +103,7 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop nav — kept on one line */}
+          {/* Desktop nav, kept on one line */}
           <nav
             aria-label="Primary"
             className="hidden flex-1 items-center justify-center lg:flex"
@@ -305,7 +305,7 @@ function NavItemDesktop({
         }
       }}
     >
-      {/* Parent label — navigates to the index page (e.g. /services/, /conditions-treated/).
+      {/* Parent label, navigates to the index page (e.g. /services/, /conditions-treated/).
           The chevron sibling toggles the dropdown on click / keyboard; hover opens it automatically. */}
       <div
         className={`${baseLinkClasses} ${stateClasses} group/parent gap-0 pr-1`}
@@ -402,7 +402,7 @@ function NavItemDesktop({
                   </li>
                 )}
               </ul>
-              {/* Book Appointment CTA — always one click away */}
+              {/* Book Appointment CTA, always one click away */}
               <a
                 href={CONTACT.bookingUrl}
                 target="_blank"

@@ -175,7 +175,7 @@ function Hero() {
         <Reveal delay={0.1}>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-brand-ink/70 sm:text-lg">
             Articles on chiropractic care, regenerative medicine, weight loss,
-            neuropathy, sciatica and more &mdash; written for patients in
+            neuropathy, sciatica and more, written for patients in
             Geneva, IL and the surrounding Fox Valley communities.
           </p>
         </Reveal>

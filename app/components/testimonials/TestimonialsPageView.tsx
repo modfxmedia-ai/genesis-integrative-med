@@ -16,11 +16,11 @@ import { CONSULTATION_CTA, INSURANCE_MISSION } from "@/app/lib/services-content"
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * /testimonials/ — a redesigned CTA-first page pointing to the practice's
+ * /testimonials/, a redesigned CTA-first page pointing to the practice's
  * live Google Reviews profile.
  *
  * The live page (https://genesisintegrativemed.com/testimonials/) only ships
- * one static line — "Over 200 5-Star Google Reviews" — plus two links
+ * one static line, "Over 200 5-Star Google Reviews", plus two links
  * ("View All Reviews" / "Write a Review"). Individual review text and star
  * ratings are rendered client-side via an embedded Google Reviews widget and
  * are not part of the page source. To honor the "no fabrication" requirement,
@@ -187,7 +187,7 @@ function Hero() {
         <Reveal delay={0.15}>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-brand-ink/70 sm:text-lg">
             Real, verified reviews from our patients across Geneva, IL and the
-            surrounding Fox Valley &mdash; hosted on Google so every word is in
+            surrounding Fox Valley, hosted on Google so every word is in
             their own voice, unedited and unfiltered.
           </p>
         </Reveal>
@@ -260,7 +260,7 @@ function HighlightsStrip() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Reviews CTA — mirrors what actually lives on the page                       */
+/* Reviews CTA, mirrors what actually lives on the page                       */
 /* -------------------------------------------------------------------------- */
 
 function ReviewsCTA() {
@@ -299,7 +299,7 @@ function ReviewsCTA() {
                 </h2>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-ink/75 sm:text-lg">
                   Every review on our profile is written by an actual patient
-                  and verified by Google &mdash; nothing curated, nothing
+                  and verified by Google, nothing curated, nothing
                   cherry-picked. Read what your neighbors are saying, then add
                   your own experience if we&rsquo;ve had the privilege of
                   caring for you.
@@ -416,7 +416,7 @@ function TrustBlock() {
               },
               {
                 title: "Nothing hidden",
-                body: "You&rsquo;ll see every rating &mdash; not just the five-star ones. Full transparency, always.",
+                body: "You&rsquo;ll see every rating, not just the five-star ones. Full transparency, always.",
                 icon: "eye" as const,
               },
               {
@@ -426,7 +426,7 @@ function TrustBlock() {
               },
               {
                 title: "Updated live",
-                body: "New reviews appear on Google the moment they&rsquo;re posted &mdash; no delay, no gatekeeper.",
+                body: "New reviews appear on Google the moment they&rsquo;re posted, no delay, no gatekeeper.",
                 icon: "spark" as const,
               },
             ].map((c) => (

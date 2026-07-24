@@ -22,7 +22,7 @@ import { CONSULTATION_CTA, INSURANCE_MISSION } from "@/app/lib/services-content"
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * /about-practice/ — full replica of the live page with the redesigned
+ * /about-practice/, full replica of the live page with the redesigned
  * cards + motion system. All body copy preserved verbatim from
  * https://genesisintegrativemed.com/about-practice/
  */
@@ -34,7 +34,7 @@ const HERO = {
 } as const;
 
 const BODY_PARAGRAPHS = [
-  "Genesis Integrative Medicine takes an approach to health care designed to solve an age-old problem for patients \u2014 too many doctors and a lack of communication between them. At Genesis Integrative Medicine, patients in Geneva, Illinois, have access to both traditional medical services and alternative therapies like chiropractic care for a variety of conditions, all under the same roof. The result is a cutting-edge, integrated solution to health care and disease prevention with experienced and skilled providers who work together to ensure optimum health.",
+  "Genesis Integrative Medicine takes an approach to health care designed to solve an age-old problem for patients, too many doctors and a lack of communication between them. At Genesis Integrative Medicine, patients in Geneva, Illinois, have access to both traditional medical services and alternative therapies like chiropractic care for a variety of conditions, all under the same roof. The result is a cutting-edge, integrated solution to health care and disease prevention with experienced and skilled providers who work together to ensure optimum health.",
   "The team at Genesis Integrative Medicine features health providers who are board-certified in many areas of health care to provide the highest quality of care. Using an integrative approach, the compassionate staff is well-equipped to address issues like chronic joint pain, neck pain, back pain, and migraines, often without relying on medications or the need for surgery.",
   "In an effort to expand its services, Genesis Integrative Medicine has combined the latest treatment options, like platelet-rich plasma (PRP) therapy, regenerative medicine, and cold laser therapy, with traditional active rehab and chiropractic care. The goal of this integrative approach is to address chronic pain and mobility issues while enhancing their patients\u2019 overall quality of life.",
   "In addition to the advanced technologies available, the Genesis Integrative Medicine team also provides services to help patients enhance and maintain good physical, mental, and emotional health through on-site allergy testing and medical weight loss programs.",
@@ -65,7 +65,7 @@ const HIGHLIGHTS = [
 ] as const;
 
 /**
- * "Pillars" of the practice — cards summarizing the four service families
+ * "Pillars" of the practice, cards summarizing the four service families
  * mentioned in the About body. Titles/copy derived directly from the body copy
  * (no invented content), formatted as cards for scanability.
  */
@@ -73,14 +73,14 @@ const PILLARS = [
   {
     title: "Traditional Medical Services",
     body:
-      "Board-certified providers deliver chronic joint pain, neck pain, back pain, and migraine care using conventional medical approaches \u2014 without over-reliance on medications or surgery.",
+      "Board-certified providers deliver chronic joint pain, neck pain, back pain, and migraine care using conventional medical approaches, without over-reliance on medications or surgery.",
     icon: "stethoscope" as const,
     accent: "from-brand-navy to-brand-blue",
   },
   {
     title: "Chiropractic & Alternative Therapies",
     body:
-      "Chiropractic care and complementary therapies alongside traditional treatment, all in the same clinic \u2014 no more running between offices with no communication between them.",
+      "Chiropractic care and complementary therapies alongside traditional treatment, all in the same clinic, no more running between offices with no communication between them.",
     icon: "spine" as const,
     accent: "from-brand-blue to-brand-cyan",
   },
@@ -106,7 +106,7 @@ const PROVIDERS = [
     title: "Chiropractic & Physical Medicine",
     image: {
       src: "/images/providers/nathan-conroy.png",
-      alt: "Nathan Conroy, DC \u2014 Chiropractic & Physical Medicine at Genesis Integrative Medicine",
+      alt: "Nathan Conroy, DC, Chiropractic & Physical Medicine at Genesis Integrative Medicine",
     },
     href: "/our-providers/",
   },
@@ -115,7 +115,7 @@ const PROVIDERS = [
     title: "Physicians Assistant",
     image: {
       src: "/images/providers/jeff-floyd.jpg",
-      alt: "Jeff Floyd, PA \u2014 Physicians Assistant at Genesis Integrative Medicine",
+      alt: "Jeff Floyd, PA, Physicians Assistant at Genesis Integrative Medicine",
     },
     href: "/our-providers/",
   },
@@ -124,7 +124,7 @@ const PROVIDERS = [
     title: "Clinic Director",
     image: {
       src: "/images/providers/anthony-leazzo.webp",
-      alt: "Dr. Anthony Leazzo, DO \u2014 Clinic Director at Genesis Integrative Medicine",
+      alt: "Dr. Anthony Leazzo, DO, Clinic Director at Genesis Integrative Medicine",
     },
     href: "/our-providers/",
   },
@@ -236,7 +236,7 @@ function Hero() {
         </Reveal>
         <Reveal delay={0.15}>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-brand-ink/70 sm:text-lg">
-            One clinic. One team. One coordinated plan for your health \u2014 combining
+            One clinic. One team. One coordinated plan for your health, combining
             traditional medicine with chiropractic, regenerative therapies and wellness
             programs, all under the same roof in Geneva, IL.
           </p>
@@ -304,7 +304,7 @@ function HighlightsStrip() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Story block — original body copy in a modern editorial layout              */
+/* Story block, original body copy in a modern editorial layout              */
 /* -------------------------------------------------------------------------- */
 
 function StoryBlock() {
@@ -384,14 +384,14 @@ function QuoteCard() {
         integrative approach to achieving a happy, pain-free life.&rdquo;
       </p>
       <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-blue">
-        &mdash; Dr. Anthony Leazzo, DO
+        Dr. Anthony Leazzo, DO
       </p>
     </div>
   );
 }
 
 /* -------------------------------------------------------------------------- */
-/* Pillars block — 4 service families as cards                                */
+/* Pillars block, 4 service families as cards                                */
 /* -------------------------------------------------------------------------- */
 
 function PillarsBlock() {

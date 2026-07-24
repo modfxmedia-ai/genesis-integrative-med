@@ -95,7 +95,7 @@ export const CONTACT = {
     cityState: "Geneva, IL 60134",
   },
   mapsUrl: "https://goo.gl/maps/RSX6cJCWCLsvrzt37",
-  // Google Maps directions URL — opens native maps app on mobile,
+  // Google Maps directions URL, opens native maps app on mobile,
   // otherwise routes users straight into direction planning in the browser.
   directionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=1881+S.+Randall+Rd+Suite+C+Geneva+IL+60134",
@@ -124,7 +124,7 @@ export const BRAND = {
 } as const;
 
 /**
- * Care providers featured on /our-providers/ — names, credentials, and
+ * Care providers featured on /our-providers/, names, credentials, and
  * portrait images sourced from the live site.
  */
 export const PROVIDERS = [

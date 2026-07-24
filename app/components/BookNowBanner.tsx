@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { CONTACT } from "@/app/lib/site-config";
 
 /**
- * Sticky "Book Now" banner — slides up from the bottom after the user scrolls
+ * Sticky "Book Now" banner, slides up from the bottom after the user scrolls
  * past the hero. Dismissable for the current session. Persistent across all
  * pages via the root layout.
  */
@@ -76,7 +76,7 @@ export default function BookNowBanner() {
                     Ready to feel better?
                   </p>
                   <p className="mt-0.5 truncate text-sm font-bold leading-tight text-brand-navy">
-                    Book your appointment — same-week availability
+                    Book your appointment, same-week availability
                   </p>
                 </div>
 

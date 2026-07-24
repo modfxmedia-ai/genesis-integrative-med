@@ -35,10 +35,10 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Link
               href="/"
-              aria-label={`${BRAND.name} — Home`}
+              aria-label={`${BRAND.name}, Home`}
               className="inline-block"
             >
-              {/* Reversed (white) logo — uses CSS filter so we ship a single asset */}
+              {/* Reversed (white) logo, uses CSS filter so we ship a single asset */}
               <Image
                 src={BRAND.logo}
                 alt={`${BRAND.name} logo`}
@@ -48,7 +48,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
-              {BRAND.tagline}. Integrative, non-invasive care — combining
+              {BRAND.tagline}. Integrative, non-invasive care, combining
               advanced medicine with holistic therapies to treat the root
               cause.
             </p>

@@ -118,7 +118,7 @@ function BreadcrumbBar({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Hero — centered, with motion graphics                                      */
+/* Hero, centered, with motion graphics                                      */
 /* -------------------------------------------------------------------------- */
 
 function Hero({
@@ -259,7 +259,7 @@ function Hero({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Team section — heading + alternating member cards                          */
+/* Team section, heading + alternating member cards                          */
 /* -------------------------------------------------------------------------- */
 
 function TeamSection({
@@ -347,7 +347,7 @@ function MemberCard({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Member photo — motion-driven                                               */
+/* Member photo, motion-driven                                               */
 /* -------------------------------------------------------------------------- */
 
 function MemberPhoto({

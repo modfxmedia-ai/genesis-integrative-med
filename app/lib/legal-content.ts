@@ -50,7 +50,7 @@ export type LegalPage = {
 const SITE_ORIGIN = "https://genesisintegrativemed.com" as const;
 
 /* -------------------------------------------------------------------------- */
-/* Terms & Conditions — /our-terms/                                            */
+/* Terms & Conditions, /our-terms/                                            */
 /* -------------------------------------------------------------------------- */
 
 export const TERMS_PAGE: LegalPage = {
@@ -149,7 +149,7 @@ export const TERMS_PAGE: LegalPage = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* Privacy Policy — /your-privacy/                                             */
+/* Privacy Policy, /your-privacy/                                             */
 /* -------------------------------------------------------------------------- */
 
 export const PRIVACY_PAGE: LegalPage = {
@@ -158,7 +158,7 @@ export const PRIVACY_PAGE: LegalPage = {
   meta: {
     title: "Privacy Policy | Genesis Integrative Medicine",
     description:
-      "Privacy policy for the Genesis Integrative Medicine website in Geneva, IL \u2014 how we collect, use, and protect your information.",
+      "Privacy policy for the Genesis Integrative Medicine website in Geneva, IL, how we collect, use, and protect your information.",
     canonical: `${SITE_ORIGIN}/your-privacy/`,
   },
   hero: {
@@ -224,7 +224,7 @@ export const PRIVACY_PAGE: LegalPage = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* Accessibility Statement — /accessibility-statement/                         */
+/* Accessibility Statement, /accessibility-statement/                         */
 /* -------------------------------------------------------------------------- */
 
 export const ACCESSIBILITY_PAGE: LegalPage = {

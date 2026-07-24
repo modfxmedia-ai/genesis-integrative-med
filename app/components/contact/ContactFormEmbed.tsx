@@ -7,7 +7,7 @@ import { Reveal } from "@/app/components/home/motion-primitives";
  *
  * Renders a header strip (icon + label + status pill), the iframe itself,
  * and an SSL/confidential/no-spam trust footer. Consumers pick the form
- * URL, height, and header label — the visual frame stays identical across
+ * URL, height, and header label, the visual frame stays identical across
  * pages so the intake experience feels consistent from the homepage to
  * the /contact/ page.
  */

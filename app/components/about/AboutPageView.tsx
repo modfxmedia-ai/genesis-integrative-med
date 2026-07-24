@@ -37,7 +37,7 @@ const BODY_PARAGRAPHS = [
   "Genesis Integrative Medicine takes an approach to health care designed to solve an age-old problem for patients \u2014 too many doctors and a lack of communication between them. At Genesis Integrative Medicine, patients in Geneva, Illinois, have access to both traditional medical services and alternative therapies like chiropractic care for a variety of conditions, all under the same roof. The result is a cutting-edge, integrated solution to health care and disease prevention with experienced and skilled providers who work together to ensure optimum health.",
   "The team at Genesis Integrative Medicine features health providers who are board-certified in many areas of health care to provide the highest quality of care. Using an integrative approach, the compassionate staff is well-equipped to address issues like chronic joint pain, neck pain, back pain, and migraines, often without relying on medications or the need for surgery.",
   "In an effort to expand its services, Genesis Integrative Medicine has combined the latest treatment options, like platelet-rich plasma (PRP) therapy, regenerative medicine, and cold laser therapy, with traditional active rehab and chiropractic care. The goal of this integrative approach is to address chronic pain and mobility issues while enhancing their patients\u2019 overall quality of life.",
-  "In addition to the advanced technologies available, the Genesis Integrative Medicine team also provides services to help patients enhance and maintain good physical, mental, and emotional health through on-site allergy testing, weight loss programs, and IV nutrition therapy.",
+  "In addition to the advanced technologies available, the Genesis Integrative Medicine team also provides services to help patients enhance and maintain good physical, mental, and emotional health through on-site allergy testing and medical weight loss programs.",
   "Rather than treat every ill with a pill, consider the benefits of an integrative approach to achieving a happy, pain-free life.",
 ];
 
@@ -94,7 +94,7 @@ const PILLARS = [
   {
     title: "Whole-Person Wellness",
     body:
-      "On-site allergy testing, medical weight loss programs, and IV nutrition therapy to help patients enhance and maintain physical, mental, and emotional health.",
+      "On-site allergy testing and medical weight loss programs to help patients enhance and maintain physical, mental, and emotional health.",
     icon: "leaf" as const,
     accent: "from-brand-blue to-brand-navy",
   },

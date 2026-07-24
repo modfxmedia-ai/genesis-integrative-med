@@ -493,14 +493,6 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     category: "Weight Loss",
   },
   {
-    slug: "improve-your-overall-wellness-with-iv-nutrition-therapy",
-    title: "Improve Your Overall Wellness With IV Nutrition Therapy",
-    date: "2019-09-01",
-    excerpt: "Did you know intravenous (IV) vitamin drips have been around since the 1970s? Dr. John Myers first developed and administered\u2026",
-    image: "/images/blog/improve-your-overall-wellness-with-iv-nutrition-therapy.jpeg",
-    category: "IV Nutrition",
-  },
-  {
     slug: "cold-laser-therapy-drug-free-treatment-for-joint-and-muscle-pain",
     title: "Cold Laser Therapy: Drug-Free Treatment for Joint and Muscle Pain",
     date: "2019-08-01",

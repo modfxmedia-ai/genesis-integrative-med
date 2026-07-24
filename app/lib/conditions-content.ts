@@ -627,10 +627,10 @@ export const SHOULDER_PAIN_CONTENT: ServicePageContent = {
       "At Genesis Integrative Medicine in Geneva, IL, we specialize in helping patients address shoulder pain through advanced, holistic treatments. If you\u2019re searching for a shoulder pain doctor in Geneva, IL, our integrative approach combines physical therapy, chiropractic care, and other therapies to address both the symptoms and root causes of your shoulder pain.",
   },
   highlights: [
+    { icon: "bolt", label: "Shockwave therapy", note: "For rotator cuff & tendon pain" },
+    { icon: "spark", label: "Cold laser", note: "Reduces inflammation" },
     { icon: "target", label: "Root-cause focus", note: "Not just symptom relief" },
-    { icon: "spark", label: "Integrative team", note: "PT + chiro + PRP" },
-    { icon: "heart", label: "Nutritional care", note: "Anti-inflammatory diet" },
-    { icon: "shield", label: "Long-term relief", note: "Prevent recurrence" },
+    { icon: "heart", label: "Integrative team", note: "PT + chiro + PRP" },
   ],
   featuredImage: {
     src: "/images/conditions/shoulder-pain/athlete-physio.jpg",
@@ -641,7 +641,7 @@ export const SHOULDER_PAIN_CONTENT: ServicePageContent = {
   serviceJsonLd: {
     name: "Shoulder Pain Treatment",
     description:
-      "Advanced, holistic shoulder pain care combining physical therapy, chiropractic adjustments, regenerative medicine (PRP), nutritional guidance, and lifestyle coaching to address the root causes of pain.",
+      "Advanced, holistic shoulder pain care combining shockwave therapy (EPAT), cold laser therapy, physical therapy, chiropractic adjustments, regenerative medicine (PRP), nutritional guidance, and lifestyle coaching to address the root causes of pain \u2014 including rotator cuff tendonitis, calcific tendonitis, bursitis, and frozen shoulder.",
     canonicalServiceUrl:
       "https://genesisintegrativemed.com/conditions-treated/shoulder-pain/",
   },
@@ -675,6 +675,21 @@ export const SHOULDER_PAIN_CONTENT: ServicePageContent = {
       heading: "Chiropractic Care for Shoulder Pain",
       paragraphs: [
         "Chiropractic care is another effective method we employ to treat shoulder pain. Misalignment in the spine or neck can place additional strain on the shoulders, leading to pain and limited mobility. Your shoulder pain doctor in Geneva, IL, may recommend chiropractic adjustments to correct these misalignments and restore balance to your body. By addressing these underlying issues, chiropractic care not only alleviates pain but also promotes proper joint function and body mechanics.",
+      ],
+    },
+    {
+      kind: "prose",
+      heading: "Shockwave Therapy for the Shoulder",
+      paragraphs: [
+        "Shockwave therapy (EPAT) is one of our most-requested treatments for shoulder pain \u2014 particularly for rotator cuff tendonitis, calcific tendonitis, chronic bursitis, and lingering post-injury pain. Using focused acoustic pressure waves, we stimulate real tissue repair, increase circulation to the injured tendons, and help break down painful calcifications inside the shoulder.",
+        "Most patients complete a short series of quick, in-office sessions and feel meaningful improvement within the first few visits, all without drugs, injections, or surgery. Learn more on our dedicated shockwave therapy page.",
+      ],
+    },
+    {
+      kind: "prose",
+      heading: "Cold Laser Therapy for Shoulder Pain",
+      paragraphs: [
+        "Cold laser therapy is another modality we use extensively for shoulder problems. Low-level laser light penetrates into the rotator cuff, joint capsule, and surrounding soft tissue to reduce inflammation, ease pain, and accelerate cellular repair. It is painless, has no downtime, and pairs exceptionally well with shockwave therapy \u2014 which is why we frequently use the two together for stubborn shoulder conditions.",
       ],
     },
     {

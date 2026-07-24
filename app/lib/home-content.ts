@@ -30,10 +30,23 @@ export const HERO = {
 } as const;
 
 /**
- * Service preview cards — copy taken verbatim from the H3 blocks on the
- * live homepage. Links point to the corresponding new-site slugs.
+ * Service preview cards — headline services featured on the homepage.
+ * Shockwave Therapy and Cold Laser are two of our most-used in-office
+ * modalities and lead the row.
  */
 export const SERVICE_CARDS = [
+  {
+    title: "Shockwave Therapy",
+    body:
+      "One of our most-requested treatments. Non-invasive acoustic-wave therapy for stubborn elbow, wrist, hip, knee, shoulder, and plantar fasciitis pain \u2014 real healing without drugs or surgery.",
+    href: "/services/shockwave-therapy/",
+  },
+  {
+    title: "Cold Laser",
+    body:
+      "FDA-approved low-level laser therapy we use every day to calm inflammation, speed tissue repair, and relieve chronic joint, tendon, and nerve pain \u2014 pairs beautifully with shockwave.",
+    href: "/services/cold-laser/",
+  },
   {
     title: "Chiropractic",
     body:
@@ -45,18 +58,6 @@ export const SERVICE_CARDS = [
     body:
       "The experts at Genesis Integrative Medicine can greatly reduce the need for surgery by not only treating, but healing injured tissue before the damage progresses further.",
     href: "/services/regenerative-medicine/",
-  },
-  {
-    title: "Joint Pain",
-    body:
-      "When you have damage to your joints, muscles, or nerves, physical medicine \u2014 a physical approach to treatment rather than relying on medication or surgery \u2014 can be an essential part of your recovery.",
-    href: "/conditions-treated/joint-pain/",
-  },
-  {
-    title: "Medical Weight Loss",
-    body:
-      "What makes our medical weight loss program different is that we address the metabolism by resetting it and not speeding it up as do most other programs.",
-    href: "/services/peptide-weight-loss/",
   },
 ] as const;
 
@@ -237,7 +238,7 @@ export const CONDITIONS_STRIP = {
     {
       title: "Tendonitis & Bursitis",
       body:
-        "For patients dealing with tendonitis and bursitis in Geneva, integrative rehab combines anti-inflammatory treatments, therapeutic exercises, and manual therapies to reduce pain, promote healing, and prevent recurrence. shockwave and cold laser therapy and platelet-rich plasma (PRP) injections",
+        "For patients dealing with tendonitis and bursitis in Geneva, we combine shockwave therapy, cold laser, PRP injections, and targeted rehab to reduce pain, promote real tissue healing, and prevent recurrence in the elbow, wrist, hip, knee, shoulder, and foot.",
       href: "/conditions-treated/tendonitis/",
     },
     {
@@ -267,12 +268,12 @@ export const GET_STARTED = {
 export const HOME_CONTACT = {
   heading: "Contact Us",
   formEmbed: {
-    // Primary "Website Form" from the live site — the same LeadConnector
-    // intake used on /contact/ so patients get an identical experience and
-    // all submissions land in the practice's existing automation pipeline.
+    // Primary LeadConnector intake form from the live site — the same one
+    // used on /contact/ so patients get an identical experience and all
+    // submissions land in the practice's existing automation pipeline.
     src: "https://api.leadconnectorhq.com/widget/form/ui8Cws8VEvRRDMpmSR8J",
     height: 860,
-    title: "Genesis Integrative Medicine — Website Form",
+    title: "Genesis Integrative Medicine \u2014 Patient Intake",
   },
 } as const;
 
@@ -325,15 +326,15 @@ export const CONDITIONS_CATALOG = [
  * Images stored in /public/images/services/.
  */
 export const SERVICES_CATALOG = [
+  { title: "Shockwave Therapy", href: "/services/shockwave-therapy/", image: "/images/services/ed/ed-hero.jpeg", alt: "Shockwave therapy for musculoskeletal pain" },
+  { title: "Cold Laser", href: "/services/cold-laser/", image: "/images/services/cold-laser.webp", alt: "Cold laser therapy" },
   { title: "Chiropractic Care", href: "/services/chiropractic-care/", image: "/images/services/chiropractic-care.webp", alt: "Chiropractic care" },
   { title: "Active Rehab", href: "/services/active-rehab-geneva/", image: "/images/services/active-rehab.webp", alt: "Active rehab" },
   { title: "PRP Injections", href: "/services/prp-injections-geneva/", image: "/images/services/prp-injections.webp", alt: "PRP injections" },
   { title: "Regenerative Medicine", href: "/services/regenerative-medicine/", image: "/images/services/regenerative-medicine.webp", alt: "Regenerative medicine" },
-  { title: "Cold Laser", href: "/services/cold-laser/", image: "/images/services/cold-laser.webp", alt: "Cold laser therapy" },
   { title: "Peptide Weight Loss", href: "/services/peptide-weight-loss/", image: "/images/services/peptide-weight-loss.webp", alt: "Medical weight loss" },
   { title: "Peripheral Neuropathy", href: "/services/peripheral-neuropathy-treatment/", image: "/images/services/peripheral-neuropathy.webp", alt: "Peripheral neuropathy treatment" },
   { title: "ED Shockwave & Men's Wellness", href: "/services/ed-shockwave-mens-wellness/", image: "/images/services/ed-shockwave.jpeg", alt: "ED shockwave therapy" },
   { title: "Allergy Testing", href: "/services/allergy-testing-geneva/", image: "/images/services/allergy-testing.webp", alt: "Allergy testing" },
-  { title: "IV Nutrition Therapy", href: "/services/iv-nutrition-therapy/", image: "/images/services/iv-nutrition-therapy.webp", alt: "IV nutrition therapy" },
   { title: "Sciatica", href: "/services/sciatica/", image: "/images/services/sciatica.webp", alt: "Sciatica treatment" },
 ] as const;

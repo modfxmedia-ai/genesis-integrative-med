@@ -20,7 +20,7 @@ export type ContactFormEmbedProps = {
   height?: number;
   /** Kicker above the header label. */
   kicker?: string;
-  /** Primary header label ("Website Form", "Send a message"). */
+  /** Primary header label (e.g. "Patient Intake", "Send a message"). */
   label?: string;
   /** Small secondary line under the label. */
   sublabel?: string;
@@ -33,7 +33,7 @@ export default function ContactFormEmbed({
   title,
   height = 860,
   kicker,
-  label = "Website Form",
+  label = "Patient Intake",
   sublabel = "Secure intake",
   statusLabel = "Online",
 }: ContactFormEmbedProps) {

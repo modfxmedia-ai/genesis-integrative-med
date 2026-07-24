@@ -79,13 +79,13 @@ const HERO_IMAGES: Record<string, { src: string; alt: string }> = {
     src: "/images/services/ed-shockwave.jpeg",
     alt: "ED / ShockWave men's wellness therapy at Genesis Integrative Medicine",
   },
+  "shockwave-therapy": {
+    src: "/images/services/ed/ed-hero.jpeg",
+    alt: "Shockwave therapy (EPAT) for musculoskeletal pain at Genesis Integrative Medicine",
+  },
   "allergy-testing-geneva": {
     src: "/images/services/allergy-testing.webp",
     alt: "Allergy testing at Genesis Integrative Medicine",
-  },
-  "iv-nutrition-therapy": {
-    src: "/images/services/iv-nutrition-therapy.webp",
-    alt: "IV nutrition therapy at Genesis Integrative Medicine",
   },
 };
 

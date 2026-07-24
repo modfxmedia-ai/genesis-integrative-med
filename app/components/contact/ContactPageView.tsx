@@ -41,8 +41,6 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const BOOKING_SRC = CONTACT.bookingUrl;
 const WEBSITE_FORM_SRC =
   "https://api.leadconnectorhq.com/widget/form/ui8Cws8VEvRRDMpmSR8J";
-const CONTACT_US_FORM_SRC =
-  "https://api.leadconnectorhq.com/widget/form/ToXLBiqT0qS6iABzJ9HD";
 const MAP_QUERY = encodeURIComponent(
   `${CONTACT.address.street}, ${CONTACT.address.cityState}`,
 );
@@ -66,7 +64,6 @@ export default function ContactPageView() {
       <WebsiteFormSection />
       <PracticeSection />
       <MapSection />
-      <ContactUsFormSection />
       <MissionBlock />
     </article>
   );
@@ -498,82 +495,13 @@ function WebsiteFormSection() {
           <div className="lg:col-span-7">
             <ContactFormEmbed
               src={WEBSITE_FORM_SRC}
-              title="Genesis Integrative Medicine — Website Form"
+              title="Genesis Integrative Medicine — Patient Intake"
               height={860}
-              label="Website Form"
+              label="Patient Intake"
               sublabel="Secure intake"
             />
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Secondary "Contact Us!" form section (matches live footer form)             */
-/* -------------------------------------------------------------------------- */
-
-function ContactUsFormSection() {
-  return (
-    <section
-      id="contact-us"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-brand-mist/40 to-brand-mist/60 py-16 sm:py-24"
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, #00508C 1px, transparent 0)",
-          backgroundSize: "34px 34px",
-        }}
-      />
-      <div className="relative mx-auto max-w-4xl px-6 text-center">
-        <Reveal>
-          <p className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" />
-            Still have questions?
-          </p>
-          <h2 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-brand-navy sm:text-5xl">
-            <span className="bg-gradient-to-br from-brand-navy via-brand-blue to-brand-cyan bg-clip-text text-transparent">
-              Contact Us!
-            </span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-brand-ink/70">
-            Prefer a quick note? Drop your details here and someone from the
-            front desk will follow up soon.
-          </p>
-        </Reveal>
-        <Reveal delay={0.06}>
-          <div className="relative mx-auto mt-10 overflow-hidden rounded-[2rem] border border-brand-line bg-white text-left shadow-xl shadow-brand-navy/10">
-            <div className="relative flex items-center gap-3 border-b border-brand-line bg-gradient-to-r from-brand-mist/60 to-white px-6 py-4">
-              <span
-                aria-hidden
-                className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white"
-              >
-                <MessageIcon className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-sm font-bold text-brand-navy">
-                  Contact form
-                </p>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-ink/50">
-                  Reply within one business day
-                </p>
-              </div>
-            </div>
-            <div className="relative bg-white">
-              <iframe
-                src={CONTACT_US_FORM_SRC}
-                title="Genesis Integrative Medicine — Contact Us"
-                loading="lazy"
-                className="block h-[790px] w-full border-0"
-                scrolling="yes"
-              />
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

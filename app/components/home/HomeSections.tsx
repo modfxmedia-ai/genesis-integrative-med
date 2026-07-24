@@ -198,12 +198,12 @@ export function HomeHero() {
             {/* 3×2 specialty grid */}
             <div className="relative mt-5 grid grid-cols-3 gap-3">
               {[
+                { label: "Shockwave", href: "/services/shockwave-therapy/", Icon: WavesIcon },
+                { label: "Cold Laser", href: "/services/cold-laser/", Icon: SunriseIcon },
                 { label: "Chiropractic", href: "/services/chiropractic-care/", Icon: SpiralIcon },
                 { label: "PRP", href: "/services/prp-injections-geneva/", Icon: PillIcon },
-                { label: "Cold Laser", href: "/services/cold-laser/", Icon: SunriseIcon },
                 { label: "Regenerative", href: "/services/regenerative-medicine/", Icon: HandHealingIcon },
                 { label: "Weight Loss", href: "/services/peptide-weight-loss/", Icon: LeafIcon },
-                { label: "Allergy Testing", href: "/services/allergy-testing-geneva/", Icon: ShieldAlertIcon },
               ].map((spec, i) => (
                 <motion.div
                   key={spec.label}
@@ -262,7 +262,7 @@ export function HomeHero() {
           >
             <TrustStat
               label="Years in Geneva"
-              value={<CountUp to={12} suffix="+" />}
+              value={<CountUp to={20} suffix="+" />}
             />
             <TrustStat
               label="Therapies"
@@ -1542,6 +1542,16 @@ export function SurgeriesSection() {
 export function UnlockPainFreeSection() {
   const services = [
     {
+      label: "Shockwave Therapy",
+      href: "/services/shockwave-therapy/",
+      image: "/images/services/ed/ed-hero.jpeg",
+    },
+    {
+      label: "Cold Laser",
+      href: "/services/cold-laser/",
+      image: "/images/services/peptide/lipo-laser.webp",
+    },
+    {
       label: "Active Rehab",
       href: "/services/active-rehab-geneva/",
       image: "/images/services/active-rehab/physiotherapist-exam.jpg",
@@ -1552,11 +1562,6 @@ export function UnlockPainFreeSection() {
       image: "/images/services/prp/prp-centrifuge.jpg",
     },
     {
-      label: "Cold Laser",
-      href: "/services/cold-laser/",
-      image: "/images/services/peptide/lipo-laser.webp",
-    },
-    {
       label: "Chiropractic",
       href: "/services/chiropractic-care/",
       image: "/images/conditions/shoulder-pain/athlete-physio.jpg",
@@ -1565,11 +1570,6 @@ export function UnlockPainFreeSection() {
       label: "Regenerative Medicine",
       href: "/services/regenerative-medicine/",
       image: "/images/images copy.jpeg",
-    },
-    {
-      label: "Peripheral Neuropathy",
-      href: "/services/peripheral-neuropathy-treatment/",
-      image: "/images/conditions/neuropathy/tingling-hand.jpg",
     },
   ];
   return (
@@ -1715,14 +1715,14 @@ export function DoctorSnippet() {
 
   // Rotating specialty ribbon under the portraits.
   const specialties = [
+    "Shockwave Therapy",
+    "Cold Laser",
     "Osteopathic Medicine",
     "Chiropractic Care",
     "Physicians Assistant",
     "Regenerative Medicine",
     "Peripheral Neuropathy",
     "Peptide Therapy",
-    "IV Nutrition",
-    "Cold Laser",
   ];
 
   // Different vertical offsets create a staggered "wave" layout instead
@@ -2426,7 +2426,7 @@ export function ContactSection() {
               title={HOME_CONTACT.formEmbed.title}
               height={HOME_CONTACT.formEmbed.height}
               kicker="Send us a message"
-              label="Website Form"
+              label="Patient Intake"
               sublabel="We reply within one business day"
               statusLabel="Same-day"
             />
@@ -2778,6 +2778,16 @@ function SunriseIcon(props: React.SVGProps<SVGSVGElement>) {
       <path d="M12 3v3M4.9 6.9l2.1 2.1M2 13h3M19 13h3M17 9l2.1-2.1" />
       <path d="M7 17a5 5 0 0 1 10 0" />
       <path d="M3 20h18" />
+    </svg>
+  );
+}
+
+function WavesIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...svgBase(props)}>
+      <path d="M2 6c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2" />
+      <path d="M2 12c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2" />
+      <path d="M2 18c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2" />
     </svg>
   );
 }

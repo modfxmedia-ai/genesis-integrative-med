@@ -6899,7 +6899,7 @@ export const POST_TAKE_A_NONSURGICAL_APPROACH_TO_PAIN_WITH_REGENERATIVE_MEDICINE
       blocks: [
         { kind: "paragraph", text: "Chronic pain is a growing epidemic in the United States. According to the Centers for Disease Control and Prevention (CDC), 20% of American adults (over 50 million people) suffer from chronic pain. Not only is chronic pain debilitating and disruptive to a person\u2019s health and overall quality of life, but it\u2019s also expensive. From the cost of medications and doctor\u2019s office visits to lost wages, studies have found that the costs associated with chronic pain cost the American economy over $600 billion every year." },
         { kind: "paragraph", text: "If you\u2019re one of the millions of Americans living with pain, we can help you take control of your health and improve your quality of life. At Genesis Integrative Medicine, our providers \u2014 Stephanie Schuster, APRN, and Nathan Conroy, DC \u2014 offer a range of rehabilitative services and regenerative medicine therapy at our Geneva, Illinois, office." },
-        { kind: "paragraph", text: "Certain cell types, such as mesenchymal stem cells, have the ability to differentiate into different types of cells, which means they can grow to become bone, muscle, and cartilage. Mesenchymal cells are found throughout the human body, including the umbilical cord, bone marrow, and fat tissue. Regenerative medicine focuses on using this type of tissue to create therapies and treatments based on the body\u2019s capacity for healing itself." },
+        { kind: "paragraph", text: "Certain cell types, such as mesenchymal stem cells, have the ability to differentiate into different types of cells, which means they can grow to become bone, muscle, and cartilage. At Genesis Integrative Medicine, we use mesenchymal stem cells (MSCs) sourced from Wharton\u2019s jelly \u2014 the specialized connective tissue found within donated umbilical cord tissue \u2014 to create therapies and treatments based on the body\u2019s capacity for healing itself." },
         { kind: "paragraph", text: "Connective tissue like cartilage, which plays a critical role in healthy joints, doesn\u2019t regenerate on its own when it\u2019s lost, and can be very difficult to replace. When an injury or illness like osteoarthritis eats away at the cartilage in your knees, wrists, shoulders, or other parts of the body, it can cause excruciating pain and a lack of mobility, and eventually result in permanent joint damage." },
         { kind: "paragraph", text: "When this happens, conventional treatments like surgery can only go so far to preserve joint function and minimize pain. Without cartilage and healthy connective tissue, your bones and joints just can\u2019t work how they\u2019re supposed to." },
       ],
@@ -7058,59 +7058,6 @@ export const POST_LOSING_WEIGHT_LOWERS_YOUR_RISK_OF_THESE_COMMON_CONDITIONS: Blo
     description: "Lose weight for better health at Genesis Integrative Medicine. Reduce risks of heart disease, diabetes, sleep apnea, and more with expert guidance and support.",
     canonical: "https://genesisintegrativemed.com/losing-weight-lowers-your-risk-of-these-common-conditions/",
     ogImage: "https://genesisintegrativemed.com/images/blog/losing-weight-lowers-your-risk-of-these-common-conditions.jpg",
-  },
-};
-
-export const POST_IMPROVE_YOUR_OVERALL_WELLNESS_WITH_IV_NUTRITION_THERAPY: BlogPostContent = {
-  slug: "improve-your-overall-wellness-with-iv-nutrition-therapy",
-  title: "Improve Your Overall Wellness With IV Nutrition Therapy",
-  dek: "Did you know intravenous (IV) vitamin drips have been around since the 1970s? Dr. John Myers first developed and administered these IV vitamin infusions to treat patients with chronic conditions. His research was...",
-  date: "2019-09-01",
-  category: "IV Nutrition",
-  readTime: "3 min read",
-  image: {
-    src: "/images/blog/improve-your-overall-wellness-with-iv-nutrition-therapy.jpeg",
-    alt: "Improve Your Overall Wellness With IV Nutrition Therapy",
-  },
-  sections: [
-    {
-      heading: "An introduction to IV nutrition therapy",
-      blocks: [
-        { kind: "paragraph", text: "Did you know intravenous (IV) vitamin drips have been around since the 1970s? Dr. John Myers first developed and administered these IV vitamin infusions to treat patients with chronic conditions. His research was later used to create the popular Myers cocktail, also known as intravenous micronutrient therapy." },
-        { kind: "paragraph", text: "Our team of board-certified doctors at Genesis Integrative Medicine in Geneva, Illinois, understands just how important it is for your body to receive the right amount of nutrients needed for good health. We customize our IV nutrition therapy treatments to help you achieve your medical and health goals." },
-        { kind: "paragraph", text: "The Myers cocktail is an example of a unique blend of vitamins and minerals that we administer intravenously. Customized IV mixtures help boost immune system function, reduce fatigue, and lessen the effects of seasonal allergies. They also can reduce symptoms of fibromyalgia and asthma." },
-        { kind: "paragraph", text: "Many naturopathic doctors promote this treatment because it contains no harmful chemicals or additives. Its composition includes minerals such as calcium, and magnesium, along with vitamin C and B vitamins. It also can include antioxidants such as glutathione and amino acids." },
-      ],
-    },
-    {
-      heading: "How does IV nutrition therapy work?",
-      blocks: [
-        { kind: "paragraph", text: "IV nutrition therapy works by elevating the amounts of essential vitamins and minerals circulating in your blood. When you receive this therapy intravenously, your body better absorbs more of the vitamins and nutrients than when you take supplements orally." },
-        { kind: "paragraph", text: "With oral vitamins and supplements, your body has to digest them in the stomach before they can enter your bloodstream and get to work. Absorption rates from oral supplements differ from person to person, but they\u2019re generally always low. However, with IV therapy, everyone receives more of the nutrients their body needs for optimal wellness." },
-      ],
-    },
-    {
-      heading: "What happens during an IV nutrition therapy treatment?",
-      blocks: [
-        { kind: "paragraph", text: "We choose a vein in your arm and insert a small catheter. Your customized solution is then allowed to infuse into your body at a slow pace \u2014 this lasts up to 30 minutes." },
-        { kind: "paragraph", text: "There are little to no side effects. The only minor unpleasant effect you may experience is slight irritation of the vein. Some patients experience flushing and heat caused by the influx of magnesium. Others report a fruity sensation in their mouth that has the taste of vitamins." },
-        { kind: "paragraph", text: "For optimal results, we encourage patients to undergo regular infusions at least once or twice every week. You begin to see noticeable changes in your body by the fourth visit. If you suffer from a chronic illness such as fibromyalgia, more frequent infusions might be recommended." },
-      ],
-    },
-    {
-      heading: "IV nutrition therapy benefits",
-      blocks: [
-        { kind: "paragraph", text: "Delivering much-needed nutrients directly into your bloodstream can improve your overall wellness. It ensures you\u2019re properly hydrated and helps detoxify your body. IV nutrition therapy can help relieve the symptoms of chronic diseases such as migraines, chronic fatigue syndrome, and depression." },
-        { kind: "paragraph", text: "IV nutrition therapy is so popular that celebrities are not shy to talk about their experiences with the treatment. For example, Award-winning British pop singer Adele reportedly has regular infusions while on tour to help her get through her performances. Antioxidants are particularly useful, as they reduce the chance of bacteria attacking vocal cords." },
-        { kind: "paragraph", text: "The doctors and staff at Genesis Integrative Medicine are highly qualified to administer IV nutrition therapy when you need it. To learn more, get in touch with us today by calling the office or booking an appointment online." },
-      ],
-    },
-  ],
-  meta: {
-    title: "Improve Your Overall Wellness With IV Nutrition Therapy",
-    description: "Boost your wellness with IV nutrition therapy at Genesis Integrative Medicine. Receive essential vitamins and minerals for improved health, energy, and immune function.",
-    canonical: "https://genesisintegrativemed.com/improve-your-overall-wellness-with-iv-nutrition-therapy/",
-    ogImage: "https://genesisintegrativemed.com/images/blog/improve-your-overall-wellness-with-iv-nutrition-therapy.jpeg",
   },
 };
 
@@ -7345,7 +7292,6 @@ export const BLOG_POST_BODIES: Readonly<Record<string, BlogPostContent>> = {
   "why-is-rehabilitation-so-important-after-an-injury": POST_WHY_IS_REHABILITATION_SO_IMPORTANT_AFTER_AN_INJURY,
   "suffering-from-chronic-headaches-chiropractic-care-can-help": POST_SUFFERING_FROM_CHRONIC_HEADACHES_CHIROPRACTIC_CARE_CAN_HELP,
   "losing-weight-lowers-your-risk-of-these-common-conditions": POST_LOSING_WEIGHT_LOWERS_YOUR_RISK_OF_THESE_COMMON_CONDITIONS,
-  "improve-your-overall-wellness-with-iv-nutrition-therapy": POST_IMPROVE_YOUR_OVERALL_WELLNESS_WITH_IV_NUTRITION_THERAPY,
   "cold-laser-therapy-drug-free-treatment-for-joint-and-muscle-pain": POST_COLD_LASER_THERAPY_DRUG_FREE_TREATMENT_FOR_JOINT_AND_MUSCLE_PAIN,
   "how-prp-is-revolutionizing-arthritis-treatment": POST_HOW_PRP_IS_REVOLUTIONIZING_ARTHRITIS_TREATMENT,
   "finish-off-your-weight-loss-journey-with-lipo-mino-injections": POST_FINISH_OFF_YOUR_WEIGHT_LOSS_JOURNEY_WITH_LIPO_MINO_INJECTIONS,
@@ -7407,7 +7353,6 @@ export const BLOG_POST_SLUGS: readonly string[] = [
   "why-is-rehabilitation-so-important-after-an-injury",
   "suffering-from-chronic-headaches-chiropractic-care-can-help",
   "losing-weight-lowers-your-risk-of-these-common-conditions",
-  "improve-your-overall-wellness-with-iv-nutrition-therapy",
   "cold-laser-therapy-drug-free-treatment-for-joint-and-muscle-pain",
   "how-prp-is-revolutionizing-arthritis-treatment",
   "finish-off-your-weight-loss-journey-with-lipo-mino-injections",

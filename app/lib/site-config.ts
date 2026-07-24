@@ -35,11 +35,12 @@ export const CONDITIONS_SUBNAV: readonly NavChild[] = [
 ];
 
 export const SERVICES_SUBNAV: readonly NavChild[] = [
+  { label: "Shockwave Therapy", href: "/services/shockwave-therapy/" },
+  { label: "Cold Laser", href: "/services/cold-laser/" },
   { label: "Chiropractic Care", href: "/services/chiropractic-care/" },
   { label: "Active Rehab", href: "/services/active-rehab-geneva/" },
   { label: "PRP Injections", href: "/services/prp-injections-geneva/" },
   { label: "Regenerative Medicine", href: "/services/regenerative-medicine/" },
-  { label: "Cold Laser", href: "/services/cold-laser/" },
   { label: "Peptide Weight Loss", href: "/services/peptide-weight-loss/" },
   {
     label: "Peripheral Neuropathy",
@@ -50,7 +51,6 @@ export const SERVICES_SUBNAV: readonly NavChild[] = [
     href: "/services/ed-shockwave-mens-wellness/",
   },
   { label: "Allergy Testing", href: "/services/allergy-testing-geneva/" },
-  { label: "IV Nutrition Therapy", href: "/services/iv-nutrition-therapy/" },
   { label: "Sciatica", href: "/services/sciatica/" },
 ];
 

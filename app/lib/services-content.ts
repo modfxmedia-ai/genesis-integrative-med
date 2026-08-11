@@ -298,10 +298,10 @@ export const SCIATICA_CONTENT: ServicePageContent = {
     { icon: "leaf", label: "Holistic care", note: "Whole-person approach" },
   ],
   featuredImage: {
-    src: "/images/services/sciatica/woman-park-relief.jpg",
-    alt: "Woman enjoying in the park while the leaves all around her",
-    width: 1200,
-    height: 800,
+    src: "/images/services/sciatica-card.webp",
+    alt: "Sciatica treatment at Genesis Integrative Medicine",
+    width: 1000,
+    height: 667,
   },
   serviceJsonLd: {
     name: "Sciatica Treatment",
@@ -442,10 +442,10 @@ export const CHIROPRACTIC_CARE_CONTENT: ServicePageContent = {
     { icon: "leaf", label: "Drug-free", note: "Natural healing" },
   ],
   featuredImage: {
-    src: "/images/services/chiropractic-care.webp",
+    src: "/images/services/chiropractic-card.jpg",
     alt: "Chiropractic care in Geneva, IL",
-    width: 800,
-    height: 800,
+    width: 1255,
+    height: 835,
   },
   serviceJsonLd: {
     name: "Chiropractic Care",
@@ -911,10 +911,10 @@ export const PEPTIDE_WEIGHT_LOSS_CONTENT: ServicePageContent = {
     { icon: "bolt", label: "Long-term results", note: "Keep the weight off" },
   ],
   featuredImage: {
-    src: "/images/services/peptide/lipotropic-peptides.webp",
-    alt: "Lipotropic peptides for medical weight loss program",
-    width: 1200,
-    height: 800,
+    src: "/images/services/medical-weight-loss-card.jpg",
+    alt: "Medical weight loss program at Genesis Integrative Medicine",
+    width: 1254,
+    height: 836,
   },
   serviceJsonLd: {
     name: "Medical Weight Loss Program",
@@ -1111,10 +1111,10 @@ export const REGENERATIVE_MEDICINE_CONTENT: ServicePageContent = {
     { icon: "shield", label: "Surgery alternative", note: "Non-invasive path" },
   ],
   featuredImage: {
-    src: "/images/services/regenerative-medicine.webp",
+    src: "/images/services/regenerative-medicine-card.webp",
     alt: "Regenerative medicine therapy at Genesis Integrative Medicine",
-    width: 1200,
-    height: 800,
+    width: 922,
+    height: 678,
   },
   serviceJsonLd: {
     name: "Regenerative Medicine",
@@ -1263,10 +1263,10 @@ export const COLD_LASER_CONTENT: ServicePageContent = {
     { icon: "target", label: "Chronic pain", note: "Joint, back, neck" },
   ],
   featuredImage: {
-    src: "/images/services/cold-laser.webp",
+    src: "/images/services/cold-laser-card.jpg",
     alt: "Cold laser therapy treatment session at Genesis Integrative Medicine",
-    width: 1200,
-    height: 800,
+    width: 800,
+    height: 600,
   },
   video: {
     provider: "vimeo",
@@ -1387,10 +1387,10 @@ export const PERIPHERAL_NEUROPATHY_CONTENT: ServicePageContent = {
     { icon: "spark", label: "State-of-the-art", note: "Latest equipment" },
   ],
   featuredImage: {
-    src: "/images/services/peripheral-neuropathy.webp",
+    src: "/images/services/peripheral-neuropathy-card.jpg",
     alt: "Peripheral neuropathy treatment at Genesis Integrative Medicine",
-    width: 1200,
-    height: 800,
+    width: 425,
+    height: 425,
   },
   serviceJsonLd: {
     name: "Peripheral Neuropathy Treatment",
@@ -1474,10 +1474,10 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
     { icon: "target", label: "Chronic pain relief", note: "Joints, tendons, fascia" },
   ],
   featuredImage: {
-    src: "/images/services/ed/ed-hero.jpeg",
+    src: "/images/services/shockwave-therapy-card.jpg",
     alt: "Shockwave therapy device delivering acoustic waves at Genesis Integrative Medicine in Geneva, IL",
-    width: 860,
-    height: 573,
+    width: 711,
+    height: 480,
   },
   serviceJsonLd: {
     name: "Shockwave Therapy (EPAT)",
@@ -1752,8 +1752,8 @@ export const ALLERGY_TESTING_CONTENT: ServicePageContent = {
     { icon: "heart", label: "Personalized", note: "Tailored to you" },
   ],
   featuredImage: {
-    src: "/images/services/allergy/woman-outdoors.jpg",
-    alt: "Woman enjoying outdoors despite allergies",
+    src: "/images/services/allergy-testing-card.webp",
+    alt: "Allergy testing at Genesis Integrative Medicine",
     width: 1200,
     height: 800,
   },

@@ -292,10 +292,10 @@ export const BACK_PAIN_CONTENT: ServicePageContent = {
     { icon: "shield", label: "Lasting relief", note: "Long-term recovery" },
   ],
   featuredImage: {
-    src: "/images/conditions/back-pain/back-consult.jpg",
-    alt: "Back pain consultation with a compassionate provider",
-    width: 1600,
-    height: 1067,
+    src: "/images/conditions/back-pain/back-pain-banner.jpg",
+    alt: "Back pain relief at Genesis Integrative Medicine",
+    width: 4096,
+    height: 2730,
   },
   serviceJsonLd: {
     name: "Back Pain Treatment",
@@ -407,10 +407,10 @@ export const HEADACHES_CONTENT: ServicePageContent = {
     { icon: "shield", label: "Migraine specialists", note: "Long-term relief" },
   ],
   featuredImage: {
-    src: "/images/conditions/headaches/healthcare-worker.jpg",
-    alt: "Healthcare worker discussing headache treatment options",
-    width: 1600,
-    height: 1067,
+    src: "/images/conditions/headaches/headaches-banner.png",
+    alt: "Headache treatment at Genesis Integrative Medicine",
+    width: 1125,
+    height: 750,
   },
   serviceJsonLd: {
     name: "Headache Treatment",
@@ -769,10 +769,10 @@ export const CONDITIONS_SCIATICA_CONTENT: ServicePageContent = {
     { icon: "shield", label: "Long-term relief", note: "Holistic recovery" },
   ],
   featuredImage: {
-    src: "/images/conditions/sciatica/pexels-olly.jpg",
-    alt: "Woman enjoying in the park while the leaves all around her",
-    width: 1600,
-    height: 1067,
+    src: "/images/conditions/sciatica/sciatica-banner.jpeg",
+    alt: "Sciatica treatment at Genesis Integrative Medicine",
+    width: 1024,
+    height: 683,
   },
   serviceJsonLd: {
     name: "Sciatica Treatment",
@@ -1511,10 +1511,10 @@ export const ED_CONDITION_CONTENT: ServicePageContent = {
     { icon: "heart", label: "Whole-person care", note: "Confidential + holistic" },
   ],
   featuredImage: {
-    src: "/images/conditions/ed/erectile-1.jpg",
-    alt: "Erectile dysfunction",
-    width: 1200,
-    height: 800,
+    src: "/images/conditions/ed/ed-banner.jpg",
+    alt: "Erectile dysfunction treatment at Genesis Integrative Medicine",
+    width: 1920,
+    height: 1280,
   },
   serviceJsonLd: {
     name: "Erectile Dysfunction (ED) Treatment",

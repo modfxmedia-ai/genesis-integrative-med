@@ -22,6 +22,7 @@ import {
 } from "@/app/lib/home-content";
 import { BRAND, CONTACT, PROVIDERS } from "@/app/lib/site-config";
 
+import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import ContactFormEmbed from "@/app/components/contact/ContactFormEmbed";
 
 import {
@@ -143,15 +144,10 @@ export function HomeHero() {
                 {HERO.secondaryCta.label}
               </Link>
             </MagneticButton>
-            <a
-              href={HERO.bookingCta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full px-4 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy transition-colors hover:text-brand-blue"
-            >
+            <BookNowTrigger className="inline-flex items-center gap-2 rounded-full px-4 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy transition-colors hover:text-brand-blue">
               {HERO.bookingCta.label}
               <ArrowRightIcon className="h-3.5 w-3.5" />
-            </a>
+            </BookNowTrigger>
           </StaggerItem>
         </Stagger>
 
@@ -699,21 +695,20 @@ export function ServiceCards() {
   // Image + alt for each of the 4 featured SERVICE_CARDS, in order.
   const cardMedia: readonly { image: string; alt: string }[] = [
     {
-      image: "/images/relieving-pain-with-chiropractic-care-victoria.jpg",
-      alt: "Chiropractor providing hands-on adjustment for pain relief",
+      image: "/images/services/shockwave-therapy-card.jpg",
+      alt: "Shockwave therapy for musculoskeletal pain",
     },
     {
-      image:
-        "/images/regenerative-medicine-ultrasound-guided-prp-injection-1200x628.webp",
-      alt: "Ultrasound-guided PRP injection for regenerative medicine",
+      image: "/images/services/cold-laser-card.jpg",
+      alt: "Cold laser therapy treatment",
     },
     {
-      image: "/images/joint-pain.jpg",
-      alt: "Patient experiencing joint pain",
+      image: "/images/services/chiropractic-card.jpg",
+      alt: "Chiropractic adjustment for pain relief",
     },
     {
-      image: "/images/medical-weightloss.jpeg",
-      alt: "Medical weight loss consultation and measurement",
+      image: "/images/services/regenerative-medicine-card.webp",
+      alt: "Regenerative medicine therapy",
     },
   ];
 
@@ -1549,7 +1544,7 @@ export function UnlockPainFreeSection() {
     {
       label: "Cold Laser",
       href: "/services/cold-laser/",
-      image: "/images/services/peptide/lipo-laser.webp",
+      image: "/images/services/cold-laser-card.jpg",
     },
     {
       label: "Active Rehab",

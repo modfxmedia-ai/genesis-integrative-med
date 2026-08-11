@@ -1,5 +1,7 @@
 "use client";
 
+import Script from "next/script";
+
 import { Reveal } from "@/app/components/home/motion-primitives";
 
 /**
@@ -37,6 +39,10 @@ export default function ContactFormEmbed({
   sublabel = "Secure intake",
   statusLabel = "Online",
 }: ContactFormEmbedProps) {
+  // GHL/LeadConnector iframe id derived from the trailing form id in `src`.
+  const formId = src.split("/").filter(Boolean).pop() ?? "";
+  const inlineId = `inline-${formId}`;
+
   return (
     <Reveal delay={0.05}>
       <div className="relative overflow-hidden rounded-[2rem] border border-brand-line bg-white shadow-xl shadow-brand-navy/10">
@@ -82,13 +88,30 @@ export default function ContactFormEmbed({
         <div className="relative bg-white">
           <iframe
             src={src}
+            id={inlineId}
             title={title}
             loading="lazy"
             className="block w-full border-0"
-            style={{ height: `${height}px` }}
+            style={{ height: `${height}px`, borderRadius: 0 }}
             scrolling="yes"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name={title}
+            data-height={height}
+            data-layout-iframe-id={inlineId}
+            data-form-id={formId}
           />
         </div>
+        <Script
+          id="leadconnector-form-embed"
+          src="https://link.msgsndr.com/js/form_embed.js"
+          strategy="afterInteractive"
+        />
 
         {/* Trust footer */}
         <div className="relative flex flex-wrap items-center gap-4 border-t border-brand-line bg-brand-mist/30 px-6 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-ink/60">

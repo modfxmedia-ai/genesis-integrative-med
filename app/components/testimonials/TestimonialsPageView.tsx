@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
+import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
   MagneticButton,
   Reveal,
@@ -12,21 +13,16 @@ import {
 } from "@/app/components/home/motion-primitives";
 import { CONTACT } from "@/app/lib/site-config";
 import { CONSULTATION_CTA, INSURANCE_MISSION } from "@/app/lib/services-content";
+import { GOOGLE_REVIEWS, type GoogleReview } from "@/app/lib/testimonials-content";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * /testimonials/, a redesigned CTA-first page pointing to the practice's
- * live Google Reviews profile.
- *
- * The live page (https://genesisintegrativemed.com/testimonials/) only ships
- * one static line, "Over 200 5-Star Google Reviews", plus two links
- * ("View All Reviews" / "Write a Review"). Individual review text and star
- * ratings are rendered client-side via an embedded Google Reviews widget and
- * are not part of the page source. To honor the "no fabrication" requirement,
- * no reviewer names or quotes have been invented; instead this page presents
- * the same headline verbatim and directs users into the live Google Reviews
- * surface for the authoritative testimonial content.
+ * /testimonials/, a CTA-first page pointing to the practice's live Google
+ * Reviews profile, plus a grid of real reviews (see testimonials-content.ts)
+ * transcribed verbatim from the Google Business Profile. No reviewer names
+ * or quotes are fabricated; every card mirrors the source review's own text,
+ * rating, and metadata (no owner replies are included).
  */
 
 const WRITE_REVIEW_URL =
@@ -65,6 +61,7 @@ export default function TestimonialsPageView() {
       <Hero />
       <HighlightsStrip />
       <ReviewsCTA />
+      <ReviewsGrid />
       <TrustBlock />
       <ConsultationCta />
       <MissionBlock />
@@ -384,6 +381,74 @@ function ScoreCard() {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Reviews grid, verbatim Google reviews                                      */
+/* -------------------------------------------------------------------------- */
+
+const REVIEW_ACCENTS = [
+  "from-brand-blue to-brand-cyan",
+  "from-brand-navy to-brand-blue",
+  "from-brand-cyan to-brand-sky",
+] as const;
+
+function ReviewsGrid() {
+  return (
+    <section className="bg-brand-mist/40 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+            From Google
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-navy sm:text-4xl">
+            What our patients are saying
+          </h2>
+        </Reveal>
+        <div className="mt-12 columns-1 gap-6 sm:columns-2 lg:columns-3">
+          {GOOGLE_REVIEWS.map((review, i) => (
+            <ReviewCard key={review.name + i} review={review} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ReviewCard({ review, index }: { review: GoogleReview; index: number }) {
+  const accent = REVIEW_ACCENTS[index % REVIEW_ACCENTS.length];
+  return (
+    <div className="mb-6 break-inside-avoid-column rounded-3xl border border-brand-line bg-white p-6 shadow-sm shadow-brand-navy/5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-3">
+          <span
+            aria-hidden
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${accent} text-sm font-bold text-white`}
+          >
+            {review.name.charAt(0)}
+          </span>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-bold text-brand-navy">{review.name}</p>
+            <p className="truncate text-xs text-brand-ink/55">{review.meta}</p>
+          </div>
+        </div>
+        <GoogleGIcon className="h-4 w-4 shrink-0 text-brand-ink/25" />
+      </div>
+      <div className="mt-3 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-0.5" aria-label={`${review.rating} out of 5 stars`}>
+          {Array.from({ length: review.rating }).map((_, si) => (
+            <StarIcon key={si} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+          ))}
+        </div>
+        <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-ink/45">
+          {review.time}
+        </span>
+      </div>
+      {review.text && (
+        <p className="mt-3 text-sm leading-relaxed text-brand-ink/75">{review.text}</p>
+      )}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /* Trust block                                                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -491,14 +556,9 @@ function ConsultationCta() {
               </div>
               <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
                 <MagneticButton>
-                  <a
-                    href={CONTACT.bookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50"
-                  >
+                  <BookNowTrigger className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50">
                     Book Appointment
-                  </a>
+                  </BookNowTrigger>
                 </MagneticButton>
                 <a
                   href={CONTACT.phoneHref}

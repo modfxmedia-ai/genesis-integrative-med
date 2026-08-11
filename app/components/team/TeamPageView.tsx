@@ -10,6 +10,7 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 
+import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
   MagneticButton,
   Reveal,
@@ -235,15 +236,10 @@ function Hero({
         <Reveal delay={0.2}>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <MagneticButton>
-              <a
-                href={CONTACT.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50"
-              >
+              <BookNowTrigger className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50">
                 Schedule Consultation
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </a>
+              </BookNowTrigger>
             </MagneticButton>
             <a
               href={CONTACT.phoneHref}
@@ -461,7 +457,12 @@ function MemberPhoto({
               src={member.image.src}
               alt={member.image.alt}
               fill
-              sizes="(max-width: 1024px) 100vw, 460px"
+              // Extra headroom vs. the box's real layout width: the parent
+              // motion.div is continuously scaled up to 1.12x for the
+              // parallax effect, which a plain sizes-for-layout-width value
+              // doesn't account for, leaving the image undersized/soft.
+              sizes="(max-width: 1024px) 130vw, 620px"
+              quality={100}
               className="object-cover"
             />
           </motion.div>
@@ -648,14 +649,9 @@ function BookWithMemberCard({
             approach to integrative care at Genesis Integrative Medicine.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <a
-              href={CONTACT.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg hover:shadow-brand-blue/40"
-            >
+            <BookNowTrigger className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg hover:shadow-brand-blue/40">
               Schedule Consultation
-            </a>
+            </BookNowTrigger>
             <a
               href={CONTACT.phoneHref}
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-brand-line bg-white px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy transition-colors hover:border-brand-blue/40 hover:bg-brand-mist"
@@ -710,15 +706,10 @@ function ConsultationCta() {
               </div>
               <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
                 <MagneticButton>
-                  <a
-                    href={CONTACT.bookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50"
-                  >
+                  <BookNowTrigger className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50">
                     Book Appointment
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </a>
+                  </BookNowTrigger>
                 </MagneticButton>
                 <a
                   href={CONTACT.phoneHref}

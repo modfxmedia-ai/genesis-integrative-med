@@ -129,17 +129,10 @@ export const BRAND = {
  */
 export const PROVIDERS = [
   {
-    name: "Dr. Anthony Leazzo",
-    credentials: "DO",
-    title: "Clinic Director",
-    image: "/images/providers/anthony-leazzo.webp",
-    href: "/our-providers/",
-  },
-  {
     name: "Nathan Conroy",
     credentials: "DC",
     title: "Chiropractic & Physical Medicine",
-    image: "/images/providers/nathan-conroy.png",
+    image: "/images/providers/nathan-conroy.jpg",
     href: "/our-providers/",
   },
   {
@@ -147,6 +140,13 @@ export const PROVIDERS = [
     credentials: "PA",
     title: "Physicians Assistant",
     image: "/images/providers/jeff-floyd.jpg",
+    href: "/our-providers/",
+  },
+  {
+    name: "Dr. Anthony Leazzo",
+    credentials: "DO",
+    title: "Clinic Director",
+    image: "/images/providers/anthony-leazzo.jpg",
     href: "/our-providers/",
   },
 ] as const;

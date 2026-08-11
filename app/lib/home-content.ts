@@ -271,9 +271,9 @@ export const HOME_CONTACT = {
     // Primary LeadConnector intake form from the live site, the same one
     // used on /contact/ so patients get an identical experience and all
     // submissions land in the practice's existing automation pipeline.
-    src: "https://api.leadconnectorhq.com/widget/form/ui8Cws8VEvRRDMpmSR8J",
-    height: 860,
-    title: "Genesis Integrative Medicine, Patient Intake",
+    src: "https://api.leadconnectorhq.com/widget/form/gi2SyjXLi88Pb5yGOihb",
+    height: 704,
+    title: " 🟢 Website Form v2.0",
   },
 } as const;
 
@@ -326,15 +326,15 @@ export const CONDITIONS_CATALOG = [
  * Images stored in /public/images/services/.
  */
 export const SERVICES_CATALOG = [
-  { title: "Shockwave Therapy", href: "/services/shockwave-therapy/", image: "/images/services/ed/ed-hero.jpeg", alt: "Shockwave therapy for musculoskeletal pain" },
-  { title: "Cold Laser", href: "/services/cold-laser/", image: "/images/services/cold-laser.webp", alt: "Cold laser therapy" },
-  { title: "Chiropractic Care", href: "/services/chiropractic-care/", image: "/images/services/chiropractic-care.webp", alt: "Chiropractic care" },
-  { title: "Active Rehab", href: "/services/active-rehab-geneva/", image: "/images/services/active-rehab.webp", alt: "Active rehab" },
-  { title: "PRP Injections", href: "/services/prp-injections-geneva/", image: "/images/services/prp-injections.webp", alt: "PRP injections" },
-  { title: "Regenerative Medicine", href: "/services/regenerative-medicine/", image: "/images/services/regenerative-medicine.webp", alt: "Regenerative medicine" },
-  { title: "Peptide Weight Loss", href: "/services/peptide-weight-loss/", image: "/images/services/peptide-weight-loss.webp", alt: "Medical weight loss" },
-  { title: "Peripheral Neuropathy", href: "/services/peripheral-neuropathy-treatment/", image: "/images/services/peripheral-neuropathy.webp", alt: "Peripheral neuropathy treatment" },
-  { title: "ED Shockwave & Men's Wellness", href: "/services/ed-shockwave-mens-wellness/", image: "/images/services/ed-shockwave.jpeg", alt: "ED shockwave therapy" },
-  { title: "Allergy Testing", href: "/services/allergy-testing-geneva/", image: "/images/services/allergy-testing.webp", alt: "Allergy testing" },
-  { title: "Sciatica", href: "/services/sciatica/", image: "/images/services/sciatica.webp", alt: "Sciatica treatment" },
+  { title: "Shockwave Therapy", href: "/services/shockwave-therapy/", image: "/images/shockwave-therapy.webp", alt: "Shockwave therapy for musculoskeletal pain" },
+  { title: "Cold Laser", href: "/services/cold-laser/", image: "/images/cold-laser%20copy.jpg", alt: "Cold laser therapy" },
+  { title: "Chiropractic Care", href: "/services/chiropractic-care/", image: "/images/chiropractic-care.jpg", alt: "Chiropractic care" },
+  { title: "Active Rehab", href: "/services/active-rehab-geneva/", image: "/images/active-rehab.jpeg", alt: "Active rehab" },
+  { title: "PRP Injections", href: "/services/prp-injections-geneva/", image: "/images/prp-injections.jpg", alt: "PRP injections" },
+  { title: "Regenerative Medicine", href: "/services/regenerative-medicine/", image: "/images/regenerative-medicine.jpg", alt: "Regenerative medicine" },
+  { title: "Peptide Weight Loss", href: "/services/peptide-weight-loss/", image: "/images/services/medical-weight-loss-card.jpg", alt: "Medical weight loss" },
+  { title: "Peripheral Neuropathy", href: "/services/peripheral-neuropathy-treatment/", image: "/images/services/peripheral-neuropathy-card.jpg", alt: "Peripheral neuropathy treatment" },
+  { title: "ED Shockwave & Men's Wellness", href: "/services/ed-shockwave-mens-wellness/", image: "/images/services/ed/ed-hero.jpeg", alt: "ED shockwave therapy" },
+  { title: "Allergy Testing", href: "/services/allergy-testing-geneva/", image: "/images/services/allergy-testing-card.webp", alt: "Allergy testing" },
+  { title: "Sciatica", href: "/services/sciatica/", image: "/images/services/sciatica-card.webp", alt: "Sciatica treatment" },
 ] as const;

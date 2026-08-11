@@ -69,8 +69,8 @@ const jsonLd = [
         position: 1,
         item: {
           "@type": "Person",
-          name: "Dr. Anthony Leazzo, DO",
-          jobTitle: "Clinic Director",
+          name: "Nathan Conroy, DC",
+          jobTitle: "Chiropractic & Physical Medicine",
           worksFor: { "@type": "MedicalClinic", name: "Genesis Integrative Medicine" },
         },
       },
@@ -79,8 +79,8 @@ const jsonLd = [
         position: 2,
         item: {
           "@type": "Person",
-          name: "Nathan Conroy, DC",
-          jobTitle: "Chiropractic & Physical Medicine",
+          name: "Jeff Floyd, PA",
+          jobTitle: "Physicians Assistant",
           worksFor: { "@type": "MedicalClinic", name: "Genesis Integrative Medicine" },
         },
       },
@@ -89,8 +89,8 @@ const jsonLd = [
         position: 3,
         item: {
           "@type": "Person",
-          name: "Jeff Floyd, PA",
-          jobTitle: "Physicians Assistant",
+          name: "Dr. Anthony Leazzo, DO",
+          jobTitle: "Clinic Director",
           worksFor: { "@type": "MedicalClinic", name: "Genesis Integrative Medicine" },
         },
       },
@@ -100,23 +100,13 @@ const jsonLd = [
 
 const PROVIDERS = [
   {
-    name: "Dr. Anthony Leazzo, DO",
-    title: "Clinic Director",
-    image: {
-      src: "/images/providers/anthony-leazzo.webp",
-      alt: "Dr. Anthony Leazzo, DO, Clinic Director at Genesis Integrative Medicine",
-      width: 800,
-      height: 1000,
-    },
-  },
-  {
     name: "Nathan Conroy, DC",
     title: "Chiropractic & Physical Medicine",
     image: {
-      src: "/images/providers/nathan-conroy.png",
+      src: "/images/providers/nathan-conroy.jpg",
       alt: "Nathan Conroy, DC, Chiropractic & Physical Medicine at Genesis Integrative Medicine",
-      width: 800,
-      height: 1000,
+      width: 1050,
+      height: 1400,
     },
     bio: [
       "Nathan Conroy, DC, is certain that a healthy spine is key to a long, happy life. At Genesis Integrative Medicine in Geneva, Illinois, Dr. Conroy, DC, offers a variety of services to improve his patients\u2019 physical and overall health without medications or surgery. Inspired by his grandfather, a medical doctor, he pursued his degree in chiropractic care because of the many benefits chiropractic adjustments offer to the body. He brings over 15 years of experience in chiropractic care to Genesis Integrative Medicine.",
@@ -139,6 +129,16 @@ const PROVIDERS = [
       "Jeff is a Certified Physicians Assistant who has been practicing for the past 14 years with an emphasis on Orthopedics. He is excited to explore what opportunities for treatment are available to you.",
       "When he is not working, Jeff enjoys time with his family, skiing, traveling, and good food!",
     ],
+  },
+  {
+    name: "Dr. Anthony Leazzo, DO",
+    title: "Clinic Director",
+    image: {
+      src: "/images/providers/anthony-leazzo.jpg",
+      alt: "Dr. Anthony Leazzo, DO, Clinic Director at Genesis Integrative Medicine",
+      width: 1373,
+      height: 1400,
+    },
   },
 ] as const;
 

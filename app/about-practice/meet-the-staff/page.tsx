@@ -119,10 +119,10 @@ const STAFF = [
     name: "Kim Bukowski",
     title: "Front Desk Manager",
     image: {
-      src: "/images/staff/kim-bukowski.webp",
+      src: "/images/staff/kim-bukowski.jpg",
       alt: "Kim Bukowski, Front Desk Manager at Genesis Integrative Medicine",
-      width: 800,
-      height: 800,
+      width: 741,
+      height: 1024,
     },
     bio: [
       "I\u2019ve been an active Cosmetologist for many years. I love interacting with people, getting to know them on a personal level & making them feel their very best.",
@@ -150,8 +150,8 @@ const STAFF = [
     image: {
       src: "/images/staff/angela-warmuth.jpg",
       alt: "Angela Warmuth, Weight Loss Consultant at Genesis Integrative Medicine",
-      width: 800,
-      height: 800,
+      width: 1013,
+      height: 1400,
     },
     bio: [
       "Angela is our Lead Weight Loss Consultant with over 33 years of experience in the medical and weight loss field.",

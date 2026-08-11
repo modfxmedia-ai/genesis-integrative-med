@@ -307,7 +307,13 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
 function YelpIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12.2 15.4v5.2c0 .8-.6 1.4-1.3 1.4-.2 0-.4 0-.6-.1l-3-1.2c-.6-.2-.9-.9-.7-1.5.1-.1.1-.3.2-.4l3-4c.4-.5 1.2-.6 1.7-.2.4.2.7.6.7 1zM6.3 12.9l-3 1.2c-.6.2-1.3 0-1.5-.7-.1-.2-.1-.4 0-.6l1-3.4c.2-.6.9-1 1.5-.8.2 0 .4.2.5.3l2 3.3c.4.5.3 1.2-.1 1.6-.1.1-.2.1-.4.1zm6.6-4.4V3.4c0-.7.6-1.4 1.3-1.4h.2l3.4.6c.7.1 1.2.8 1 1.4 0 .2-.1.4-.2.5l-4 5.4c-.4.5-1.1.6-1.6.2-.1-.2-.1-.6-.1-.7v-1zm5 5.3l3.7 1.4c.6.2 1 .9.7 1.5-.1.2-.2.3-.3.4l-2.3 2.4c-.5.5-1.2.5-1.7 0-.1-.1-.2-.3-.3-.5l-1.4-3.9c-.2-.6.1-1.3.7-1.5.4-.1.6-.1.9.2zm-1.7-3.1c-.6-.2-.9-.8-.7-1.4l1.6-4.3c.2-.6 1-1 1.6-.7.2 0 .3.1.5.2l2.4 2.4c.5.5.5 1.3 0 1.8-.1.1-.3.2-.4.3l-4.6 1.7c-.1 0-.3 0-.4 0z" />
+      <circle cx="12" cy="12" r="1.7" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(0 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(120 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(180 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(240 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(300 12 12)" />
     </svg>
   );
 }

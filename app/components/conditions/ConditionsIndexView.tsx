@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 
+import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
   MagneticButton,
   Reveal,
@@ -178,12 +179,7 @@ export default function ConditionsIndexView() {
                 </p>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <MagneticButton>
-                    <a
-                      href={CONTACT.bookingUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50"
-                    >
+                    <BookNowTrigger className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50">
                       Book Appointment
                       <svg
                         viewBox="0 0 24 24"
@@ -197,7 +193,7 @@ export default function ConditionsIndexView() {
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                       </svg>
-                    </a>
+                    </BookNowTrigger>
                   </MagneticButton>
                   <a
                     href={CONTACT.phoneHref}

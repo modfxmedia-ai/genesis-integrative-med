@@ -21,6 +21,7 @@ import {
   type ServiceSection,
 } from "@/app/lib/services-content";
 import { CONTACT } from "@/app/lib/site-config";
+import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
   MagneticButton,
   Reveal,
@@ -123,12 +124,10 @@ export default function ServicePageTemplate({
           faqs={content.faqs}
         />
       )}
-      {!useSidebar && (
-        <AllServicesList
-          currentSlug={content.slug}
-          relatedNav={content.relatedNav}
-        />
-      )}
+      <AllServicesList
+        currentSlug={content.slug}
+        relatedNav={content.relatedNav}
+      />
       <ConsultationCta />
       <InsuranceMissionBlock />
     </article>
@@ -200,8 +199,7 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
   });
   const blobY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
   const dotY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.12]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
   const badgeY = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
   const { hero } = content;
   const heroImage =
@@ -396,11 +394,11 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
               }}
             />
 
-            {/* Image frame */}
+            {/* Image frame — full, uncropped photo at its native aspect ratio */}
             <div className="relative overflow-hidden rounded-[2rem] border border-brand-line bg-brand-ink shadow-2xl shadow-brand-navy/25">
               <motion.div
-                className="relative aspect-[4/5] w-full sm:aspect-[5/6]"
-                style={reduce ? undefined : { y: imageY, scale: imageScale }}
+                className="relative aspect-[4/3] w-full"
+                style={reduce ? undefined : { y: imageY }}
               >
                 <Image
                   src={heroImage.src}
@@ -408,7 +406,8 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 560px"
-                  className="object-cover"
+                  quality={95}
+                  className="object-contain"
                 />
               </motion.div>
               {/* Gradient wash for depth */}
@@ -1196,15 +1195,20 @@ function SectionHeader({
 /* -------------------------------------------------------------------------- */
 
 function SidebarLayout({ content }: { content: ServicePageContent }) {
+  const groups = groupSidebarSections(content.sections);
   return (
     <section className="bg-white py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
           <main className="lg:col-span-8 xl:col-span-9">
             <div className="space-y-12 sm:space-y-16">
-              {content.sections.map((section, i) => (
-                <LinearSection key={i} section={section} />
-              ))}
+              {groups.map((group, i) =>
+                group.type === "cards" ? (
+                  <ProseCardsGroup key={i} sections={group.sections} />
+                ) : (
+                  <LinearSection key={i} section={group.section} />
+                ),
+              )}
             </div>
           </main>
           <aside className="lg:col-span-4 xl:col-span-3">
@@ -1218,6 +1222,91 @@ function SidebarLayout({ content }: { content: ServicePageContent }) {
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * Groups consecutive headed "prose" sections into card-grid blocks so
+ * sidebar-layout pages (conditions) don't render as an unbroken wall of
+ * paragraphs. Headingless prose (usually the lead intro) and any other
+ * section kind (list/subsections/benefits, which already render as
+ * cards) pass through unchanged.
+ */
+type ProseWithHeading = Extract<ServiceSection, { kind: "prose" }> & {
+  heading: string;
+};
+type SidebarGroup =
+  | { type: "single"; section: ServiceSection }
+  | { type: "cards"; sections: ProseWithHeading[] };
+
+function groupSidebarSections(
+  sections: readonly ServiceSection[],
+): SidebarGroup[] {
+  const groups: SidebarGroup[] = [];
+  let run: ProseWithHeading[] = [];
+  const flushRun = () => {
+    if (run.length > 0) groups.push({ type: "cards", sections: run });
+    run = [];
+  };
+  for (const section of sections) {
+    if (section.kind === "prose" && section.heading) {
+      run.push(section as ProseWithHeading);
+    } else {
+      flushRun();
+      groups.push({ type: "single", section });
+    }
+  }
+  flushRun();
+  return groups;
+}
+
+function ProseCardsGroup({
+  sections,
+}: {
+  sections: readonly ProseWithHeading[];
+}) {
+  return (
+    <div className="space-y-6">
+      {sections.map((s, i) => {
+        const accent = ACCENTS[i % ACCENTS.length];
+        return (
+          // Plain div, not <Reveal>: whileInView reveals can get stuck at
+          // opacity 0 in this stack, and these boxes must stay visible.
+          <div
+            key={i}
+            className="group relative overflow-hidden rounded-3xl border border-brand-line bg-white p-6 shadow-sm shadow-brand-navy/5 transition-shadow hover:shadow-lg hover:shadow-brand-navy/10 sm:p-9"
+          >
+            <div
+              aria-hidden
+              className={`absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b ${accent}`}
+            />
+            <div className="flex items-center gap-4 pl-2.5 sm:pl-3">
+              <span
+                aria-hidden
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${accent} text-white shadow-md shadow-brand-blue/25`}
+              >
+                <span className="text-sm font-bold tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </span>
+              <h3 className="text-xl font-bold tracking-tight text-brand-navy sm:text-2xl">
+                {s.heading}
+              </h3>
+            </div>
+            <div className="mt-4 space-y-3 pl-2.5 sm:pl-3">
+              {s.paragraphs?.map((p, pi) => (
+                <p
+                  key={pi}
+                  className="text-base leading-relaxed text-brand-ink/75"
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -1822,15 +1911,10 @@ function ConsultationCta() {
               </div>
               <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
                 <MagneticButton>
-                  <a
-                    href={CONTACT.bookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50"
-                  >
+                  <BookNowTrigger className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50">
                     Book Appointment
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </a>
+                  </BookNowTrigger>
                 </MagneticButton>
                 <a
                   href={CONTACT.phoneHref}

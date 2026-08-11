@@ -11,6 +11,7 @@ import {
 } from "motion/react";
 import { useMemo, useRef } from "react";
 
+import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
   MagneticButton,
   Reveal,
@@ -699,15 +700,10 @@ function AuthorCard() {
                     Meet the practice
                     <ArrowRight className="h-3 w-3" />
                   </Link>
-                  <a
-                    href={CONTACT.bookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg"
-                  >
+                  <BookNowTrigger className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg">
                     Book a visit
                     <ArrowRight className="h-3 w-3" />
-                  </a>
+                  </BookNowTrigger>
                 </div>
               </div>
             </div>

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 
 import BookNowBanner from "@/app/components/BookNowBanner";
+import BookingPopupProvider from "@/app/components/booking/BookingPopupProvider";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 import { BRAND } from "@/app/lib/site-config";
@@ -38,10 +40,20 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white text-brand-ink">
-        <Header />
-        <main className="flex flex-1 flex-col">{children}</main>
-        <Footer />
-        <BookNowBanner />
+        <BookingPopupProvider>
+          <Header />
+          <main className="flex flex-1 flex-col">{children}</main>
+          <Footer />
+          <BookNowBanner />
+        </BookingPopupProvider>
+        <Script id="knock-knock-widget" strategy="afterInteractive">
+          {`
+            window.company_id = '6a7b00dd939f9f6c9aaa74c3';
+            var newScript = document.createElement('script');
+            newScript.src = 'https://api.knock-knockapp.com/widget/widget.js';
+            document.getElementsByTagName('HEAD')[0].appendChild(newScript);
+          `}
+        </Script>
       </body>
     </html>
   );

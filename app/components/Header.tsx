@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useId, useRef, useState } from "react";
 
+import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
   BRAND,
   CONTACT,
@@ -71,10 +72,31 @@ export default function Header() {
               </span>
             </a>
           </div>
-          <SocialLinks
-            className="flex items-center gap-3 text-white/70"
-            iconClass="h-3.5 w-3.5 hover:text-brand-sky transition-colors"
-          />
+          <div className="flex items-center gap-5">
+            <a
+              href={CONTACT.careCreditUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Apply for financing with CareCredit"
+              className="group flex items-center gap-2 whitespace-nowrap rounded-full bg-white py-1 pl-2.5 pr-3 transition-colors hover:bg-brand-sky/90"
+            >
+              <Image
+                src="/images/care-credit-small-300x62.png"
+                alt="CareCredit"
+                width={300}
+                height={62}
+                className="h-3.5 w-auto"
+              />
+              <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.1em] text-brand-navy">
+                Apply for Financing
+                <ArrowRightIcon className="h-2.5 w-2.5 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </a>
+            <SocialLinks
+              className="flex items-center gap-3 text-white/70"
+              iconClass="h-3.5 w-3.5 hover:text-brand-sky transition-colors"
+            />
+          </div>
         </div>
       </div>
 
@@ -121,15 +143,10 @@ export default function Header() {
 
           {/* CTA + mobile toggle */}
           <div className="ml-auto flex shrink-0 items-center gap-2">
-            <a
-              href={CONTACT.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group hidden items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white shadow-md shadow-brand-blue/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-blue/40 md:inline-flex"
-            >
+            <BookNowTrigger className="group hidden items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white shadow-md shadow-brand-blue/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-blue/40 md:inline-flex">
               Schedule Appointment
               <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-            </a>
+            </BookNowTrigger>
 
             <button
               type="button"
@@ -178,15 +195,10 @@ export default function Header() {
                 </ul>
               </nav>
 
-              <a
-                href={CONTACT.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-4 text-sm font-bold uppercase tracking-[0.12em] text-white shadow-lg"
-              >
+              <BookNowTrigger className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-4 text-sm font-bold uppercase tracking-[0.12em] text-white shadow-lg">
                 Schedule Appointment
                 <ArrowRightIcon className="h-4 w-4" />
-              </a>
+              </BookNowTrigger>
 
               <div className="mt-10 space-y-4 border-t border-white/10 pt-8 text-sm text-white/80">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-sky">
@@ -403,12 +415,9 @@ function NavItemDesktop({
                 )}
               </ul>
               {/* Book Appointment CTA, always one click away */}
-              <a
-                href={CONTACT.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <BookNowTrigger
                 role="menuitem"
-                className="group flex items-center justify-between gap-3 border-t border-brand-line bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-3.5 text-white transition-opacity hover:opacity-95"
+                className="group flex w-full items-center justify-between gap-3 border-t border-brand-line bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-3.5 text-white transition-opacity hover:opacity-95"
               >
                 <span className="flex items-center gap-2.5">
                   <CalendarIcon className="h-4 w-4" />
@@ -417,7 +426,7 @@ function NavItemDesktop({
                   </span>
                 </span>
                 <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </a>
+              </BookNowTrigger>
             </div>
           </motion.div>
         )}
@@ -652,7 +661,13 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
 function YelpIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12.2 15.4v5.2c0 .8-.6 1.4-1.3 1.4-.2 0-.4 0-.6-.1l-3-1.2c-.6-.2-.9-.9-.7-1.5.1-.1.1-.3.2-.4l3-4c.4-.5 1.2-.6 1.7-.2.4.2.7.6.7 1zM6.3 12.9l-3 1.2c-.6.2-1.3 0-1.5-.7-.1-.2-.1-.4 0-.6l1-3.4c.2-.6.9-1 1.5-.8.2 0 .4.2.5.3l2 3.3c.4.5.3 1.2-.1 1.6-.1.1-.2.1-.4.1zm6.6-4.4V3.4c0-.7.6-1.4 1.3-1.4h.2l3.4.6c.7.1 1.2.8 1 1.4 0 .2-.1.4-.2.5l-4 5.4c-.4.5-1.1.6-1.6.2-.1-.2-.1-.6-.1-.7v-1zm5 5.3l3.7 1.4c.6.2 1 .9.7 1.5-.1.2-.2.3-.3.4l-2.3 2.4c-.5.5-1.2.5-1.7 0-.1-.1-.2-.3-.3-.5l-1.4-3.9c-.2-.6.1-1.3.7-1.5.4-.1.6-.1.9.2zm-1.7-3.1c-.6-.2-.9-.8-.7-1.4l1.6-4.3c.2-.6 1-1 1.6-.7.2 0 .3.1.5.2l2.4 2.4c.5.5.5 1.3 0 1.8-.1.1-.3.2-.4.3l-4.6 1.7c-.1 0-.3 0-.4 0z" />
+      <circle cx="12" cy="12" r="1.7" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(0 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(120 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(180 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(240 12 12)" />
+      <ellipse cx="12" cy="5.6" rx="1.9" ry="3.5" transform="rotate(300 12 12)" />
     </svg>
   );
 }

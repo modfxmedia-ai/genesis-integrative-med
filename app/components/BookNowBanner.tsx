@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
+import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import { CONTACT } from "@/app/lib/site-config";
 
 /**
@@ -90,15 +91,10 @@ export default function BookNowBanner() {
                 </a>
 
                 {/* Primary CTA */}
-                <a
-                  href={CONTACT.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg hover:shadow-brand-blue/40"
-                >
-                  Book Now
+                <BookNowTrigger className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg hover:shadow-brand-blue/40">
+                  Schedule Appointment
                   <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                </a>
+                </BookNowTrigger>
 
                 {/* Dismiss */}
                 <button

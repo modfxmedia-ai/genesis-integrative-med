@@ -411,7 +411,7 @@ export function ServicesShowcase() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className="relative mt-6 aspect-[4/5] w-full overflow-hidden rounded-3xl bg-brand-ink shadow-2xl shadow-brand-navy/20"
+                className="relative mt-6 aspect-[4/5] w-full overflow-hidden rounded-3xl bg-brand-mist shadow-2xl shadow-brand-navy/20"
               >
                 <AnimatePresence mode="wait">
                   <motion.div

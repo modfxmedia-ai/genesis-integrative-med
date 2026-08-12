@@ -394,8 +394,8 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
               }}
             />
 
-            {/* Image frame — full, uncropped photo at its native aspect ratio */}
-            <div className="relative overflow-hidden rounded-[2rem] border border-brand-line bg-brand-ink shadow-2xl shadow-brand-navy/25">
+            {/* Image — merged directly into the page, no frame/bezel */}
+            <div className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-navy/20">
               <motion.div
                 className="relative aspect-[4/3] w-full"
                 style={reduce ? undefined : { y: imageY }}
@@ -407,18 +407,13 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
                   priority
                   sizes="(max-width: 1024px) 100vw, 560px"
                   quality={95}
-                  className="object-contain"
+                  className="object-cover"
                 />
               </motion.div>
-              {/* Gradient wash for depth */}
+              {/* Soft gradient wash at the base for depth */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-brand-ink/70 via-brand-ink/15 to-transparent"
-              />
-              {/* Inner ring */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-navy/35 via-brand-navy/0 to-transparent"
               />
               {/* Shine sweep, one-shot on mount */}
               {!reduce && (

@@ -137,7 +137,7 @@ export const WHY_INTEGRATIVE = {
       body:
         "Our mission is to help people take charge of their health by understanding their problems and making the necessary changes to achieve optimal health.",
       href: "/our-providers/",
-      image: "/images/services/regenerative-medicine/knee-therapy.jpg",
+      image: "/images/providers.png",
       alt: "Healthcare professional in scrubs caring for a smiling patient",
     },
     {

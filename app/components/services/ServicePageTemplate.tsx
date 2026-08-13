@@ -321,81 +321,8 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.95, ease: EASE, delay: 0.15 }}
           >
-            {/* Ambient blobs behind the frame */}
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute -top-10 -right-10 h-52 w-52 rounded-full bg-brand-cyan/30 blur-3xl"
-              animate={
-                reduce
-                  ? undefined
-                  : { scale: [1, 1.12, 1], opacity: [0.6, 0.9, 0.6] }
-              }
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-brand-blue/25 blur-3xl"
-              animate={
-                reduce
-                  ? undefined
-                  : { scale: [1.05, 0.95, 1.05], opacity: [0.5, 0.8, 0.5] }
-              }
-              transition={{
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.4,
-              }}
-            />
-
-            {/* Floating decorative rings (motion graphics) */}
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute -top-6 right-6 h-16 w-16 rounded-full border-2 border-brand-cyan/40"
-              animate={
-                reduce ? undefined : { y: [0, -10, 0], rotate: [0, 8, 0] }
-              }
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute bottom-10 -right-4 h-10 w-10 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan shadow-lg shadow-brand-blue/40"
-              animate={
-                reduce
-                  ? undefined
-                  : { y: [0, 12, 0], rotate: [0, -12, 0] }
-              }
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.6,
-              }}
-            />
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute -left-3 top-1/3 h-6 w-6 rounded-full bg-brand-cyan shadow-md shadow-brand-cyan/40"
-              animate={
-                reduce ? undefined : { y: [0, -8, 0], x: [0, 6, 0] }
-              }
-              transition={{
-                duration: 4.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.3,
-              }}
-            />
-
-            {/* Image — merged directly into the page, no frame/bezel */}
-            <div className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-navy/20">
+            {/* Image — merged directly into the page, no frame/bezel. Left edge fades into the page bg on desktop (side-by-side layout) */}
+            <div className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-navy/20 hero-image-fade">
               <motion.div
                 className="relative aspect-[4/3] w-full"
                 style={reduce ? undefined : { y: imageY }}

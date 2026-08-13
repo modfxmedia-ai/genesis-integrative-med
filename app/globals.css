@@ -34,3 +34,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Fades the left edge of a hero image into the page bg on desktop side-by-side layouts only. */
+@media (min-width: 1024px) {
+  .hero-image-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 22%);
+    mask-image: linear-gradient(to right, transparent 0%, black 22%);
+  }
+}

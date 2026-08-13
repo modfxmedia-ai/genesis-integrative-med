@@ -999,9 +999,15 @@ function PhotoMosaic({ mosaic }: { mosaic: MosaicData }) {
         }}
       />
 
-      <div className="relative grid grid-cols-12 grid-rows-[220px_140px] gap-3 sm:grid-rows-[280px_160px] sm:gap-4">
-        {/* Big portrait, spans 2 rows on the left */}
-        <div className="relative col-span-7 row-span-2 overflow-hidden rounded-2xl shadow-lg shadow-brand-navy/10 ring-1 ring-brand-line">
+      {/*
+        Mobile: 2-col grid, big photo full-width, small1/small2 side by
+        side, stat card gets its own full-width auto-height row so its
+        text never gets clipped. Desktop (sm:): 12-col bento grid, grid
+        auto-placement recreates the original nested small2+stat split.
+      */}
+      <div className="relative grid grid-cols-2 grid-rows-[200px_140px_auto] gap-3 sm:grid-cols-12 sm:grid-rows-[280px_160px] sm:gap-4">
+        {/* Big portrait, spans 2 rows on the left (desktop) */}
+        <div className="relative col-span-2 overflow-hidden rounded-2xl shadow-lg shadow-brand-navy/10 ring-1 ring-brand-line sm:col-span-7 sm:row-span-2">
           <Image
             src={mosaic.big.src}
             alt={mosaic.big.alt}
@@ -1025,8 +1031,8 @@ function PhotoMosaic({ mosaic }: { mosaic: MosaicData }) {
           </span>
         </div>
 
-        {/* Small square top-right */}
-        <div className="relative col-span-5 overflow-hidden rounded-2xl shadow-md shadow-brand-navy/10 ring-1 ring-brand-line">
+        {/* Small square */}
+        <div className="relative col-span-1 overflow-hidden rounded-2xl shadow-md shadow-brand-navy/10 ring-1 ring-brand-line sm:col-span-5">
           <Image
             src={mosaic.small1.src}
             alt={mosaic.small1.alt}
@@ -1036,38 +1042,38 @@ function PhotoMosaic({ mosaic }: { mosaic: MosaicData }) {
           />
         </div>
 
-        {/* Bottom-right: split into small square + stats card */}
-        <div className="col-span-5 grid grid-cols-5 gap-3 sm:gap-4">
-          <div className="relative col-span-2 overflow-hidden rounded-2xl shadow-md shadow-brand-navy/10 ring-1 ring-brand-line">
-            <Image
-              src={mosaic.small2.src}
-              alt={mosaic.small2.alt}
-              fill
-              sizes="(min-width: 1024px) 130px, 20vw"
-              className="object-cover"
-            />
+        {/* Small square */}
+        <div className="relative col-span-1 overflow-hidden rounded-2xl shadow-md shadow-brand-navy/10 ring-1 ring-brand-line sm:col-span-2">
+          <Image
+            src={mosaic.small2.src}
+            alt={mosaic.small2.alt}
+            fill
+            sizes="(min-width: 1024px) 130px, 20vw"
+            className="object-cover"
+          />
+        </div>
+
+        {/* Stat card, full-width row on mobile so text has room to breathe */}
+        <div className="relative col-span-2 flex flex-col justify-between gap-3 rounded-2xl border border-brand-line bg-white p-4 shadow-md shadow-brand-navy/10 sm:col-span-3 sm:gap-2 sm:overflow-hidden sm:p-4">
+          <div className="flex items-start justify-between gap-2">
+            <span
+              aria-hidden
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-navy to-brand-blue text-white shadow-sm"
+            >
+              <HeartBadgeIcon className="h-[18px] w-[18px]" />
+            </span>
+            <span className="flex items-center gap-1 rounded-full bg-brand-mist px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em] text-brand-blue">
+              <StarMiniIcon className="h-3 w-3" />
+              {mosaic.stat.trustLabel}
+            </span>
           </div>
-          <div className="relative col-span-3 flex flex-col justify-between overflow-hidden rounded-2xl border border-brand-line bg-white p-3 shadow-md shadow-brand-navy/10 sm:p-4">
-            <div className="flex items-start justify-between gap-2">
-              <span
-                aria-hidden
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-navy to-brand-blue text-white shadow-sm"
-              >
-                <HeartBadgeIcon className="h-[18px] w-[18px]" />
-              </span>
-              <span className="flex items-center gap-1 rounded-full bg-brand-mist px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em] text-brand-blue">
-                <StarMiniIcon className="h-3 w-3" />
-                {mosaic.stat.trustLabel}
-              </span>
-            </div>
-            <div>
-              <p className="text-sm font-extrabold leading-tight text-brand-navy sm:text-base">
-                {mosaic.stat.value}
-              </p>
-              <p className="mt-0.5 text-[11px] leading-snug text-brand-ink/60">
-                {mosaic.stat.label}
-              </p>
-            </div>
+          <div>
+            <p className="text-sm font-extrabold leading-tight text-brand-navy sm:text-base">
+              {mosaic.stat.value}
+            </p>
+            <p className="mt-0.5 text-[11px] leading-snug text-brand-ink/60">
+              {mosaic.stat.label}
+            </p>
           </div>
         </div>
       </div>
@@ -1539,7 +1545,7 @@ export function UnlockPainFreeSection() {
     {
       label: "Shockwave Therapy",
       href: "/services/shockwave-therapy/",
-      image: "/images/services/ed/ed-hero.jpeg",
+      image: "/images/conditions/shockwave-therapy-back-pain.png",
     },
     {
       label: "Cold Laser",

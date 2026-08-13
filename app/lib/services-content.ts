@@ -191,7 +191,7 @@ export const SERVICES_INDEX_CARDS = [
     body:
       "One of our most-used treatments. Non-invasive acoustic-wave therapy for elbow, wrist, hip, knee, shoulder, and plantar fasciitis / foot pain, real healing without drugs or surgery.",
     href: "/services/shockwave-therapy/",
-    image: "/images/services/ed/ed-hero.jpeg",
+    image: "/images/shockwave-therapy.webp",
     alt: "Shockwave therapy for musculoskeletal pain",
   },
   {
@@ -199,7 +199,7 @@ export const SERVICES_INDEX_CARDS = [
     body:
       "FDA-approved low-level laser therapy we use every day to reduce inflammation, speed healing, and relieve chronic joint, tendon, and nerve pain, pairs beautifully with shockwave.",
     href: "/services/cold-laser/",
-    image: "/images/services/cold-laser.webp",
+    image: "/images/services/cold-laser-card.jpg",
     alt: "Cold laser therapy",
   },
   {
@@ -207,7 +207,7 @@ export const SERVICES_INDEX_CARDS = [
     body:
       "Chiropractic treatment is used as a pain relief alternative for muscles, joints, bones, and connective tissue, such as cartilage, ligaments, and tendons.",
     href: "/services/chiropractic-care/",
-    image: "/images/services/chiropractic-care.webp",
+    image: "/images/services/chiropractic-card.jpg",
     alt: "Chiropractic care",
   },
   {
@@ -215,7 +215,7 @@ export const SERVICES_INDEX_CARDS = [
     body:
       "Active Rehabilitation includes but is not limited to: mobility, stability, strength and endurance training through client specific exercises and progression.",
     href: "/services/active-rehab-geneva/",
-    image: "/images/services/active-rehab.webp",
+    image: "/images/services/active-rehab/physiotherapist-exam.jpg",
     alt: "Active rehab",
   },
   {
@@ -223,7 +223,7 @@ export const SERVICES_INDEX_CARDS = [
     body:
       "Platelet-rich plasma (PRP) injections use each individual patient\u2019s own healing system to improve musculoskeletal problems.",
     href: "/services/prp-injections-geneva/",
-    image: "/images/services/prp-injections.webp",
+    image: "/images/services/prp/prp-centrifuge.jpg",
     alt: "PRP injections",
   },
   {
@@ -231,15 +231,15 @@ export const SERVICES_INDEX_CARDS = [
     body:
       "Focuses on applying innovative treatments to heal tissues and organs and restore function lost due to aging, disease, damage or defects.",
     href: "/services/regenerative-medicine/",
-    image: "/images/services/regenerative-medicine.webp",
-    alt: "Regenerative medicine",
+    image: "/images/images%20copy.jpeg",
+    alt: "Regenerative medicine, cellular regeneration",
   },
   {
     title: "Medical Weight Loss",
     body:
       "Treatments mimic the biological processes in the body, making them useful as supplements for maintaining a healthy weight and lifestyle.",
     href: "/services/peptide-weight-loss/",
-    image: "/images/services/peptide-weight-loss.webp",
+    image: "/images/medical-weightloss.jpeg",
     alt: "Medical weight loss",
   },
   {
@@ -247,7 +247,7 @@ export const SERVICES_INDEX_CARDS = [
     body:
       "A common cause is diabetes, but it can also result from injuries, infections, and exposure to toxins. We offer a variety of treatments to control pain symptoms.",
     href: "/services/peripheral-neuropathy-treatment/",
-    image: "/images/services/peripheral-neuropathy.webp",
+    image: "/images/conditions/neuropathy.webp",
     alt: "Peripheral neuropathy treatment",
   },
   {
@@ -255,7 +255,7 @@ export const SERVICES_INDEX_CARDS = [
     body:
       "Allows you to develop a prevention plan, anticipate your allergy season, change your environment to avoid harmful allergens, & seek specific treatment.",
     href: "/services/allergy-testing-geneva/",
-    image: "/images/services/allergy-testing.webp",
+    image: "/images/services/allergy-testing-card.webp",
     alt: "Allergy testing",
   },
   {

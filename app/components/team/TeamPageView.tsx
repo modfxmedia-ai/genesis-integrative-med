@@ -39,6 +39,7 @@ export type TeamPageProps = {
   sectionKicker?: string;
   sectionHeading?: string;
   intro?: string;
+  heroImage?: { src: string; alt: string };
   members: readonly TeamMember[];
 };
 
@@ -49,6 +50,7 @@ export default function TeamPageView({
   sectionKicker,
   sectionHeading,
   intro,
+  heroImage,
   members,
 }: TeamPageProps) {
   return (
@@ -59,6 +61,7 @@ export default function TeamPageView({
         h1={h1}
         sectionHeading={sectionHeading}
         intro={intro}
+        heroImage={heroImage}
       />
       <TeamSection
         members={members}
@@ -127,11 +130,13 @@ function Hero({
   h1,
   sectionHeading,
   intro,
+  heroImage,
 }: {
   kicker?: string;
   h1: string;
   sectionHeading?: string;
   intro?: string;
+  heroImage?: { src: string; alt: string };
 }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -141,6 +146,8 @@ function Hero({
   });
   const blobY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
   const dotY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
+  const badgeY = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
 
   return (
     <section
@@ -173,82 +180,145 @@ function Hero({
         />
       </motion.div>
 
-      {/* Floating decorative shapes */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute left-[8%] top-[22%] hidden h-14 w-14 rounded-full border-2 border-brand-cyan/40 md:block"
-        animate={reduce ? undefined : { y: [0, -14, 0], rotate: [0, 12, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute right-[10%] top-[28%] hidden h-10 w-10 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan shadow-lg shadow-brand-blue/40 md:block"
-        animate={reduce ? undefined : { y: [0, 12, 0], rotate: [0, -12, 0] }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.4,
-        }}
-      />
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute right-[22%] bottom-[16%] hidden h-6 w-6 rounded-full bg-brand-cyan shadow-md shadow-brand-cyan/40 md:block"
-        animate={reduce ? undefined : { y: [0, -10, 0], x: [0, 8, 0] }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.6,
-        }}
-      />
-
-      <div className="relative mx-auto max-w-4xl px-6 py-20 text-center sm:py-28">
-        {kicker && (
-          <Reveal>
-            <p className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" />
-              {kicker}
-            </p>
-          </Reveal>
-        )}
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 text-5xl font-extrabold leading-[1.02] tracking-tight text-brand-ink sm:text-6xl lg:text-[5rem]">
-            <span className="bg-gradient-to-br from-brand-navy via-brand-blue to-brand-cyan bg-clip-text text-transparent">
-              {h1}
-            </span>
-          </h1>
-        </Reveal>
-        {sectionHeading && (
-          <Reveal delay={0.1}>
-            <p className="mt-6 text-xl font-semibold text-brand-navy sm:text-2xl">
-              {sectionHeading}
-            </p>
-          </Reveal>
-        )}
-        {intro && (
-          <Reveal delay={0.15}>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-brand-ink/70 sm:text-lg">
-              {intro}
-            </p>
-          </Reveal>
-        )}
-        <Reveal delay={0.2}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <MagneticButton>
-              <BookNowTrigger className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50">
-                Schedule Consultation
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </BookNowTrigger>
-            </MagneticButton>
-            <a
-              href={CONTACT.phoneHref}
-              className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy backdrop-blur transition-colors hover:border-brand-blue/30 hover:bg-brand-mist"
+      <div
+        className={`relative mx-auto px-6 ${
+          heroImage
+            ? "grid max-w-7xl grid-cols-1 items-center gap-12 py-16 lg:grid-cols-12 lg:gap-16 lg:py-24"
+            : "max-w-4xl py-20 text-center sm:py-28"
+        }`}
+      >
+        {/* Text column */}
+        <div className={heroImage ? "lg:col-span-7" : ""}>
+          {kicker && (
+            <Reveal>
+              <p
+                className={`inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue backdrop-blur`}
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" />
+                {kicker}
+              </p>
+            </Reveal>
+          )}
+          <Reveal delay={0.05}>
+            <h1
+              className={`mt-6 font-extrabold leading-[1.02] tracking-tight text-brand-ink ${
+                heroImage
+                  ? "text-4xl sm:text-5xl lg:text-[4.5rem]"
+                  : "text-5xl sm:text-6xl lg:text-[5rem]"
+              }`}
             >
-              Call {CONTACT.phoneDisplay}
-            </a>
-          </div>
-        </Reveal>
+              <span className="bg-gradient-to-br from-brand-navy via-brand-blue to-brand-cyan bg-clip-text text-transparent">
+                {h1}
+              </span>
+            </h1>
+          </Reveal>
+          {sectionHeading && (
+            <Reveal delay={0.1}>
+              <p className="mt-6 text-xl font-semibold text-brand-navy sm:text-2xl">
+                {sectionHeading}
+              </p>
+            </Reveal>
+          )}
+          {intro && (
+            <Reveal delay={0.15}>
+              <p
+                className={`mt-6 text-base leading-relaxed text-brand-ink/70 sm:text-lg ${heroImage ? "max-w-2xl" : "mx-auto max-w-2xl"}`}
+              >
+                {intro}
+              </p>
+            </Reveal>
+          )}
+          <Reveal delay={0.2}>
+            <div
+              className={`mt-8 flex flex-wrap items-center gap-3 ${heroImage ? "" : "justify-center"}`}
+            >
+              <MagneticButton>
+                <BookNowTrigger className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50">
+                  Schedule Consultation
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </BookNowTrigger>
+              </MagneticButton>
+              <a
+                href={CONTACT.phoneHref}
+                className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy backdrop-blur transition-colors hover:border-brand-blue/30 hover:bg-brand-mist"
+              >
+                Call {CONTACT.phoneDisplay}
+              </a>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Image column */}
+        {heroImage && (
+          <motion.div
+            className="relative lg:col-span-5"
+            initial={reduce ? false : { opacity: 0, y: 36, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
+            <div className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-navy/20 hero-image-fade">
+              <motion.div
+                className="relative aspect-[4/3] w-full"
+                style={reduce ? undefined : { y: imageY }}
+              >
+                <Image
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                  quality={95}
+                  className="object-cover"
+                />
+              </motion.div>
+              {/* Soft gradient wash at the base for depth */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-navy/35 via-brand-navy/0 to-transparent"
+              />
+              {/* Shine sweep, one-shot on mount */}
+              {!reduce && (
+                <motion.div
+                  aria-hidden
+                  initial={{ x: "-120%", opacity: 0 }}
+                  animate={{ x: "160%", opacity: [0, 0.35, 0] }}
+                  transition={{
+                    duration: 1.6,
+                    ease: [0.16, 1, 0.3, 1],
+                    delay: 0.8,
+                  }}
+                  className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                />
+              )}
+            </div>
+
+            {/* Floating badge */}
+            <motion.div
+              style={reduce ? undefined : { y: badgeY }}
+              initial={reduce ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
+              className="absolute -bottom-6 -left-6 hidden max-w-[240px] rounded-2xl border border-brand-line bg-white/95 p-4 shadow-xl shadow-brand-navy/15 backdrop-blur md:block"
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/30"
+                >
+                  <SparkIcon className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-blue">
+                    Geneva, IL
+                  </p>
+                  <p className="text-sm font-bold leading-tight text-brand-ink">
+                    Integrative care, personalized.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -183,6 +183,10 @@ export default function MeetTheStaffPage() {
         h1="Meet The Staff"
         sectionKicker="Our Team"
         sectionHeading="Meet Our Team"
+        heroImage={{
+          src: "/images/staff-images.png",
+          alt: "Kim Bukowski, Oksana Samnadda, and Angela Warmuth, staff at Genesis Integrative Medicine",
+        }}
         members={STAFF}
       />
     </>

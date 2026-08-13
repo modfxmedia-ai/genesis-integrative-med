@@ -163,6 +163,10 @@ export default function OurProvidersPage() {
         sectionKicker="Qualified Professionals"
         sectionHeading="Qualified Professionals"
         intro="Our mission is to help people take charge of their health by understanding their problems and making the necessary changes to achieve optimal health. We pride ourselves on staying up to date with the latest guidelines in pain management in an effort to increase function and decrease pain while avoiding surgery."
+        heroImage={{
+          src: "/images/staff/providers-images.png",
+          alt: "Nathan Conroy, Jeff Floyd, and Anthony Leazzo, providers at Genesis Integrative Medicine",
+        }}
         members={PROVIDERS}
       />
     </>

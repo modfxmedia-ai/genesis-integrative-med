@@ -53,6 +53,38 @@ export function postHref(slug: string): string {
  */
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: "non-surgical-back-pain-treatment-therapies",
+    title: "Non-Surgical Back Pain Treatment: First Visit, Evaluation, and Therapies",
+    date: "2026-08-09",
+    excerpt: "What Really Happens with Non-Surgical Back Pain Care Non-surgical back pain treatment is a real option for many people who want relief without surgery or long-term pain\u2026",
+    image: "/images/blog/non-surgical-back-pain-treatment-therapies.jpg",
+    category: "Back Pain",
+  },
+  {
+    slug: "summer-sports-injuries-hip-pain-doctor",
+    title: "Summer Sports Injuries in Geneva: When Hip Pain Needs a Doctor",
+    date: "2026-08-02",
+    excerpt: "Summer Hip Pain: When It\u2019s More Than Just Soreness Hip pain has a way of sneaking up on people during\u2026",
+    image: "/images/blog/summer-sports-injuries-hip-pain-doctor.jpg",
+    category: "Hip Pain",
+  },
+  {
+    slug: "cold-laser-therapy-for-arthritis-pain",
+    title: "What Cold Laser Therapy in Geneva Means for Arthritis Pain",
+    date: "2026-07-26",
+    excerpt: "Discover a Gentler Option for Arthritis Relief Arthritis pain can make even simple days feel long. Stiff mornings, sore fingers\u2026",
+    image: "/images/blog/cold-laser-therapy-for-arthritis-pain.jpg",
+    category: "Cold Laser",
+  },
+  {
+    slug: "everyday-habits-knee-pain-worse",
+    title: "Everyday Habits That Make Knee Pain Worse in Geneva",
+    date: "2026-07-19",
+    excerpt: "Simple Daily Choices That Can Fuel Knee Pain Knee pain often sneaks up on people. It is not always one\u2026",
+    image: "/images/blog/everyday-habits-knee-pain-worse.jpg",
+    category: "Knee Pain",
+  },
+  {
     slug: "shockwave-and-cold-laser-heel-pain",
     title: "Comparing Shockwave and Cold Laser Therapy for Heel Pain",
     date: "2026-07-12",

@@ -1,7 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import { CONTACT } from "@/app/lib/site-config";
@@ -12,9 +13,12 @@ import { CONTACT } from "@/app/lib/site-config";
  * pages via the root layout.
  */
 export default function BookNowBanner() {
+  const pathname = usePathname();
   const reduce = useReducedMotion();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(true);
+  const [nearFooter, setNearFooter] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Honor per-session dismissal
@@ -30,6 +34,18 @@ export default function BookNowBanner() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Hide before the footer scrolls into view so the banner never sits over it.
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setNearFooter(entry.isIntersecting),
+      { rootMargin: "0px 0px -140px 0px" },
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
   const dismiss = () => {
     setDismissed(true);
     try {
@@ -39,7 +55,29 @@ export default function BookNowBanner() {
     }
   };
 
-  const show = visible && !dismissed;
+  // Redundant with the contact page's own booking/contact CTAs.
+  const hiddenOnRoute = pathname?.startsWith("/contact") ?? false;
+  const show = visible && !dismissed && !nearFooter && !hiddenOnRoute;
+
+  // Push the 3rd-party (knock-knock) chat widget above this banner so they don't overlap.
+  useEffect(() => {
+    const body = document.body;
+    const el = cardRef.current;
+    if (!show || !el) {
+      body.classList.remove("book-banner-open");
+      return;
+    }
+    body.classList.add("book-banner-open");
+    const setHeight = () =>
+      body.style.setProperty("--book-banner-h", `${el.offsetHeight}px`);
+    setHeight();
+    const observer = new ResizeObserver(setHeight);
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      body.classList.remove("book-banner-open");
+    };
+  }, [show]);
 
   return (
     <AnimatePresence>
@@ -55,28 +93,31 @@ export default function BookNowBanner() {
           style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
         >
           <div className="pointer-events-auto mx-auto flex max-w-6xl px-3 sm:px-6">
-            <div className="relative flex-1 overflow-hidden rounded-2xl border border-brand-line bg-white/95 shadow-2xl shadow-brand-navy/25 backdrop-blur-md">
+            <div
+              ref={cardRef}
+              className="relative flex-1 overflow-hidden rounded-2xl border border-brand-line bg-white/95 shadow-2xl shadow-brand-navy/25 backdrop-blur-md"
+            >
               {/* Gradient accent hairline */}
               <div
                 aria-hidden
                 className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-brand-blue to-brand-cyan"
               />
 
-              <div className="flex items-center gap-3 p-3 sm:gap-4 sm:p-4">
+              <div className="flex items-center gap-2.5 p-2.5 sm:gap-4 sm:p-3">
                 {/* Icon badge */}
                 <span
                   aria-hidden
-                  className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/25 sm:flex"
+                  className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/25 sm:flex"
                 >
-                  <CalendarPulseIcon className="h-5 w-5" />
+                  <CalendarPulseIcon className="h-4 w-4" />
                 </span>
 
                 {/* Copy */}
                 <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-blue">
+                  <p className="hidden text-[10px] font-bold uppercase tracking-[0.16em] text-brand-blue sm:block">
                     Ready to feel better?
                   </p>
-                  <p className="mt-0.5 truncate text-sm font-bold leading-tight text-brand-navy">
+                  <p className="truncate text-xs font-bold leading-tight text-brand-navy sm:mt-0.5 sm:text-sm">
                     Book your appointment, same-week availability
                   </p>
                 </div>
@@ -84,14 +125,14 @@ export default function BookNowBanner() {
                 {/* Phone (desktop only) */}
                 <a
                   href={CONTACT.phoneHref}
-                  className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-brand-line px-3.5 py-2 text-xs font-bold text-brand-navy transition-colors hover:border-brand-blue/30 hover:bg-brand-mist md:inline-flex"
+                  className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-brand-line px-3.5 py-1.5 text-xs font-bold text-brand-navy transition-colors hover:border-brand-blue/30 hover:bg-brand-mist md:inline-flex"
                 >
                   <PhoneIcon className="h-3.5 w-3.5 text-brand-blue" />
                   {CONTACT.phoneDisplay}
                 </a>
 
                 {/* Primary CTA */}
-                <BookNowTrigger className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg hover:shadow-brand-blue/40">
+                <BookNowTrigger className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-md shadow-brand-blue/25 transition-shadow hover:shadow-lg hover:shadow-brand-blue/40">
                   Schedule Appointment
                   <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </BookNowTrigger>
@@ -101,7 +142,7 @@ export default function BookNowBanner() {
                   type="button"
                   aria-label="Dismiss banner"
                   onClick={dismiss}
-                  className="ml-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-brand-ink/50 transition-colors hover:bg-brand-mist hover:text-brand-navy"
+                  className="ml-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-brand-ink/50 transition-colors hover:bg-brand-mist hover:text-brand-navy"
                 >
                   <XCloseIcon className="h-4 w-4" />
                 </button>

@@ -42,3 +42,10 @@ body {
     mask-image: linear-gradient(to right, transparent 0%, black 22%);
   }
 }
+
+/* Knock-knock chat widget is 3rd-party (fixed, inline-styled); nudge it above
+   the sticky book-now banner while the banner is visible so they don't overlap. */
+body.book-banner-open #kka-chat-widget {
+  bottom: calc(20px + var(--book-banner-h, 88px) + 12px) !important;
+  transition: bottom 0.25s ease;
+}

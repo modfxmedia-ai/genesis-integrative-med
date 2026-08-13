@@ -395,11 +395,7 @@ function MemberCard({
     <div
       className={`relative grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16 ${hasBio ? "items-center" : "items-start"}`}
     >
-      <MemberPhoto
-        member={member}
-        imageOnRight={imageOnRight}
-        index={index}
-      />
+      <MemberPhoto member={member} imageOnRight={imageOnRight} />
       <MemberBio
         member={member}
         imageOnRight={imageOnRight}
@@ -419,11 +415,9 @@ function MemberCard({
 function MemberPhoto({
   member,
   imageOnRight,
-  index,
 }: {
   member: TeamMember;
   imageOnRight: boolean;
-  index: number;
 }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -444,79 +438,6 @@ function MemberPhoto({
       className={`relative lg:col-span-5 ${imageOnRight ? "lg:order-2" : "lg:order-1"}`}
     >
       <div className="relative mx-auto max-w-md">
-        {/* Ambient pulses */}
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute -top-10 -right-8 h-48 w-48 rounded-full bg-brand-cyan/30 blur-3xl"
-          animate={
-            reduce
-              ? undefined
-              : { scale: [1, 1.12, 1], opacity: [0.55, 0.9, 0.55] }
-          }
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: index * 0.3,
-          }}
-        />
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-14 -left-10 h-56 w-56 rounded-full bg-brand-blue/25 blur-3xl"
-          animate={
-            reduce
-              ? undefined
-              : { scale: [1.05, 0.95, 1.05], opacity: [0.5, 0.85, 0.5] }
-          }
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.4 + index * 0.3,
-          }}
-        />
-
-        {/* Floating decorative shapes */}
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute -top-4 right-8 h-14 w-14 rounded-full border-2 border-brand-cyan/40"
-          animate={
-            reduce ? undefined : { y: [0, -10, 0], rotate: [0, 10, 0] }
-          }
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.2,
-          }}
-        />
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute bottom-10 -right-3 h-10 w-10 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan shadow-lg shadow-brand-blue/40"
-          animate={
-            reduce ? undefined : { y: [0, 10, 0], rotate: [0, -12, 0] }
-          }
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.6,
-          }}
-        />
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute -left-3 top-1/3 h-5 w-5 rounded-full bg-brand-cyan shadow-md shadow-brand-cyan/40"
-          animate={
-            reduce ? undefined : { y: [0, -8, 0], x: [0, 6, 0] }
-          }
-          transition={{
-            duration: 4.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.3,
-          }}
-        />
-
         {/* Image frame */}
         <div className="relative overflow-hidden rounded-[2rem] border border-brand-line bg-brand-ink shadow-2xl shadow-brand-navy/25">
           <motion.div

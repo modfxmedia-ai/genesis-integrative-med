@@ -140,6 +140,7 @@ export const ALL_SERVICES_LIST = [
   { label: "Active Rehab", href: "/services/active-rehab-geneva/" },
   { label: "PRP", href: "/services/prp-injections-geneva/" },
   { label: "Regenerative Medicine", href: "/services/regenerative-medicine/" },
+  { label: "Stem Cell Therapy", href: "/services/stem-cell-therapy/" },
   { label: "Peripheral Neuropathy", href: "/services/peripheral-neuropathy-treatment/" },
   { label: "Medical Weight Loss", href: "/services/peptide-weight-loss/" },
   { label: "Sciatica", href: "/services/sciatica/" },
@@ -233,6 +234,14 @@ export const SERVICES_INDEX_CARDS = [
     href: "/services/regenerative-medicine/",
     image: "/images/images%20copy.jpeg",
     alt: "Regenerative medicine, cellular regeneration",
+  },
+  {
+    title: "Stem Cell Therapy",
+    body:
+      "Mesenchymal stem cells (MSCs) sourced from Wharton\u2019s jelly are injected directly into damaged tissue to help repair, reduce inflammation, and support long-lasting pain relief.",
+    href: "/services/stem-cell-therapy/",
+    image: "/images/services/regenerative-medicine/lab-vials.jpg",
+    alt: "Stem cell therapy lab vials",
   },
   {
     title: "Medical Weight Loss",
@@ -933,13 +942,6 @@ export const PEPTIDE_WEIGHT_LOSS_CONTENT: ServicePageContent = {
     },
     {
       kind: "prose",
-      heading: "Lipo Laser",
-      paragraphs: [
-        "Lipo Laser is a safe and non-invasive form of body sculpting. It reduces inches from your body by eliminating fat cells. Treatments target specific parts of the body by using advance laser technology that is virtually painless with little to no down time.",
-      ],
-    },
-    {
-      kind: "prose",
       heading: "Lipo Laser Therapy",
       image: {
         src: "/images/services/peptide/lipo-laser.webp",
@@ -948,9 +950,11 @@ export const PEPTIDE_WEIGHT_LOSS_CONTENT: ServicePageContent = {
         height: 800,
       },
       paragraphs: [
-        "Unleash the potential of non surgical Lipo Laser Therapy to redefine your weight loss journey. This non-invasive approach leverages laser energy to penetrate deep into adipose tissue, promoting the release of stored fat. Witness the magic unfold as your body naturally eliminates these fat cells, leaving you with noticeable and lasting results.",
+        "Lipo Laser Therapy is a safe and non-invasive form of body sculpting. It reduces inches from your body by eliminating fat cells. Treatments target specific parts of the body using advanced laser technology that is virtually painless with little to no down time.",
+        "This non-invasive approach leverages laser energy to penetrate deep into adipose tissue, promoting the release of stored fat. Witness the magic unfold as your body naturally eliminates these fat cells, leaving you with noticeable and lasting results.",
       ],
     },
+
     {
       kind: "prose",
       heading: "About Our Medical Weight Loss Program",
@@ -1151,9 +1155,15 @@ export const REGENERATIVE_MEDICINE_CONTENT: ServicePageContent = {
           ],
         },
         {
-          heading: "Headaches",
+          heading: "Shoulder Pain",
           paragraphs: [
-            "Chronic headaches and migraines can significantly impact an individual\u2019s quality of life. They can be triggered by various factors, including cervical spine problems, muscle tension, or even stress. In these cases, regenerative medicine addresses the underlying issues contributing to these headaches. By addressing the root causes, regenerative medicine provides long-term relief for chronic headache sufferers.",
+            "Shoulder pain often results from rotator cuff tears, tendonitis, or impingement caused by repetitive motion, injury, or age-related wear. Because the shoulder relies on a delicate balance of tendons and ligaments for its wide range of motion, even minor damage can lead to significant pain and limited mobility. Regenerative therapies, such as human cellular tissue products (HCT/Ps) and Platelet-Rich Plasma (PRP), help repair damaged tendon and soft tissue, reducing inflammation and restoring function without surgery.",
+          ],
+        },
+        {
+          heading: "Hip Pain",
+          paragraphs: [
+            "Hip pain is commonly caused by osteoarthritis, labral tears, or bursitis, all of which can make everyday movements like walking or climbing stairs painful. As the cartilage and soft tissue around the hip joint break down, inflammation and stiffness often follow. Regenerative medicine targets these damaged tissues directly, promoting cellular repair and reducing inflammation to help patients regain mobility and avoid more invasive interventions like hip replacement.",
           ],
         },
         {
@@ -1225,6 +1235,123 @@ export const REGENERATIVE_MEDICINE_CONTENT: ServicePageContent = {
       question: "What are the benefits of regenerative medicine?",
       answer:
         "Regenerative medicine techniques offer an alternative to surgery, helping you to enjoy increased functionality without invasive or traumatic procedures. The benefits of regenerative medicine become more noticeable over time as new cells develop. For many, regenerative medicine can reduce dependence on pain medications while providing long-term relief of pain and inflammation associated with chronic medical conditions. Find out how regenerative medicine can work for your pain and dysfunction by calling the office or booking a consultation online today.",
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* Stem Cell Therapy                                                           */
+/* -------------------------------------------------------------------------- */
+
+export const STEM_CELL_THERAPY_CONTENT: ServicePageContent = {
+  slug: "stem-cell-therapy",
+  urlPath: "/services/stem-cell-therapy/",
+  meta: {
+    title: "Stem Cell Therapy in Geneva, IL | Genesis Integrative Medicine",
+    description:
+      "Discover stem cell therapy using mesenchymal stem cells (MSCs) from Wharton\u2019s jelly at Genesis Integrative Medicine in Geneva, IL. Schedule a consultation today.",
+    canonicalOrigin:
+      "https://genesisintegrativemed.com/services/stem-cell-therapy/",
+    ogImage:
+      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-5img.webp",
+  },
+  breadcrumbs: [
+    { name: "Home", item: "https://genesisintegrativemed.com/" },
+    { name: "Services", item: "https://genesisintegrativemed.com/services/" },
+    { name: "Stem Cell Therapy" },
+  ],
+  hero: {
+    kicker: "Genesis Integrative Medicine",
+    h1: "Stem Cell Therapy in Geneva, IL",
+    intro:
+      "As part of our regenerative medicine program, Genesis Integrative Medicine offers stem cell therapy using mesenchymal stem cells (MSCs) sourced from Wharton\u2019s jelly, the specialized connective tissue found within donated umbilical cord tissue. These young, highly potent cells are rich in the growth factors and signaling molecules that drive real tissue repair.",
+  },
+  highlights: [
+    { icon: "spark", label: "Wharton\u2019s jelly MSCs", note: "Umbilical-tissue biologic" },
+    { icon: "shield", label: "No harvest procedure", note: "Nothing taken from you" },
+    { icon: "target", label: "Root-cause repair", note: "Not just symptom relief" },
+    { icon: "clock", label: "Results in 4\u20136 wks", note: "Build over months" },
+  ],
+  featuredImage: {
+    src: "/images/services/stem-cell-therapy/stem-cell-lab.png",
+    alt: "Stem cell therapy lab at Genesis Integrative Medicine",
+    width: 1536,
+    height: 1024,
+  },
+  serviceJsonLd: {
+    name: "Stem Cell Therapy",
+    description:
+      "Regenerative stem cell therapy using mesenchymal stem cells (MSCs) sourced from Wharton\u2019s jelly / umbilical tissue, an FDA-regulated human cellular and tissue-based product (HCT/P), used to stimulate tissue repair, reduce inflammation, and promote healing.",
+    canonicalServiceUrl:
+      "https://genesisintegrativemed.com/services/stem-cell-therapy/",
+  },
+  sections: [
+    {
+      kind: "prose",
+      heading:
+        "Mesenchymal Stem Cells from Wharton\u2019s Jelly (Umbilical Tissue)",
+      image: {
+        src: "/images/services/regenerative-medicine/knee-therapy.jpg",
+        alt: "Stem cell therapy session for joint pain",
+        width: 1200,
+        height: 800,
+      },
+      paragraphs: [
+        "Our clinic uses mesenchymal stem cells (MSCs) sourced from Wharton\u2019s jelly, the specialized connective tissue found within donated umbilical cord tissue. These young, highly potent cells are rich in the growth factors and signaling molecules that drive real tissue repair.",
+        "Once carefully prepared, the cells are injected directly into the damaged area, where they help repair and regenerate tissue, reduce inflammation, and modulate the immune response, leading to improved function and long-lasting pain relief, with no harvest procedure required from the patient.",
+      ],
+    },
+    {
+      kind: "subsections",
+      heading: "Conditions That May Respond Well to Stem Cell Therapy",
+      intro:
+        "Stem cell therapy is used alongside our other regenerative treatments for a wide range of conditions, including:",
+      subs: [
+        {
+          heading: "Knee Pain",
+          paragraphs: [
+            "Osteoarthritis and cartilage wear are common sources of knee pain. Stem cell therapy offers a promising option by supporting the repair of damaged cartilage and surrounding tissue.",
+          ],
+        },
+        {
+          heading: "Joint & Tendon Injuries",
+          paragraphs: [
+            "Chronic tendon and joint injuries can be slow to heal on their own. Stem cell therapy is designed to support the body\u2019s natural repair process in these stubborn areas.",
+          ],
+        },
+        {
+          heading: "Arthritis",
+          paragraphs: [
+            "Osteoarthritis and rheumatoid arthritis both involve inflammation and breakdown of joint tissue. Stem cell therapy targets damaged joint tissue to help reduce inflammation and support repair.",
+          ],
+        },
+      ],
+    },
+    {
+      kind: "prose",
+      heading: "How Stem Cell Therapy Fits Into Your Care Plan",
+      paragraphs: [
+        "Stem cell therapy is one part of the broader regenerative medicine program at Genesis Integrative Medicine, alongside Platelet-Rich Plasma (PRP) therapy. Your provider will determine whether stem cell therapy, PRP, or a combination of both is the right fit for your condition and goals.",
+        "If you\u2019re struggling with chronic pain or recovering from an injury, schedule a consultation to find out whether stem cell therapy is right for you.",
+      ],
+    },
+  ],
+  faqHeading: "Stem Cell Therapy FAQ",
+  faqs: [
+    {
+      question: "What\u2019s involved in stem cell therapy?",
+      answer:
+        "Your Genesis Integrative Medicine provider injects mesenchymal stem cells into the area of injury or disease based on a customized treatment plan to address your situation. Depending on the type and location of your injury, you may need multiple injections to enjoy the full benefit.",
+    },
+    {
+      question: "How long does it take to see results from stem cell therapy?",
+      answer:
+        "Stem cell therapy doesn\u2019t work quickly, since it takes time for new cells to develop and replace old ones. As new tissue continues to grow, you can begin to see results within 4-6 weeks after treatment, results that continue to improve over the next several months.",
+    },
+    {
+      question: "Is stem cell therapy the same as PRP?",
+      answer:
+        "No. PRP concentrates growth factors from your own blood, while stem cell therapy uses mesenchymal stem cells sourced from donated Wharton\u2019s jelly / umbilical tissue. Both are regenerative treatments and are sometimes used together as part of the same care plan.",
     },
   ],
 };
@@ -1529,7 +1656,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
         {
           heading: "Quick Sessions, No Downtime",
           paragraph:
-            "Most sessions take about 10\u201315 minutes. You can drive yourself home and return to normal daily activities immediately after treatment.",
+            "Most sessions take about 3\u20135 minutes per treatment site. You can drive yourself home and return to normal daily activities immediately after treatment.",
         },
         {
           heading: "Great Alternative to Surgery",

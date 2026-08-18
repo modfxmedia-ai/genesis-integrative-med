@@ -41,6 +41,7 @@ export const SERVICES_SUBNAV: readonly NavChild[] = [
   { label: "Active Rehab", href: "/services/active-rehab-geneva/" },
   { label: "PRP Injections", href: "/services/prp-injections-geneva/" },
   { label: "Regenerative Medicine", href: "/services/regenerative-medicine/" },
+  { label: "Stem Cell Therapy", href: "/services/stem-cell-therapy/" },
   { label: "Peptide Weight Loss", href: "/services/peptide-weight-loss/" },
   {
     label: "Peripheral Neuropathy",

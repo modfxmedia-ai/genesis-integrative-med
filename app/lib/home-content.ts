@@ -19,7 +19,7 @@ export const HERO = {
   siteTitle: "Genesis Integrative Medicine",
   headline: "Geneva\u2019s Trusted Partner in Wellness",
   intro:
-    "Welcome to Genesis Integrative! At our center, we are dedicated to providing you with comprehensive wellness and effective pain relief solutions. Our integrative approach combines advanced medical practices with holistic therapies to address the root causes of your health concerns. With our team of compassionate and skilled providers, your journey to optimal health and pain-free living is within reach. Experience personalized care designed to meet your unique needs and help you achieve lasting well-being.",
+    "Welcome to Genesis Integrative Medicine! At our center, we are dedicated to providing you with comprehensive wellness and effective pain relief solutions. Our integrative approach combines advanced medical practices with holistic therapies to address the root causes of your health concerns. With our team of compassionate and skilled providers, your journey to optimal health and pain-free living is within reach. Experience personalized care designed to meet your unique needs and help you achieve lasting well-being.",
   primaryCta: { label: "Get Started", href: "/contact/" },
   secondaryCta: { label: "Explore Services", href: "/services/" },
   bookingCta: {
@@ -330,7 +330,7 @@ export const SERVICES_CATALOG = [
   { title: "Cold Laser", href: "/services/cold-laser/", image: "/images/cold-laser%20copy.jpg", alt: "Cold laser therapy" },
   { title: "Chiropractic Care", href: "/services/chiropractic-care/", image: "/images/chiropractic-care.jpg", alt: "Chiropractic care" },
   { title: "Active Rehab", href: "/services/active-rehab-geneva/", image: "/images/active-rehab.jpeg", alt: "Active rehab" },
-  { title: "PRP Injections", href: "/services/prp-injections-geneva/", image: "/images/prp-injections.jpg", alt: "PRP injections" },
+  { title: "PRP Injections", href: "/services/prp-injections-geneva/", image: "/images/prp-injections-shoulder.png", alt: "PRP injection for shoulder joint pain" },
   { title: "Regenerative Medicine", href: "/services/regenerative-medicine/", image: "/images/regenerative-medicine.jpg", alt: "Regenerative medicine" },
   { title: "Peptide Weight Loss", href: "/services/peptide-weight-loss/", image: "/images/services/medical-weight-loss-card.jpg", alt: "Medical weight loss" },
   { title: "Peripheral Neuropathy", href: "/services/peripheral-neuropathy-treatment/", image: "/images/services/peripheral-neuropathy-card.jpg", alt: "Peripheral neuropathy treatment" },

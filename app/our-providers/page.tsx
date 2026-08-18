@@ -139,6 +139,11 @@ const PROVIDERS = [
       width: 1373,
       height: 1400,
     },
+    bio: [
+      "As Clinic Director and a Doctor of Osteopathic Medicine, Dr. Anthony Leazzo, DO, leads the medical team at Genesis Integrative Medicine with a simple philosophy: rather than treat every ill with a pill, consider the benefits of an integrative approach to achieving a happy, pain-free life.",
+      "Dr. Leazzo oversees the clinic\u2019s approach to regenerative medicine, chiropractic care, and rehabilitation, working closely with the rest of the care team to make sure every treatment plan addresses the root cause of a patient\u2019s pain, not just its symptoms.",
+      "He is committed to staying at the forefront of integrative and osteopathic medicine so that patients in Geneva have access to the most effective, least invasive treatment options available.",
+    ],
   },
 ] as const;
 

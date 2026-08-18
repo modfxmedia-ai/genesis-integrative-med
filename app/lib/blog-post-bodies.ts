@@ -1413,7 +1413,7 @@ export const POST_PEPTIDE_THERAPY_MEDICAL_WEIGHT_LOSS: BlogPostContent = {
           items: [
           "An in-depth consultation and health history",
           "A review of medications and current symptoms",
-          "Lab testing as needed to check things like hormones or blood sugar",
+          "Review of blood work and other lab testing you may already have",
           "Body composition analysis, not just a single number on a scale",
           ],
         },
@@ -1421,7 +1421,7 @@ export const POST_PEPTIDE_THERAPY_MEDICAL_WEIGHT_LOSS: BlogPostContent = {
         {
           kind: "list",
           items: [
-          "Peptide injections or oral options, depending on what is suitable",
+          "Peptide injections tailored to your specific needs",
           "Simple, realistic nutrition guidance",
           "Gentle movement recommendations that respect your joints and fitness level",
           "Support for sleep habits and stress management",

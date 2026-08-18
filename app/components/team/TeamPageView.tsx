@@ -12,6 +12,7 @@ import { useRef } from "react";
 
 import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
+  InsuranceLogos,
   MagneticButton,
   Reveal,
   Stagger,
@@ -585,18 +586,7 @@ function BioParagraphs({ paragraphs }: { paragraphs: readonly string[] }) {
         >
           {paragraphs.map((p, i) => (
             <StaggerItem key={i}>
-              <p>
-                {i === 0 ? (
-                  <>
-                    <span className="float-left mr-3 mt-1 bg-gradient-to-br from-brand-blue to-brand-cyan bg-clip-text text-6xl font-extrabold leading-none text-transparent sm:text-7xl">
-                      {p.charAt(0)}
-                    </span>
-                    {p.slice(1)}
-                  </>
-                ) : (
-                  p
-                )}
-              </p>
+              <p>{p}</p>
             </StaggerItem>
           ))}
         </Stagger>
@@ -735,6 +725,7 @@ function MissionBlock() {
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-brand-ink/75 sm:text-base">
             {INSURANCE_MISSION.paragraph}
           </p>
+          <InsuranceLogos />
         </Reveal>
       </div>
     </section>

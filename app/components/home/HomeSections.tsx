@@ -427,7 +427,7 @@ export function ServicesShowcase() {
                       alt={current.alt}
                       fill
                       sizes="(max-width: 1024px) 0px, 380px"
-                      quality={95}
+                      quality={100}
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-ink via-brand-ink/25 to-transparent" />
@@ -1709,7 +1709,7 @@ export function DoctorSnippet() {
 
   // Discipline chips shown on the left column, animate in as pillars of care.
   const pillars = [
-    { label: "3 disciplines", icon: "layers" as const },
+    { label: "3 providers", icon: "layers" as const },
     { label: "1 clinic", icon: "roof" as const },
     { label: "Shared plan", icon: "link" as const },
   ];

@@ -23,6 +23,7 @@ import {
 import { CONTACT } from "@/app/lib/site-config";
 import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
+  InsuranceLogos,
   MagneticButton,
   Reveal,
   Stagger,
@@ -324,8 +325,19 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
             {/* Image — merged directly into the page, no frame/bezel. Left edge fades into the page bg on desktop (side-by-side layout) */}
             <div className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-navy/20 hero-image-fade">
               <motion.div
-                className="relative aspect-[4/3] w-full"
-                style={reduce ? undefined : { y: imageY }}
+                className={`relative w-full ${
+                  content.featuredImage ? "" : "aspect-[4/3]"
+                }`}
+                style={{
+                  ...(reduce ? {} : { y: imageY }),
+                  // Match the source image's own ratio so object-cover doesn't crop
+                  // any edge content (e.g. labels) baked into the image itself.
+                  ...(content.featuredImage
+                    ? {
+                        aspectRatio: `${content.featuredImage.width} / ${content.featuredImage.height}`,
+                      }
+                    : {}),
+                }}
               >
                 <Image
                   src={heroImage.src}
@@ -1872,6 +1884,7 @@ function InsuranceMissionBlock() {
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-brand-ink/75 sm:text-base">
             {INSURANCE_MISSION.paragraph}
           </p>
+          <InsuranceLogos />
         </Reveal>
       </div>
     </section>

@@ -7,6 +7,7 @@ import { useRef } from "react";
 
 import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
+  InsuranceLogos,
   MagneticButton,
   Reveal,
   Stagger,
@@ -626,6 +627,7 @@ function MissionBlock() {
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-brand-ink/75 sm:text-base">
             {INSURANCE_MISSION.paragraph}
           </p>
+          <InsuranceLogos />
         </Reveal>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { useRef } from "react";
 
 import {
+  InsuranceLogos,
   MagneticButton,
   Reveal,
   Stagger,
@@ -448,7 +449,7 @@ function WebsiteFormSection() {
                     body: "We aim to respond during clinic hours, Monday through Friday.",
                   },
                   {
-                    title: "Private &amp; secure",
+                    title: "Private & secure",
                     body: "Your information stays with our care team.",
                   },
                 ].map((item) => (
@@ -724,6 +725,7 @@ function MissionBlock() {
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-brand-ink/75 sm:text-base">
             {INSURANCE_MISSION.paragraph}
           </p>
+          <InsuranceLogos />
         </Reveal>
       </div>
     </section>

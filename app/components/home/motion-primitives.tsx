@@ -1,7 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useInView, useMotionValue, useReducedMotion, useSpring, useTransform, type Variants } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+
+import { INSURANCE } from "@/app/lib/home-content";
 
 /* -------------------------------------------------------------------------- */
 /* Easing / variants                                                          */
@@ -321,6 +324,27 @@ export function Marquee({
       >
         {children}
       </motion.div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Insurance logo row (used under the "Accepted Insurance Providers" copy)     */
+/* -------------------------------------------------------------------------- */
+
+export function InsuranceLogos() {
+  return (
+    <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+      {INSURANCE.carriers.map((c) => (
+        <Image
+          key={c.name}
+          src={c.logo}
+          alt={c.name}
+          width={220}
+          height={100}
+          className="h-14 w-auto object-contain opacity-80 transition-opacity hover:opacity-100 sm:h-16"
+        />
+      ))}
     </div>
   );
 }

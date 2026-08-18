@@ -250,6 +250,7 @@ export function buildServicesIndexJsonLd(opts: {
           "PRP (Platelet-Rich Plasma) Therapy",
           "Peptide Weight Loss",
           "Regenerative Medicine",
+          "Stem Cell Therapy",
           "Cold Laser Therapy",
           "Trigger Point Injections",
           "Peripheral Neuropathy Treatment",

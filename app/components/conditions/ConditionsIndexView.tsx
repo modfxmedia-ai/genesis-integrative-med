@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 
 import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
+  InsuranceLogos,
   MagneticButton,
   Reveal,
   Stagger,
@@ -221,6 +222,7 @@ export default function ConditionsIndexView() {
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-brand-ink/75 sm:text-base">
               {INSURANCE_MISSION.paragraph}
             </p>
+            <InsuranceLogos />
           </Reveal>
         </div>
       </section>

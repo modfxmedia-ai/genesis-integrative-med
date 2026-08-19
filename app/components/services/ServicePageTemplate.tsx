@@ -321,6 +321,25 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
               </a>
             </div>
           </StaggerItem>
+          {/* Original banner photo relocated here (in the text column) when a hero video takes over the image column */}
+          {heroVideo && heroImage && (
+            <StaggerItem>
+              <div className="mt-8 flex items-center gap-4 rounded-2xl border border-brand-line bg-white/80 p-3 pr-5 shadow-sm backdrop-blur max-w-md">
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    sizes="64px"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-sm font-semibold leading-snug text-brand-ink/80">
+                  {hero.kicker ?? content.hero.h1}
+                </p>
+              </div>
+            </StaggerItem>
+          )}
         </Stagger>
 
         {/* Image column */}
@@ -335,17 +354,22 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
             <div className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-navy/20 hero-image-fade">
               <motion.div
                 className={`relative w-full ${
-                  content.featuredImage ? "" : "aspect-[4/3]"
+                  heroVideo || content.featuredImage ? "" : "aspect-[4/3]"
                 }`}
                 style={{
                   ...(reduce ? {} : { y: imageY }),
-                  // Match the source image's own ratio so object-cover doesn't crop
-                  // any edge content (e.g. labels) baked into the image itself.
-                  ...(content.featuredImage
+                  // Match the poster's own ratio (the real video thumbnail when
+                  // there's a hero video) so object-cover/the embed never gets
+                  // letterboxed against a mismatched banner-photo aspect ratio.
+                  ...(heroVideo
                     ? {
-                        aspectRatio: `${content.featuredImage.width} / ${content.featuredImage.height}`,
+                        aspectRatio: `${heroVideo.thumbnail.width} / ${heroVideo.thumbnail.height}`,
                       }
-                    : {}),
+                    : content.featuredImage
+                      ? {
+                          aspectRatio: `${content.featuredImage.width} / ${content.featuredImage.height}`,
+                        }
+                      : {}),
                 }}
               >
                 {heroVideo && heroPlaying ? (
@@ -359,8 +383,8 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
                   />
                 ) : (
                   <Image
-                    src={heroImage.src}
-                    alt={heroImage.alt}
+                    src={heroVideo ? heroVideo.thumbnail.src : heroImage.src}
+                    alt={heroVideo ? heroVideo.title : heroImage.alt}
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 560px"

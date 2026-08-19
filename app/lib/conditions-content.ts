@@ -301,6 +301,7 @@ export const BACK_PAIN_CONTENT: ServicePageContent = {
     provider: "vimeo",
     id: "558647707",
     title: "Chronic Low Back Pain – Treat the Cause!",
+    thumbnail: { src: "/images/videos/vimeo-558647707.jpg", width: 1280, height: 720 },
   },
   videos: [
     {
@@ -431,6 +432,7 @@ export const HEADACHES_CONTENT: ServicePageContent = {
     provider: "vimeo",
     id: "1217717152",
     title: "Headaches",
+    thumbnail: { src: "/images/videos/vimeo-1217717152.jpg", width: 1280, height: 2276 },
   },
   videos: [
     {
@@ -1437,6 +1439,7 @@ export const JOINT_PAIN_CONTENT: ServicePageContent = {
     provider: "vimeo",
     id: "1217717151",
     title: "Root Cause Knee Pain Options",
+    thumbnail: { src: "/images/videos/vimeo-1217717151.jpg", width: 1280, height: 720 },
   },
   videos: [
     {

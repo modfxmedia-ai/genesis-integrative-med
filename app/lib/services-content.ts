@@ -108,6 +108,8 @@ export type ServicePageContent = {
     provider: "vimeo" | "youtube";
     id: string;
     title: string;
+    /** Real video thumbnail (matches the video's own aspect ratio, not the page's banner photo). */
+    thumbnail: { src: string; width: number; height: number };
   };
   /** One or more video embeds, rendered between the sections and the FAQ/gallery. */
   videos?: readonly {
@@ -472,6 +474,7 @@ export const CHIROPRACTIC_CARE_CONTENT: ServicePageContent = {
     provider: "vimeo",
     id: "1217717149",
     title: "Drop Table Demo",
+    thumbnail: { src: "/images/videos/vimeo-1217717149.jpg", width: 1280, height: 2276 },
   },
   videos: [
     {
@@ -1433,7 +1436,8 @@ export const COLD_LASER_CONTENT: ServicePageContent = {
   heroVideo: {
     provider: "vimeo",
     id: "917264180",
-    title: "Cold Laser Therapy at Genesis Integrative Medicine",
+    title: "How does cold laser actually work?",
+    thumbnail: { src: "/images/videos/vimeo-917264180.jpg", width: 1280, height: 720 },
   },
   videos: [
     {
@@ -1652,7 +1656,8 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
   heroVideo: {
     provider: "vimeo",
     id: "916889299",
-    title: "Shockwave Therapy (EPAT) at Genesis Integrative Medicine",
+    title: "How does Shockwave work?",
+    thumbnail: { src: "/images/videos/vimeo-916889299.jpg", width: 1280, height: 720 },
   },
   serviceJsonLd: {
     name: "Shockwave Therapy (EPAT)",

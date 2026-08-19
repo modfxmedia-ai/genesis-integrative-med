@@ -101,6 +101,16 @@ export default function ServicePageTemplate({
   content: ServicePageContent;
 }) {
   const useSidebar = content.layout === "sidebar";
+  // When a hero video replaces the banner photo, show that photo further down
+  // the page — unless it's already shown there via a swapped duplicate video.
+  const heroVideoShownInVideos = Boolean(
+    content.heroVideo &&
+      content.videos?.some(
+        (v) => v.provider === content.heroVideo!.provider && v.id === content.heroVideo!.id,
+      ),
+  );
+  const showBannerPhotoAtBottom =
+    Boolean(content.heroVideo) && Boolean(content.featuredImage) && !heroVideoShownInVideos;
   return (
     <article className="bg-white">
       <BreadcrumbBar items={content.breadcrumbs} />
@@ -121,6 +131,9 @@ export default function ServicePageTemplate({
           heroVideo={content.heroVideo}
           bannerImage={content.featuredImage}
         />
+      )}
+      {showBannerPhotoAtBottom && content.featuredImage && (
+        <ServiceBannerPhoto image={content.featuredImage} />
       )}
       {content.gallery && content.gallery.length > 0 && (
         <ServiceGallery images={content.gallery} />
@@ -334,25 +347,6 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
               </a>
             </div>
           </StaggerItem>
-          {/* Original banner photo relocated here (in the text column) when a hero video takes over the image column */}
-          {heroVideo && heroImage && (
-            <StaggerItem>
-              <div className="mt-8 flex items-center gap-4 rounded-2xl border border-brand-line bg-white/80 p-3 pr-5 shadow-sm backdrop-blur max-w-md">
-                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
-                  <Image
-                    src={heroImage.src}
-                    alt={heroImage.alt}
-                    fill
-                    sizes="64px"
-                    className="object-cover"
-                  />
-                </div>
-                <p className="text-sm font-semibold leading-snug text-brand-ink/80">
-                  {hero.kicker ?? content.hero.h1}
-                </p>
-              </div>
-            </StaggerItem>
-          )}
         </Stagger>
 
         {/* Image column */}
@@ -1767,6 +1761,24 @@ function ServiceVideoImageCard({
         </div>
       </div>
     </Reveal>
+  );
+}
+
+/**
+ * The page's original banner photo, displayed further down the page when a
+ * hero video has taken over the banner slot.
+ */
+function ServiceBannerPhoto({
+  image,
+}: {
+  image: NonNullable<ServicePageContent["featuredImage"]>;
+}) {
+  return (
+    <section className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-5xl px-6">
+        <ServiceVideoImageCard image={image} />
+      </div>
+    </section>
   );
 }
 

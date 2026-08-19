@@ -235,12 +235,15 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
       : `https://www.youtube-nocookie.com/embed/${heroVideo.id}?rel=0&modestbranding=1&autoplay=1`);
   // Cap the desktop hero video's rendered height so tall/portrait thumbnails
   // don't dwarf the text column; landscape videos stay well under this and
-  // are unaffected.
+  // are unaffected. Portrait ("reels"-style) videos are additionally clamped
+  // to a 4:5 minimum width/height ratio so they read as a proportionate
+  // banner card instead of a squeezed vertical strip.
   const heroVideoMaxHeight = 420;
-  const heroVideoMaxWidth = heroVideo
-    ? Math.round(
-        (heroVideoMaxHeight * heroVideo.thumbnail.width) / heroVideo.thumbnail.height,
-      )
+  const heroVideoAspectRatio = heroVideo
+    ? Math.max(heroVideo.thumbnail.width / heroVideo.thumbnail.height, 0.8)
+    : null;
+  const heroVideoMaxWidth = heroVideoAspectRatio
+    ? Math.round(heroVideoMaxHeight * heroVideoAspectRatio)
     : null;
 
   return (
@@ -375,11 +378,12 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
                 style={{
                   ...(reduce ? {} : { y: imageY }),
                   // Match the poster's own ratio (the real video thumbnail when
-                  // there's a hero video) so object-cover/the embed never gets
-                  // letterboxed against a mismatched banner-photo aspect ratio.
-                  ...(heroVideo
+                  // there's a hero video, clamped so portrait videos don't
+                  // render as a squeezed strip) so object-cover/the embed
+                  // never gets badly letterboxed against a mismatched ratio.
+                  ...(heroVideoAspectRatio
                     ? {
-                        aspectRatio: `${heroVideo.thumbnail.width} / ${heroVideo.thumbnail.height}`,
+                        aspectRatio: String(heroVideoAspectRatio),
                       }
                     : content.featuredImage
                       ? {

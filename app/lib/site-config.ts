@@ -147,7 +147,7 @@ export const PROVIDERS = [
     name: "Dr. Anthony Leazzo",
     credentials: "DO",
     title: "Clinic Director",
-    image: "/images/providers/anthony-leazzo.jpg",
+    image: "/images/providers/anthony-leazzo-new.jpg",
     href: "/our-providers/",
   },
 ] as const;

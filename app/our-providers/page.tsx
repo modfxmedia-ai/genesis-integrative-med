@@ -105,8 +105,8 @@ const PROVIDERS = [
     image: {
       src: "/images/providers/nathan-conroy-zoom.jpg",
       alt: "Nathan Conroy, DC, Chiropractic & Physical Medicine at Genesis Integrative Medicine",
-      width: 1158,
-      height: 1446,
+      width: 1272,
+      height: 1590,
     },
     bio: [
       "Nathan Conroy, DC, is certain that a healthy spine is key to a long, happy life. At Genesis Integrative Medicine in Geneva, Illinois, Dr. Conroy, DC, offers a variety of services to improve his patients\u2019 physical and overall health without medications or surgery. Inspired by his grandfather, a medical doctor, he pursued his degree in chiropractic care because of the many benefits chiropractic adjustments offer to the body. He brings over 15 years of experience in chiropractic care to Genesis Integrative Medicine.",
@@ -134,10 +134,10 @@ const PROVIDERS = [
     name: "Dr. Anthony Leazzo, DO",
     title: "Clinic Director",
     image: {
-      src: "/images/providers/anthony-leazzo.jpg",
+      src: "/images/providers/anthony-leazzo-new.jpg",
       alt: "Dr. Anthony Leazzo, DO, Clinic Director at Genesis Integrative Medicine",
-      width: 1373,
-      height: 1400,
+      width: 885,
+      height: 1106,
     },
     bio: [
       "As Clinic Director and a Doctor of Osteopathic Medicine, Dr. Anthony Leazzo, DO, leads the medical team at Genesis Integrative Medicine with a simple philosophy: rather than treat every ill with a pill, consider the benefits of an integrative approach to achieving a happy, pain-free life.",

@@ -125,7 +125,7 @@ const PROVIDERS = [
     name: "Anthony Leazzo, DO",
     title: "Clinic Director",
     image: {
-      src: "/images/providers/anthony-leazzo.jpg",
+      src: "/images/providers/anthony-leazzo-new.jpg",
       alt: "Dr. Anthony Leazzo, DO, Clinic Director at Genesis Integrative Medicine",
     },
     href: "/our-providers/",

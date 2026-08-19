@@ -101,16 +101,9 @@ export default function ServicePageTemplate({
   content: ServicePageContent;
 }) {
   const useSidebar = content.layout === "sidebar";
-  // When a hero video replaces the banner photo, show that photo further down
-  // the page — unless it's already shown there via a swapped duplicate video.
-  const heroVideoShownInVideos = Boolean(
-    content.heroVideo &&
-      content.videos?.some(
-        (v) => v.provider === content.heroVideo!.provider && v.id === content.heroVideo!.id,
-      ),
-  );
-  const showBannerPhotoAtBottom =
-    Boolean(content.heroVideo) && Boolean(content.featuredImage) && !heroVideoShownInVideos;
+  // When a hero video replaces the banner photo, show that photo in its own
+  // section further down the page instead of the banner slot.
+  const showBannerPhoto = Boolean(content.heroVideo) && Boolean(content.featuredImage);
   return (
     <article className="bg-white">
       <BreadcrumbBar items={content.breadcrumbs} />
@@ -126,13 +119,9 @@ export default function ServicePageTemplate({
       )}
 
       {content.videos && content.videos.length > 0 && (
-        <ServiceVideos
-          videos={content.videos}
-          heroVideo={content.heroVideo}
-          bannerImage={content.featuredImage}
-        />
+        <ServiceVideos videos={content.videos} heroVideo={content.heroVideo} />
       )}
-      {showBannerPhotoAtBottom && content.featuredImage && (
+      {showBannerPhoto && content.featuredImage && (
         <ServiceBannerPhoto image={content.featuredImage} />
       )}
       {content.gallery && content.gallery.length > 0 && (
@@ -1632,13 +1621,17 @@ type ServiceVideoItem = NonNullable<ServicePageContent["videos"]>[number];
 function ServiceVideos({
   videos,
   heroVideo,
-  bannerImage,
 }: {
   videos: readonly ServiceVideoItem[];
   heroVideo?: ServicePageContent["heroVideo"];
-  bannerImage?: ServicePageContent["featuredImage"];
 }) {
-  const multiple = videos.length > 1;
+  // Drop any entry that's already playing as the hero banner video instead
+  // of showing it a second time (as a video or an orphaned static image).
+  const uniqueVideos = videos.filter(
+    (v) => !(heroVideo && heroVideo.provider === v.provider && heroVideo.id === v.id),
+  );
+  if (uniqueVideos.length === 0) return null;
+  const multiple = uniqueVideos.length > 1;
   return (
     <section className="bg-white py-16 sm:py-24">
       <div
@@ -1653,23 +1646,13 @@ function ServiceVideos({
         >
           {/* headings render first so both sit in the same grid row and their
               players (rendered next) start at an equal height regardless of
-              how many lines each heading wraps to. Skipped for entries
-              swapped for the original banner photo below — it's no longer a
-              video, so a video title heading above it doesn't apply. */}
-          {videos.map((video, i) =>
-            bannerImage && heroVideo?.provider === video.provider && heroVideo?.id === video.id ? null : (
-              <ServiceVideoHeading key={`heading-${video.provider}-${video.id}-${i}`} video={video} />
-            ),
-          )}
-          {videos.map((video, i) =>
-            // Already shown as the hero banner video — show the page's
-            // original banner photo here instead of duplicating the embed.
-            bannerImage && heroVideo?.provider === video.provider && heroVideo?.id === video.id ? (
-              <ServiceVideoImageCard key={`player-${video.provider}-${video.id}-${i}`} image={bannerImage} />
-            ) : (
-              <ServiceVideoPlayer key={`player-${video.provider}-${video.id}-${i}`} video={video} />
-            ),
-          )}
+              how many lines each heading wraps to */}
+          {uniqueVideos.map((video, i) => (
+            <ServiceVideoHeading key={`heading-${video.provider}-${video.id}-${i}`} video={video} />
+          ))}
+          {uniqueVideos.map((video, i) => (
+            <ServiceVideoPlayer key={`player-${video.provider}-${video.id}-${i}`} video={video} />
+          ))}
         </div>
       </div>
     </section>

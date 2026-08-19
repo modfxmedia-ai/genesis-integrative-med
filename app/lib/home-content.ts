@@ -139,7 +139,7 @@ export const WHY_INTEGRATIVE = {
       body:
         "Our mission is to help people take charge of their health by understanding their problems and making the necessary changes to achieve optimal health.",
       href: "/our-providers/",
-      image: "/images/providers.png",
+      image: "/images/staff/providers-images-2.png",
       alt: "Healthcare professional in scrubs caring for a smiling patient",
     },
     {

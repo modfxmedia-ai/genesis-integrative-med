@@ -383,7 +383,7 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
               >
                 {heroVideo && heroPlaying ? (
                   <iframe
-                    src={heroVideoSrc}
+                    src={heroVideoSrc ?? undefined}
                     title={heroVideo.title}
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                     allowFullScreen

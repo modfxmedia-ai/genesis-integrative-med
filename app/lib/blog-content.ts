@@ -53,6 +53,14 @@ export function postHref(slug: string): string {
  */
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: "prp-vs-cortisone-vs-hyaluronic-acid-joint-injection",
+    title: "PRP vs. Cortisone vs. Hyaluronic Acid in Geneva: Which Joint Injection?",
+    date: "2026-08-16",
+    excerpt: "Move Pain-Free in Every Season in Geneva Joint pain has a way of showing up right when you want to\u2026",
+    image: "/images/blog/prp-vs-cortisone-vs-hyaluronic-acid-joint-injection.jpg",
+    category: "PRP",
+  },
+  {
     slug: "non-surgical-back-pain-treatment-therapies",
     title: "Non-Surgical Back Pain Treatment: First Visit, Evaluation, and Therapies",
     date: "2026-08-09",

@@ -1653,10 +1653,14 @@ function ServiceVideos({
         >
           {/* headings render first so both sit in the same grid row and their
               players (rendered next) start at an equal height regardless of
-              how many lines each heading wraps to */}
-          {videos.map((video, i) => (
-            <ServiceVideoHeading key={`heading-${video.provider}-${video.id}-${i}`} video={video} />
-          ))}
+              how many lines each heading wraps to. Skipped for entries
+              swapped for the original banner photo below — it's no longer a
+              video, so a video title heading above it doesn't apply. */}
+          {videos.map((video, i) =>
+            bannerImage && heroVideo?.provider === video.provider && heroVideo?.id === video.id ? null : (
+              <ServiceVideoHeading key={`heading-${video.provider}-${video.id}-${i}`} video={video} />
+            ),
+          )}
           {videos.map((video, i) =>
             // Already shown as the hero banner video — show the page's
             // original banner photo here instead of duplicating the embed.

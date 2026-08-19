@@ -1442,6 +1442,14 @@ export const COLD_LASER_CONTENT: ServicePageContent = {
   videos: [
     {
       provider: "vimeo",
+      id: "917264180",
+      title: "How does cold laser actually work?",
+      kicker: "Genesis Integrative Medicine",
+      heading: "How Does Cold Laser Actually Work?",
+      thumbnail: { src: "/images/videos/vimeo-917264180.jpg", width: 1280, height: 720 },
+    },
+    {
+      provider: "vimeo",
       id: "281680594",
       title: "Cold Laser Therapy at Genesis Integrative Medicine",
       kicker: "See it in action",
@@ -1659,6 +1667,16 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
     title: "How does Shockwave work?",
     thumbnail: { src: "/images/videos/vimeo-916889299.jpg", width: 1280, height: 720 },
   },
+  videos: [
+    {
+      provider: "vimeo",
+      id: "916889299",
+      title: "How does Shockwave work?",
+      kicker: "Genesis Integrative Medicine",
+      heading: "How Does Shockwave Work?",
+      thumbnail: { src: "/images/videos/vimeo-916889299.jpg", width: 1280, height: 720 },
+    },
+  ],
   serviceJsonLd: {
     name: "Shockwave Therapy (EPAT)",
     description:

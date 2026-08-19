@@ -133,7 +133,7 @@ export const PROVIDERS = [
     name: "Nathan Conroy",
     credentials: "DC",
     title: "Chiropractic & Physical Medicine",
-    image: "/images/providers/nathan-conroy-hd.jpg",
+    image: "/images/providers/nathan-conroy-zoom.jpg",
     href: "/our-providers/",
   },
   {

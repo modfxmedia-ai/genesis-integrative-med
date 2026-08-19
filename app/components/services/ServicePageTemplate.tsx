@@ -410,7 +410,8 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
               )}
             </div>
 
-            {/* Floating badge */}
+            {/* Floating badge — hidden when a hero video is present so it doesn't cover the play button */}
+            {!heroVideo && (
             <motion.div
               style={reduce ? undefined : { y: badgeY }}
               initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -435,6 +436,7 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
                 </div>
               </div>
             </motion.div>
+            )}
           </motion.div>
         )}
       </div>

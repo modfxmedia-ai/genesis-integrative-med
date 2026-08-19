@@ -103,7 +103,7 @@ const PROVIDERS = [
     name: "Nathan Conroy, DC",
     title: "Chiropractic & Physical Medicine",
     image: {
-      src: "/images/providers/nathan-conroy.jpg",
+      src: "/images/providers/nathan-conroy-hd.jpg",
       alt: "Nathan Conroy, DC, Chiropractic & Physical Medicine at Genesis Integrative Medicine",
       width: 2248,
       height: 1804,

@@ -116,7 +116,11 @@ export default function ServicePageTemplate({
       )}
 
       {content.videos && content.videos.length > 0 && (
-        <ServiceVideos videos={content.videos} />
+        <ServiceVideos
+          videos={content.videos}
+          heroVideo={content.heroVideo}
+          bannerImage={content.featuredImage}
+        />
       )}
       {content.gallery && content.gallery.length > 0 && (
         <ServiceGallery images={content.gallery} />
@@ -1609,7 +1613,15 @@ function ConditionsSidebar({
 
 type ServiceVideoItem = NonNullable<ServicePageContent["videos"]>[number];
 
-function ServiceVideos({ videos }: { videos: readonly ServiceVideoItem[] }) {
+function ServiceVideos({
+  videos,
+  heroVideo,
+  bannerImage,
+}: {
+  videos: readonly ServiceVideoItem[];
+  heroVideo?: ServicePageContent["heroVideo"];
+  bannerImage?: ServicePageContent["featuredImage"];
+}) {
   const multiple = videos.length > 1;
   return (
     <section className="bg-white py-16 sm:py-24">
@@ -1629,9 +1641,15 @@ function ServiceVideos({ videos }: { videos: readonly ServiceVideoItem[] }) {
           {videos.map((video, i) => (
             <ServiceVideoHeading key={`heading-${video.provider}-${video.id}-${i}`} video={video} />
           ))}
-          {videos.map((video, i) => (
-            <ServiceVideoPlayer key={`player-${video.provider}-${video.id}-${i}`} video={video} />
-          ))}
+          {videos.map((video, i) =>
+            // Already shown as the hero banner video — show the page's
+            // original banner photo here instead of duplicating the embed.
+            bannerImage && heroVideo?.provider === video.provider && heroVideo?.id === video.id ? (
+              <ServiceVideoImageCard key={`player-${video.provider}-${video.id}-${i}`} image={bannerImage} />
+            ) : (
+              <ServiceVideoPlayer key={`player-${video.provider}-${video.id}-${i}`} video={video} />
+            ),
+          )}
         </div>
       </div>
     </section>
@@ -1706,6 +1724,28 @@ function ServiceVideoPlayer({ video }: { video: ServiceVideoItem }) {
               </span>
             </button>
           )}
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+function ServiceVideoImageCard({
+  image,
+}: {
+  image: NonNullable<ServicePageContent["featuredImage"]>;
+}) {
+  return (
+    <Reveal delay={0.1}>
+      <div className="overflow-hidden rounded-[2rem] border border-brand-line bg-brand-ink shadow-2xl shadow-brand-navy/25">
+        <div className="relative aspect-video w-full">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+          />
         </div>
       </div>
     </Reveal>

@@ -140,11 +140,48 @@ export default function AboutPageView() {
       <HighlightsStrip />
       <StoryBlock />
       <PillarsBlock />
+      <OfficeTourVideo />
       <ProvidersBlock />
       <TestimonialsCTA />
       <ConsultationCta />
       <MissionBlock />
     </article>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Office tour video                                                          */
+/* -------------------------------------------------------------------------- */
+
+function OfficeTourVideo() {
+  return (
+    <section className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-5xl px-6">
+        <Reveal className="text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+            Genesis Integrative Medicine
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
+            Take a Tour of Our Office
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="mx-auto mt-10 max-w-sm overflow-hidden rounded-[2rem] border border-brand-line bg-brand-ink shadow-2xl shadow-brand-navy/25">
+            <div className="relative aspect-[9/16] w-full">
+              <iframe
+                src="https://player.vimeo.com/video/1217717140?dnt=1&title=0&byline=0&portrait=0"
+                title="Office Tour"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   );
 }
 

@@ -100,7 +100,8 @@ export type ServicePageContent = {
   /** Optional quick-facts row shown below the hero (3–4 icon tiles). */
   highlights?: readonly Highlight[];
   featuredImage?: { src: string; alt: string; width: number; height: number };
-  video?: {
+  /** One or more video embeds, rendered between the sections and the FAQ/gallery. */
+  videos?: readonly {
     provider: "vimeo" | "youtube";
     id: string;
     title: string;
@@ -108,7 +109,9 @@ export type ServicePageContent = {
     heading?: string;
     /** Optional short caption/kicker rendered above the heading. */
     kicker?: string;
-  };
+    /** Local poster image shown instead of the embed until the user clicks play. */
+    thumbnail: { src: string; width: number; height: number };
+  }[];
   sections: readonly ServiceSection[];
   faqs?: readonly { question: string; answer: string }[];
   faqHeading?: string;
@@ -456,6 +459,24 @@ export const CHIROPRACTIC_CARE_CONTENT: ServicePageContent = {
     width: 1255,
     height: 835,
   },
+  videos: [
+    {
+      provider: "vimeo",
+      id: "1217717149",
+      title: "Drop Table Demo",
+      kicker: "Genesis Integrative Medicine",
+      heading: "Drop Table Technique Demonstration",
+      thumbnail: { src: "/images/videos/vimeo-1217717149.jpg", width: 1280, height: 2276 },
+    },
+    {
+      provider: "vimeo",
+      id: "906141188",
+      title: "What is the noise when I get adjusted?",
+      kicker: "Genesis Integrative Medicine",
+      heading: "What Is the Noise When I Get Adjusted?",
+      thumbnail: { src: "/images/videos/vimeo-906141188.jpg", width: 1280, height: 720 },
+    },
+  ],
   serviceJsonLd: {
     name: "Chiropractic Care",
     description:
@@ -1395,13 +1416,16 @@ export const COLD_LASER_CONTENT: ServicePageContent = {
     width: 800,
     height: 600,
   },
-  video: {
-    provider: "vimeo",
-    id: "281680594",
-    title: "Cold Laser Therapy at Genesis Integrative Medicine",
-    kicker: "See it in action",
-    heading: "Cold Laser Therapy demonstration",
-  },
+  videos: [
+    {
+      provider: "vimeo",
+      id: "281680594",
+      title: "Cold Laser Therapy at Genesis Integrative Medicine",
+      kicker: "See it in action",
+      heading: "Cold Laser Therapy demonstration",
+      thumbnail: { src: "/images/videos/vimeo-281680594.jpg", width: 1280, height: 720 },
+    },
+  ],
   serviceJsonLd: {
     name: "Cold Laser Therapy",
     description:

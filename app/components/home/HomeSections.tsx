@@ -11,6 +11,7 @@ import {
   GET_STARTED,
   HERO,
   HOME_CONTACT,
+  HOME_VIDEOS,
   INSURANCE,
   REVIEWS_BADGE,
   SERVICE_CARDS,
@@ -2276,6 +2277,152 @@ export function ConditionsStripSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Videos showcase, horizontal carousel                                       */
+/* -------------------------------------------------------------------------- */
+
+export function VideosShowcase() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const doScroll = (dir: number) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: "smooth" });
+  };
+
+  if (HOME_VIDEOS.length === 0) return null;
+
+  return (
+    <section className="bg-brand-mist py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <Reveal className="max-w-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+              Genesis Integrative Medicine
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl lg:text-5xl">
+              Watch &amp; learn with Dr. Nathan Conroy
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-brand-ink/70">
+              Short videos on the conditions we treat and the therapies we use to treat them.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                aria-label="Scroll videos left"
+                onClick={() => doScroll(-1)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-line bg-white text-brand-navy transition-all hover:border-brand-blue/40 hover:bg-brand-navy hover:text-white"
+              >
+                <ChevronLeftIcon className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                aria-label="Scroll videos right"
+                onClick={() => doScroll(1)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-line bg-white text-brand-navy transition-all hover:border-brand-blue/40 hover:bg-brand-navy hover:text-white"
+              >
+                <ChevronRightIcon className="h-4 w-4" />
+              </button>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="relative mt-12">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-brand-mist to-transparent sm:w-16"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-brand-mist to-transparent sm:w-16"
+          />
+          <div
+            ref={scrollerRef}
+            className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {HOME_VIDEOS.map((video, i) => (
+              <div
+                key={`${video.provider}-${video.id}-${i}`}
+                className="w-[280px] shrink-0 snap-start sm:w-[340px]"
+              >
+                <HomeVideoCard video={video} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeVideoCard({ video }: { video: (typeof HOME_VIDEOS)[number] }) {
+  const [playing, setPlaying] = useState(false);
+  const src =
+    video.provider === "vimeo"
+      ? `https://player.vimeo.com/video/${video.id}?dnt=1&title=0&byline=0&portrait=0&autoplay=1`
+      : `https://www.youtube-nocookie.com/embed/${video.id}?rel=0&modestbranding=1&autoplay=1`;
+  return (
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-brand-line bg-white shadow-lg shadow-brand-navy/5">
+      <div className="relative aspect-video w-full shrink-0 bg-brand-ink">
+        {playing ? (
+          <iframe
+            src={src}
+            title={video.title}
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            className="absolute inset-0 h-full w-full"
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            aria-label={`Play video: ${video.title}`}
+            className="group absolute inset-0 h-full w-full cursor-pointer"
+          >
+            <Image
+              src={video.thumbnail.src}
+              alt={video.title}
+              fill
+              sizes="(max-width: 640px) 280px, 340px"
+              className="object-cover"
+            />
+            <span
+              aria-hidden
+              className="absolute inset-0 bg-brand-ink/20 transition-colors group-hover:bg-brand-ink/35"
+            />
+            <span aria-hidden className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 shadow-xl transition-transform group-hover:scale-110">
+                <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-brand-ink">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </span>
+          </button>
+        )}
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-blue">
+          {video.sourceLabel}
+        </p>
+        <h3 className="mt-1.5 text-lg font-bold text-brand-navy">
+          {video.heading ?? video.title}
+        </h3>
+        <Link
+          href={video.href}
+          className="mt-auto inline-flex items-center gap-1.5 pt-3 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-blue transition-colors hover:text-brand-navy"
+        >
+          Learn more
+          <ArrowRightIcon className="h-3 w-3" />
+        </Link>
+      </div>
+    </div>
   );
 }
 

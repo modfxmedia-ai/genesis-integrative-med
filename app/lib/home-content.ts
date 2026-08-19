@@ -5,6 +5,8 @@
  */
 
 import { CONTACT } from "./site-config";
+import { CONDITION_PAGES } from "./conditions-content";
+import { SERVICE_PAGES, type ServicePageContent } from "./services-content";
 
 export const HOME_META = {
   title: "Multidisciplinary Medicine | Genesis Integrative Medicine",
@@ -338,3 +340,44 @@ export const SERVICES_CATALOG = [
   { title: "Allergy Testing", href: "/services/allergy-testing-geneva/", image: "/images/services/allergy-testing-card.webp", alt: "Allergy testing" },
   { title: "Sciatica", href: "/services/sciatica/", image: "/images/services/sciatica-card.webp", alt: "Sciatica treatment" },
 ] as const;
+
+/**
+ * Every video embedded across the condition/service pages, aggregated for a
+ * homepage showcase. Intentionally excludes the About page's office tour
+ * video (not condition/service related) and the videos listed in
+ * HOME_VIDEO_EXCLUDED_IDS below (still shown on their own service/condition
+ * page, just left out of this homepage roundup).
+ */
+export type HomeVideo = {
+  provider: "vimeo" | "youtube";
+  id: string;
+  title: string;
+  heading?: string;
+  kicker?: string;
+  thumbnail: { src: string; width: number; height: number };
+  href: string;
+  sourceLabel: string;
+};
+
+// Cold Laser demo video, requested off the homepage.
+const HOME_VIDEO_EXCLUDED_IDS = new Set(["281680594"]);
+
+const HOME_VIDEO_SOURCE_LABELS: Record<string, string> = Object.fromEntries(
+  [...CONDITIONS_CATALOG, ...SERVICES_CATALOG].map((c) => [c.href, c.title])
+);
+
+const HOME_VIDEO_SOURCES: readonly ServicePageContent[] = [
+  ...Object.values(CONDITION_PAGES),
+  ...Object.values(SERVICE_PAGES),
+];
+
+export const HOME_VIDEOS: readonly HomeVideo[] = HOME_VIDEO_SOURCES.flatMap(
+  (page) =>
+    (page.videos ?? [])
+      .filter((video) => !HOME_VIDEO_EXCLUDED_IDS.has(video.id))
+      .map((video) => ({
+        ...video,
+        href: page.urlPath,
+        sourceLabel: HOME_VIDEO_SOURCE_LABELS[page.urlPath] ?? page.hero.h1,
+      })),
+);

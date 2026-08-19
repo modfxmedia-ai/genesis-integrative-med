@@ -12,6 +12,7 @@ import {
   ServicesShowcase,
   SurgeriesSection,
   UnlockPainFreeSection,
+  VideosShowcase,
   WhyChooseUsSection,
   WhyIntegrativeMedicine,
 } from "@/app/components/home/HomeSections";
@@ -227,6 +228,7 @@ export default function Home() {
       <WhyChooseUsSection />
       <ConditionsShowcase />
       <ConditionsStripSection />
+      <VideosShowcase />
       <GetStartedSection />
       <ContactSection />
     </>

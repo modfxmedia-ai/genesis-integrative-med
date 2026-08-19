@@ -115,7 +115,9 @@ export default function ServicePageTemplate({
         <SectionsRenderer sections={content.sections} />
       )}
 
-      {content.video && <ServiceVideo video={content.video} />}
+      {content.videos && content.videos.length > 0 && (
+        <ServiceVideos videos={content.videos} />
+      )}
       {content.gallery && content.gallery.length > 0 && (
         <ServiceGallery images={content.gallery} />
       )}
@@ -1541,47 +1543,108 @@ function ConditionsSidebar({
 /* Video embed                                                                */
 /* -------------------------------------------------------------------------- */
 
-function ServiceVideo({
-  video,
-}: {
-  video: NonNullable<ServicePageContent["video"]>;
-}) {
-  const src =
-    video.provider === "vimeo"
-      ? `https://player.vimeo.com/video/${video.id}?dnt=1&title=0&byline=0&portrait=0`
-      : `https://www.youtube-nocookie.com/embed/${video.id}?rel=0&modestbranding=1`;
+type ServiceVideoItem = NonNullable<ServicePageContent["videos"]>[number];
+
+function ServiceVideos({ videos }: { videos: readonly ServiceVideoItem[] }) {
+  const multiple = videos.length > 1;
   return (
     <section className="bg-white py-16 sm:py-24">
-      <div className="mx-auto max-w-5xl px-6">
-        <Reveal className="text-center">
-          {video.kicker && (
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
-              {video.kicker}
-            </p>
-          )}
-          {video.heading && (
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
-              {video.heading}
-            </h2>
-          )}
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div className="mt-10 overflow-hidden rounded-[2rem] border border-brand-line bg-brand-ink shadow-2xl shadow-brand-navy/25">
-            <div className="relative aspect-video w-full">
-              <iframe
-                src={src}
-                title={video.title}
-                loading="lazy"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                allowFullScreen
-                referrerPolicy="strict-origin-when-cross-origin"
-                className="absolute inset-0 h-full w-full"
-              />
-            </div>
-          </div>
-        </Reveal>
+      <div
+        className={`mx-auto px-6 ${multiple ? "max-w-6xl" : "max-w-5xl"}`}
+      >
+        <div
+          className={
+            multiple
+              ? "grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2"
+              : "grid grid-cols-1 gap-y-10"
+          }
+        >
+          {/* headings render first so both sit in the same grid row and their
+              players (rendered next) start at an equal height regardless of
+              how many lines each heading wraps to */}
+          {videos.map((video, i) => (
+            <ServiceVideoHeading key={`heading-${video.provider}-${video.id}-${i}`} video={video} />
+          ))}
+          {videos.map((video, i) => (
+            <ServiceVideoPlayer key={`player-${video.provider}-${video.id}-${i}`} video={video} />
+          ))}
+        </div>
       </div>
     </section>
+  );
+}
+
+function ServiceVideoHeading({ video }: { video: ServiceVideoItem }) {
+  if (!video.kicker && !video.heading) return null;
+  return (
+    <Reveal className="flex flex-col justify-end text-center">
+      {video.kicker && (
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
+          {video.kicker}
+        </p>
+      )}
+      {video.heading && (
+        <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
+          {video.heading}
+        </h2>
+      )}
+    </Reveal>
+  );
+}
+
+function ServiceVideoPlayer({ video }: { video: ServiceVideoItem }) {
+  const [playing, setPlaying] = useState(false);
+  const src =
+    video.provider === "vimeo"
+      ? `https://player.vimeo.com/video/${video.id}?dnt=1&title=0&byline=0&portrait=0&autoplay=1`
+      : `https://www.youtube-nocookie.com/embed/${video.id}?rel=0&modestbranding=1&autoplay=1`;
+  return (
+    <Reveal delay={0.1}>
+      <div className="overflow-hidden rounded-[2rem] border border-brand-line bg-brand-ink shadow-2xl shadow-brand-navy/25">
+        <div className="relative aspect-video w-full">
+          {playing ? (
+            <iframe
+              src={src}
+              title={video.title}
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="absolute inset-0 h-full w-full"
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              aria-label={`Play video: ${video.title}`}
+              className="group absolute inset-0 h-full w-full cursor-pointer"
+            >
+              <Image
+                src={video.thumbnail.src}
+                alt={video.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                priority={false}
+              />
+              <span
+                aria-hidden
+                className="absolute inset-0 bg-brand-ink/20 transition-colors group-hover:bg-brand-ink/35"
+              />
+              <span
+                aria-hidden
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/95 shadow-xl transition-transform group-hover:scale-110 sm:h-20 sm:w-20">
+                  <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 fill-brand-ink sm:h-8 sm:w-8">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          )}
+        </div>
+      </div>
+    </Reveal>
   );
 }
 

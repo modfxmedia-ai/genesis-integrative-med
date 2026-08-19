@@ -297,6 +297,11 @@ export const BACK_PAIN_CONTENT: ServicePageContent = {
     width: 4096,
     height: 2730,
   },
+  heroVideo: {
+    provider: "vimeo",
+    id: "558647707",
+    title: "Chronic Low Back Pain – Treat the Cause!",
+  },
   videos: [
     {
       provider: "vimeo",
@@ -421,6 +426,11 @@ export const HEADACHES_CONTENT: ServicePageContent = {
     alt: "Headache treatment at Genesis Integrative Medicine",
     width: 1125,
     height: 750,
+  },
+  heroVideo: {
+    provider: "vimeo",
+    id: "1217717152",
+    title: "Headaches",
   },
   videos: [
     {
@@ -1422,6 +1432,11 @@ export const JOINT_PAIN_CONTENT: ServicePageContent = {
     alt: "Joint pain consultation at Genesis Integrative Medicine",
     width: 1200,
     height: 800,
+  },
+  heroVideo: {
+    provider: "vimeo",
+    id: "1217717151",
+    title: "Root Cause Knee Pain Options",
   },
   videos: [
     {

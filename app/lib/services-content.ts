@@ -100,6 +100,15 @@ export type ServicePageContent = {
   /** Optional quick-facts row shown below the hero (3–4 icon tiles). */
   highlights?: readonly Highlight[];
   featuredImage?: { src: string; alt: string; width: number; height: number };
+  /**
+   * Optional video shown directly in the hero banner as a play button over
+   * the featured image; clicking swaps the image for the embed in place.
+   */
+  heroVideo?: {
+    provider: "vimeo" | "youtube";
+    id: string;
+    title: string;
+  };
   /** One or more video embeds, rendered between the sections and the FAQ/gallery. */
   videos?: readonly {
     provider: "vimeo" | "youtube";
@@ -458,6 +467,11 @@ export const CHIROPRACTIC_CARE_CONTENT: ServicePageContent = {
     alt: "Chiropractic care in Geneva, IL",
     width: 1255,
     height: 835,
+  },
+  heroVideo: {
+    provider: "vimeo",
+    id: "1217717149",
+    title: "Drop Table Demo",
   },
   videos: [
     {
@@ -1416,6 +1430,11 @@ export const COLD_LASER_CONTENT: ServicePageContent = {
     width: 800,
     height: 600,
   },
+  heroVideo: {
+    provider: "vimeo",
+    id: "917264180",
+    title: "Cold Laser Therapy at Genesis Integrative Medicine",
+  },
   videos: [
     {
       provider: "vimeo",
@@ -1629,6 +1648,11 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
     alt: "Shockwave therapy device delivering acoustic waves at Genesis Integrative Medicine in Geneva, IL",
     width: 711,
     height: 480,
+  },
+  heroVideo: {
+    provider: "vimeo",
+    id: "916889299",
+    title: "Shockwave Therapy (EPAT) at Genesis Integrative Medicine",
   },
   serviceJsonLd: {
     name: "Shockwave Therapy (EPAT)",

@@ -209,6 +209,13 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
     content.featuredImage ??
     HERO_IMAGES[content.slug] ??
     null;
+  const heroVideo = content.heroVideo ?? null;
+  const [heroPlaying, setHeroPlaying] = useState(false);
+  const heroVideoSrc =
+    heroVideo &&
+    (heroVideo.provider === "vimeo"
+      ? `https://player.vimeo.com/video/${heroVideo.id}?dnt=1&title=0&byline=0&portrait=0&autoplay=1`
+      : `https://www.youtube-nocookie.com/embed/${heroVideo.id}?rel=0&modestbranding=1&autoplay=1`);
 
   return (
     <section
@@ -319,7 +326,7 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
         {/* Image column */}
         {heroImage && (
           <motion.div
-            className="relative lg:col-span-5"
+            className={`relative lg:col-span-5 ${heroVideo ? "lg:mt-16" : ""}`}
             initial={reduce ? false : { opacity: 0, y: 36, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.95, ease: EASE, delay: 0.15 }}
@@ -341,23 +348,54 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
                     : {}),
                 }}
               >
-                <Image
-                  src={heroImage.src}
-                  alt={heroImage.alt}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 560px"
-                  quality={95}
-                  className="object-cover"
-                />
+                {heroVideo && heroPlaying ? (
+                  <iframe
+                    src={heroVideoSrc}
+                    title={heroVideo.title}
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    className="absolute inset-0 h-full w-full"
+                  />
+                ) : (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 560px"
+                    quality={95}
+                    className="object-cover"
+                  />
+                )}
+                {heroVideo && !heroPlaying && (
+                  <button
+                    type="button"
+                    onClick={() => setHeroPlaying(true)}
+                    aria-label={`Play video: ${heroVideo.title}`}
+                    className="group absolute inset-0 flex h-full w-full items-center justify-center"
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 bg-brand-ink/20 transition-colors group-hover:bg-brand-ink/35"
+                    />
+                    <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white/95 shadow-xl transition-transform group-hover:scale-110 sm:h-20 sm:w-20">
+                      <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 fill-brand-ink sm:h-8 sm:w-8">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
+                  </button>
+                )}
               </motion.div>
               {/* Soft gradient wash at the base for depth */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-navy/35 via-brand-navy/0 to-transparent"
-              />
+              {!(heroVideo && heroPlaying) && (
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-navy/35 via-brand-navy/0 to-transparent"
+                />
+              )}
               {/* Shine sweep, one-shot on mount */}
-              {!reduce && (
+              {!reduce && !(heroVideo && heroPlaying) && (
                 <motion.div
                   aria-hidden
                   initial={{ x: "-120%", opacity: 0 }}

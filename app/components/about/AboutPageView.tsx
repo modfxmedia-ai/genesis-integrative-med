@@ -138,9 +138,9 @@ export default function AboutPageView() {
       <BreadcrumbBar />
       <Hero />
       <HighlightsStrip />
+      <OfficeTourVideo />
       <StoryBlock />
       <PillarsBlock />
-      <OfficeTourVideo />
       <ProvidersBlock />
       <TestimonialsCTA />
       <ConsultationCta />

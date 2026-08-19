@@ -121,8 +121,8 @@ const STAFF = [
     image: {
       src: "/images/staff/kim-bukowski.jpg",
       alt: "Kim Bukowski, Front Desk Manager at Genesis Integrative Medicine",
-      width: 741,
-      height: 1024,
+      width: 2856,
+      height: 3224,
     },
     bio: [
       "I\u2019ve been an active Cosmetologist for many years. I love interacting with people, getting to know them on a personal level & making them feel their very best.",
@@ -137,8 +137,8 @@ const STAFF = [
     image: {
       src: "/images/staff/oksana-samnadda.jpg",
       alt: "Oksana Samnadda, Rehab Tech at Genesis Integrative Medicine",
-      width: 800,
-      height: 1000,
+      width: 2038,
+      height: 1740,
     },
     bio: [
       "Oksana has an extensive background in rehabilitative therapy, always having a passion for helping people achieve their goals and putting her patients first. She believes in movement, that people must move their bodies in order to stay healthy for as long as possible. She is also passionate about yoga and it\u2019s benefits, as being active is one of her biggest contributors to both her happiness and her health.",
@@ -150,8 +150,8 @@ const STAFF = [
     image: {
       src: "/images/staff/angela-warmuth.jpg",
       alt: "Angela Warmuth, Weight Loss Consultant at Genesis Integrative Medicine",
-      width: 1013,
-      height: 1400,
+      width: 2416,
+      height: 2440,
     },
     bio: [
       "Angela is our Lead Weight Loss Consultant with over 33 years of experience in the medical and weight loss field.",

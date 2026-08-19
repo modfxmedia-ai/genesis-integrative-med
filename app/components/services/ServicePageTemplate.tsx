@@ -9,7 +9,7 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { useRef, useState } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 
 import {
   ALL_SERVICES_LIST,
@@ -220,6 +220,15 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
     (heroVideo.provider === "vimeo"
       ? `https://player.vimeo.com/video/${heroVideo.id}?dnt=1&title=0&byline=0&portrait=0&autoplay=1`
       : `https://www.youtube-nocookie.com/embed/${heroVideo.id}?rel=0&modestbranding=1&autoplay=1`);
+  // Cap the desktop hero video's rendered height so tall/portrait thumbnails
+  // don't dwarf the text column; landscape videos stay well under this and
+  // are unaffected.
+  const heroVideoMaxHeight = 420;
+  const heroVideoMaxWidth = heroVideo
+    ? Math.round(
+        (heroVideoMaxHeight * heroVideo.thumbnail.width) / heroVideo.thumbnail.height,
+      )
+    : null;
 
   return (
     <section
@@ -355,7 +364,16 @@ function ServiceHero({ content }: { content: ServicePageContent }) {
             transition={{ duration: 0.95, ease: EASE, delay: 0.15 }}
           >
             {/* Image — merged directly into the page, no frame/bezel. Left edge fades into the page bg on desktop (side-by-side layout) */}
-            <div className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-navy/20 hero-image-fade">
+            <div
+              className={`relative overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-navy/20 hero-image-fade ${
+                heroVideo ? "lg:mx-auto lg:max-w-[var(--hero-video-max-w)]" : ""
+              }`}
+              style={
+                heroVideo
+                  ? ({ "--hero-video-max-w": `${heroVideoMaxWidth}px` } as CSSProperties)
+                  : undefined
+              }
+            >
               <motion.div
                 className={`relative w-full ${
                   heroVideo || content.featuredImage ? "" : "aspect-[4/3]"

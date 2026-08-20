@@ -3,11 +3,11 @@
 import { AnimatePresence, motion } from "motion/react";
 import Script from "next/script";
 
-/** GHL "🟢 Website Form v2.0" lead capture form, shared with the contact/home page embeds. */
+/** GHL "🟢 Website Form" lead capture form, same one used on /contact/. */
 const FORM_SRC =
-  "https://api.leadconnectorhq.com/widget/form/gi2SyjXLi88Pb5yGOihb";
-const FORM_ID = "gi2SyjXLi88Pb5yGOihb";
-const FORM_TITLE = " 🟢 Website Form v2.0";
+  "https://api.leadconnectorhq.com/widget/form/ui8Cws8VEvRRDMpmSR8J";
+const FORM_ID = "ui8Cws8VEvRRDMpmSR8J";
+const FORM_TITLE = " 🟢 Website Form";
 // Distinct from ContactFormEmbed's `inline-<id>` to avoid duplicate DOM ids
 // when the popup and an on-page embed of the same form are both mounted.
 const INLINE_ID = `popup-inline-${FORM_ID}`;
@@ -78,7 +78,7 @@ export default function BookingPopupModal({
                 title={FORM_TITLE}
                 loading="lazy"
                 className="block w-full border-0"
-                style={{ height: "620px" }}
+                style={{ height: "812px" }}
                 scrolling="yes"
                 data-layout="{'id':'INLINE'}"
                 data-trigger-type="alwaysShow"
@@ -88,7 +88,7 @@ export default function BookingPopupModal({
                 data-deactivation-type="neverDeactivate"
                 data-deactivation-value=""
                 data-form-name={FORM_TITLE}
-                data-height="620"
+                data-height="812"
                 data-layout-iframe-id={INLINE_ID}
                 data-form-id={FORM_ID}
               />

@@ -25,8 +25,7 @@ import {
   NECK_PAIN_CONTENT,
   NEUROPATHY_CONTENT,
 } from "@/app/lib/conditions-content";
-
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 /* -------------------------------------------------------------------------- */
 /* Cities                                                                      */

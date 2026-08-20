@@ -47,8 +47,7 @@ export const CONDITIONS_INDEX_META = {
   description:
     "Discover a path toward total wellness through Genesis Integrative Medicine. We serve every patient with personalized care in Geneva, IL. Schedule a visit now.",
   canonicalOrigin: "https://genesisintegrativemed.com/conditions-treated/",
-  ogImage:
-    "https://genesisintegrativemed.com/wp-content/uploads/2022/07/neck-pain-img.webp",
+  ogImage: "/images/conditions/cards/neck-pain.webp",
   datePublished: "2022-07-13T05:00:10+00:00",
   dateModified: "2026-04-09T10:38:02+00:00",
 } as const;
@@ -155,8 +154,7 @@ export const NECK_PAIN_CONTENT: ServicePageContent = {
       "Find neck pain relief in Geneva, IL, with Genesis Integrative Medicine. Schedule a consultation with our neck pain doctors today to improve quality of life.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/neck-pain/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/neck-pain.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -267,8 +265,7 @@ export const BACK_PAIN_CONTENT: ServicePageContent = {
       "Move without discomfort at Genesis Integrative Medicine this week. We focus on back pain relief in Geneva, IL, for your recovery. Call for an appointment.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/back-pain/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/back-pain.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -398,8 +395,7 @@ export const HEADACHES_CONTENT: ServicePageContent = {
       "Stop frequent head pain with help from Genesis Integrative Medicine. We use headache treatment in Geneva, IL, to restore your health. Schedule a visit now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/headaches/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/headaches.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -533,8 +529,7 @@ export const FOOT_PAIN_CONTENT: ServicePageContent = {
       "Step lively with the help of Genesis Integrative Medicine. We offer foot pain relief in Geneva, IL, without surgery for plantar fasciitis. Call us now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/foot-pain/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/foot-pain.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -641,8 +636,7 @@ export const SHOULDER_PAIN_CONTENT: ServicePageContent = {
       "Move without pain from Genesis Integrative Medicine. We provide shoulder pain treatment in Geneva, IL, to improve everyday function. Schedule your consultation.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/shoulder-pain/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/shoulder-pain.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -776,8 +770,7 @@ export const CONDITIONS_SCIATICA_CONTENT: ServicePageContent = {
       "Improve your daily mobility with focused sciatica treatment at Genesis Integrative Medicine. We target nerve pressure in Geneva, IL. Contact our office today.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/sciatica/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/sciatica.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -891,8 +884,7 @@ export const HERNIATED_DISC_CONTENT: ServicePageContent = {
       "Reduce back and neck pain with the help of Genesis Integrative Medicine. We provide herniated disc treatment in Geneva, IL, for lasting relief. Call us today.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/herniated-disc/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/herniated-disc.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1017,8 +1009,7 @@ export const NEUROPATHY_CONTENT: ServicePageContent = {
       "End the tingling and burning nerve pain today with Genesis Integrative Medicine. Our neuropathy doctors in Geneva, IL, restore health without drugs. Call now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/neuropathy/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/neuropathy.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1145,8 +1136,7 @@ export const TENDONITIS_CONTENT: ServicePageContent = {
       "Stop the recurring aches by starting tendonitis treatment at Genesis Integrative Medicine. We restore your flexibility in Geneva, IL. Schedule an appointment.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/tendonitis/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/tendonitis.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1261,8 +1251,7 @@ export const BURSITIS_CONTENT: ServicePageContent = {
       "Eliminate persistent shoulder and hip aches using bursitis treatment at Genesis Integrative Medicine. We help Geneva, IL, residents. Call today.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/bursitis/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/bursitis.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1337,8 +1326,7 @@ export const ALLERGIES_CONTENT: ServicePageContent = {
       "Eliminate your sneezing and watery eyes using allergy care at Genesis Integrative Medicine. We provide modern care in Geneva, IL. Visit our office today.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/allergies/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/conditions/cards/allergies.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1406,8 +1394,7 @@ export const JOINT_PAIN_CONTENT: ServicePageContent = {
       "Move with total confidence after meeting a Geneva joint pain doctor at Genesis Integrative Medicine. We provide expert spinal support. Schedule your exam now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/joint-pain/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-5img.webp",
+    ogImage: "/images/conditions/cards/joint-pain.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1542,8 +1529,7 @@ export const ED_CONDITION_CONTENT: ServicePageContent = {
       "Reclaim your confidence by choosing erectile dysfunction treatment at Genesis Integrative Medicine. We provide modern solutions in Geneva, IL. Call us right now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/conditions-treated/erectile-dysfunction-ed/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2025/11/Erectile_1_e0ddfed7e1.jpg",
+    ogImage: "/images/conditions/cards/ed.avif",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },

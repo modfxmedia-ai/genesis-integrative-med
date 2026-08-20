@@ -17,8 +17,8 @@ import {
   WhyIntegrativeMedicine,
 } from "@/app/components/home/HomeSections";
 import { HOME_META } from "@/app/lib/home-content";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 const CANONICAL = `${SITE_ORIGIN}/`;
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: HOME_META.description,
     images: [
       {
-        url: `${SITE_ORIGIN}/wp-content/uploads/2024/03/care-credit-small-300x62.png`,
+        url: HOME_META.ogImage,
       },
     ],
   },
@@ -43,10 +43,8 @@ export const metadata: Metadata = {
 /**
  * JSON-LD graph, replicated from the live homepage per the migration brief.
  * Values preserved verbatim; only @id / url resolve to the canonical origin.
- * Two data inconsistencies on the live source are preserved unchanged
- * (flagged in the migration notes):
- *   - MedicalClinic.telephone differs from the displayed 630-845-8925
- *   - MedicalClinic.openingHoursSpecification differs from Physician block
+ * Image URLs point to local assets and the MedicalClinic NAP fields have
+ * been aligned with the displayed phone number (see fix notes below).
  */
 const jsonLdGraph = {
   "@context": "https://schema.org",
@@ -59,7 +57,7 @@ const jsonLdGraph = {
       isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
       primaryImageOfPage: { "@id": `${SITE_ORIGIN}/#primaryimage` },
       image: { "@id": `${SITE_ORIGIN}/#primaryimage` },
-      thumbnailUrl: `${SITE_ORIGIN}/wp-content/uploads/2024/03/care-credit-small-300x62.png`,
+      thumbnailUrl: HOME_META.ogImage,
       datePublished: "2024-03-08T11:34:48+00:00",
       dateModified: "2026-04-09T10:44:48+00:00",
       description: HOME_META.description,
@@ -71,8 +69,8 @@ const jsonLdGraph = {
       "@type": "ImageObject",
       inLanguage: "en-US",
       "@id": `${SITE_ORIGIN}/#primaryimage`,
-      url: `${SITE_ORIGIN}/wp-content/uploads/2024/03/care-credit-small.png`,
-      contentUrl: `${SITE_ORIGIN}/wp-content/uploads/2024/03/care-credit-small.png`,
+      url: HOME_META.ogImage,
+      contentUrl: HOME_META.ogImage,
       width: 500,
       height: 104,
     },
@@ -110,7 +108,7 @@ const physicianJsonLd = {
   "@context": "https://schema.org",
   "@type": "Physician",
   name: "Genesis Integrative Medicine",
-  image: `${SITE_ORIGIN}/wp-content/uploads/2021/03/Genesis_Logo-300x109.png`,
+  image: `${SITE_ORIGIN}/images/logo/Genesis_Logo.png`,
   "@id": CANONICAL,
   url: CANONICAL,
   telephone: "630-845-8925",
@@ -169,10 +167,10 @@ const medicalClinicJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
   name: "Genesis Integrative Medicine",
-  image: `${SITE_ORIGIN}/wp-content/uploads/2021/03/Genesis_Logo.png`,
-  "@id": "",
+  image: `${SITE_ORIGIN}/images/logo/Genesis_Logo.png`,
+  "@id": `${SITE_ORIGIN}/#medicalclinic`,
   url: CANONICAL,
-  telephone: "630-283-6563",
+  telephone: "630-845-8925",
   address: {
     "@type": "PostalAddress",
     streetAddress: "1881 S. Randall Rd, Suite C",

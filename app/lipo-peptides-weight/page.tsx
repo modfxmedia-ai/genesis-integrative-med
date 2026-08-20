@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import ServicePageTemplate from "@/app/components/services/ServicePageTemplate";
 import type { ServicePageContent } from "@/app/lib/services-content";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 /**
  * /lipo-peptides-weight/, root-level route mirroring the live page at
@@ -14,14 +15,12 @@ import type { ServicePageContent } from "@/app/lib/services-content";
  * this rebuild.
  */
 
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 const CANONICAL = `${SITE_ORIGIN}/lipo-peptides-weight/`;
 
 const TITLE = "Lipo Peptides for Weight Loss in Geneva | Genesis Integrative Medicine";
 const DESCRIPTION =
   "Discover lipo peptides for weight loss in Geneva at Genesis Integrative Medicine. Enhance fat burning, boost metabolism, and preserve lean muscle with a holistic, personalized plan.";
-const OG_IMAGE =
-  "https://genesisintegrativemed.com/wp-content/uploads/2023/02/Lipotropic-Peptides-Img.webp";
+const OG_IMAGE = "/images/services/medical-weight-loss-card.jpg";
 
 export const metadata: Metadata = {
   title: TITLE,

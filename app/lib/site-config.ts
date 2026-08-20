@@ -79,6 +79,7 @@ export const FOOTER_LINKS = [
   { label: "About Us", href: "/about-practice/" },
   { label: "Our Providers", href: "/our-providers/" },
   { label: "Areas We Serve", href: "/areas-we-serve/" },
+  { label: "Lipo Peptides & Weight Loss", href: "/lipo-peptides-weight/" },
   { label: "Blog", href: "/blog/" },
   { label: "Privacy Policy", href: "/your-privacy/" },
   { label: "Terms & Conditions", href: "/our-terms/" },
@@ -125,6 +126,14 @@ export const BRAND = {
   tagline: "Geneva's Trusted Partner in Wellness",
   logo: "/images/logo/Genesis_Logo.png",
 } as const;
+
+/**
+ * Canonical absolute site origin used for metadataBase, canonical URLs,
+ * and JSON-LD @id/url fields sitewide. Falls back to the production
+ * domain if the env var isn't set (e.g. local dev without .env.local).
+ */
+export const SITE_ORIGIN =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://genesisintegrativemed.com";
 
 /**
  * Care providers featured on /our-providers/, names, credentials, and

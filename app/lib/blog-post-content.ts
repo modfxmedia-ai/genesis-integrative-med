@@ -341,8 +341,7 @@ export const LIVING_WITH_NEUROPATHY_POST: BlogPostContent = {
       "Learn signs, causes, and when to get neuropathy treatment in Geneva, IL plus non-surgical options to reduce pain and support long-term wellness",
     canonical:
       "https://genesisintegrativemed.com/living-with-neuropathy-when-seek-treatment/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2026/06/towfiqu-barbhuiya-dNe6TyX_laM-unsplash.jpg",
+    ogImage: "/images/blog/living-with-neuropathy-when-seek-treatment.jpg",
   },
 };
 
@@ -461,8 +460,7 @@ export const HOW_PRP_ARTHRITIS_POST: BlogPostContent = {
       "Read our post titled How PRP is Revolutionizing Arthritis Treatment and discover health and wellness insights from Genesis Integrative Medicine.",
     canonical:
       "https://genesisintegrativemed.com/how-prp-is-revolutionizing-arthritis-treatment/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/2015824.jpg",
+    ogImage: "/images/blog/how-prp-is-revolutionizing-arthritis-treatment.jpg",
   },
 };
 
@@ -597,13 +595,12 @@ export const LASER_LIPO_POST: BlogPostContent = {
     href: "/causes-of-knee-pain/",
   },
   meta: {
-    title: "Laser Lipo: Genesis Integrative Medicine\u2019s Guide | 2025",
+    title: "Laser Lipo Guide | 2025",
     description:
       "Unlock the secrets of Laser Lipo in 5 points: effectiveness, safety, target areas, procedure details, and post-care. read now!",
     canonical:
       "https://genesisintegrativemed.com/need-to-know-about-laser-lipo/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2024/02/laser-lipo.jpg",
+    ogImage: "/images/blog/need-to-know-about-laser-lipo.jpg",
   },
 };
 
@@ -784,12 +781,11 @@ export const CAUSES_OF_KNEE_PAIN_POST: BlogPostContent = {
     href: "/need-to-know-about-laser-lipo/",
   },
   meta: {
-    title: "Knee Pain: Find Relief at Genesis Integrative Medicine",
+    title: "Knee Pain: Find Relief and Treatment Options",
     description:
       "Find knee pain relief! Genesis Integrative Medicine in Geneva, IL offers effective treatments for various causes. Regain mobility today.",
     canonical: "https://genesisintegrativemed.com/causes-of-knee-pain/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2024/02/knee-pain.jpg",
+    ogImage: "/images/blog/causes-of-knee-pain.jpg",
   },
 };
 
@@ -969,11 +965,10 @@ export const PRP_ATHLETES_POST: BlogPostContent = {
   meta: {
     title: "Boosting Athlete Performance: PRP for Quick Recovery",
     description:
-      "Explore the game-changing benefits of PRP treatment for athletes, enhancing performance and ensuring swift recovery.",
+      "Explore the game-changing benefits of PRP treatment for athletes at Genesis Integrative Medicine, enhancing performance and ensuring swift, natural recovery.",
     canonical:
       "https://genesisintegrativemed.com/prp-treatment-for-athletes/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2024/03/PRP-Treatment-for-Athletes.jpg",
+    ogImage: "/images/blog/prp-treatment-for-athletes.jpg",
   },
 };
 

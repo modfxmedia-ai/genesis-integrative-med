@@ -9,6 +9,8 @@
  * DO NOT paraphrase, summarize, or rewrite this text.
  */
 
+import { SITE_ORIGIN } from "@/app/lib/site-config";
+
 /** A block of text inside a section or subsection. */
 export type LegalBlock = {
   /** Optional paragraphs (rendered in order). */
@@ -47,8 +49,6 @@ export type LegalPage = {
   breadcrumbs: readonly { name: string; item?: string }[];
 };
 
-const SITE_ORIGIN = "https://genesisintegrativemed.com" as const;
-
 /* -------------------------------------------------------------------------- */
 /* Terms & Conditions, /our-terms/                                            */
 /* -------------------------------------------------------------------------- */
@@ -57,7 +57,7 @@ export const TERMS_PAGE: LegalPage = {
   slug: "our-terms",
   urlPath: "/our-terms/",
   meta: {
-    title: "Terms & Conditions | Genesis Integrative Medicine",
+    title: "Terms & Conditions",
     description:
       "Terms and conditions governing use of the Genesis Integrative Medicine website in Geneva, IL.",
     canonical: `${SITE_ORIGIN}/our-terms/`,
@@ -142,7 +142,7 @@ export const TERMS_PAGE: LegalPage = {
     {
       heading: "NOTICES",
       paragraphs: [
-        "Please contact us by phone at 630-283-6563 or by mail at 1881 S. Randall Rd, Suite C, Geneva, IL 60134.",
+        "Please contact us by phone at 630-845-8925 or by mail at 1881 S. Randall Rd, Suite C, Geneva, IL 60134.",
       ],
     },
   ],
@@ -156,7 +156,7 @@ export const PRIVACY_PAGE: LegalPage = {
   slug: "your-privacy",
   urlPath: "/your-privacy/",
   meta: {
-    title: "Privacy Policy | Genesis Integrative Medicine",
+    title: "Privacy Policy",
     description:
       "Privacy policy for the Genesis Integrative Medicine website in Geneva, IL, how we collect, use, and protect your information.",
     canonical: `${SITE_ORIGIN}/your-privacy/`,
@@ -217,7 +217,7 @@ export const PRIVACY_PAGE: LegalPage = {
     {
       heading: "NOTICES",
       paragraphs: [
-        "Please contact us by phone at 630-283-6563 or by mail at 1881 S. Randall Rd, Suite C, Geneva, IL 60134.",
+        "Please contact us by phone at 630-845-8925 or by mail at 1881 S. Randall Rd, Suite C, Geneva, IL 60134.",
       ],
     },
   ],
@@ -231,7 +231,7 @@ export const ACCESSIBILITY_PAGE: LegalPage = {
   slug: "accessibility-statement",
   urlPath: "/accessibility-statement/",
   meta: {
-    title: "Accessibility Statement | Genesis Integrative Medicine",
+    title: "Accessibility Statement",
     description:
       "Genesis Integrative Medicine is committed to providing a website that is accessible to individuals with disabilities, in conformance with WCAG 2.1, Level A & AA.",
     canonical: `${SITE_ORIGIN}/accessibility-statement/`,

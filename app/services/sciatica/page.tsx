@@ -14,14 +14,7 @@ export const metadata: Metadata = {
     description: SCIATICA_CONTENT.meta.description,
     url: SCIATICA_CONTENT.meta.canonicalOrigin,
     siteName: "Genesis Integrative Medicine",
-    images: [
-      {
-        url: SCIATICA_CONTENT.meta.ogImage,
-        width: 340,
-        height: 340,
-        type: "image/webp",
-      },
-    ],
+    images: [{ url: SCIATICA_CONTENT.meta.ogImage }],
     locale: "en_US",
   },
   twitter: {

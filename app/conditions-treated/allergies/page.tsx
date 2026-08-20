@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: ALLERGIES_CONTENT.meta.description,
     url: ALLERGIES_CONTENT.meta.canonicalOrigin,
     siteName: "Genesis Integrative Medicine",
-    images: [{ url: ALLERGIES_CONTENT.meta.ogImage, width: 340, height: 340, type: "image/webp" }],
+    images: [{ url: ALLERGIES_CONTENT.meta.ogImage }],
     locale: "en_US",
   },
   twitter: {

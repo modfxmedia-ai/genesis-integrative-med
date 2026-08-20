@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: CONDITIONS_SCIATICA_CONTENT.meta.description,
     url: CONDITIONS_SCIATICA_CONTENT.meta.canonicalOrigin,
     siteName: "Genesis Integrative Medicine",
-    images: [{ url: CONDITIONS_SCIATICA_CONTENT.meta.ogImage, width: 340, height: 340, type: "image/webp" }],
+    images: [{ url: CONDITIONS_SCIATICA_CONTENT.meta.ogImage }],
     locale: "en_US",
   },
   twitter: {

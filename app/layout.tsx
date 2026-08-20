@@ -21,6 +21,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://genesisintegrativemed.com",
+  ),
   title: {
     default: `${BRAND.name} | ${BRAND.tagline}`,
     template: `%s | ${BRAND.name}`,

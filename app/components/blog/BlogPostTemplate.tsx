@@ -19,7 +19,7 @@ import {
   Stagger,
   StaggerItem,
 } from "@/app/components/home/motion-primitives";
-import { CONTACT } from "@/app/lib/site-config";
+import { CONTACT, SITE_ORIGIN } from "@/app/lib/site-config";
 import { INSURANCE_MISSION } from "@/app/lib/services-content";
 import {
   BLOG_POSTS,
@@ -892,8 +892,6 @@ function MissionBlock() {
 /* -------------------------------------------------------------------------- */
 /* Helpers                                                                     */
 /* -------------------------------------------------------------------------- */
-
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 function absoluteHref(slug: string): string {
   return `/${slug}/`;

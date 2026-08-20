@@ -139,7 +139,7 @@ export const WHY_INTEGRATIVE = {
       body:
         "Our mission is to help people take charge of their health by understanding their problems and making the necessary changes to achieve optimal health.",
       href: "/our-providers/",
-      image: "/images/staff/providers-images-2.png",
+      image: "/images/staff/providers-images-2.jpg",
       alt: "Healthcare professional in scrubs caring for a smiling patient",
     },
     {
@@ -332,7 +332,7 @@ export const SERVICES_CATALOG = [
   { title: "Cold Laser", href: "/services/cold-laser/", image: "/images/cold-laser%20copy.jpg", alt: "Cold laser therapy" },
   { title: "Chiropractic Care", href: "/services/chiropractic-care/", image: "/images/chiropractic-care.jpg", alt: "Chiropractic care" },
   { title: "Active Rehab", href: "/services/active-rehab-geneva/", image: "/images/active-rehab.jpeg", alt: "Active rehab" },
-  { title: "PRP Injections", href: "/services/prp-injections-geneva/", image: "/images/prp-injections-shoulder.png", alt: "PRP injection for shoulder joint pain" },
+  { title: "PRP Injections", href: "/services/prp-injections-geneva/", image: "/images/prp-injections-shoulder.jpg", alt: "PRP injection for shoulder joint pain" },
   { title: "Regenerative Medicine", href: "/services/regenerative-medicine/", image: "/images/regenerative-medicine.jpg", alt: "Regenerative medicine" },
   { title: "Peptide Weight Loss", href: "/services/peptide-weight-loss/", image: "/images/services/medical-weight-loss-card.jpg", alt: "Medical weight loss" },
   { title: "Peripheral Neuropathy", href: "/services/peripheral-neuropathy-treatment/", image: "/images/services/peripheral-neuropathy-card.jpg", alt: "Peripheral neuropathy treatment" },

@@ -14,14 +14,7 @@ export const metadata: Metadata = {
     description: CONDITIONS_INDEX_META.description,
     url: CONDITIONS_INDEX_META.canonicalOrigin,
     siteName: "Genesis Integrative Medicine",
-    images: [
-      {
-        url: CONDITIONS_INDEX_META.ogImage,
-        width: 340,
-        height: 340,
-        type: "image/webp",
-      },
-    ],
+    images: [{ url: CONDITIONS_INDEX_META.ogImage }],
     locale: "en_US",
   },
   twitter: {

@@ -4817,7 +4817,7 @@ export const POST_SAY_GOODBYE_TO_CHRONIC_PAIN_HOW_COLD_LASER_THERAPY_IN_GENEVA_C
   ],
   meta: {
     title: "Cold Laser Therapy for Chronic Pain Relief in Geneva",
-    description: "Relieve chronic pain with Genesis Integrative Medicine.",
+    description: "Relieve chronic pain without surgery or medication using cold laser therapy at Genesis Integrative Medicine in Geneva, IL. Schedule a consultation today.",
     canonical: "https://genesisintegrativemed.com/say-goodbye-to-chronic-pain-how-cold-laser-therapy-in-geneva-can-transform-your-life/",
     ogImage: "https://genesisintegrativemed.com/images/blog/say-goodbye-to-chronic-pain-how-cold-laser-therapy-in-geneva-can-transform-your-life.png",
   },
@@ -4892,7 +4892,7 @@ export const POST_END_CHRONIC_TENDON_PAIN_WITH_SHOCKWAVE_THERAPY: BlogPostConten
   ],
   meta: {
     title: "Tendon Pain Relief: Shockwave Therapy - Genesis Medicine",
-    description: "Relieve tendon pain with Genesis Integrative Medicine.",
+    description: "Relieve chronic tendon pain from tennis elbow, golfer\u2019s elbow, and more with noninvasive shockwave therapy at Genesis Integrative Medicine in Geneva, IL.",
     canonical: "https://genesisintegrativemed.com/end-chronic-tendon-pain-with-shockwave-therapy/",
     ogImage: "https://genesisintegrativemed.com/images/blog/end-chronic-tendon-pain-with-shockwave-therapy.png",
   },
@@ -4973,7 +4973,7 @@ export const POST_HOW_REGENERATIVE_MEDICINE_CAN_HELP_WITH_SCIATICA: BlogPostCont
   ],
   meta: {
     title: "Sciatica: Regenerative Medicine Solutions (Genesis)",
-    description: "Relieve sciatica pain: Learn causes and find relief.",
+    description: "Relieve sciatica pain without surgery or medication. Learn how regenerative medicine at Genesis Integrative Medicine in Geneva, IL helps you find lasting relief.",
     canonical: "https://genesisintegrativemed.com/how-regenerative-medicine-can-help-with-sciatica/",
     ogImage: "https://genesisintegrativemed.com/images/blog/how-regenerative-medicine-can-help-with-sciatica.png",
   },
@@ -5037,7 +5037,7 @@ export const POST_WHY_A_HEALTHY_SPINE_EQUALS_A_HEALTHY_LIFE: BlogPostContent = {
   ],
   meta: {
     title: "Healthy Spine = Healthy Life: Chiropractic Benefits",
-    description: "Discover the power of a healthy spine for optimal well-being.",
+    description: "Discover why a healthy spine is key to optimal well-being and how preventative chiropractic care at Genesis Integrative Medicine in Geneva, IL can help.",
     canonical: "https://genesisintegrativemed.com/why-a-healthy-spine-equals-a-healthy-life/",
     ogImage: "https://genesisintegrativemed.com/images/blog/why-a-healthy-spine-equals-a-healthy-life.png",
   },
@@ -5103,7 +5103,7 @@ export const POST_HOW_REGENERATIVE_MEDICINE_HELPS_WITH_ATHLETE_RECOVERY: BlogPos
   ],
   meta: {
     title: "Athlete Recovery: Regenerative Medicine by Genesis",
-    description: "Heal faster with regenerative medicine.",
+    description: "Heal faster from sports injuries with regenerative medicine at Genesis Integrative Medicine in Geneva, IL. Recover without medications or invasive procedures.",
     canonical: "https://genesisintegrativemed.com/how-regenerative-medicine-helps-with-athlete-recovery/",
     ogImage: "https://genesisintegrativemed.com/images/blog/how-regenerative-medicine-helps-with-athlete-recovery.png",
   },
@@ -5308,8 +5308,8 @@ export const POST_GENESIS_LIPOTROPIC_PEPTIDES: BlogPostContent = {
     },
   ],
   meta: {
-    title: "Safe Medical Weight Loss: Genesis Integrative Medicine",
-    description: "Discover safe and effective medical weight loss with lipotropic peptides at Genesis Integrative Medicine in Geneva, IL.",
+    title: "Safe Medical Weight Loss with Lipotropic Peptides",
+    description: "Discover safe and effective medical weight loss with lipotropic peptides at Genesis Integrative Medicine in Geneva, IL. Schedule a consultation today.",
     canonical: "https://genesisintegrativemed.com/genesis-lipotropic-peptides/",
     ogImage: "https://genesisintegrativemed.com/images/blog/genesis-lipotropic-peptides.jpg",
   },
@@ -5473,7 +5473,7 @@ export const POST_GENESIS_WEIGHT_LOSS: BlogPostContent = {
   ],
   meta: {
     title: "Genesis Weight Loss: Sustainable Health with Genesis in 2025",
-    description: "Genesis Weight Loss in Geneva, IL: Find sustainable weight loss with a personalized medical program at Genesis in 2025.",
+    description: "Genesis Weight Loss in Geneva, IL: find sustainable weight loss with a personalized medical program at Genesis Integrative Medicine. Book a consult today.",
     canonical: "https://genesisintegrativemed.com/genesis-weight-loss/",
     ogImage: "https://genesisintegrativemed.com/images/blog/genesis-weight-loss.jpg",
   },
@@ -5625,7 +5625,7 @@ export const POST_NECK_PAIN_GENESIS: BlogPostContent = {
     },
   ],
   meta: {
-    title: "Neck Pain Relief: Genesis Integrative Medicine's Solutions",
+    title: "Neck Pain Relief: Effective Solutions",
     description: "Neck pain relief starts here. Genesis Integrative Medicine provides effective solutions for neck pain, addressing causes and promoting wellness.",
     canonical: "https://genesisintegrativemed.com/neck-pain-genesis/",
     ogImage: "https://genesisintegrativemed.com/images/blog/neck-pain-genesis.jpg",
@@ -5727,7 +5727,7 @@ export const POST_PEPTIDES_FOR_WEIGHT_LOSS: BlogPostContent = {
   ],
   meta: {
     title: "Peptides for Weight Loss: Natural Weight Loss at Genesis",
-    description: "Peptides for weight loss at Genesis Integrative Medicine: a natural approach to sustainable weight loss in Geneva, IL.",
+    description: "Peptides for weight loss at Genesis Integrative Medicine: a natural, sustainable approach to lasting weight loss in Geneva, IL. Schedule a consult.",
     canonical: "https://genesisintegrativemed.com/peptides-for-weight-loss/",
     ogImage: "https://genesisintegrativemed.com/images/blog/peptides-for-weight-loss.jpg",
   },
@@ -5817,7 +5817,7 @@ export const POST_DIET_AND_EXERCISE_NOT_WORKING: BlogPostContent = {
   ],
   meta: {
     title: "Diet & Exercise Not Working? Genesis' Weight Loss Solutions",
-    description: "Break through weight loss plateaus with expert solutions.",
+    description: "Break through stubborn weight loss plateaus with expert metabolic solutions at Genesis Integrative Medicine in Geneva, IL. Schedule a consultation today.",
     canonical: "https://genesisintegrativemed.com/diet-and-exercise-not-working/",
     ogImage: "https://genesisintegrativemed.com/images/blog/diet-and-exercise-not-working.jpg",
   },
@@ -5927,7 +5927,7 @@ export const POST_LIPOTROPIC_INJECTIONS_GENESIS: BlogPostContent = {
   ],
   meta: {
     title: "Genesis: Lipotropic Injections for Weight Loss",
-    description: "Boost weight loss with lipotropic injections.",
+    description: "Boost weight loss and energy with lipotropic injections at Genesis Integrative Medicine in Geneva, IL. Learn how these treatments support lasting results.",
     canonical: "https://genesisintegrativemed.com/lipotropic-injections-genesis/",
     ogImage: "https://genesisintegrativemed.com/images/blog/lipotropic-injections-genesis.jpg",
   },
@@ -6071,8 +6071,8 @@ export const POST_HOW_TO_LOSE_WEIGHT_WITHOUT_STARVING: BlogPostContent = {
     },
   ],
   meta: {
-    title: "Weight Loss Without Starving: Genesis Integrative Medicine",
-    description: "Ditch diet frustration! Lose weight sustainably.",
+    title: "Weight Loss Without Starving",
+    description: "Ditch diet frustration! Lose weight sustainably without starving using a personalized, metabolism-boosting plan from Genesis Integrative Medicine in Geneva.",
     canonical: "https://genesisintegrativemed.com/how-to-lose-weight-without-starving/",
     ogImage: "https://genesisintegrativemed.com/images/blog/how-to-lose-weight-without-starving.jpg",
   },
@@ -6227,7 +6227,7 @@ export const POST_GENESIS_AND_BURSITIS: BlogPostContent = {
     },
   ],
   meta: {
-    title: "Shoulder Bursitis Relief: Genesis Integrative Medicine",
+    title: "Shoulder Bursitis Relief",
     description: "Find shoulder bursitis relief at Genesis Integrative Medicine. We offer personalized, non-invasive treatments for shoulder pain management in Geneva, IL.",
     canonical: "https://genesisintegrativemed.com/genesis-and-bursitis/",
     ogImage: "https://genesisintegrativemed.com/images/blog/genesis-and-bursitis.jpg",
@@ -7287,7 +7287,7 @@ export const POST_PRP_TREATMENT_FOR_ATHLETES: BlogPostContent = {
   ],
   meta: {
     title: "Boosting Athlete Performance: PRP for Quick Recovery",
-    description: "Explore the game-changing benefits of PRP treatment for athletes, enhancing performance and ensuring swift recovery.",
+    description: "Explore the game-changing benefits of PRP treatment for athletes at Genesis Integrative Medicine, enhancing performance and ensuring swift, natural recovery.",
     canonical: "https://genesisintegrativemed.com/prp-treatment-for-athletes/",
     ogImage: "https://genesisintegrativemed.com/images/blog/prp-treatment-for-athletes.jpg",
   },
@@ -7374,7 +7374,7 @@ export const POST_CAUSES_OF_KNEE_PAIN: BlogPostContent = {
     },
   ],
   meta: {
-    title: "Knee Pain: Find Relief at Genesis Integrative Medicine",
+    title: "Knee Pain: Find Relief and Treatment Options",
     description: "Find knee pain relief! Genesis Integrative Medicine in Geneva, IL offers effective treatments for various causes. Regain mobility today.",
     canonical: "https://genesisintegrativemed.com/causes-of-knee-pain/",
     ogImage: "https://genesisintegrativemed.com/images/blog/causes-of-knee-pain.jpg",
@@ -7441,7 +7441,7 @@ export const POST_NEED_TO_KNOW_ABOUT_LASER_LIPO: BlogPostContent = {
     },
   ],
   meta: {
-    title: "Laser Lipo: Genesis Integrative Medicine's Guide | 2025",
+    title: "Laser Lipo Guide | 2025",
     description: "Unlock the secrets of Laser Lipo in 5 points: effectiveness, safety, target areas, procedure details, and post-care. read now!",
     canonical: "https://genesisintegrativemed.com/need-to-know-about-laser-lipo/",
     ogImage: "https://genesisintegrativemed.com/images/blog/need-to-know-about-laser-lipo.jpg",
@@ -7701,7 +7701,7 @@ export const POST_TAKE_A_NONSURGICAL_APPROACH_TO_PAIN_WITH_REGENERATIVE_MEDICINE
       blocks: [
         { kind: "paragraph", text: "Depending on the location, cause, and severity of your symptoms, mesenchymal stem cell therapy may be available to help treat your injury. The treatment consists of a series of injections applied directly to the area of injury, so you don\u2019t have to worry about incisions, hospital stays, or any downtime after the treatment. The goal is to help stimulate healthy tissue growth over time." },
         { kind: "paragraph", text: "Our practitioners will perform a comprehensive evaluation and design a treatment plan based on your symptoms and specific needs. Most people require a series of shots over a period of weeks or months and can expect gradual results over time. Regenerative medicine is typically used in conjunction with your conventional treatments, such as physical therapy." },
-        { kind: "paragraph", text: "Pain doesn\u2019t have to keep you from the activities you love or ruin your quality of life. For more information about nonsurgical, minimally invasive pain management treatments with regenerative medicine, contact us at Genesis Integrative Medicine today by calling our Geneva office at 630-283-6563, or use our convenient online booking tool to schedule an appointment today." },
+        { kind: "paragraph", text: "Pain doesn\u2019t have to keep you from the activities you love or ruin your quality of life. For more information about nonsurgical, minimally invasive pain management treatments with regenerative medicine, contact us at Genesis Integrative Medicine today by calling our Geneva office at 630-845-8925, or use our convenient online booking tool to schedule an appointment today." },
       ],
     },
   ],
@@ -7740,7 +7740,7 @@ export const POST_WHY_IS_REHABILITATION_SO_IMPORTANT_AFTER_AN_INJURY: BlogPostCo
       blocks: [
         { kind: "paragraph", text: "Damage to muscles, nerves, and joints are often treated more effectively with physical therapy than with medications or surgery. We use active therapy to mitigate pain and provide support for the injured part of your body as you heal. This is better than simply picking up your original exercise program immediately and risking reinjury." },
         { kind: "paragraph", text: "A customized program will help strengthen surrounding muscles and ligaments while keeping you flexible. Active therapy is effective if you\u2019re recovering from an injury, rehabilitating after surgery, or if you have trouble being physically active. This type of therapy can be modified to meet you where you are and slowly increase your mobility and flexibility." },
-        { kind: "paragraph", text: "If you\u2019re worried about your comeback from an injury or surgical procedure, contact us at Genesis Integrative Medicine in Geneva, Illinois. Our team will work with you to help you recover fully. You can call our office at 630-283-6563 or book an appointment online using our convenient scheduling tool." },
+        { kind: "paragraph", text: "If you\u2019re worried about your comeback from an injury or surgical procedure, contact us at Genesis Integrative Medicine in Geneva, Illinois. Our team will work with you to help you recover fully. You can call our office at 630-845-8925 or book an appointment online using our convenient scheduling tool." },
       ],
     },
   ],
@@ -7841,7 +7841,7 @@ export const POST_LOSING_WEIGHT_LOWERS_YOUR_RISK_OF_THESE_COMMON_CONDITIONS: Blo
       heading: "Some cancers",
       blocks: [
         { kind: "paragraph", text: "Some cancers are linked to obesity. If you\u2019re obese, it doesn\u2019t mean you\u2019ll get cancer; it just means you have a higher risk of developing cancer in the colon, breast (after menopause), esophagus, or kidneys." },
-        { kind: "paragraph", text: "By changing your diet, exercising, drinking more water, and getting enough sleep, you can help your body heal. If you need help losing weight and are worried about your health, make an appointment with us today. We take a comprehensive approach to weight loss and your health to help lower your risk of many common health conditions. Book an appointment online or call 630-283-6563." },
+        { kind: "paragraph", text: "By changing your diet, exercising, drinking more water, and getting enough sleep, you can help your body heal. If you need help losing weight and are worried about your health, make an appointment with us today. We take a comprehensive approach to weight loss and your health to help lower your risk of many common health conditions. Book an appointment online or call 630-845-8925." },
       ],
     },
   ],
@@ -8016,7 +8016,7 @@ export const POST_FINISH_OFF_YOUR_WEIGHT_LOSS_JOURNEY_WITH_LIPO_MINO_INJECTIONS:
         { kind: "paragraph", text: "And once you reach your goal weight, you\u2019ll already be on the right track to maintaining your optimal health and wellness." },
         { kind: "paragraph", text: "Weekly injections for a month or so might be ideal for you as you near your weight-loss goals, but your provider at Genesis Integrative Medicine tailors a plan to fit your needs. They may also recommend other nutrients as part of your lipo-mino injections, such as vitamin B6 or amino acids, to help compensate for any nutritional deficiencies you may have, the short term." },
         { kind: "paragraph", text: "Ultimately, you want to embark on a weight-loss program that helps you steadily lose weight, improve your nutritional choices, and make behavioral modifications, such as managing stress and getting enough sleep. When you choose a healthier lifestyle overall, you undoubtedly foster a lifelong weight-loss plan that helps you feel better both physically and emotionally, so you can maintain it long-term. Cutting back on sugar and processed foods, drinking more water, and taking a daily walk are just a few ways you can keep the momentum going during and after your weight-loss program." },
-        { kind: "paragraph", text: "Whether you\u2019re nearing the end of your weight-loss journey, or you\u2019re just beginning, the medical team at Genesis Integrative Medicine can customize a plan that includes the benefits of lipo-mino injections. Call our Geneva office at 630-283-6563, or use the convenient online booking tool to schedule a consultation today." },
+        { kind: "paragraph", text: "Whether you\u2019re nearing the end of your weight-loss journey, or you\u2019re just beginning, the medical team at Genesis Integrative Medicine can customize a plan that includes the benefits of lipo-mino injections. Call our Geneva office at 630-845-8925, or use the convenient online booking tool to schedule a consultation today." },
       ],
     },
   ],

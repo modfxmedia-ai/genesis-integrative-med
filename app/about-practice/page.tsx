@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 import AboutPageView from "@/app/components/about/AboutPageView";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 const CANONICAL = "https://genesisintegrativemed.com/about-practice/";
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 export const metadata: Metadata = {
   title: "Our Approach to Holistic Healing & Medicine in Geneva, IL",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Genesis Integrative Medicine",
     images: [
       {
-        url: "https://genesisintegrativemed.com/wp-content/uploads/bb-plugin/cache/team-member1-circle.webp",
+        url: "/images/staff/providers-images-2.jpg",
       },
     ],
     locale: "en_US",

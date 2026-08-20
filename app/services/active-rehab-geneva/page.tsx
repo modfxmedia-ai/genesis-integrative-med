@@ -14,14 +14,7 @@ export const metadata: Metadata = {
     description: ACTIVE_REHAB_CONTENT.meta.description,
     url: ACTIVE_REHAB_CONTENT.meta.canonicalOrigin,
     siteName: "Genesis Integrative Medicine",
-    images: [
-      {
-        url: ACTIVE_REHAB_CONTENT.meta.ogImage,
-        width: 340,
-        height: 340,
-        type: "image/webp",
-      },
-    ],
+    images: [{ url: ACTIVE_REHAB_CONTENT.meta.ogImage }],
     locale: "en_US",
   },
   twitter: {

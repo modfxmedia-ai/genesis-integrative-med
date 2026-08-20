@@ -1,12 +1,11 @@
 import type { ServicePageContent } from "@/app/lib/services-content";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 /**
  * Build the JSON-LD @graph + supplementary schema blocks for a service page.
  * Structure mirrors the live site exactly: WebPage, ImageObject, BreadcrumbList,
  * WebSite (main graph), plus separate Service and MedicalClinic blocks.
  */
-
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 const WEBSITE_NODE = {
   "@type": "WebSite",
@@ -47,10 +46,10 @@ const MEDICAL_CLINIC = {
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
   name: "Genesis Integrative Medicine",
-  image: `${SITE_ORIGIN}/wp-content/uploads/2021/03/Genesis_Logo.png`,
-  "@id": "",
+  image: `${SITE_ORIGIN}/images/logo/Genesis_Logo.png`,
+  "@id": `${SITE_ORIGIN}/#medicalclinic`,
   url: `${SITE_ORIGIN}/`,
-  telephone: "630-283-6563",
+  telephone: "630-845-8925",
   address: {
     "@type": "PostalAddress",
     streetAddress: "1881 S. Randall Rd, Suite C",
@@ -113,8 +112,6 @@ export function buildServicePageJsonLd(
       "@id": primaryImageId,
       url: content.meta.ogImage,
       contentUrl: content.meta.ogImage,
-      width: 340,
-      height: 340,
     },
     {
       "@type": "BreadcrumbList",
@@ -216,8 +213,6 @@ export function buildServicesIndexJsonLd(opts: {
           "@id": primaryImageId,
           url: opts.ogImage,
           contentUrl: opts.ogImage,
-          width: 340,
-          height: 340,
         },
         {
           "@type": "BreadcrumbList",
@@ -312,8 +307,6 @@ export function buildConditionsIndexJsonLd(opts: {
           "@id": primaryImageId,
           url: opts.ogImage,
           contentUrl: opts.ogImage,
-          width: 340,
-          height: 340,
         },
         {
           "@type": "BreadcrumbList",

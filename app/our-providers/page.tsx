@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import TeamPageView from "@/app/components/team/TeamPageView";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 const CANONICAL = "https://genesisintegrativemed.com/our-providers/";
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Genesis Integrative Medicine",
     images: [
       {
-        url: "https://genesisintegrativemed.com/wp-content/uploads/2022/07/team-member-img13.webp",
+        url: "/images/providers/anthony-leazzo-new.jpg",
       },
     ],
     locale: "en_US",
@@ -31,7 +32,6 @@ export const metadata: Metadata = {
   },
 };
 
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 const jsonLd = [
   {

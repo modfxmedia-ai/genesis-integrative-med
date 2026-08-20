@@ -14,14 +14,7 @@ export const metadata: Metadata = {
     description: NECK_PAIN_CONTENT.meta.description,
     url: NECK_PAIN_CONTENT.meta.canonicalOrigin,
     siteName: "Genesis Integrative Medicine",
-    images: [
-      {
-        url: NECK_PAIN_CONTENT.meta.ogImage,
-        width: 340,
-        height: 340,
-        type: "image/webp",
-      },
-    ],
+    images: [{ url: NECK_PAIN_CONTENT.meta.ogImage }],
     locale: "en_US",
   },
   twitter: {

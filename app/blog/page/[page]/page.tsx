@@ -7,8 +7,7 @@ import {
   paginatedPosts,
   totalBlogPages,
 } from "@/app/lib/blog-content";
-
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 type PageProps = {
   params: Promise<{ page: string }>;

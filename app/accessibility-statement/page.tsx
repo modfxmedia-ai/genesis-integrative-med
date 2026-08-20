@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import LegalPageView from "@/app/components/legal/LegalPageView";
 import { ACCESSIBILITY_PAGE } from "@/app/lib/legal-content";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 const CANONICAL = ACCESSIBILITY_PAGE.meta.canonical;
 
 export const metadata: Metadata = {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 import TestimonialsPageView from "@/app/components/testimonials/TestimonialsPageView";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 const CANONICAL = "https://genesisintegrativemed.com/testimonials/";
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 const TITLE = "Testimonials | Genesis Integrative Medicine";
 const DESCRIPTION =

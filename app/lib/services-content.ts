@@ -183,8 +183,7 @@ export const SERVICES_INDEX_META = {
   description:
     "Explore Genesis Integrative Medicine's holistic services in Geneva, IL, including chiropractic and weight loss. Start your wellness journey today!",
   canonicalOrigin: "https://genesisintegrativemed.com/services/",
-  ogImage:
-    "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-2img.webp",
+  ogImage: "/images/shockwave-therapy.webp",
   datePublished: "2022-07-13T05:00:10+00:00",
   dateModified: "2026-05-20T09:34:26+00:00",
 } as const;
@@ -305,8 +304,7 @@ export const SCIATICA_CONTENT: ServicePageContent = {
     // NOTE: live site's canonical points to /conditions-treated/sciatica/ but
     // we self-canonicalize to keep the migrated URL consistent.
     canonicalOrigin: "https://genesisintegrativemed.com/services/sciatica/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/services/sciatica-card.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -449,8 +447,7 @@ export const CHIROPRACTIC_CARE_CONTENT: ServicePageContent = {
       "Restore your body's natural movement at Genesis Integrative Medicine. We provide chiropractic care in Geneva, IL, to help stop nagging neck pain today. Book now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/chiropractic-care/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-2img.webp",
+    ogImage: "/images/services/chiropractic-card.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -632,8 +629,7 @@ export const ACTIVE_REHAB_CONTENT: ServicePageContent = {
       "Boost your recovery speed at Genesis Integrative Medicine. We offer active rehab in Geneva, IL, to strengthen weak muscles and stop joint pain. Contact us now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/active-rehab-geneva/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-1img.webp",
+    ogImage: "/images/services/active-rehab/physiotherapist-exam.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -796,8 +792,7 @@ export const PRP_CONTENT: ServicePageContent = {
       "Repair your damaged tissues with Genesis Integrative Medicine. We use PRP injections in Geneva, IL, to help your body heal naturally from pain. Book a visit.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/prp-injections-geneva/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-4img.webp",
+    ogImage: "/images/services/prp/prp-centrifuge.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -936,8 +931,7 @@ export const PEPTIDE_WEIGHT_LOSS_CONTENT: ServicePageContent = {
       "Reset your metabolism with Genesis Integrative Medicine. Try our medical weight loss program in Geneva, IL, to feel more energy every day. Book a consult now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/peptide-weight-loss/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-8img.webp",
+    ogImage: "/images/services/medical-weight-loss-card.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1132,8 +1126,7 @@ export const REGENERATIVE_MEDICINE_CONTENT: ServicePageContent = {
       "Avoid risky surgeries by visiting Genesis Integrative Medicine. We offer regenerative medicine treatment in Geneva, IL, for arthritis relief. Schedule today.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/regenerative-medicine/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-5img.webp",
+    ogImage: "/images/services/regenerative-medicine-card.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1285,13 +1278,12 @@ export const STEM_CELL_THERAPY_CONTENT: ServicePageContent = {
   slug: "stem-cell-therapy",
   urlPath: "/services/stem-cell-therapy/",
   meta: {
-    title: "Stem Cell Therapy in Geneva, IL | Genesis Integrative Medicine",
+    title: "Stem Cell Therapy in Geneva, IL",
     description:
       "Discover stem cell therapy using mesenchymal stem cells (MSCs) from Wharton\u2019s jelly at Genesis Integrative Medicine in Geneva, IL. Schedule a consultation today.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/stem-cell-therapy/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-5img.webp",
+    ogImage: "/images/services/stem-cell-therapy/stem-cell-lab.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1311,7 +1303,7 @@ export const STEM_CELL_THERAPY_CONTENT: ServicePageContent = {
     { icon: "clock", label: "Results in 4\u20136 wks", note: "Build over months" },
   ],
   featuredImage: {
-    src: "/images/services/stem-cell-therapy/stem-cell-lab.png",
+    src: "/images/services/stem-cell-therapy/stem-cell-lab.jpg",
     alt: "Stem cell therapy lab at Genesis Integrative Medicine",
     width: 1536,
     height: 1024,
@@ -1407,8 +1399,7 @@ export const COLD_LASER_CONTENT: ServicePageContent = {
       "Stimulate your body\u2019s healing with Genesis Integrative Medicine. Get cold laser therapy in Geneva, IL, for arthritis or sports injuries. Contact us for help.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/cold-laser/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-6img.webp",
+    ogImage: "/images/services/cold-laser-card.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1550,8 +1541,7 @@ export const PERIPHERAL_NEUROPATHY_CONTENT: ServicePageContent = {
       "Find a real solution for nerve damage at Genesis Integrative Medicine. We treat peripheral neuropathy in Geneva, IL, without heavy drugs. Book a consult now.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/peripheral-neuropathy-treatment/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/Peripheral-Neuropathy-Treatment-img.webp",
+    ogImage: "/images/services/peripheral-neuropathy-card.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1635,8 +1625,7 @@ export const SHOCKWAVE_THERAPY_CONTENT: ServicePageContent = {
       "Non-invasive shockwave therapy (EPAT) at Genesis Integrative Medicine in Geneva, IL for elbow, wrist, hip, knee, shoulder, and plantar fasciitis pain. No drugs, no surgery, real healing.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/shockwave-therapy/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2025/10/AS_145291108-ED-hero_preview-860x573-1.jpeg",
+    ogImage: "/images/services/shockwave-therapy-card.jpg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1820,8 +1809,7 @@ export const ED_SHOCKWAVE_CONTENT: ServicePageContent = {
       "Boost your confidence with help from Genesis Integrative Medicine. We use shockwave therapy for erectile dysfunction in Geneva, IL, to aid blood flow. Call us.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/ed-shockwave-mens-wellness/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2025/10/AS_145291108-ED-hero_preview-860x573-1.jpeg",
+    ogImage: "/images/services/ed/ed-hero.jpeg",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },
@@ -1929,8 +1917,7 @@ export const ALLERGY_TESTING_CONTENT: ServicePageContent = {
       "Stop sneezing and itching with help from Genesis Integrative Medicine. Our allergy testing in Geneva, IL, pinpoint causes of your discomfort. Call us today.",
     canonicalOrigin:
       "https://genesisintegrativemed.com/services/allergy-testing-geneva/",
-    ogImage:
-      "https://genesisintegrativemed.com/wp-content/uploads/2022/07/service-3img.webp",
+    ogImage: "/images/services/allergy-testing-card.webp",
   },
   breadcrumbs: [
     { name: "Home", item: "https://genesisintegrativemed.com/" },

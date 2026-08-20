@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: SHOULDER_PAIN_CONTENT.meta.description,
     url: SHOULDER_PAIN_CONTENT.meta.canonicalOrigin,
     siteName: "Genesis Integrative Medicine",
-    images: [{ url: SHOULDER_PAIN_CONTENT.meta.ogImage, width: 340, height: 340, type: "image/webp" }],
+    images: [{ url: SHOULDER_PAIN_CONTENT.meta.ogImage }],
     locale: "en_US",
   },
   twitter: {

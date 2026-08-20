@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 
 import FormsPageView from "@/app/components/forms/FormsPageView";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 const CANONICAL = "https://genesisintegrativemed.com/forms/";
 
 export const metadata: Metadata = {
-  title: "Patient Forms and Paperwork | Genesis Integrative Medicine",
+  title: "Patient Forms and Paperwork",
   description:
     "Prepare for your appointment at Genesis Integrative Medicine by filling out forms. Find knee pain and new patient paperwork for a faster check-in. Click here.",
   alternates: { canonical: CANONICAL },
   openGraph: {
     type: "article",
-    title: "Patient Forms and Paperwork | Genesis Integrative Medicine",
+    title: "Patient Forms and Paperwork",
     description:
       "Prepare for your appointment at Genesis Integrative Medicine by filling out forms. Find knee pain and new patient paperwork for a faster check-in. Click here.",
     url: CANONICAL,
@@ -20,13 +21,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Patient Forms and Paperwork | Genesis Integrative Medicine",
+    title: "Patient Forms and Paperwork",
     description:
       "Prepare for your appointment at Genesis Integrative Medicine by filling out forms. Find knee pain and new patient paperwork for a faster check-in. Click here.",
   },
 };
 
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 const jsonLd = [
   {

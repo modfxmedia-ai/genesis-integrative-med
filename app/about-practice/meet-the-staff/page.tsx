@@ -1,38 +1,38 @@
 import type { Metadata } from "next";
 
 import TeamPageView from "@/app/components/team/TeamPageView";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 const CANONICAL =
   "https://genesisintegrativemed.com/about-practice/meet-the-staff/";
 
 export const metadata: Metadata = {
-  title: "Get to Know Our Expert Care Team | Genesis Integrative Med",
+  title: "Get to Know Our Expert Care Team",
   description:
     "Meet the staff at Genesis Integrative Medicine to see how we care for your health. Our experts work together to provide a great experience. Schedule a visit now.",
   alternates: { canonical: CANONICAL },
   openGraph: {
     type: "article",
-    title: "Get to Know Our Expert Care Team | Genesis Integrative Med",
+    title: "Get to Know Our Expert Care Team",
     description:
       "Meet the staff at Genesis Integrative Medicine to see how we care for your health. Our experts work together to provide a great experience. Schedule a visit now.",
     url: CANONICAL,
     siteName: "Genesis Integrative Medicine",
     images: [
       {
-        url: "https://genesisintegrativemed.com/wp-content/uploads/2022/07/team-member4.webp",
+        url: "/images/staff/providers-images.jpg",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Get to Know Our Expert Care Team | Genesis Integrative Med",
+    title: "Get to Know Our Expert Care Team",
     description:
       "Meet the staff at Genesis Integrative Medicine to see how we care for your health. Our experts work together to provide a great experience. Schedule a visit now.",
   },
 };
 
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 const jsonLd = [
   {

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 
 import ContactPageView from "@/app/components/contact/ContactPageView";
-import { CONTACT } from "@/app/lib/site-config";
+import { CONTACT, SITE_ORIGIN } from "@/app/lib/site-config";
 
 const CANONICAL = "https://genesisintegrativemed.com/contact/";
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 const TITLE = "Contact | Genesis Integrative Medicine";
 const DESCRIPTION =

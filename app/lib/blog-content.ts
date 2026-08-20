@@ -587,7 +587,7 @@ export function pageHref(page: number): string {
 }
 
 export const BLOG_INDEX_META = {
-  title: "Blog | Genesis Integrative Medicine",
+  title: "Blog",
   description:
     "Read the latest health, wellness, and integrative-medicine articles from the team at Genesis Integrative Medicine in Geneva, Illinois.",
   canonicalOrigin: "https://genesisintegrativemed.com/blog/",

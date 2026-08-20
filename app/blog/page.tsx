@@ -6,9 +6,9 @@ import {
   paginatedPosts,
   totalBlogPages,
 } from "@/app/lib/blog-content";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 const CANONICAL = BLOG_INDEX_META.canonicalOrigin;
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 export const metadata: Metadata = {
   title: BLOG_INDEX_META.title,

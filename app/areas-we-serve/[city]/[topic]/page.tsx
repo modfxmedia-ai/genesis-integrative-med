@@ -47,9 +47,7 @@ export async function generateMetadata({
       description: content.meta.description,
       url: content.meta.canonicalOrigin,
       siteName: "Genesis Integrative Medicine",
-      images: [
-        { url: content.meta.ogImage, width: 340, height: 340, type: "image/webp" },
-      ],
+      images: [{ url: content.meta.ogImage }],
       locale: "en_US",
     },
     twitter: {

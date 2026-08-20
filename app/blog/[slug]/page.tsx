@@ -5,8 +5,7 @@ import BlogPostTemplate from "@/app/components/blog/BlogPostTemplate";
 import { BLOG_POST_BODIES, BLOG_POST_SLUGS } from "@/app/lib/blog-post-bodies";
 import { getBlogPost } from "@/app/lib/blog-post-content";
 import type { BlogPostContent } from "@/app/lib/blog-post-content";
-
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 type PageProps = {
   params: Promise<{ slug: string }>;

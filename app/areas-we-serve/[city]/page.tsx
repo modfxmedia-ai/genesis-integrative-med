@@ -8,8 +8,7 @@ import {
   areaCityUrlPath,
   getCity,
 } from "@/app/lib/areas-we-serve-content";
-
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 type PageProps = {
   params: Promise<{ city: string }>;

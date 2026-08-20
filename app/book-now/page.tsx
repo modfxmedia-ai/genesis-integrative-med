@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 import BookNowPageView from "@/app/components/booking/BookNowPageView";
+import { SITE_ORIGIN } from "@/app/lib/site-config";
 
 const CANONICAL = "https://genesisintegrativemed.com/book-now/";
-const SITE_ORIGIN = "https://genesisintegrativemed.com";
 
 const TITLE = "Book Now | Genesis Integrative Medicine";
 const DESCRIPTION =

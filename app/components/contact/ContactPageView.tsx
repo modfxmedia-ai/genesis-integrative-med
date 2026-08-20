@@ -6,7 +6,6 @@ import { useRef } from "react";
 
 import {
   InsuranceLogos,
-  MagneticButton,
   Reveal,
   Stagger,
   StaggerItem,
@@ -22,7 +21,6 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  * with our design system + motion primitives.
  *
  * Content preserved from the live page:
- * - H2 "Book Now" (Book Now widget)
  * - Practice card: Genesis Integrative Medicine, 1881 S. Randall Rd
  *   Suite C, Geneva, IL 60134
  * - Phone: 630-845-8925 / Fax: 630-845-8965
@@ -30,18 +28,15 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  * - Opening Hours: Mon & Wed 9:00 AM – 12:00 PM, 3:00 PM – 6:00 PM;
  *   Tue & Thu 3:00 PM – 6:00 PM; Fri 9:00 AM – 12:00 PM; Sat & Sun Closed
  *
- * The live page embeds two LeadConnectorHQ forms in addition to the
- * Book Now widget:
+ * The live page embeds two LeadConnectorHQ forms:
  *   • Primary "Website Form"       (form id ui8Cws8VEvRRDMpmSR8J), height 827
  *   • Secondary "Contact Us!" form (form id ToXLBiqT0qS6iABzJ9HD), height 754
  * Both are reproduced verbatim below so patients see the exact same
- * intake experience. The Book Now widget above keeps the calendar-based
- * scheduling flow already wired into `CONTACT.bookingUrl`.
+ * intake experience. (The calendar Book Now widget has been removed.)
  */
 
-const BOOKING_SRC = CONTACT.bookingUrl;
 const WEBSITE_FORM_SRC =
-  "https://api.leadconnectorhq.com/widget/form/gi2SyjXLi88Pb5yGOihb";
+  "https://api.leadconnectorhq.com/widget/form/ui8Cws8VEvRRDMpmSR8J";
 const MAP_QUERY = encodeURIComponent(
   `${CONTACT.address.street}, ${CONTACT.address.cityState}`,
 );
@@ -61,7 +56,6 @@ export default function ContactPageView() {
       <BreadcrumbBar />
       <Hero />
       <QuickContactStrip />
-      <BookingSection />
       <WebsiteFormSection />
       <PracticeSection />
       <MapSection />
@@ -181,25 +175,6 @@ function Hero() {
             step.
           </p>
         </Reveal>
-        <Reveal delay={0.15}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <MagneticButton>
-              <a
-                href="#book-now"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg shadow-brand-blue/30 transition-shadow hover:shadow-xl hover:shadow-brand-blue/50"
-              >
-                Schedule Appointment
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </MagneticButton>
-            <a
-              href={CONTACT.phoneHref}
-              className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/80 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-navy backdrop-blur transition-colors hover:border-brand-blue/30 hover:bg-brand-mist"
-            >
-              Call {CONTACT.phoneDisplay}
-            </a>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
@@ -278,117 +253,6 @@ function QuickContactStrip() {
 /* -------------------------------------------------------------------------- */
 /* Booking section (LeadConnector iframe + sidebar)                            */
 /* -------------------------------------------------------------------------- */
-
-function BookingSection() {
-  return (
-    <section id="book-now" className="relative bg-white py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Sidebar */}
-          <aside className="lg:col-span-4">
-            <div className="lg:sticky lg:top-24">
-              <Reveal>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
-                  <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-brand-cyan" />
-                  Schedule your visit
-                </p>
-                <h2 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-brand-navy sm:text-5xl">
-                  Book Now
-                </h2>
-                <p className="mt-6 text-base leading-relaxed text-brand-ink/70">
-                  Pick a day and time that works for you. Bookings are confirmed
-                  through our scheduling system, and our team will be in touch
-                  ahead of your visit.
-                </p>
-                <ul className="mt-6 space-y-3 text-sm text-brand-ink/75">
-                  {[
-                    "Same-week appointments are often available",
-                    "New and returning patients welcome",
-                    "Insurance-friendly options, see our billing team on arrival",
-                  ].map((line) => (
-                    <li key={line} className="flex items-start gap-2">
-                      <CheckIcon
-                        aria-hidden
-                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"
-                      />
-                      <span>{line}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 rounded-2xl border border-brand-line bg-brand-mist/50 p-5">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-blue">
-                    Prefer to talk to a human?
-                  </p>
-                  <a
-                    href={CONTACT.phoneHref}
-                    className="mt-2 block text-2xl font-extrabold text-brand-navy transition-colors hover:text-brand-blue"
-                  >
-                    {CONTACT.phoneDisplay}
-                  </a>
-                  <p className="mt-1 text-xs text-brand-ink/60">
-                    Front desk, Mon–Fri clinic hours
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-          </aside>
-
-          {/* Widget */}
-          <div className="lg:col-span-8">
-            <Reveal>
-              <div className="relative overflow-hidden rounded-[2rem] border border-brand-line bg-white shadow-xl shadow-brand-navy/10">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-cyan/20 blur-3xl"
-                />
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-brand-blue/15 blur-3xl"
-                />
-                <div className="relative flex items-center justify-between border-b border-brand-line bg-gradient-to-r from-brand-mist/60 to-white px-6 py-4">
-                  <div className="flex items-center gap-3">
-                    <span
-                      aria-hidden
-                      className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white"
-                    >
-                      <CalendarIcon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="text-sm font-bold text-brand-navy">
-                        Genesis Integrative Medicine
-                      </p>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-ink/50">
-                        Online booking
-                      </p>
-                    </div>
-                  </div>
-                  <a
-                    href={BOOKING_SRC}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hidden items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-blue transition-colors hover:text-brand-navy sm:inline-flex"
-                  >
-                    Open in new tab
-                    <ArrowRight className="h-3 w-3" />
-                  </a>
-                </div>
-                <div className="relative bg-white">
-                  <iframe
-                    src={BOOKING_SRC}
-                    title="Genesis Integrative Medicine, Book Now"
-                    loading="lazy"
-                    className="block h-[820px] w-full border-0"
-                    scrolling="yes"
-                  />
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* -------------------------------------------------------------------------- */
 /* Website form section (LeadConnector primary intake form)                    */
@@ -496,10 +360,10 @@ function WebsiteFormSection() {
           <div className="lg:col-span-7">
             <ContactFormEmbed
               src={WEBSITE_FORM_SRC}
-              title=" 🟢 Website Form v2.0"
-              height={704}
-              label="Patient Intake"
-              sublabel="Secure intake"
+              title=" 🟢 Website Form"
+              height={812}
+              label="Send a Message"
+              sublabel="We usually reply within one business day"
             />
           </div>
         </div>
@@ -760,15 +624,6 @@ function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>
-  );
-}
-
-function CalendarIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   );
 }

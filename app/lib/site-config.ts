@@ -78,10 +78,12 @@ export const PRIMARY_NAV: readonly NavItem[] = [
 export const FOOTER_LINKS = [
   { label: "About Us", href: "/about-practice/" },
   { label: "Our Providers", href: "/our-providers/" },
+  { label: "Areas We Serve", href: "/areas-we-serve/" },
   { label: "Blog", href: "/blog/" },
   { label: "Privacy Policy", href: "/your-privacy/" },
   { label: "Terms & Conditions", href: "/our-terms/" },
   { label: "Accessibility Statement", href: "/accessibility-statement/" },
+  { label: "Sitemap", href: "/sitemap/" },
   { label: "Contact", href: "/contact/" },
 ] as const;
 

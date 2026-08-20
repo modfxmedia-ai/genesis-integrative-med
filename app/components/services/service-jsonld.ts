@@ -82,6 +82,8 @@ export function buildServicePageJsonLd(
     datePublished?: string;
     dateModified?: string;
     faqEnabled?: boolean;
+    /** Overrides the default "Geneva" areaServed on the Service block (used by /areas-we-serve/ pages). */
+    areaServedCity?: string;
   } = {}
 ) {
   const pageUrl = content.meta.canonicalOrigin;
@@ -148,7 +150,7 @@ export function buildServicePageJsonLd(
     },
     areaServed: {
       "@type": "City",
-      name: "Geneva",
+      name: opts.areaServedCity ?? "Geneva",
       containedInPlace: { "@type": "State", name: "IL" },
     },
   };
@@ -323,6 +325,111 @@ export function buildConditionsIndexJsonLd(opts: {
         },
         WEBSITE_NODE,
       ],
+    },
+    WEBSITE_SIMPLE,
+    MEDICAL_CLINIC,
+  ];
+}
+
+/** JSON-LD for the /areas-we-serve/ index. */
+export function buildAreasIndexJsonLd(opts: {
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  cityNames: readonly string[];
+}) {
+  const breadcrumbId = `${opts.canonicalUrl}#breadcrumb`;
+  return [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": opts.canonicalUrl,
+          url: opts.canonicalUrl,
+          name: opts.title,
+          isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+          description: opts.description,
+          breadcrumb: { "@id": breadcrumbId },
+          inLanguage: "en-US",
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": breadcrumbId,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
+            { "@type": "ListItem", position: 2, name: "Areas We Serve" },
+          ],
+        },
+        WEBSITE_NODE,
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: opts.cityNames.map((name, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name,
+      })),
+    },
+    WEBSITE_SIMPLE,
+    MEDICAL_CLINIC,
+  ];
+}
+
+/** JSON-LD for a single /areas-we-serve/[city]/ hub page. */
+export function buildAreaCityJsonLd(opts: {
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  cityName: string;
+}) {
+  const breadcrumbId = `${opts.canonicalUrl}#breadcrumb`;
+  return [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": opts.canonicalUrl,
+          url: opts.canonicalUrl,
+          name: opts.title,
+          isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+          description: opts.description,
+          breadcrumb: { "@id": breadcrumbId },
+          inLanguage: "en-US",
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": breadcrumbId,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
+            { "@type": "ListItem", position: 2, name: "Areas We Serve", item: `${SITE_ORIGIN}/areas-we-serve/` },
+            { "@type": "ListItem", position: 3, name: opts.cityName },
+          ],
+        },
+        WEBSITE_NODE,
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      name: "Genesis Integrative Medicine",
+      url: `${SITE_ORIGIN}/`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "1881 S. Randall Rd, Suite C",
+        addressLocality: "Geneva",
+        addressRegion: "IL",
+        postalCode: "60134",
+        addressCountry: "US",
+      },
+      areaServed: {
+        "@type": "City",
+        name: opts.cityName,
+        containedInPlace: { "@type": "State", name: "IL" },
+      },
     },
     WEBSITE_SIMPLE,
     MEDICAL_CLINIC,

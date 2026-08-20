@@ -49,6 +49,19 @@ export default function RootLayout({
           <Footer />
           <BookNowBanner />
         </BookingPopupProvider>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-ECJR0J4REF"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ECJR0J4REF');
+          `}
+        </Script>
         <Script id="knock-knock-widget" strategy="afterInteractive">
           {`
             window.company_id = '6a7b00dd939f9f6c9aaa74c3';

@@ -55,9 +55,6 @@ export default function BookingPopupModal({
                   <CalendarIcon className="h-4 w-4" />
                 </span>
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-bold leading-tight text-brand-navy">
-                    Book Your Appointment
-                  </p>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-ink/50">
                     Quick &amp; secure
                   </p>

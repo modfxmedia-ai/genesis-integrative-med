@@ -973,10 +973,171 @@ export const PRP_ATHLETES_POST: BlogPostContent = {
 };
 
 /**
+ * PRP Joint Injections for Athletes in Geneva, IL
+ * Newest post, live URL: https://genesisintegrativemed.com/prp-for-sports-joint-injuries-timeline-return-to-play/
+ */
+export const PRP_SPORTS_JOINT_INJURIES_TIMELINE_POST: BlogPostContent = {
+  slug: "prp-for-sports-joint-injuries-timeline-return-to-play",
+  title: "PRP for Sports Joint Injuries in Geneva: Timeline and Return to Play",
+  dek: "Who qualifies for PRP, what week-by-week recovery looks like, and how to safely time your return to running, golf, tennis, or league play in Geneva.",
+  date: "2026-08-24",
+  modifiedDate: "2026-08-24",
+  category: "PRP",
+  readTime: "7 min read",
+  image: {
+    src: "/images/conditions/prp-joint-injections-for-athletes-in-geneva-il.webp",
+    alt: "Active adult receiving PRP joint injection support for a sports injury in Geneva, IL",
+  },
+  sections: [
+    {
+      heading: "PRP Support for Active Geneva Adults Between Seasons",
+      blocks: [
+        { kind: "paragraph", text: "Joint pain can turn a fun season of sports into a constant struggle. If you are an active adult in Geneva who runs, golfs, plays tennis, or joins local leagues, sore knees, shoulders, or elbows can start to feel like a regular part of life. They do not have to be. Platelet-rich plasma, or PRP, is one option that may support your body as it works to heal stressed joints." },
+        { kind: "paragraph", text: "PRP uses a small sample of your own blood. That blood is spun in a special machine to separate out the platelets, which are then injected into the injured area. Those platelets carry natural growth factors that may support the body\u2019s normal repair response in joints that take a pounding from running, cutting, swinging, or jumping." },
+        { kind: "paragraph", text: "At Genesis Integrative Medicine in Geneva, we blend advanced medical treatments with chiropractic and regenerative therapies. For many active adults, this mix can help reduce pain, protect joints, and plan a safer return to play without surgery. In this article, we will talk about who may be a good candidate for PRP, how it fits into a full care plan, what a typical recovery timeline looks like, and how PRP joint treatment in Geneva may work with your training or league schedule." },
+      ],
+    },
+    {
+      heading: "How PRP Helps Common Sports-Related Joint Injuries",
+      blocks: [
+        { kind: "paragraph", text: "PRP starts with a simple step: a blood draw from your arm. That blood is placed into a centrifuge, which spins it at high speed. The spinning separates the blood into layers so we can collect a small, concentrated portion rich in platelets. A trained provider then injects that PRP into the affected joint or surrounding soft tissue." },
+        { kind: "paragraph", text: "Many active adults ask what kinds of problems PRP may help with. Common sports-related joint issues include:" },
+        {
+          kind: "list",
+          items: [
+            "Mild to moderate knee osteoarthritis from running or years of impact",
+            "Tennis elbow or golfer\u2019s elbow from swinging, gripping, or repeated use",
+            "Rotator cuff strains from overhead motions like serving or throwing",
+            "Jumper\u2019s knee or patellar tendon irritation from running and jumping",
+            "Ankle sprains and lingering instability after a twist or roll",
+            "Overuse pain in the hip or shoulder from lifting or repetitive training",
+          ],
+        },
+        { kind: "paragraph", text: "The goal is not instant relief right before a key race or playoff. PRP is generally aimed at supporting the tissue\u2019s natural repair over time, lowering day-to-day pain and soreness, and improving joint function and ease of movement." },
+        { kind: "paragraph", text: "At Genesis Integrative Medicine, PRP is often only one part of the plan. We may also recommend:" },
+        {
+          kind: "list",
+          items: [
+            "Chiropractic care to improve joint motion and alignment",
+            "Corrective exercises to address muscle weakness or tightness",
+            "Bracing or taping for added support during activity",
+            "Lifestyle and movement coaching that fits your sport and schedule",
+          ],
+        },
+        { kind: "paragraph", text: "This combined approach is designed to support both healing now and joint health in the future." },
+      ],
+    },
+    {
+      heading: "Who Qualifies for PRP Joint Treatment in Geneva",
+      blocks: [
+        { kind: "paragraph", text: "Not every injury or joint problem is a match for PRP. The ideal candidate is usually an active adult with ongoing joint pain or a sports injury that has not settled down with rest and activity changes, physical therapy or home exercise, or basic pain medications or other conservative care." },
+        { kind: "paragraph", text: "Many people who ask about PRP want to avoid or delay surgery if possible. To see if PRP is an option, we look at several factors:" },
+        {
+          kind: "list",
+          items: [
+            "Type and severity of the injury or arthritis",
+            "Imaging findings, such as X-rays or MRI, if available",
+            "Current medications, especially blood thinners",
+            "Overall health, including conditions like diabetes",
+            "Smoking status and general lifestyle habits",
+            "Weight and how much load the joint must handle",
+          ],
+        },
+        { kind: "paragraph", text: "Age is only one piece of the picture. At Genesis, we evaluate younger competitors who train hard and often, midlife weekend athletes who juggle sports with work and family, and older adults who still enjoy golf, pickleball, walking, or rec leagues." },
+        { kind: "paragraph", text: "The consultation process generally includes a detailed history of your injury, a hands-on exam, and a review of any imaging you already have. We also talk through the treatments you have tried before and how they worked, what PRP may realistically help with in your situation, how many sessions might be recommended, and how the timing could fit your upcoming sports or travel plans." },
+      ],
+    },
+    {
+      heading: "Your PRP Recovery Timeline and What to Expect Week by Week",
+      blocks: [
+        { kind: "paragraph", text: "On the day of your PRP appointment at Genesis Integrative Medicine, you can usually expect a few clear steps:" },
+        {
+          kind: "list",
+          items: [
+            "Check-in and brief review of your plan",
+            "Simple blood draw from your arm",
+            "PRP processing in the centrifuge",
+            "Positioning of your joint and the guided injection",
+            "Short observation period before you go home",
+          ],
+        },
+        { kind: "paragraph", text: "Most people are in the office for a relatively short visit, though times can vary. After the injection, the first 72 hours are important. You may feel soreness or tightness around the injection site, along with a sense of fullness or mild swelling in the joint. This is expected, and it is part of how your body responds to the PRP. We give specific home instructions, which may include relative rest, using or avoiding ice depending on the plan, and which medications to avoid so you do not interfere with the PRP response." },
+        { kind: "paragraph", text: "In the next 2 to 6 weeks, many people notice gradual easing of pain instead of a quick, sharp change, better comfort with daily tasks like stairs or getting up, and more confidence putting weight through the joint. During this time, we often allow light mobility work and guided physical therapy, while high-impact or explosive activities are usually limited early on. Your provider will tell you when it is safe to:" },
+        {
+          kind: "list",
+          items: [
+            "Start light cardio, such as easy cycling or walking",
+            "Add gentle strength training",
+            "Move toward more sport-like drills",
+          ],
+        },
+        { kind: "paragraph", text: "Long term, many patients see meaningful progress within about 4 to 8 weeks, with continued gains over several months as tissues remodel. Follow-up visits let us check your function, adjust your plan, and decide whether additional PRP sessions might support better results." },
+      ],
+    },
+    {
+      heading: "Safely Returning to Sports After PRP Joint Therapy",
+      blocks: [
+        { kind: "paragraph", text: "One of the most common questions we hear is, \u201CWhen can I get back to my sport?\u201D At Genesis Integrative Medicine, return-to-play is personalized. Timelines depend on your injury, your sport, and how your body responds." },
+        { kind: "paragraph", text: "We look for clear functional milestones, such as:" },
+        {
+          kind: "list",
+          items: [
+            "Walking and going up and down stairs without joint pain",
+            "Full or near-full range of motion in the injured joint",
+            "Strength and balance that match or come close to the other side",
+            "Ability to perform sport-specific moves, like cutting, pivoting, squatting, or overhead motions, without symptoms",
+          ],
+        },
+        { kind: "paragraph", text: "Only when these boxes are checked do we recommend full competition. For many late-summer and fall athletes, that might mean planning PRP while you cut back on running before a new half-marathon cycle, timing injections between adult soccer or softball sessions, treating a sore shoulder or elbow ahead of a busy golf stretch, or preparing knees or hips for a winter ski or snowboarding trip." },
+        { kind: "paragraph", text: "Our team can help map out a plan so your joint has time to respond to PRP before you push hard again. Ongoing support can play a big role in staying active. That can include:" },
+        {
+          kind: "list",
+          items: [
+            "Periodic chiropractic adjustments to keep joints moving well",
+            "Targeted corrective exercise to fix movement patterns that stressed the joint in the first place",
+            "Regenerative follow-ups, when appropriate, to support long-term joint health",
+          ],
+        },
+        { kind: "paragraph", text: "Protecting your joints now can help you keep running, lifting, swinging, and playing the sports you enjoy for many seasons to come." },
+      ],
+    },
+    {
+      heading: "Experience Lasting Relief With Regenerative Joint Care",
+      blocks: [
+        { kind: "paragraph", text: "If joint pain is limiting your daily life, our team at Genesis Integrative Medicine is here to help you move with greater comfort and confidence. Learn how our PRP joint treatment in Geneva can support your body\u2019s natural healing so you can get back to the activities you enjoy. We will walk you through your options, answer your questions, and recommend a personalized plan. To schedule your appointment or ask about next steps, please reach out to our team." },
+      ],
+    },
+  ],
+  cta: {
+    kicker: "Ready to plan your return to play?",
+    heading: "Talk to our team about PRP joint treatment",
+    body: "We\u2019ll walk you through your options, answer your questions, and recommend a personalized plan for your sport and schedule.",
+    primary: {
+      label: "PRP joint treatment in Geneva",
+      href: "/services/regenerative-medicine/",
+    },
+    secondary: { label: "Contact us", href: "/contact/" },
+  },
+  prev: {
+    title: "PRP vs. Cortisone vs. Hyaluronic Acid in Geneva: Which Joint Injection?",
+    href: "/prp-vs-cortisone-vs-hyaluronic-acid-joint-injection/",
+  },
+  meta: {
+    title: "PRP Joint Injections for Athletes in Geneva, IL",
+    description:
+      "Learn who qualifies, what recovery looks like, and when to return to sport with PRP joint treatment in Geneva for active adults and athletes",
+    canonical:
+      "https://genesisintegrativemed.com/prp-for-sports-joint-injuries-timeline-return-to-play/",
+    ogImage: "/images/conditions/prp-joint-injections-for-athletes-in-geneva-il.webp",
+  },
+};
+
+/**
  * All full-body posts, keyed by slug. Additional posts will be added
  * as they are cloned during upcoming Blog batches.
  */
 export const BLOG_POST_CONTENT: Readonly<Record<string, BlogPostContent>> = {
+  [PRP_SPORTS_JOINT_INJURIES_TIMELINE_POST.slug]: PRP_SPORTS_JOINT_INJURIES_TIMELINE_POST,
   [LIVING_WITH_NEUROPATHY_POST.slug]: LIVING_WITH_NEUROPATHY_POST,
   [HOW_PRP_ARTHRITIS_POST.slug]: HOW_PRP_ARTHRITIS_POST,
   [LASER_LIPO_POST.slug]: LASER_LIPO_POST,

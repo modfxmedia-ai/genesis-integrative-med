@@ -53,6 +53,14 @@ export function postHref(slug: string): string {
  */
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: "prp-for-sports-joint-injuries-timeline-return-to-play",
+    title: "PRP for Sports Joint Injuries in Geneva: Timeline and Return to Play",
+    date: "2026-08-24",
+    excerpt: "PRP Support for Active Geneva Adults Between Seasons Joint pain can turn a fun season of sports into a constant struggle. If you are an active adult in Geneva who runs, golfs, plays tennis\u2026",
+    image: "/images/conditions/prp-joint-injections-for-athletes-in-geneva-il.webp",
+    category: "PRP",
+  },
+  {
     slug: "prp-vs-cortisone-vs-hyaluronic-acid-joint-injection",
     title: "PRP vs. Cortisone vs. Hyaluronic Acid in Geneva: Which Joint Injection?",
     date: "2026-08-16",

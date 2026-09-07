@@ -55,7 +55,7 @@ export default function BlogIndexView({
 function BreadcrumbBar({ currentPage }: { currentPage: number }) {
   return (
     <nav aria-label="Breadcrumb" className="border-b border-brand-line bg-brand-mist/60">
-      <ol className="mx-auto flex max-w-7xl items-center gap-2 px-6 py-3 text-xs">
+      <ol className=" mx-auto flex max-w-7xl items-center gap-2 px-6 py-3 text-xs">
         <li>
           <Link
             href="/"

@@ -40,6 +40,10 @@ export function postHref(slug: string): string {
   return `/blog/${slug}/`;
 }
 
+export function isRemoteImage(src: string | undefined): boolean {
+  return Boolean(src && /^https?:\/\//i.test(src));
+}
+
 /**
  * All posts in reverse-chronological order (newest first).
  *

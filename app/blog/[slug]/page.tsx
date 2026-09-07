@@ -5,31 +5,39 @@ import BlogPostTemplate from "@/app/components/blog/BlogPostTemplate";
 import { BLOG_POST_BODIES, BLOG_POST_SLUGS } from "@/app/lib/blog-post-bodies";
 import { getBlogPost } from "@/app/lib/blog-post-content";
 import type { BlogPostContent } from "@/app/lib/blog-post-content";
+import { getPublishedBlogPost, getPublishedBlogSlugs } from "@/app/lib/ranked/posts";
+import { rankedToBlogPostContent } from "@/app/lib/ranked/to-site";
 import { SITE_ORIGIN } from "@/app/lib/site-config";
+
+export const revalidate = 3600;
+export const dynamicParams = true;
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
 /**
- * Prefer the hand-tuned post (rich CTA + prev/next nav) when present;
- * fall back to the scraped body for every other live post.
+ * Prefer the hand-tuned / compiled post so a Ranked import cannot overwrite it.
+ * Ranked-only slugs map into the existing article template.
  */
-function resolvePost(slug: string): BlogPostContent | undefined {
-  return getBlogPost(slug) ?? BLOG_POST_BODIES[slug];
+async function resolvePost(slug: string): Promise<BlogPostContent | undefined> {
+  const local = getBlogPost(slug) ?? BLOG_POST_BODIES[slug];
+  if (local) return local;
+  const ranked = await getPublishedBlogPost(slug);
+  return ranked ? rankedToBlogPostContent(ranked) : undefined;
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  return BLOG_POST_SLUGS.map((slug) => ({ slug }));
+  const ranked = await getPublishedBlogSlugs().catch(() => []);
+  const slugs = new Set<string>([...BLOG_POST_SLUGS, ...ranked]);
+  return [...slugs].map((slug) => ({ slug }));
 }
-
-export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = resolvePost(slug);
+  const post = await resolvePost(slug);
   if (!post) return {};
   return {
     title: post.meta.title,
@@ -60,7 +68,7 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = resolvePost(slug);
+  const post = await resolvePost(slug);
   if (!post) notFound();
 
   const canonical = post.meta.canonical;

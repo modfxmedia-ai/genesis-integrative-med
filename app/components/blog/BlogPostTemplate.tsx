@@ -24,6 +24,7 @@ import { INSURANCE_MISSION } from "@/app/lib/services-content";
 import {
   BLOG_POSTS,
   formatPostDate,
+  isRemoteImage,
   postHref,
   type BlogPost,
 } from "@/app/lib/blog-content";
@@ -231,6 +232,7 @@ function Hero({ post }: { post: BlogPostContent }) {
                 alt={post.image.alt}
                 fill
                 priority
+                unoptimized={isRemoteImage(post.image.src)}
                 sizes="(min-width: 1024px) 1024px, 100vw"
                 className="object-cover"
               />
@@ -515,6 +517,44 @@ function SectionBlock({
   );
 }
 
+function safeHref(href: string): string | null {
+  if (/^https?:\/\//i.test(href) || href.startsWith("/")) return href;
+  return null;
+}
+
+function MarkdownText({ text }: { text: string }) {
+  const nodes: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g;
+  let last = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+  while ((match = re.exec(text))) {
+    if (match.index > last) {
+      nodes.push(text.slice(last, match.index));
+    }
+    const href = safeHref(match[2]);
+    if (href) {
+      const external = /^https?:\/\//i.test(href);
+      nodes.push(
+        <a
+          key={`md-${key++}`}
+          href={href}
+          className="font-semibold text-brand-blue underline-offset-2 hover:underline"
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
+        >
+          {match[1]}
+        </a>,
+      );
+    } else {
+      nodes.push(match[0]);
+    }
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return <>{nodes}</>;
+}
+
 function BlockRenderer({
   block,
   dropCap,
@@ -533,7 +573,7 @@ function BlockRenderer({
               : "")
           }
         >
-          {block.text}
+          <MarkdownText text={block.text} />
         </p>
       </Reveal>
     );

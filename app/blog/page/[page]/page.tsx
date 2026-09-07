@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import BlogIndexView from "@/app/components/blog/BlogIndexView";
-import {
-  BLOG_INDEX_META,
-  paginatedPosts,
-  totalBlogPages,
-} from "@/app/lib/blog-content";
+import { BLOG_INDEX_META } from "@/app/lib/blog-content";
+import { getBlogListing, pageCountFor, paginateItems } from "@/app/lib/ranked/to-site";
 import { SITE_ORIGIN } from "@/app/lib/site-config";
+
+export const revalidate = 3600;
+export const dynamicParams = true;
 
 type PageProps = {
   params: Promise<{ page: string }>;
 };
 
 export async function generateStaticParams(): Promise<{ page: string }[]> {
-  const total = totalBlogPages();
-  // Page 1 is served by /blog/page.tsx, start at 2.
+  const listing = await getBlogListing().catch(() => []);
+  const total = pageCountFor(listing.length);
   const params: { page: string }[] = [];
   for (let p = 2; p <= total; p += 1) {
     params.push({ page: String(p) });
@@ -54,11 +54,12 @@ export async function generateMetadata({
 export default async function BlogPageNumber({ params }: PageProps) {
   const { page } = await params;
   const num = Number(page);
-  const total = totalBlogPages();
+  const listing = await getBlogListing();
+  const total = pageCountFor(listing.length);
   if (!Number.isInteger(num) || num < 2 || num > total) {
     notFound();
   }
-  const posts = paginatedPosts(num);
+  const posts = paginateItems(listing, num);
   const canonical = `${SITE_ORIGIN}/blog/page/${num}/`;
 
   const jsonLd = [

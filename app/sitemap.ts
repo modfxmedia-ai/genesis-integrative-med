@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 import { CONDITIONS_SUBNAV, SERVICES_SUBNAV } from "@/app/lib/site-config";
 import { AREA_CITIES, AREA_TOPICS, areaCityUrlPath, areaComboUrlPath } from "@/app/lib/areas-we-serve-content";
-import { postHref, totalBlogPages, pageHref } from "@/app/lib/blog-content";
-import { BLOG_POST_SLUGS } from "@/app/lib/blog-post-bodies";
+import { pageHref, postHref, POSTS_PER_PAGE } from "@/app/lib/blog-content";
+import { getPublishedBlogSlugs } from "@/app/lib/ranked/posts";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://genesisintegrativemed.com";
 
@@ -22,7 +22,7 @@ function url(
   };
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: Entry[] = [
     url("/", "weekly", 1.0),
     url("/about-practice/", "monthly", 0.8),
@@ -52,8 +52,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     AREA_TOPICS.map((topic) => url(areaComboUrlPath(city.slug, topic.slug), "monthly", 0.5)),
   );
 
-  const blogPostPages = BLOG_POST_SLUGS.map((slug) => url(postHref(slug), "monthly", 0.6));
-  const total = totalBlogPages();
+  const slugs = await getPublishedBlogSlugs().catch(() => []);
+  const blogPostPages = slugs.map((slug) => url(postHref(slug), "monthly", 0.6));
+  const total = Math.max(1, Math.ceil(slugs.length / POSTS_PER_PAGE));
   const blogPaginationPages: Entry[] = [];
   for (let page = 2; page <= total; page += 1) {
     blogPaginationPages.push(url(pageHref(page), "weekly", 0.4));

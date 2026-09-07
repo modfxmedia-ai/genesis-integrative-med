@@ -17,6 +17,7 @@ import { CONTACT } from "@/app/lib/site-config";
 import { CONSULTATION_CTA, INSURANCE_MISSION } from "@/app/lib/services-content";
 import {
   formatPostDate,
+  isRemoteImage,
   pageHref,
   postHref,
   type BlogPost,
@@ -295,6 +296,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
                       alt={post.title}
                       fill
                       priority
+                      unoptimized={isRemoteImage(post.image)}
                       sizes="(min-width: 1024px) 33vw, 100vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
@@ -340,6 +342,7 @@ function PostCard({ post }: { post: BlogPost }) {
             src={post.image}
             alt={post.title}
             fill
+            unoptimized={isRemoteImage(post.image)}
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />

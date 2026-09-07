@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 
 import BlogIndexView from "@/app/components/blog/BlogIndexView";
-import {
-  BLOG_INDEX_META,
-  paginatedPosts,
-  totalBlogPages,
-} from "@/app/lib/blog-content";
+import { BLOG_INDEX_META } from "@/app/lib/blog-content";
+import { getBlogListing, pageCountFor, paginateItems } from "@/app/lib/ranked/to-site";
 import { SITE_ORIGIN } from "@/app/lib/site-config";
+
+export const revalidate = 3600;
 
 const CANONICAL = BLOG_INDEX_META.canonicalOrigin;
 
@@ -55,9 +54,10 @@ const jsonLd = [
   },
 ];
 
-export default function BlogPage() {
-  const posts = paginatedPosts(1);
-  const totalPages = totalBlogPages();
+export default async function BlogPage() {
+  const listing = await getBlogListing();
+  const totalPages = pageCountFor(listing.length);
+  const posts = paginateItems(listing, 1);
   return (
     <>
       {jsonLd.map((block, i) => (

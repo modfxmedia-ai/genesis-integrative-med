@@ -44,6 +44,20 @@ export function isRemoteImage(src: string | undefined): boolean {
   return Boolean(src && /^https?:\/\//i.test(src));
 }
 
+/** Unique category names across all posts, alphabetically sorted. */
+export function getBlogCategories(): readonly string[] {
+  const categories = new Set<string>();
+  for (const post of BLOG_POSTS) {
+    if (post.category) categories.add(post.category);
+  }
+  return Array.from(categories).sort((a, b) => a.localeCompare(b));
+}
+
+/** All posts in a given category, newest first (matches BLOG_POSTS order). */
+export function postsByCategory(category: string): readonly BlogPost[] {
+  return BLOG_POSTS.filter((post) => post.category === category);
+}
+
 /**
  * All posts in reverse-chronological order (newest first).
  *
@@ -56,6 +70,22 @@ export function isRemoteImage(src: string | undefined): boolean {
  * live URL pattern).
  */
 export const BLOG_POSTS: readonly BlogPost[] = [
+  {
+    slug: "laser-lipo-effectiveness-for-stubborn-midlife-belly-fat",
+    title: "Laser Lipo Effectiveness for Stubborn Midlife Belly Fat",
+    date: "2026-09-07",
+    excerpt: "Shrinking Stubborn Belly Fat Without Major Surgery Midlife belly fat can feel very unfair. You eat better than you did when you were younger, you try to move more, yet your waistband still feels tight\u2026",
+    image: "/images/blog/laser-lipo-for-stubborn-belly-fat.webp",
+    category: "Cold Laser",
+  },
+  {
+    slug: "understanding-neuropathy-treatment-options-in-geneva-il",
+    title: "Understanding Neuropathy Treatment Options in Geneva IL",
+    date: "2026-08-31",
+    excerpt: "Neuropathy can make simple daily tasks feel hard and frustrating. When your feet burn, tingle, or feel numb, walking across the room may feel like walking on pebbles. When your hands are weak or clumsy, buttoning a shirt or gripping the steering wheel can feel scary\u2026",
+    image: "/images/conditions/neuropathy.webp",
+    category: "Neuropathy",
+  },
   {
     slug: "prp-for-sports-joint-injuries-timeline-return-to-play",
     title: "PRP for Sports Joint Injuries in Geneva: Timeline and Return to Play",

@@ -759,6 +759,16 @@ function AuthorCard() {
 /* Prev / next post navigation                                                 */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * Prev/next hrefs in the data are stored as root-relative post slugs
+ * (e.g. "/some-post/"), matching the live WordPress URL pattern. Posts
+ * are served locally under /blog/<slug>/, so prefix here rather than
+ * storing "/blog/" in every data entry.
+ */
+function blogNavHref(href: string): string {
+  return href.startsWith("/blog/") ? href : `/blog${href}`;
+}
+
 function PostNav({ post }: { post: BlogPostContent }) {
   if (!post.prev && !post.next) return null;
   return (
@@ -770,7 +780,7 @@ function PostNav({ post }: { post: BlogPostContent }) {
               direction="prev"
               label="Previous article"
               title={post.prev.title}
-              href={post.prev.href}
+              href={blogNavHref(post.prev.href)}
             />
           ) : (
             <div />
@@ -780,7 +790,7 @@ function PostNav({ post }: { post: BlogPostContent }) {
               direction="next"
               label="Next article"
               title={post.next.title}
-              href={post.next.href}
+              href={blogNavHref(post.next.href)}
             />
           ) : (
             <div />

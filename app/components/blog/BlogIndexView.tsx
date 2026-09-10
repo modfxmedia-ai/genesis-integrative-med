@@ -3,20 +3,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import BookNowTrigger from "@/app/components/booking/BookNowTrigger";
 import {
   InsuranceLogos,
   MagneticButton,
   Reveal,
-  Stagger,
-  StaggerItem,
 } from "@/app/components/home/motion-primitives";
 import { CONTACT } from "@/app/lib/site-config";
 import { CONSULTATION_CTA, INSURANCE_MISSION } from "@/app/lib/services-content";
 import {
+  BLOG_POSTS,
   formatPostDate,
+  getBlogCategories,
   isRemoteImage,
   pageHref,
   postHref,
@@ -36,15 +36,95 @@ export default function BlogIndexView({
   currentPage,
   totalPages,
 }: BlogIndexViewProps) {
+  const categories = useMemo(() => getBlogCategories(), []);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  const filteredPosts = activeCategory
+    ? BLOG_POSTS.filter((post) => post.category === activeCategory)
+    : posts;
+
   return (
     <article className="bg-white">
       <BreadcrumbBar currentPage={currentPage} />
       <Hero />
-      <PostsSection posts={posts} currentPage={currentPage} />
-      <Pagination currentPage={currentPage} totalPages={totalPages} />
+      <CategoryFilter
+        categories={categories}
+        active={activeCategory}
+        onChange={setActiveCategory}
+      />
+      <PostsSection
+        posts={filteredPosts}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        showFeatured={currentPage === 1 && !activeCategory}
+        activeCategory={activeCategory}
+      />
+      {!activeCategory && (
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
+      )}
       <ConsultationCta />
       <MissionBlock />
     </article>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Category filter                                                             */
+/* -------------------------------------------------------------------------- */
+
+function CategoryFilter({
+  categories,
+  active,
+  onChange,
+}: {
+  categories: readonly string[];
+  active: string | null;
+  onChange: (category: string | null) => void;
+}) {
+  return (
+    <section className="border-b border-brand-line bg-white py-8">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-wrap items-center gap-2.5">
+          <FilterChip active={active === null} onClick={() => onChange(null)}>
+            All Topics
+          </FilterChip>
+          {categories.map((category) => (
+            <FilterChip
+              key={category}
+              active={active === category}
+              onClick={() => onChange(active === category ? null : category)}
+            >
+              {category}
+            </FilterChip>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FilterChip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`inline-flex items-center rounded-full border px-4 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition-all ${
+        active
+          ? "border-transparent bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-md shadow-brand-blue/25"
+          : "border-brand-line bg-white text-brand-ink/70 hover:-translate-y-0.5 hover:border-brand-blue/40 hover:text-brand-blue hover:shadow-sm"
+      }`}
+    >
+      {children}
+    </button>
   );
 }
 
@@ -194,30 +274,98 @@ function Hero() {
 function PostsSection({
   posts,
   currentPage,
+  totalPages,
+  showFeatured,
+  activeCategory,
 }: {
   posts: readonly BlogPost[];
   currentPage: number;
+  totalPages: number;
+  showFeatured: boolean;
+  activeCategory: string | null;
 }) {
   if (posts.length === 0) {
-    return <EmptyState currentPage={currentPage} />;
+    return (
+      <EmptyState currentPage={currentPage} activeCategory={activeCategory} />
+    );
   }
   const [featured, ...rest] = posts;
+  const gridPosts = showFeatured ? rest : posts;
+  // Fill a trailing partial row (grid is 3-wide on desktop) so the last
+  // row never ends with a lone card next to empty space. Prefer borrowing
+  // real upcoming posts from the next page over a placeholder CTA tile.
+  const gapFillers = (3 - (gridPosts.length % 3)) % 3;
+  const usedSlugs = new Set(posts.map((post) => post.slug));
+  const upcomingPosts =
+    gapFillers > 0 && !activeCategory
+      ? BLOG_POSTS.filter((post) => !usedSlugs.has(post.slug)).slice(0, gapFillers)
+      : [];
+  const remainingFillers = gapFillers - upcomingPosts.length;
+  const nextPageHref =
+    !activeCategory && currentPage < totalPages ? pageHref(currentPage + 1) : "/blog/";
   return (
     <section className="relative bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-6">
-        {featured && currentPage === 1 && <FeaturedCard post={featured} />}
-        <Stagger
+        {activeCategory && (
+          <p className="mb-8 text-sm font-semibold uppercase tracking-[0.14em] text-brand-ink/60">
+            {posts.length} {posts.length === 1 ? "article" : "articles"} in{" "}
+            <span className="text-brand-blue">{activeCategory}</span>
+          </p>
+        )}
+        {featured && showFeatured && <FeaturedCard post={featured} />}
+        <div
+          key={activeCategory ?? "all"}
           className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-          gap={0.06}
         >
-          {(currentPage === 1 ? rest : posts).map((post) => (
-            <StaggerItem key={post.slug}>
+          {gridPosts.map((post, i) => (
+            <div
+              key={post.slug}
+              className="blog-card-reveal"
+              style={{ "--reveal-delay": `${Math.min(i, 8) * 60}ms` } as React.CSSProperties}
+            >
               <PostCard post={post} />
-            </StaggerItem>
+            </div>
           ))}
-        </Stagger>
+          {upcomingPosts.map((post, i) => (
+            <div
+              key={post.slug}
+              className="blog-card-reveal"
+              style={{
+                "--reveal-delay": `${Math.min(gridPosts.length + i, 8) * 60}ms`,
+              } as React.CSSProperties}
+            >
+              <PostCard post={post} />
+            </div>
+          ))}
+          {remainingFillers > 0 && (
+            <div
+              className="blog-card-reveal"
+              style={{
+                "--reveal-delay": `${Math.min(gridPosts.length + upcomingPosts.length, 8) * 60}ms`,
+              } as React.CSSProperties}
+            >
+              <BrowseMoreCard href={nextPageHref} />
+            </div>
+          )}
+        </div>
       </div>
     </section>
+  );
+}
+
+function BrowseMoreCard({ href }: { href: string }) {
+  return (
+    <Link
+      href={href}
+      className="group relative flex h-full min-h-[280px] flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-brand-blue/30 bg-brand-mist/40 p-6 text-center transition-all hover:-translate-y-1 hover:border-brand-blue/50 hover:bg-brand-mist/70"
+    >
+      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-brand-blue shadow-sm transition-colors group-hover:bg-brand-blue group-hover:text-white">
+        <ArrowRight className="h-5 w-5" />
+      </span>
+      <span className="text-sm font-bold uppercase tracking-[0.12em] text-brand-navy">
+        Browse more articles
+      </span>
+    </Link>
   );
 }
 
@@ -422,16 +570,24 @@ function PlaceholderMedia({ category }: { category?: string }) {
   );
 }
 
-function EmptyState({ currentPage }: { currentPage: number }) {
+function EmptyState({
+  currentPage,
+  activeCategory,
+}: {
+  currentPage: number;
+  activeCategory: string | null;
+}) {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-2xl px-6 text-center">
         <Reveal>
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-blue">
-            Coming soon
+            {activeCategory ? "No matches" : "Coming soon"}
           </p>
           <h2 className="mt-3 text-3xl font-bold text-brand-navy sm:text-4xl">
-            No posts on page {currentPage} yet
+            {activeCategory
+              ? `No posts in ${activeCategory} yet`
+              : `No posts on page ${currentPage} yet`}
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-brand-ink/70">
             More articles are being added regularly. In the meantime, browse the

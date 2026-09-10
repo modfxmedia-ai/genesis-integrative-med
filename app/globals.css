@@ -49,3 +49,30 @@ body.book-banner-open #kka-chat-widget {
   bottom: calc(20px + var(--book-banner-h, 88px) + 12px) !important;
   transition: bottom 0.25s ease;
 }
+
+/* CSS-driven reveal for the blog card grid: animates on mount (not on
+   scroll-into-view) so cards never get stuck hidden after a client-side
+   filter change, unlike a framer-motion whileInView trigger would. */
+@keyframes blog-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.blog-card-reveal {
+  animation: blog-card-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-card-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

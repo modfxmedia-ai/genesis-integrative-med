@@ -8095,6 +8095,8 @@ export const BLOG_POST_BODIES: Readonly<Record<string, BlogPostContent>> = {
 };
 
 export const BLOG_POST_SLUGS: readonly string[] = [
+  "laser-lipo-effectiveness-for-stubborn-midlife-belly-fat",
+  "understanding-neuropathy-treatment-options-in-geneva-il",
   "prp-for-sports-joint-injuries-timeline-return-to-play",
   "prp-vs-cortisone-vs-hyaluronic-acid-joint-injection",
   "non-surgical-back-pain-treatment-therapies",

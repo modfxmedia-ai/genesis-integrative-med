@@ -300,7 +300,7 @@ function PostsSection({
     gapFillers > 0 && !activeCategory
       ? BLOG_POSTS.filter((post) => !usedSlugs.has(post.slug)).slice(0, gapFillers)
       : [];
-  const remainingFillers = gapFillers - upcomingPosts.length;
+  const remainingFillers = activeCategory ? 0 : gapFillers - upcomingPosts.length;
   const nextPageHref =
     !activeCategory && currentPage < totalPages ? pageHref(currentPage + 1) : "/blog/";
   return (

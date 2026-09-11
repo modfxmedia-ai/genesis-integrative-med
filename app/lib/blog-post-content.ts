@@ -980,8 +980,8 @@ export const PRP_SPORTS_JOINT_INJURIES_TIMELINE_POST: BlogPostContent = {
   slug: "prp-for-sports-joint-injuries-timeline-return-to-play",
   title: "PRP for Sports Joint Injuries in Geneva: Timeline and Return to Play",
   dek: "Who qualifies for PRP, what week-by-week recovery looks like, and how to safely time your return to running, golf, tennis, or league play in Geneva.",
-  date: "2026-08-24",
-  modifiedDate: "2026-08-24",
+  date: "2026-08-21",
+  modifiedDate: "2026-08-21",
   category: "PRP",
   readTime: "7 min read",
   image: {
@@ -1144,8 +1144,8 @@ export const UNDERSTANDING_NEUROPATHY_TREATMENT_OPTIONS_POST: BlogPostContent = 
   slug: "understanding-neuropathy-treatment-options-in-geneva-il",
   title: "Understanding Neuropathy Treatment Options in Geneva IL",
   dek: "Neuropathy can make simple daily tasks feel hard and frustrating. When your feet burn, tingle, or feel numb, walking across the room may feel like walking on pebbles. When your hands are weak or clumsy, buttoning a shirt or gripping the steering wheel can feel scary. At Genesis Integrative Medicine, we talk with many people in Geneva, IL, who are dealing with this every day and just want clear answers and real options.",
-  date: "2026-08-31",
-  modifiedDate: "2026-08-31",
+  date: "2026-08-28",
+  modifiedDate: "2026-08-28",
   category: "Neuropathy",
   readTime: "5 min read",
   image: {
@@ -1274,8 +1274,8 @@ export const LASER_LIPO_EFFECTIVENESS_MIDLIFE_POST: BlogPostContent = {
   slug: "laser-lipo-effectiveness-for-stubborn-midlife-belly-fat",
   title: "Laser Lipo Effectiveness for Stubborn Midlife Belly Fat",
   dek: "Shrinking Stubborn Belly Fat Without Major Surgery",
-  date: "2026-09-07",
-  modifiedDate: "2026-09-07",
+  date: "2026-09-04",
+  modifiedDate: "2026-09-04",
   category: "Cold Laser",
   readTime: "4 min read",
   image: {
@@ -1379,6 +1379,10 @@ export const LASER_LIPO_EFFECTIVENESS_MIDLIFE_POST: BlogPostContent = {
     title: "Understanding Neuropathy Treatment Options in Geneva IL",
     href: "/understanding-neuropathy-treatment-options-in-geneva-il/",
   },
+  next: {
+    title: "Questioning Disc Surgery? Disc Pain Specialists in Geneva Explain Options",
+    href: "/geneva-disc-pain-care-non-surgical-and-surgical-paths/",
+  },
   meta: {
     title: "Laser Lipo Effectiveness for Stubborn Midlife Belly Fat",
     description:
@@ -1390,10 +1394,174 @@ export const LASER_LIPO_EFFECTIVENESS_MIDLIFE_POST: BlogPostContent = {
 };
 
 /**
+ * Questioning Disc Surgery? Disc Pain Specialists in Geneva Explain Options
+ * Newest post, live URL: https://genesisintegrativemed.com/geneva-disc-pain-care-non-surgical-and-surgical-paths/
+ */
+export const GENEVA_DISC_PAIN_CARE_POST: BlogPostContent = {
+  slug: "geneva-disc-pain-care-non-surgical-and-surgical-paths",
+  title: "Questioning Disc Surgery? Disc Pain Specialists in Geneva Explain Options",
+  dek: "Back pain from disc problems can wear you down fast. After a summer of flare-ups, missed activities, and restless nights, it is easy to feel like surgery is the only way out. For many people with herniated or degenerative discs, there are other options worth exploring first.",
+  date: "2026-09-11",
+  modifiedDate: "2026-09-11",
+  category: "Disc Pain",
+  readTime: "6 min read",
+  image: {
+    src: "/images/blog/geneva-disc-pain-care-non-surgical-and-surgical-paths.jpg",
+    alt: "Disc pain specialist in Geneva reviewing spine imaging with a patient to discuss surgical and non-surgical options",
+  },
+  sections: [
+    {
+      heading: "Rethink Disc Surgery Before You Say Yes",
+      blocks: [
+        { kind: "paragraph", text: "Back pain from disc problems can wear you down fast. After a summer of flare-ups, missed activities, and restless nights, it is easy to feel like surgery is the only way out. When a provider tells you that you have a bad disc and you should get on the surgery schedule, it can feel scary and rushed." },
+        { kind: "paragraph", text: "For many people with herniated or degenerative discs, there are other options. Less invasive, root-cause care can often calm pain, improve movement, and help you get your life back without going straight to the operating room. Surgery has a place, but it is not the only path." },
+        { kind: "paragraph", text: "As disc pain specialists in Geneva, we help people sort through their choices. We look at the whole picture so you can understand when surgery makes sense, when it may not, and what an integrative plan can do to relieve pain and restore function." },
+      ],
+    },
+    {
+      heading: "What Your Disc Pain Is Really Telling You",
+      blocks: [
+        { kind: "paragraph", text: "When someone says you have a \u201Cdisc problem,\u201D they might mean a few different things. It could be bulging discs, where the disc pushes out but the outer layer is still intact. It could be herniated discs, where inner disc material leaks and can press on a nerve. Or it may be degenerative disc disease, where discs dry out, thin, or wear down over time." },
+        { kind: "paragraph", text: "Your discs sit between the bones in your spine. They act like cushions and help you bend, twist, and absorb shock. When they are irritated, nearby nerves, joints, and muscles often get involved too." },
+        { kind: "paragraph", text: "Common disc-related symptoms can include:" },
+        {
+          kind: "list",
+          items: [
+            "Shooting pain down a leg or arm",
+            "Numbness, tingling, or \u201Cpins and needles\u201D",
+            "Weakness in a hand, foot, or leg",
+            "Pain that worsens with sitting, bending, or twisting",
+            "Extra stiffness when the weather is cooler",
+          ],
+        },
+        { kind: "paragraph", text: "These clues can help point to the root cause. For example, sharp leg pain with numbness may mean a nerve is under pressure. Achy, tight low back pain might show that muscles and joints are stressed from poor alignment or weak support." },
+        { kind: "paragraph", text: "Disc pain rarely shows up alone. It often goes hand in hand with muscle imbalances from sitting, driving, or screen time, along with poor posture and spinal alignment. Chronic inflammation can keep tissues reactive, and extra body weight combined with low activity levels can add ongoing stress to the spine." },
+        { kind: "paragraph", text: "When early warning signs get brushed off, problems can snowball. Everyday things like raking leaves, travel, or walking on slick sidewalks can place more stress on an already irritated spine. Addressing these issues early can help you avoid bigger flare-ups later." },
+      ],
+    },
+    {
+      heading: "When Disc Surgery Helps and When It May Not",
+      blocks: [
+        { kind: "paragraph", text: "There are times when spine surgery is appropriate and even urgent. A surgeon may be needed right away if you have:" },
+        {
+          kind: "list",
+          items: [
+            "Sudden, severe, or fast-worsening weakness",
+            "Loss of control of your bowel or bladder",
+            "Signs of serious nerve damage or spinal cord pressure",
+          ],
+        },
+        { kind: "paragraph", text: "Those are red flag situations that should be taken seriously. In these cases, surgery can protect nerve function and prevent permanent damage." },
+        { kind: "paragraph", text: "However, many people are told they need surgery even when their pain comes and goes, symptoms are moderate and not getting worse, and they can still walk, work, and sleep, even if it is not perfect. In some cases, imaging may show disc changes, but those changes are common for their age." },
+        { kind: "paragraph", text: "Surgery also has limits and risks. Possible concerns can include:" },
+        {
+          kind: "list",
+          items: [
+            "Scar tissue that may cause stiffness or new irritation",
+            "Extra stress on the discs and joints above and below the surgery site",
+            "Long recovery times away from work, family, and regular activities",
+            "Ongoing pain if the real root causes, like poor alignment or weak muscles, are not addressed",
+          ],
+        },
+        { kind: "paragraph", text: "Before anyone says yes to surgery for disc pain, a thorough evaluation is important. A disc pain specialist in Geneva should take time to review your MRI or X-rays in detail, perform a hands-on physical and neurological exam, and ask about your daily habits, stress, and activity level. They should also look at how you move, bend, and support your spine. Only when the full picture is clear can you get honest guidance on whether surgery is the right step or if conservative options make more sense first." },
+      ],
+    },
+    {
+      heading: "Integrative Disc Pain Relief Without the Knife",
+      blocks: [
+        { kind: "paragraph", text: "At Genesis Integrative Medicine, we focus on helping your body work better as a whole. Instead of chasing symptoms, we work to address the root causes behind your disc pain." },
+        { kind: "paragraph", text: "Our approach can include:" },
+        {
+          kind: "list",
+          items: [
+            "Medical care to review your diagnosis and guide safe treatment choices",
+            "Chiropractic care to improve spinal alignment and motion",
+            "Regenerative therapies where appropriate to support tissue healing",
+            "Targeted rehab and exercises to build long-term support for your spine",
+          ],
+        },
+        { kind: "paragraph", text: "Chiropractic and structural correction can help:" },
+        {
+          kind: "list",
+          items: [
+            "Reduce pressure on irritated discs and nerves",
+            "Improve how each spinal segment moves",
+            "Reset posture patterns that keep pulling your spine out of balance",
+            "Make bending, lifting, and walking feel more natural and less guarded",
+          ],
+        },
+        { kind: "paragraph", text: "Regenerative options, such as advanced injection therapies, may be used when suitable to support the soft tissues around the spine. The goal is to give your body better tools for repair so inflamed or strained areas can calm down over time." },
+        { kind: "paragraph", text: "Medical treatments can also play a key role without turning to heavy pain medications. These may include:" },
+        {
+          kind: "list",
+          items: [
+            "Non-opioid pain relief options",
+            "Trigger point or joint injections to quiet stubborn hotspots",
+            "Personalized exercise programs to stabilize the spine",
+          ],
+        },
+        { kind: "paragraph", text: "By combining these methods, we aim to help you move into cooler months with more comfort, better strength, and less fear of the next flare-up." },
+      ],
+    },
+    {
+      heading: "How a Disc Pain Specialist in Geneva Builds Your Plan",
+      blocks: [
+        { kind: "paragraph", text: "Your first visit with a disc pain specialist in Geneva should feel like a real conversation, not a rush to a quick fix. At Genesis Integrative Medicine, we start with:" },
+        {
+          kind: "list",
+          items: [
+            "A detailed health history, including when and how your pain started",
+            "A physical and neurological exam to check strength, reflexes, and sensation",
+            "Review of any MRI, X-ray, or other test results you already have",
+            "A functional movement screening to see how your body handles daily tasks",
+          ],
+        },
+        { kind: "paragraph", text: "From there, our team works together across our different specialties. We design a plan that fits your specific needs, which may blend:" },
+        {
+          kind: "list",
+          items: [
+            "Chiropractic adjustments and structural work",
+            "Regenerative therapies when appropriate",
+            "Targeted rehab to retrain muscles and improve stability",
+            "Medical weight loss support if extra weight is stressing your spine",
+          ],
+        },
+        { kind: "paragraph", text: "Body weight can place extra load on lumbar discs. When activity levels drop, that stress can build. Supporting healthy weight and body composition can ease pressure on your spine and help your results last." },
+        { kind: "paragraph", text: "Care does not stop with a single visit. We keep an eye on changes in your pain and function, including your ability to sit, stand, travel, and do daily tasks. We also factor in seasonal triggers such as cold weather stiffness or long car rides for family events." },
+        { kind: "paragraph", text: "Your plan can be adjusted as you progress so your care stays aligned with your goals and your daily life." },
+      ],
+    },
+  ],
+  cta: {
+    kicker: "Ready to explore your options?",
+    heading: "Talk to our team about disc pain care",
+    body: "We\u2019ll review your imaging, exam findings, and goals, then walk you through when surgery may help and what a non-surgical plan can look like.",
+    primary: {
+      label: "Disc pain specialist in Geneva",
+      href: "/services/chiropractic-care/",
+    },
+    secondary: { label: "Contact us", href: "/contact/" },
+  },
+  prev: {
+    title: "Laser Lipo Effectiveness for Stubborn Midlife Belly Fat",
+    href: "/laser-lipo-effectiveness-for-stubborn-midlife-belly-fat/",
+  },
+  meta: {
+    title: "Geneva Disc Pain Care: Non-Surgical and Surgical Paths",
+    description:
+      "Explore treatment choices with a disc pain specialist in Geneva, from conservative care to advanced therapies, and understand when surgery may help",
+    canonical:
+      "https://genesisintegrativemed.com/geneva-disc-pain-care-non-surgical-and-surgical-paths/",
+    ogImage: "/images/blog/geneva-disc-pain-care-non-surgical-and-surgical-paths.jpg",
+  },
+};
+
+/**
  * All full-body posts, keyed by slug. Additional posts will be added
  * as they are cloned during upcoming Blog batches.
  */
 export const BLOG_POST_CONTENT: Readonly<Record<string, BlogPostContent>> = {
+  [GENEVA_DISC_PAIN_CARE_POST.slug]: GENEVA_DISC_PAIN_CARE_POST,
   [LASER_LIPO_EFFECTIVENESS_MIDLIFE_POST.slug]: LASER_LIPO_EFFECTIVENESS_MIDLIFE_POST,
   [UNDERSTANDING_NEUROPATHY_TREATMENT_OPTIONS_POST.slug]: UNDERSTANDING_NEUROPATHY_TREATMENT_OPTIONS_POST,
   [PRP_SPORTS_JOINT_INJURIES_TIMELINE_POST.slug]: PRP_SPORTS_JOINT_INJURIES_TIMELINE_POST,

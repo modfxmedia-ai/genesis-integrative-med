@@ -71,9 +71,17 @@ export function postsByCategory(category: string): readonly BlogPost[] {
  */
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: "geneva-disc-pain-care-non-surgical-and-surgical-paths",
+    title: "Questioning Disc Surgery? Disc Pain Specialists in Geneva Explain Options",
+    date: "2026-09-11",
+    excerpt: "Rethink Disc Surgery Before You Say Yes Back pain from disc problems can wear you down fast. After a summer of flare-ups, missed activities, and restless nights, it is easy to feel like surgery is the only way out\u2026",
+    image: "/images/blog/geneva-disc-pain-care-non-surgical-and-surgical-paths.jpg",
+    category: "Disc Pain",
+  },
+  {
     slug: "laser-lipo-effectiveness-for-stubborn-midlife-belly-fat",
     title: "Laser Lipo Effectiveness for Stubborn Midlife Belly Fat",
-    date: "2026-09-07",
+    date: "2026-09-04",
     excerpt: "Shrinking Stubborn Belly Fat Without Major Surgery Midlife belly fat can feel very unfair. You eat better than you did when you were younger, you try to move more, yet your waistband still feels tight\u2026",
     image: "/images/blog/laser-lipo-for-stubborn-belly-fat.webp",
     category: "Cold Laser",
@@ -81,7 +89,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "understanding-neuropathy-treatment-options-in-geneva-il",
     title: "Understanding Neuropathy Treatment Options in Geneva IL",
-    date: "2026-08-31",
+    date: "2026-08-28",
     excerpt: "Neuropathy can make simple daily tasks feel hard and frustrating. When your feet burn, tingle, or feel numb, walking across the room may feel like walking on pebbles. When your hands are weak or clumsy, buttoning a shirt or gripping the steering wheel can feel scary\u2026",
     image: "/images/conditions/neuropathy.webp",
     category: "Neuropathy",
@@ -89,7 +97,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "prp-for-sports-joint-injuries-timeline-return-to-play",
     title: "PRP for Sports Joint Injuries in Geneva: Timeline and Return to Play",
-    date: "2026-08-24",
+    date: "2026-08-21",
     excerpt: "PRP Support for Active Geneva Adults Between Seasons Joint pain can turn a fun season of sports into a constant struggle. If you are an active adult in Geneva who runs, golfs, plays tennis\u2026",
     image: "/images/conditions/prp-joint-injections-for-athletes-in-geneva-il.webp",
     category: "PRP",
@@ -97,7 +105,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "prp-vs-cortisone-vs-hyaluronic-acid-joint-injection",
     title: "PRP vs. Cortisone vs. Hyaluronic Acid in Geneva: Which Joint Injection?",
-    date: "2026-08-16",
+    date: "2026-08-14",
     excerpt: "Move Pain-Free in Every Season in Geneva Joint pain has a way of showing up right when you want to\u2026",
     image: "/images/blog/prp-vs-cortisone-vs-hyaluronic-acid-joint-injection.jpg",
     category: "PRP",
@@ -105,7 +113,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "non-surgical-back-pain-treatment-therapies",
     title: "Non-Surgical Back Pain Treatment: First Visit, Evaluation, and Therapies",
-    date: "2026-08-09",
+    date: "2026-08-07",
     excerpt: "What Really Happens with Non-Surgical Back Pain Care Non-surgical back pain treatment is a real option for many people who want relief without surgery or long-term pain\u2026",
     image: "/images/blog/non-surgical-back-pain-treatment-therapies.jpg",
     category: "Back Pain",
@@ -113,7 +121,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "summer-sports-injuries-hip-pain-doctor",
     title: "Summer Sports Injuries in Geneva: When Hip Pain Needs a Doctor",
-    date: "2026-08-02",
+    date: "2026-07-31",
     excerpt: "Summer Hip Pain: When It\u2019s More Than Just Soreness Hip pain has a way of sneaking up on people during\u2026",
     image: "/images/blog/summer-sports-injuries-hip-pain-doctor.jpg",
     category: "Hip Pain",
@@ -121,7 +129,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "cold-laser-therapy-for-arthritis-pain",
     title: "What Cold Laser Therapy in Geneva Means for Arthritis Pain",
-    date: "2026-07-26",
+    date: "2026-07-24",
     excerpt: "Discover a Gentler Option for Arthritis Relief Arthritis pain can make even simple days feel long. Stiff mornings, sore fingers\u2026",
     image: "/images/blog/cold-laser-therapy-for-arthritis-pain.jpg",
     category: "Cold Laser",
@@ -129,7 +137,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "everyday-habits-knee-pain-worse",
     title: "Everyday Habits That Make Knee Pain Worse in Geneva",
-    date: "2026-07-19",
+    date: "2026-07-17",
     excerpt: "Simple Daily Choices That Can Fuel Knee Pain Knee pain often sneaks up on people. It is not always one\u2026",
     image: "/images/blog/everyday-habits-knee-pain-worse.jpg",
     category: "Knee Pain",
@@ -137,7 +145,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "shockwave-and-cold-laser-heel-pain",
     title: "Comparing Shockwave and Cold Laser Therapy for Heel Pain",
-    date: "2026-07-12",
+    date: "2026-07-10",
     excerpt: "Find Lasting Relief From Heel Pain This Summer Heel pain can turn a fun, active season into something you dread.\u2026",
     image: "/images/blog/shockwave-and-cold-laser-heel-pain.jpg",
     category: "Shockwave Therapy",
@@ -145,7 +153,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "living-with-neuropathy-when-seek-treatment",
     title: "Living with Neuropathy in Geneva: When to Seek Treatment",
-    date: "2026-07-05",
+    date: "2026-07-03",
     excerpt: "When Numbness and Tingling Start Changing Your Life Living in Geneva can feel pretty special. There are walks along the\u2026",
     image: "/images/blog/living-with-neuropathy-when-seek-treatment.jpg",
     category: "Neuropathy",
@@ -153,7 +161,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "turning-to-shockwave-therapy-for-tendonitis",
     title: "Why Geneva Residents Are Turning to Shockwave Therapy for Tendonitis",
-    date: "2026-06-28",
+    date: "2026-06-26",
     excerpt: "Why Tendinitis Pain Is Rising in Active Geneva Tendinitis is a common problem for active people. It happens when a\u2026",
     image: "/images/blog/turning-to-shockwave-therapy-for-tendonitis.jpg",
     category: "Shockwave Therapy",
@@ -161,7 +169,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "arthritis-pain-without-relying-surgery",
     title: "Managing Arthritis Pain in Geneva Without Relying on Surgery",
-    date: "2026-06-21",
+    date: "2026-06-19",
     excerpt: "Move Freely Again: Arthritis Pain Relief in Geneva Arthritis pain can make simple things feel hard. Walking through downtown Geneva,\u2026",
     image: "/images/blog/arthritis-pain-without-relying-surgery.jpg",
     category: "Arthritis",
@@ -169,7 +177,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "peptide-therapy-medical-weight-loss",
     title: "Is Peptide Therapy the Missing Link in Medical Weight Loss?",
-    date: "2026-06-14",
+    date: "2026-06-12",
     excerpt: "Could Peptide Therapy Be Your Weight Loss Breakthrough This Summer? Weight loss can feel very frustrating when you are doing\u2026",
     image: "/images/blog/peptide-therapy-medical-weight-loss.jpg",
     category: "Weight Loss",
@@ -177,7 +185,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "non-surgical-back-pain-treatment",
     title: "Questioning Knee Surgery? Non-Surgical Back Pain Treatment Links You May Miss",
-    date: "2026-06-07",
+    date: "2026-06-05",
     excerpt: "Rethinking Knee Surgery When Your Back Also Hurts Knee surgery is a big decision, especially when your back has been\u2026",
     image: "/images/blog/non-surgical-back-pain-treatment.jpg",
     category: "Knee Pain",
@@ -185,7 +193,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "shockwave-therapy-in-geneva-for-heel-pain",
     title: "What to Expect From Shockwave Therapy in Geneva for Heel Pain",
-    date: "2026-05-31",
+    date: "2026-05-29",
     excerpt: "Faster Relief From Heel Pain with Shockwave Therapy Heel pain can turn simple things into a chore. Walking the Fox\u2026",
     image: "/images/blog/shockwave-therapy-in-geneva-for-heel-pain.jpg",
     category: "Shockwave Therapy",
@@ -193,7 +201,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "chiropractic-care-disc-pain-relief",
     title: "Chiropractic Care in Geneva for Long-Lasting Disc Pain Relief",
-    date: "2026-05-24",
+    date: "2026-05-22",
     excerpt: "Finally Find Disc Pain Relief That Lets You Live Again Disc pain can make even simple things around Geneva feel\u2026",
     image: "/images/blog/chiropractic-care-disc-pain-relief.jpg",
     category: "Disc Pain",
@@ -201,7 +209,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "signs-knee-pain-needs-specialist",
     title: "Signs Your Knee Pain Needs a Specialist in Geneva",
-    date: "2026-05-17",
+    date: "2026-05-15",
     excerpt: "Knee pain has a way of sneaking up at the worst time. You kneel to pull a few weeds, go\u2026",
     image: "/images/blog/signs-knee-pain-needs-specialist.jpg",
     category: "Knee Pain",
@@ -209,7 +217,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "knee-joint-pain-treatment-for-summer",
     title: "Knee Joint Pain Treatment in Geneva for Summer Activities",
-    date: "2026-05-10",
+    date: "2026-05-08",
     excerpt: "Enjoy Summer in Geneva Without Knee Pain Holding You Back Knee pain has a way of turning simple summer fun\u2026",
     image: "/images/blog/knee-joint-pain-treatment-for-summer.jpg",
     category: "Knee Pain",
@@ -217,7 +225,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "when-shoulder-pain-demands-specialist",
     title: "When Shoulder Pain Demands a Specialist in Geneva",
-    date: "2026-05-03",
+    date: "2026-05-01",
     excerpt: "Stop Shoulder Pain From Ruining Your Spring and Summer Shoulder pain has a way of sneaking into everything you do.\u2026",
     image: "/images/blog/when-shoulder-pain-demands-specialist.jpg",
     category: "Shoulder Pain",
@@ -225,7 +233,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "sciatica-treatment-in-geneva",
     title: "Sciatica Treatment in Geneva IL: When Chiropractic Is Enough",
-    date: "2026-04-26",
+    date: "2026-04-24",
     excerpt: "Stop Sciatica From Ruining Your Spring in Geneva Sciatica can make even simple movement feel scary. That sharp, burning, or\u2026",
     image: "/images/blog/sciatica-treatment-in-geneva.jpg",
     category: "Sciatica",
@@ -233,7 +241,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "prp-injection-therapy-in-geneva-for-joint-pain",
     title: "Understanding PRP Injection Therapy in Geneva for Joint Pain",
-    date: "2026-04-19",
+    date: "2026-04-17",
     excerpt: "Find Lasting Relief From Joint Pain This Spring Joint pain has a way of stealing the joy from simple things.\u2026",
     image: "/images/blog/prp-injection-therapy-in-geneva-for-joint-pain.jpg",
     category: "PRP",
@@ -241,7 +249,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "cold-laser-therapy-for-knee-pain-in-geneva",
     title: "Cold Laser Therapy for Knee Pain Relief in Geneva",
-    date: "2026-04-12",
+    date: "2026-04-10",
     excerpt: "Find Lasting Knee Pain Relief Without Surgery Knee pain has a way of stealing the fun from simple things. Walking\u2026",
     image: "/images/blog/cold-laser-therapy-for-knee-pain-in-geneva.jpg",
     category: "Cold Laser",
@@ -249,7 +257,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "avoid-knee-surgery-in-geneva-with-regenerative-options",
     title: "Avoiding Knee Surgery in Geneva With Regenerative Options",
-    date: "2026-04-06",
+    date: "2026-04-03",
     excerpt: "Step Into Spring Without Knee Surgery Knee pain can make even simple things feel hard. Walking along the Fox River,\u2026",
     image: "/images/blog/avoid-knee-surgery-in-geneva-with-regenerative-options.jpg",
     category: "Knee Pain",
@@ -257,7 +265,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: "when-everyday-movements-suddenly-feel-hard",
     title: "When Everyday Movements Suddenly Feel Hard",
-    date: "2026-03-10",
+    date: "2026-03-27",
     excerpt: "Life\u2019s challenges can feel overwhelming. Learn effective strategies to navigate tough times, regain strength, and find balance in everyday movements.",
     image: "/images/blog/when-everyday-movements-suddenly-feel-hard.webp",
     category: "Wellness",
